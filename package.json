@@ -8,16 +8,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/andres06-hub/primerProyecto_Angular.git"
+    "url": "git+https://github.com/andres06-hub/Backend-projectTGQ.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/andres06-hub/primerProyecto_Angular/issues"
+    "url": "https://github.com/andres06-hub/Backend-projectTGQ/issues"
   },
-  "homepage": "https://github.com/andres06-hub/primerProyecto_Angular#readme",
+  "homepage": "https://github.com/andres06-hub/Backend-projectTGQ#readme",
   "dependencies": {
     "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.17",
+    "ts-node": "^10.5.0",
+    "typescript": "^4.5.5"
   }
 }
