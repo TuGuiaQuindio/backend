@@ -3,13 +3,11 @@ export default {
 
     login:(email:string, password:string) =>{
         return new Promise((res, rej) => {
-
-            if (email == "dkfkf" && password == "f5f5f") {
-                
+            if (email == "test@email.com" && password == "123456") {
+                res("aldkAdkmfromvr5");
+            }else{
+                rej("Datos no validos");
             }
-            res("rvtntn54t5n5vtrnrttynvrt5");
-
-
         });
     },
 }
