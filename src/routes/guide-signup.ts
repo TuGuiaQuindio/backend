@@ -3,13 +3,13 @@ import { Response, Request } from 'express';
 
 import path from './paths';
 import signUpValidator from '../validator/guide-signup';
-import { GuideSignup } from '../interface/register-user';
+import { GuideSignup } from '../interface/signup-guide';
 
 const router = express.Router();
 
 ///////////////////////////////////////////////
 /**
- * Registro
+ * Registro de Guias
  */
 // Deconstruimos lel objeto
 const { params, validate } = signUpValidator;
@@ -31,7 +31,7 @@ router.route(path.registerGuide)
             });
 
         } catch (e) {
-            console.error(e)
+            console.error(e);
             // Respondemos al server
             res.status(401).json({
                 msg:"Error"

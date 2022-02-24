@@ -7,7 +7,7 @@ const app = express();
 // Importamos unas configuraciones
 import router from './routes/login';
 import routerGuideSignup from './routes/guide-signup';
-// import routerCompanySingup from './routes/company-signup';
+import routerCompanySingup from './routes/company-signup';
 import config from './config';
 
 /////////////////////////////////////////
@@ -26,6 +26,7 @@ app.use(express.json());
 // Utilizamos las rutas
 app.use(router);
 app.use(routerGuideSignup);
+app.use(routerCompanySingup);
 // app.use(routerCompanySingup);
 
 //////////////////////////////////////////////
