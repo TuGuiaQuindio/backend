@@ -2,11 +2,14 @@
 // Mientras se tendra datos locales
 import { User } from './user';
 
-export interface RegisterUser extends User {
+export interface GuideSignup extends User {
 
     id:number;
-    telefono:string;
-    name:string;
+    firstName:string;
+    lastName:string;
+    age:number;
+    cc:string;
+    phoneNumber:string;
 
 }
 // Exportamos el objeto

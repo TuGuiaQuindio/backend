@@ -3,7 +3,8 @@
 export default {
     raiz:'/',
     login: '/login',
-    register:'/signUp'
+    registerGuide:'/guide/signup',
+    registerCompany:'/company/signup',
 }
 
 // export const login = '/login'

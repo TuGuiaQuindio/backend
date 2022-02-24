@@ -4,18 +4,22 @@ import path from "./paths";
 import { User } from "../interface/user";
 import { Request, Response } from 'express';
 import authSrv from "../services/auth";
+import loginValidator from '../validator/login';
 
 const router = express.Router();
 ////////////////////////////////////////////////////////////////
 /**
  * ----> LOGIN <----
  */
+// Añado los validators, deconstruccion 
+const {params, validate} = loginValidator;
+
 router.route(path.login)
     .get((req:Request, res:Response) => {
         res.send("Hi from Login -GET !!");
     })
-    .post( async (req:Request, res:Response) => {
-        // Ontenemos los datos del body
+    .post(params,validate,async (req:Request, res:Response) => {
+        // Obtenemos los datos del body
         const { email, password } = req.body as User;
         try{
             // obtenemos el token
@@ -34,22 +38,9 @@ router.route(path.login)
         }
     });
 
-/**
- * Resgistro
- */
-router.route(path.register)
-    .get((req:Request, res:Response)=>{
-
-    })
-    .post((req:Request, res:Response)=>{
-
-    })
-
-
-
 ////////////////////////////////////////////////////////////////
 // });
 
 ///////////////////////////////////////////////////////////////
-// Esportamos las rutas
+// Exportamos las rutas
 export default router;
