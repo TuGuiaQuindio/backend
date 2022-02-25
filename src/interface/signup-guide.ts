@@ -4,11 +4,12 @@ import { User } from './user';
 
 export interface GuideSignup extends User {
 
-    id:number;
+    // id:number;
     firstName:string;
     lastName:string;
     age:number;
     cc:string;
+    city:string;
     phoneNumber:string;
 
 }

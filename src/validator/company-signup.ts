@@ -6,11 +6,16 @@ export default {
     // Validamos los datos de entrada por el 'body'
     params:[
         body('nameCompany')
-        ,
+            .not().isEmpty().withMessage("Empty field"),
         body('nit')
-        ,
+            .not().isEmpty().withMessage("Empty field"),
         body('phoneNumber')
-
+            .not().isEmpty().withMessage("Empty field"),
+        body('email')
+            .not().isEmpty().withMessage("Empty field")
+            .isEmail().withMessage("Please provide a valid email!"),
+        body('password')
+            .not().isEmpty().withMessage("Empty field"),
     ],
     // Validamos
     validate: function(req:Request, res:Response, next:NextFunction) {
