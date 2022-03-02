@@ -5,12 +5,17 @@ const app = express();
 //////////////////////////////////////////
 // Settings
 // Importamos unas configuraciones
-import router from './routes/login';
-import routerGuideSignup from './routes/guide-signup';
-import routerCompanySingup from './routes/company-signup';
+import routerLogin from './routes/login.routes';
+import routerGuideSignup from './routes/guide-signup.routes';
+import routerCompanySingup from './routes/company-signup.routes';
 import config from './config';
 
+import { createConnection } from 'typeorm';
+import  'reflect-metadata';
 /////////////////////////////////////////
+
+// Connexion a la db
+createConnection();
 
 ///////////////////////////////////////////
 // TODO : Configurar un paquete solo para los Middlewares
@@ -24,7 +29,7 @@ app.use(express.json());
 
 // ------> Routes <-------
 // Utilizamos las rutas
-app.use(router);
+app.use(routerLogin);
 app.use(routerGuideSignup);
 app.use(routerCompanySingup);
 // app.use(routerCompanySingup);

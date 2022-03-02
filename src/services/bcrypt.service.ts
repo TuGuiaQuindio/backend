@@ -9,6 +9,7 @@ export default {
     bcryptHash: function(pass:string){
         
         const passHash = bcrypt.hashSync(pass, saltRound );
-
+        
+        return passHash;
     }
 }

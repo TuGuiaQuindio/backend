@@ -1,5 +1,10 @@
+// import token from './token-services';
 
 import mockData from '../mock/data';
+
+import { createToken }  from '../services/token.service'
+
+// const { createToken } = service;
 
 export default {
 
@@ -10,7 +15,11 @@ export default {
             const userPass = mockData.guide.password;
 
             if (email == userEmail && password == userPass) {
-                res("aldkAdkmfromvr5");
+
+                const token = createToken(email, password);
+                // 
+                res(token);
+
             }else{
                 rej("Datos no validos");
             }

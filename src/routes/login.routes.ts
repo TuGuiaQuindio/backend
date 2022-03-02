@@ -3,7 +3,7 @@ import express from 'express';
 import path from "./paths";
 import { User } from "../interface/user";
 import { Request, Response } from 'express';
-import authSrv from "../services/auth";
+import authSrv from "../services/auth.service";
 import loginValidator from '../validator/login';
 
 const router = express.Router();

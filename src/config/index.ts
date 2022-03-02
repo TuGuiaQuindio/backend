@@ -11,7 +11,11 @@ export default {
     /**
      * Nombre proyecto
      */
-    name: 'TuGuiaQuindio-backend'
-
-
+    name: 'TuGuiaQuindio-backend',
+    
+    /**
+     * llave del token : FIRMA
+     */
+    
+    keyToken : "shhhhhh",
 }

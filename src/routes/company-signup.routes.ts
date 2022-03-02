@@ -5,7 +5,7 @@ import path from './paths';
 import signUpValidator from '../validator/company-signup';
 import { CompanySignup } from '../interface/signup-company';
 
-import signup from '../services/signup-db'
+import signup from '../services/signup-db.service'
 // Obtenemos las rutas
 const router = express.Router();
 /////////////////////////////////////////////////

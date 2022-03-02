@@ -5,7 +5,7 @@ import path from './paths';
 import signUpValidator from '../validator/guide-signup';
 import { GuideSignup } from '../interface/signup-guide';
 
-import signup from '../services/signup-db'
+import signup from '../services/signup-db.service'
 
 const router = express.Router();
 
@@ -29,7 +29,8 @@ router.route(path.registerGuide)
             const register = await signup( { firstName, lastName, age, cc, city, phoneNumber, email, password}, "guide" );
             // Respondemos al Server
             res.status(200).json({
-                msg:"User signed up successfully"
+                register,
+                msg:"User signed up successfull"
             });
 
         } catch (e) {
@@ -40,6 +41,12 @@ router.route(path.registerGuide)
             })
         }
     });
+
+// Rutas con parametros
+router.route('/guide/:id')
+    .get()
+    .put()
+    .delete()
 
 
 ///////////////////////////////////////////////////////////////

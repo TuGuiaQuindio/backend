@@ -6,32 +6,40 @@ import { CompanySignup } from "../interface/signup-company";
 import guide  from "../mock/data";
 import company from "../mock/data";
 
-import bcrypt from "../services/bcrypt"
+import { createGuide } from '../controllers/guide.controller'
+
+import bcrypt from "./bcrypt.service"
 
 // Decostruimos
 const { bcryptHash } = bcrypt;
-// TODO -> Terminar esta funcion de registrar los datos a 'mock'
+
 async function signup(values: GuideSignup | CompanySignup,  type: "guide" | "company") {
     // Validamos el tipo 
     // Tipo guia
     if(type == "guide"){
+        // Definimos el tipo de Usuario 'GUIDE'
+        values = values as GuideSignup;
         // Esperamos a que encripten la contraseña
         const password = await bcryptHash(values.password);
 
-        // Obtenemos los datos
-        // guide.guide.firstName  values.firstName
-
-
+        // Obtenemos los datos y lo pasamos al ORM
+        const guideResuls = createGuide(values, password);
+        // Resornamos los datos devueltos
+        return guideResuls;
     }
+    
     // Tipo compañia ó empresa
     else if(type == "company"){
+        // Definimos el tipo de Usuario 'COMPANY'
+        values = values as CompanySignup;
         // Esperamos a que encripten la contraseña
         const password = await bcryptHash(values.password);
         
-        //obtemos los datos
+        //obtemos los datos, lo pasamos al ORM
+        
+        
+        
     }
-
-    
 };
 
 export default signup;
