@@ -1,14 +1,24 @@
 
+////////////////////////////////////////////////
 
-// Exportamos 
-
+// Importamos
 import { getRepository } from "typeorm";
 import { GuideSignup } from "../interface/signup-guide";
 import { Guide } from '../models/entity/Guide'
-// Controlador para obtener lso guias
-export const getUsers = async () => {
 
+////////////////////////////////////////////////
+// *** CONTROLADORES LOGIN
+
+// Controlador para obtener un guia por medio del email
+export const getGuide = async (email : string) => {
+
+    // Buscamos y obtenemos el usuario
+    const guide = await getRepository(Guide).findOne({ email });
+
+    return guide;
 };
+
+// ****************************************************
 
 // Controlador
 // Crear usuario -> Registrar nuevo Guia 

@@ -3,26 +3,34 @@
 import mockData from '../mock/data';
 
 import { createToken }  from '../services/token.service'
-
-// const { createToken } = service;
+import { getGuide } from '../controllers/guide.controller';
+import bcrypt from '../services/bcrypt.service';
 
 export default {
 
-    login:(email:string, password:string) =>{
-        return new Promise((res, rej) => {
-            // Obtenemos los datos
-            const userEmail = mockData.guide.email;
-            const userPass = mockData.guide.password;
+    login : async (email:string, password:string) =>{
 
-            if (email == userEmail && password == userPass) {
-
-                const token = createToken(email, password);
-                // 
-                res(token);
-
-            }else{
-                rej("Datos no validos");
+        // Ingresamos a la DB
+            
+        const guideFound = await getGuide(email) ;
+        console.log("->login: ",guideFound);
+        // Devolvera un true si lo encontro
+        if (guideFound) {            
+            //obtenemos la password para
+            const passHash = guideFound.password;
+            // validamos el password
+            if (bcrypt.verify(passHash, password)){
+                // creamos el token 
+                const token = await createToken(email, password);
+                // pasamos el token al cliente
+                // TODO -> EL token lo devulev indefinido ORGANIZARLO
+                return token;
             }
-        });
+
+        }else{
+            
+            return("Datos no validos");
+        }
+        
     },
 }

@@ -12,7 +12,7 @@ const router = express.Router();
  * ----> LOGIN <----
  */
 // Añado los validators, deconstruccion 
-const {params, validate} = loginValidator;
+const { params, validate } = loginValidator;
 
 router.route(path.login)
     .get((req:Request, res:Response) => {
@@ -28,6 +28,8 @@ router.route(path.login)
             res.status(200).json({
                 token
             });
+            console.log("token: ",token);
+            
         }catch(e){// Si nos devuelve un error
             // Mostramos el error
             console.error(e);

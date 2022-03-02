@@ -10,8 +10,9 @@ import config from '../config/index'
 
 // };
 
-export const createToken = (email:string, password:string) => {
+export const createToken = async (email:string, password:string) => {
     return jwt.sign( { email, password }, config.keyToken, { algorithm: 'RS256' });
+    
 };
 
 // export default {
