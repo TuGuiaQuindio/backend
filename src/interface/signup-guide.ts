@@ -5,6 +5,7 @@ import { User } from './user';
 export interface GuideSignup extends User {
 
     // id:number;
+    document:string;
     firstName:string;
     lastName:string;
     age:number;

@@ -27,6 +27,7 @@ export const createGuide = async (values: GuideSignup, password:string) => {
 
     // Creamos objeto con datos
     const guide = {
+        document : values.document,
         firstName : values.firstName,
         lastName : values.lastName,
         cc : values.cc,

@@ -24,15 +24,17 @@ export default {
                 const token = await createToken(email);
                 // pasamos el token al cliente
                 console.log("El token generado es:: ", token);
+                
                 // Retornamos 
                 return token;
+
             } else {
-                return "Credenciales incorrectas"
+                return false;
             }
 
         }else{
             
-            return("Datos no validos");
+            return false;
         }
         
     },

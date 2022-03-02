@@ -25,11 +25,17 @@ router.route(path.login)
             // obtenemos el token
             const token = await authSrv.login(email, password);
             // si retorna el toquen
-            res.status(200).json({
-                token
-            });
-            console.log("token: ",token);
-            
+            // Si nos retorna un false es porque ocurrio un error
+            if(token === false){
+                // Respondemos al cliente
+                res.status(401).json({"msg":"credenciales incorrectas"});
+            // Por lo contrario repondemos
+            }else{
+                res.status(200).json({
+                    token
+                });
+                console.log("token: ",token);
+            }
         }catch(e){// Si nos devuelve un error
             // Mostramos el error
             console.error(e);

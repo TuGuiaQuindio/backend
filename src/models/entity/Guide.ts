@@ -12,6 +12,9 @@ export class Guide {
     id : number;
 
     @Column()
+    document : string;
+
+    @Column()
     firstName : string;
 
     @Column()
