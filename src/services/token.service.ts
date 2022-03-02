@@ -1,6 +1,8 @@
 import jwt from 'jsonwebtoken';
 
 import config from '../config/index'
+import { readFileSync } from 'fs';
+import { join } from 'path';
 
 // Generamos y validamos los tokens
 
@@ -10,10 +12,17 @@ import config from '../config/index'
 
 // };
 
-export const createToken = async (email:string, password:string) => {
-    return jwt.sign( { email, password }, config.keyToken, { algorithm: 'RS256' });
-    
+
+
+export const createToken = async (email:string) => {
+    const key = readFileSync(
+        join(process.cwd(), '.secret', 'sign.key')
+    ) 
+    return jwt.sign( { email },key , { algorithm: 'RS256' });
 };
+
+
+
 
 // export default {
 

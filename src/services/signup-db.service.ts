@@ -3,8 +3,6 @@
 
 import { GuideSignup } from "../interface/signup-guide";
 import { CompanySignup } from "../interface/signup-company";
-import guide  from "../mock/data";
-import company from "../mock/data";
 
 import { createGuide } from '../controllers/guide.controller'
 

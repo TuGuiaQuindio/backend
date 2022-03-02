@@ -131,3 +131,7 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Code generate :  (openssl genrsa -out sign.key 4096)
+# Se ignora la carpeta con la firma privada 
+.secret

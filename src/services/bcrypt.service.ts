@@ -13,8 +13,8 @@ export default {
         return passHash;
     },
 
-    verify : function(passHash : string, password : string){
+    verify : function(passHash : string, password : string) : boolean{
         // Comparamos el password haseado(DB) y el password llegado desde el cliente
-        return bcrypt.compareSync(passHash, password);
+        return bcrypt.compareSync(password, passHash);
     }
 }
