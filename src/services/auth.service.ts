@@ -10,8 +10,9 @@ export default {
     login : async (email:string, password:string) =>{
 
         // Ingresamos a la DB
-            
+        // Se busca usuario por el email
         const guideFound = await getGuide(email) ;
+        // Mostramos el usuario obtenido
         console.log("->login: ",guideFound);
         // Devolvera un true si lo encontro
         if (guideFound) {            
