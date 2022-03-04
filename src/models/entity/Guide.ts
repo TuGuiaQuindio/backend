@@ -12,16 +12,13 @@ export class Guide {
     id : number;
 
     @Column()
-    document : string;
+    NoDocument : string;
 
     @Column()
     firstName : string;
 
     @Column()
     lastName : string;
-
-    @Column()
-    cc : string;
 
     @Column()
     city : string;

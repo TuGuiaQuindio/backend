@@ -5,7 +5,7 @@ import { GuideSignup } from "../interface/signup-guide";
 import { CompanySignup } from "../interface/signup-company";
 
 import { createGuide } from '../controllers/guide.controller'
-
+import { createCompany } from '../controllers/company.controller';
 import bcrypt from "./bcrypt.service"
 
 // Decostruimos
@@ -34,9 +34,9 @@ async function signup(values: GuideSignup | CompanySignup,  type: "guide" | "com
         const password = await bcryptHash(values.password);
         
         //obtemos los datos, lo pasamos al ORM
-        
-        
-        
+        const companyResults = createCompany(values, password);
+        // Resornamos el valor devueltos
+        return companyResults;
     }
 };
 

@@ -7,7 +7,7 @@ import { GuideSignup } from "../interface/signup-guide";
 import { Guide } from '../models/entity/Guide'
 
 ////////////////////////////////////////////////
-// *** CONTROLADORES LOGIN
+// *** CONTROLADORES LOGIN guia
 
 // Controlador para obtener un guia por medio del email
 export const getGuide = async (email : string) => {
@@ -27,19 +27,17 @@ export const createGuide = async (values: GuideSignup, password:string) => {
 
     // Creamos objeto con datos
     const guide = {
-        document : values.document,
+        NoDocument : values.NoDocument,
         firstName : values.firstName,
         lastName : values.lastName,
-        cc : values.cc,
         city : values.city,
         phoneNumber : values.phoneNumber,
         email : values.email, 
         password : password,
     }
 
-    // TODO -> Validar si el usuario a registrar ya se encuentra en DB
     // Obtenemos el usuario a buscar
-    let userFound : boolean = await validatedGuide(guide.document);
+    let userFound : boolean = await validatedGuide(guide.NoDocument);
     
     // Validamos si el guia existe
     if(userFound) return undefined;
@@ -54,11 +52,11 @@ export const createGuide = async (values: GuideSignup, password:string) => {
     return results;
 }
 
-const validatedGuide =  async ( document : string ) => {
+const validatedGuide =  async ( NoDocument : string ) => {
 
     // Busca el guia por el documento 
-    const guideFound = await getRepository(Guide).findOne({document});
-    console.log("XX ", guideFound);
-    // validamos 
+    const guideFound = await getRepository(Guide).findOne({NoDocument});
+    console.log("X- Usuario registrado -X ", guideFound);
+    // Retornamos y nos devuekve un booleano
     return guideFound !== undefined;
 };

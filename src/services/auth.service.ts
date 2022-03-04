@@ -6,7 +6,7 @@ import { getGuide } from '../controllers/guide.controller';
 import bcrypt from '../services/bcrypt.service';
 
 export default {
-
+// TODO -> ORGANIZAR EL LOGIN PARA GUIAS Y EMPRESAS
     login : async (email:string, password:string) =>{
 
         // Ingresamos a la DB

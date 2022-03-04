@@ -5,7 +5,7 @@ import { body, validationResult } from "express-validator";
 export default {
 // Obtenemos los parametros
     params: [
-        body('document')
+        body('NoDocument')
             .not().isEmpty().withMessage("Empty field !"),
         body('firstName')
             .not().isEmpty().withMessage("Empty field !"),
@@ -14,8 +14,6 @@ export default {
         body('age')
             .not().isEmpty().withMessage("Empty field!")
             .isNumeric().withMessage("Datos no numerico!"),
-        body('cc')
-            .not().isEmpty().withMessage("Empty field !"),
         body('city')
             .not().isEmpty().withMessage("Empty field !"),
         body('phoneNumber')

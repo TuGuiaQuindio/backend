@@ -23,16 +23,23 @@ router.route(path.registerGuide)
     .post(params,validate,async (req:Request, res:Response)=>{
         // res.send("POST");
         // Obtenemos los datos del body
-        const { document, firstName, lastName, age, cc, city, phoneNumber, email, password } = req.body as GuideSignup;//Lo referenciamos con la interface
+        const { NoDocument, firstName, lastName, age, city, phoneNumber, email, password } = req.body as GuideSignup;//Lo referenciamos con la interface
         try {
             // Hacemos el registro de los datos
-            const register = await signup( { document,firstName, lastName, age, cc, city, phoneNumber, email, password}, "guide" );
-            // Respondemos al Server
-            res.status(200).json({
-                register,
-                msg:"User signed up successfull"
-            });
+            const register = await signup( { NoDocument,firstName, lastName, age, city, phoneNumber, email, password}, "guide" );
 
+            if(register != undefined) {
+                // Respondemos al Server
+                res.status(200).json({
+                    register,
+                    msg:"User signed up successfull"
+                });
+            }else {
+                console.log("-> User already exists !");
+                // Si no respondemos al cliente
+                res.status(303).json({ msg : "User exists !!" })
+                
+            }
         } catch (e) {
             console.error(e);
             // Respondemos al server

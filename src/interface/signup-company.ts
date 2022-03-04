@@ -6,5 +6,7 @@ export interface CompanySignup extends User {
     nameCompany : string;
     nit : string;
     phoneNumber : string;
+    direction : string;
+    mainActivity : string; 
     
 }
