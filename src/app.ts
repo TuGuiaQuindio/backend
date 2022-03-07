@@ -8,6 +8,7 @@ const app = express();
 import routerLogin from './routes/login.routes';
 import routerGuideSignup from './routes/guide-signup.routes';
 import routerCompanySingup from './routes/company-signup.routes';
+import routerHome from './routes/home.routes';
 import config from './config';
 
 import { createConnection } from 'typeorm';
@@ -18,7 +19,6 @@ import  'reflect-metadata';
 createConnection();
 
 ///////////////////////////////////////////
-// TODO : Configurar un paquete solo para los Middlewares
 // Middlewares
 const morgan = require('morgan');
 
@@ -32,7 +32,7 @@ app.use(express.json());
 app.use(routerLogin);
 app.use(routerGuideSignup);
 app.use(routerCompanySingup);
-// app.use(routerCompanySingup);
+app.use(routerHome);
 
 //////////////////////////////////////////////
 // Starting the server 

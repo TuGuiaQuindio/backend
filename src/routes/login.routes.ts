@@ -18,7 +18,7 @@ router.route(path.login)
     .get((req:Request, res:Response) => {
         res.send("Hi from Login -GET !!");
     })
-    .post(params,validate,async (req:Request, res:Response) => {
+    .post( params, validate, async (req:Request, res:Response) => {
         // Obtenemos los datos del body
         const { email, password } = req.body as User;
         try{

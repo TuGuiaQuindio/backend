@@ -6,33 +6,33 @@ import { join } from 'path';
 
 // Generamos y validamos los tokens
 
-// Funcion para verificar el token para 
-// export const verifyToken = () => {
-    
-
-// };
-
-
-
 export const createToken = async (email:string) => {
     const key = readFileSync(
         join(process.cwd(), '.secret', 'sign.key')
-    ) 
-    return jwt.sign( { email },key , { algorithm: 'RS256' });
+    )
+    
+    return jwt.sign( { email },key , { algorithm: 'RS256', expiresIn: 15     });
 };
 
 
+// Verificamos el token obtenido 
+export const verifyToken = async ( token : string )=>{
+
+    // leemos la llave
+    const cert = readFileSync( join(process.cwd(), '.secret', 'sign.key') )
+    // Tratamos 
+    try {
+    const decoded = jwt.verify(token, cert, { algorithms: ['RS256'] });
+        return decoded;
+    } catch(err) {
+        // err
+        console.log('Token ERROR:', err);
+
+        return undefined;    
+    }
+    
+
+}
 
 
-// export default {
-
-//     verifyToken : ()=>{
-
-//     },
-
-//     createToken : jwt.sign({}, config.keyToken ,{ algorithm: 'RS256' }, function(err, token) {
-//         return token;
-//     })
-
-// };
 

@@ -5,6 +5,7 @@ export default {
     login: '/login',
     registerGuide:'/guide/signup',
     registerCompany:'/company/signup',
+    home: '/home',
 }
 
 // export const login = '/login'

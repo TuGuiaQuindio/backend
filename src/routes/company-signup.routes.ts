@@ -21,7 +21,6 @@ router.route(path.registerCompany)
     .post(params, validate, async(req:Request, res:Response) => {
 
         // Obtenemos los datos del body
-        // TODO -> mirar que datos se le pediran a las empresas
         const { nameCompany, nit, phoneNumber, direction, mainActivity, email, password } = req.body as CompanySignup;
         // Tratamos de hacer esto
         try {
