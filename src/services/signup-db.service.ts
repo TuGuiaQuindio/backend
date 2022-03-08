@@ -19,7 +19,7 @@ async function signup(values: GuideSignup | CompanySignup,  type: "guide" | "com
         values = values as GuideSignup;
         // Esperamos a que encripten la contraseña
         const password = await bcryptHash(values.password);
-
+        console.log("FROM signUp - SERVICE");
         // Obtenemos los datos y lo pasamos al ORM
         const guideResuls = createGuide(values, password);
         // Resornamos los datos devueltos

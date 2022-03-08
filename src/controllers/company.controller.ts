@@ -17,7 +17,7 @@ export const createCompany = async (values: CompanySignup, password : string) =>
         phoneNumber : values.phoneNumber,
         direction : values.direction,
         mainActivity : values.mainActivity,
-        email : values.email,
+        emailEmail : values.email,
         // pass haseado
         password : password
     }

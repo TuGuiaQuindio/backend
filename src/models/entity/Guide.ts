@@ -1,7 +1,7 @@
 // Entidades del ORM
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn } from 'typeorm';
 
-// import { Roles } from './Roles'
+import { Roles } from './Roles'
 
 // LLamamos decorador 
 @Entity()
@@ -28,11 +28,15 @@ export class Guide {
     @Column()
     phoneNumber : string;
 
-    @Column()
-    email : string;
+    @OneToOne(()=> Roles)
+    @JoinColumn()
+    email : String;
 
     @Column()
     password : string;
 
 
+     // Foreign key
+    // @ManyToOne(() => Roles, rol => rol.Guide )
+    
 };

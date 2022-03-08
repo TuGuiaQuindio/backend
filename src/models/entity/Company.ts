@@ -1,5 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn } from 'typeorm';
 
+import { Roles } from './Roles';
 // LLamamos decorador 
 @Entity()
 // Exportamos y creamos la clase company 
@@ -20,7 +21,14 @@ export class Company {
     phoneNumber : string;
 
     @Column()
-    email : string;
+    direction : string;
+
+    @Column()
+    mainActivity : string;
+
+    @OneToOne(()=> Roles)
+    @JoinColumn()
+    email : Roles;
 
     @Column()
     password : string;

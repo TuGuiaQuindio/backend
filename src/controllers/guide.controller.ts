@@ -32,7 +32,7 @@ export const createGuide = async (values: GuideSignup, password:string) => {
         lastName : values.lastName,
         city : values.city,
         phoneNumber : values.phoneNumber,
-        email : values.email, 
+        emailEmail : values.email, 
         password : password,
     }
 

@@ -11,6 +11,10 @@ export default {
             .not().isEmpty().withMessage("Empty field"),
         body('phoneNumber')
             .not().isEmpty().withMessage("Empty field"),
+        body('direction')
+            .not().isEmpty().withMessage("Empty field"),
+        body('mainActivity')
+            .not().isEmpty().withMessage("Empty field"),
         body('email')
             .not().isEmpty().withMessage("Empty field")
             .isEmail().withMessage("Please provide a valid email!"),
