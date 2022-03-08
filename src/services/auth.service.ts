@@ -2,7 +2,7 @@
 
 
 import { createToken }  from '../services/token.service'
-import { getGuide } from '../controllers/guide.controller';
+import { getUser } from '../controllers/login.controller';
 import bcrypt from '../services/bcrypt.service';
 
 export default {
@@ -11,7 +11,7 @@ export default {
 
         // Ingresamos a la DB
         // Se busca usuario por el email
-        const guideFound = await getGuide(email) ;
+        const guideFound = await getUser(email) ;
         // Mostramos el usuario obtenido
         console.log("->login: ",guideFound);
         // Devolvera un true si lo encontro

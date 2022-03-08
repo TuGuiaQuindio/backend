@@ -1,5 +1,7 @@
 // Entidades del ORM
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+
+// import { Roles } from './Roles'
 
 // LLamamos decorador 
 @Entity()
