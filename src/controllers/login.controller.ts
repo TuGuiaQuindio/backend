@@ -7,7 +7,7 @@ import { Company } from '../models/entity/Company';
 export const getUser = async (email : string) => {
 
     // Buscamos y obtenemos el usuario
-    const guide = await getRepository(Guide).findOne({ email });
+    const guide = await getRepository(Guide).findOne({ rol: { email } });
 
     return guide;
 };

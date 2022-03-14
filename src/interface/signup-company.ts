@@ -1,8 +1,7 @@
 
-import { User } from './user';
+import { UserSignup } from './user-signup';
 
-export interface CompanySignup extends User {
-    // ***TODO -> Mirar bien cuales datos se pediran
+export interface CompanySignup extends UserSignup {
     nameCompany : string;
     nit : string;
     phoneNumber : string;

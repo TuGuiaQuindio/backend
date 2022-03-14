@@ -1,7 +1,7 @@
 // Entidades del ORM
 import { Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn } from 'typeorm';
 
-import { Roles } from './Roles'
+import { Roles } from './Rol'
 
 // LLamamos decorador 
 @Entity()
@@ -23,6 +23,9 @@ export class Guide {
     lastName : string;
 
     @Column()
+    age: number;
+
+    @Column()
     city : string;
 
     @Column()
@@ -30,7 +33,7 @@ export class Guide {
 
     @OneToOne(()=> Roles)
     @JoinColumn()
-    email : String;
+    rol : Roles;
 
     @Column()
     password : string;
