@@ -1,8 +1,8 @@
 
 // Mientras se tendra datos locales
-import { User } from './user';
+import { UserSignup } from './user-signup';
 
-export interface GuideSignup extends User {
+export interface GuideSignup extends UserSignup {
 
     // id:number;
     NoDocument:string;

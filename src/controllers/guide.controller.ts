@@ -5,36 +5,40 @@
 import { getRepository } from "typeorm";
 import { GuideSignup } from "../interface/signup-guide";
 import { Guide } from '../models/entity/Guide'
+import { createRoles } from '../controllers/roles.controller';
 
 ////////////////////////////////////////////////
 // *** CONTROLADORES LOGIN guia
 
-// Controlador para obtener un guia por medio del email
-export const getGuide = async (email : string) => {
+// // Controlador para obtener un guia por medio del email
+// export const getGuide = async (email : string) => {
 
-    // Buscamos y obtenemos el usuario
-    const guide = await getRepository(Guide).findOne({ email });
+//     // Buscamos y obtenemos el usuario
+//     const guide = await getRepository(Guide).findOne({ email });
 
-    return guide;
-};
+//     return guide;
+// };
 
 // ****************************************************
 
 // Controlador
 // Crear usuario -> Registrar nuevo Guia 
-export const createGuide = async (values: GuideSignup, password:string) => {
+export const    createGuide = async (values: GuideSignup, password:string) => {
     // Obtengo los datos del cliente por parametro
 
     // Creamos objeto con datos
-    const guide = {
+    const guide: GuideSignup = {
         NoDocument : values.NoDocument,
         firstName : values.firstName,
         lastName : values.lastName,
+        age: values.age,
         city : values.city,
         phoneNumber : values.phoneNumber,
-        emailEmail : values.email, 
+        rol: values.rol,
         password : password,
     }
+
+    console.log(values, "Values")
 
     // Obtenemos el usuario a buscar
     let userFound : boolean = await validatedGuide(guide.NoDocument);
@@ -42,6 +46,17 @@ export const createGuide = async (values: GuideSignup, password:string) => {
     // Validamos si el guia existe
     if(userFound) return undefined;
     
+    // console.log("Email de controller :22: ",guide.emailEmail);
+    
+    ////////////////////////////////////////////////
+    // Guardamos el email en ROLES
+    const {email, rol} = guide.rol;
+    const resultsRoles = await createRoles(email, rol);
+    ///////////////////////////////////////////////
+
+    //se valida que el rol se haya registrado correctamente
+    if (!resultsRoles) return undefined;
+
     // Por el contrario, si el usuario fue encontrado
     // Creamos el usuario
     const newGuide = getRepository(Guide).create(guide);

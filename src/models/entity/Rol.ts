@@ -13,6 +13,6 @@ export class Roles {
     email : string;
 
     @Column('smallint')
-    rol : string;
+    rol : number;
 
 };
