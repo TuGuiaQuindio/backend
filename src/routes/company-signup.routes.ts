@@ -21,11 +21,11 @@ router.route(path.registerCompany)
     .post(params, validate, async(req:Request, res:Response) => {
 
         // Obtenemos los datos del body
-        const { nameCompany, nit, phoneNumber, direction, mainActivity, email, password } = req.body as CompanySignup;
+        const { nameCompany, nit, phoneNumber, direction, mainActivity, rol, password } = req.body as CompanySignup;
         // Tratamos de hacer esto
         try {
             // Hacemos el registro de la empresa
-            const register = await signup( { nameCompany, nit, phoneNumber, direction, mainActivity, email, password } , "company" );
+            const register = await signup( { nameCompany, nit, phoneNumber, direction, mainActivity, rol, password } , "company" );
             
             //Validamos la respuesta
             if(register != undefined) {

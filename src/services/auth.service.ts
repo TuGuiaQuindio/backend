@@ -2,24 +2,30 @@
 
 
 import { createToken }  from '../services/token.service'
-import { getUser } from '../controllers/login.controller';
+import { getRole, getGuide, getCompany  } from '../controllers/login.controller';
 import bcrypt from '../services/bcrypt.service';
+import { Roles } from '../constants/role.constants';
 
 export default {
-// TODO -> ORGANIZAR EL LOGIN PARA GUIAS Y EMPRESAS
     login : async (email:string, password:string) =>{
 
         // Ingresamos a la DB
         // Se busca usuario por el email
-        const guideFound = await getUser(email) ;
+        const roleFound = await getRole(email) ;
         // Mostramos el usuario obtenido
-        console.log("->login: ",guideFound);
-        // Devolvera un true si lo encontro
-        if (guideFound) {            
-            //obtenemos la password para
-            const passHash = guideFound.password;
-            console.log(passHash, password)
-            // validamos el password
+        console.log("->login: rol 'Obtenido' ",roleFound);
+        
+        // VALIDAMOS que tipo de usuario este
+        // ? = Este es para comprobar si existe
+        if((roleFound?.rol == Roles.GUIDE)){
+            // obtenemos el guia 
+            const guideFound = await getGuide(roleFound.email);
+            // validamos si el guia fue encontrado
+            if (!guideFound) return false;
+            // validamos los datos del objeto (USER)
+            const passHash = guideFound?.password;
+
+            // Desencriptamos y validamos password
             if (bcrypt.verify(passHash, password)){
                 // creamos el token 
                 const token = await createToken(email);
@@ -28,15 +34,27 @@ export default {
                 
                 // Retornamos 
                 return token;
+            }else {return false};
+        // Por el contrario, si el usuario es de tipo COMPAÑIA
+        }else if (roleFound?.rol == Roles.COMPANY){
 
-            } else {
-                return false;
-            }
-
-        }else{
+            const companyFound = await getCompany(roleFound.email);
             
-            return false;
+            // validamos si el guia fue encontrado
+            if (!companyFound) return false;
+            // validamos los datos del objeto (USER)
+            const passHash = companyFound?.password;
+
+            // Desencriptamos y validamos password
+            if (bcrypt.verify(passHash, password)){
+                // creamos el token 
+                const token = await createToken(email);
+                // pasamos el token al cliente
+                console.log("El token generado es:: ", token);
+                
+                // Retornamos 
+                return token;
+            }
         }
-        
     },
 }

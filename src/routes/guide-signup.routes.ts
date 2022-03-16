@@ -42,7 +42,7 @@ router.route(path.registerGuide)
             }
         } catch (e) {
             console.error(e);
-            // Respondemos al server
+            // Respondemos al cliente
             res.status(401).json({
                 msg:"Error"
             })

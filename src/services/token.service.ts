@@ -11,7 +11,7 @@ export const createToken = async (email:string) => {
         join(process.cwd(), '.secret', 'sign.key')
     )
     
-    return jwt.sign( { email },key , { algorithm: 'RS256', expiresIn: 15     });
+    return jwt.sign( { email },key , { algorithm: 'RS256', expiresIn: 60 * 60 });
 };
 
 

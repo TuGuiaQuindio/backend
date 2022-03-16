@@ -13,9 +13,4 @@ export default {
      */
     name: 'TuGuiaQuindio-backend',
     
-    /**
-     * llave del token : FIRMA
-     */
-    
-    keyToken : "shhhhhh",
 }
