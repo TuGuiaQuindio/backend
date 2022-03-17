@@ -14,7 +14,6 @@ export const createRoles = async (email : string , type : number) => {
     try {
         // obtenemos la conexion y creamos el rol
         const newRol = getRepository(Roles).create(rol);
-        
         // guardamos el nuevo rol
         const results = await getRepository(Roles).save(newRol);
         console.log("-> Resultados de Rol ::",results);

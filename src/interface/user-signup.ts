@@ -1,6 +1,6 @@
-import { Rol } from "./rol";
+import { Role } from "./rol";
 
 export interface UserSignup {
-    rol: Rol,
+    rol: Role,
     password: string,
 }

@@ -7,20 +7,6 @@ import { GuideSignup } from "../interface/signup-guide";
 import { Guide } from '../models/entity/Guide'
 import { createRoles } from '../controllers/roles.controller';
 
-////////////////////////////////////////////////
-// *** CONTROLADORES LOGIN guia
-
-// // Controlador para obtener un guia por medio del email
-// export const getGuide = async (email : string) => {
-
-//     // Buscamos y obtenemos el usuario
-//     const guide = await getRepository(Guide).findOne({ email });
-
-//     return guide;
-// };
-
-// ****************************************************
-
 // Controlador
 // Crear usuario -> Registrar nuevo Guia 
 export const    createGuide = async (values: GuideSignup, password:string) => {
@@ -35,6 +21,7 @@ export const    createGuide = async (values: GuideSignup, password:string) => {
         city : values.city,
         phoneNumber : values.phoneNumber,
         rol: values.rol,
+        // pass haseado
         password : password,
     }
 
@@ -52,10 +39,9 @@ export const    createGuide = async (values: GuideSignup, password:string) => {
     // Guardamos el email en ROLES
     const {email, rol} = guide.rol;
     const resultsRoles = await createRoles(email, rol);
-    ///////////////////////////////////////////////
-
     //se valida que el rol se haya registrado correctamente
     if (!resultsRoles) return undefined;
+    ///////////////////////////////////////////////
 
     // Por el contrario, si el usuario fue encontrado
     // Creamos el usuario

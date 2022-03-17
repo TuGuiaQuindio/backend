@@ -3,6 +3,7 @@
 import { getRepository } from 'typeorm';
 import { CompanySignup } from '../interface/signup-company'
 import { Company } from '../models/entity/Company';
+import { createRoles } from '../controllers/roles.controller';
 
 ////////////////////////////////////////////////
 
@@ -17,7 +18,7 @@ export const createCompany = async (values: CompanySignup, password : string) =>
         phoneNumber : values.phoneNumber,
         direction : values.direction,
         mainActivity : values.mainActivity,
-        emailEmail : values.email,
+        rol : values.rol,
         // pass haseado
         password : password
     }
@@ -27,6 +28,15 @@ export const createCompany = async (values: CompanySignup, password : string) =>
     // Validamos si el guia existe
     if(userFound) return undefined;
     
+
+    //////////////////////////////////////////////
+    //Guardamos el email en ROLES
+    //Obtenemos rol y lo deconstruimos
+    const { email , rol} = company.rol;
+    const resultsRoles = await createRoles(email, rol);
+    // Se valida que el rol se haya guardado en DB
+    if (!resultsRoles) return undefined;
+    //////////////////////////////////////////////
     // Por el contrario, si el usuario fue encontrado
     // Creamos el usuario
     const newCompany = getRepository(Company).create(company);
@@ -38,7 +48,6 @@ export const createCompany = async (values: CompanySignup, password : string) =>
 }
 
 const validatedCompany =  async ( nit : string ) => {
-
     // Busca el guia por el documento 
     const guideFound = await getRepository(Company).findOne({nit});
     console.log("X- Usuario registrado -X ", guideFound);
