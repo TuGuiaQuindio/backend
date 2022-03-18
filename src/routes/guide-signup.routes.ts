@@ -37,7 +37,7 @@ router.route(path.registerGuide)
             }else {
                 console.log("-> User already exists !");
                 // Si no respondemos al cliente
-                res.status(303).json({ msg : "User exists !!" })
+                res.status(303).json({ msg : "User exists !!" });
                 
             }
         } catch (e) {

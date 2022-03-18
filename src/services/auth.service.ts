@@ -56,5 +56,7 @@ export default {
                 return token;
             }
         }
+
+        return false;
     },
 }
