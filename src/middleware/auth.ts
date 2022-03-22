@@ -15,7 +15,7 @@ export const isAuth = async (req: Request, res: Response, next: NextFunction) =>
     const payload = await verifyToken(token);
     if (payload) {
         res.locals.payload = payload;
-        next()
+        next();
     } else {
         return res.status(401).json({ msg: 'Invalid signature' })
     }
