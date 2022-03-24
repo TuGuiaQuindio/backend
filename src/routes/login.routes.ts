@@ -28,10 +28,10 @@ router.route(path.login)
             // Si nos retorna un false es porque ocurrio un error
             if(token === false){
                 // Respondemos al cliente
-                res.status(401).json({"msg":"credenciales incorrectas"});
+                return res.status(401).json({msg:"credenciales incorrectas"});
             // Por lo contrario repondemos
             }else{
-                res.status(200).json({
+                return res.status(200).json({
                     token
                 });
                 console.log("token: ",token);
@@ -40,7 +40,7 @@ router.route(path.login)
             // Mostramos el error
             console.error(e);
             // Respondemos al server
-            res.status(401).json({
+            return res.status(401).json({
                 msg: "Invalid credentials"
             })
         }

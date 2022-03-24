@@ -19,7 +19,7 @@ async function signup(values: GuideSignup | CompanySignup,  type: "guide" | "com
         values = values as GuideSignup;
         // Esperamos a que encripten la contraseña
         const password = await bcryptHash(values.password);
-        console.log("FROM signUp - SERVICE");
+        // console.log("FROM signUp - SERVICE");
 
         console.log("Email service:: ", values.rol.email);
         

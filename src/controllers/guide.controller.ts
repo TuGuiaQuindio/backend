@@ -58,6 +58,6 @@ const validatedGuide =  async ( NoDocument : string ) => {
     // Busca el guia por el documento 
     const guideFound = await getRepository(Guide).findOne({NoDocument});
     console.log("X- Usuario registrado -X ", guideFound);
-    // Retornamos y nos devuekve un booleano
+    // Retornamos y nos devuelve un booleano
     return guideFound !== undefined;
 };

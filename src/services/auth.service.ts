@@ -5,7 +5,7 @@ import { createToken }  from '../services/token.service'
 import { getRole, getGuide, getCompany  } from '../controllers/login.controller';
 import bcrypt from '../services/bcrypt.service';
 import { Roles } from '../constants/role.constants';
-
+    
 export default {
     login : async (email:string, password:string) =>{
 
@@ -56,5 +56,7 @@ export default {
                 return token;
             }
         }
+
+        return false;
     },
 }
