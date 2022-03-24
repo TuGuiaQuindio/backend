@@ -6,12 +6,12 @@ import { join } from 'path';
 
 // Generamos y validamos los tokens
 // TODO -> Pasar al token el rol
-export const createToken = async (email:string) => {
+export const createToken = async (email:string, rol: number) => {
     const key = readFileSync(
         join(process.cwd(), '.secret', 'sign.key')
     )
     
-    return jwt.sign( { email },key , { algorithm: 'RS256', expiresIn: 60 * 60 });
+    return jwt.sign( { email, rol },key , { algorithm: 'RS256', expiresIn: 60 * 60 });
 };
 
 
