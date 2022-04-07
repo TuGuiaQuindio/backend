@@ -1,25 +1,25 @@
 import express from 'express';
-import { Request, Response } from 'express';
-
+////////////////////////////////////////////////////////////////
+//IMPORTACIONES DE PATHS
 import path from './paths/index';
-import tokenValidator from '../validator/jwt.validator'
-import { isAuth } from '../middleware/auth'
-const router = express.Router();
+////////////////////////////////////////////////////////////////
+//IMPORTACIONES DEl VALIDADOR TOKEN
+import tokenValidator from '../validator/jwt.validator';
+import { isAuth } from '../middleware/auth';
+////////////////////////////////////////////////////////////////
+// IMPORTACION DEL CONTROLADOR
+import { homeGet } from '../controllers/home.controller';
+////////////////////////////////////////////////////////////////
 
-/////////////////////////////////////////
+
+const router = express.Router();
+////////////////////////////////////////////////////////////////
 
 const { params, validate } = tokenValidator; 
 
 // Ruta del Home page
 router.route(path.home)
-    .get( params, validate, isAuth, async (req:Request, res:Response)=>{
-        
-        //Respondemos al cli 
-        res.send('Welcome, Hello from /Home')
-    });
-    // .post((req:Request, res:Response)=>{
-        
-    // });
+	.get( params, validate, isAuth, homeGet);
 
 ///////////////////////////////////////////////////////
 // Exportamos la ruta

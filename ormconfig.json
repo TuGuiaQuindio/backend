@@ -6,6 +6,6 @@
     "username" : "root",
     "password" : "0606",
     "database" : "tgq_db",
-    "entities" : ["build/src/models/entity/**/*.js"],
+    "entities" : ["build/src/model/entity/**/*.js"],
     "synchronize" : true
 }

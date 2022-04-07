@@ -1,4 +1,4 @@
-import { Role } from "./rol";
+import { Role } from './rol';
 
 export interface UserSignup {
     rol: Role,

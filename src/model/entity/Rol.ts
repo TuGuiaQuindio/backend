@@ -1,18 +1,17 @@
 // Entidad del ORM Roles
 
-import { Entity, Column, PrimaryColumn } from "typeorm";
-import type from 'typeorm';
+import { Entity, Column, PrimaryColumn } from 'typeorm';
 
 @Entity()
 
 export class Roles {
 
-    // Definimos la tabla columna 
+	// Definimos la tabla columna 
 
-    @PrimaryColumn('char',{length : 60})
-    email : string;
+	@PrimaryColumn('char',{length : 60})
+		email : string;
 
-    @Column('smallint')
-    rol : number;
+	@Column('smallint')
+		rol : number;
 
-};
+}

@@ -6,32 +6,32 @@ import { Roles } from './Rol';
 // Exportamos y creamos la clase company 
 export class Company {
 
-    // llamamos los decoradores
-    // para definir la tabla  
-    @PrimaryGeneratedColumn()
-    id : number;
+	// llamamos los decoradores
+	// para definir la tabla  
+	@PrimaryGeneratedColumn()
+		id : number;
 
-    @Column()
-    nameCompany : string;
+	@Column()
+		nameCompany : string;
 
-    @Column()
-    nit : string;
+	@Column()
+		nit : string;
 
-    @Column()
-    phoneNumber : string;
+	@Column()
+		phoneNumber : string;
 
-    @Column()
-    direction : string;
+	@Column()
+		direction : string;
 
-    @Column()
-    mainActivity : string;
+	@Column()
+		mainActivity : string;
 
-    @OneToOne(()=> Roles)
-    @JoinColumn()
-    rol : Roles;
+	@OneToOne(()=> Roles)
+	@JoinColumn()
+		rol : Roles;
 
-    @Column()
-    password : string;
+	@Column()
+		password : string;
 
 
-};
+}

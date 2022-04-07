@@ -2,7 +2,7 @@
 import express from 'express';
 ////////////////////////////////////////////////////////////////
 //IMPORTACIONDE PATHS
-import path from "./paths";
+import path from './paths';
 ////////////////////////////////////////////////////////////////
 //IMPORTACIONDES DE VALIDADORES DE DATOS
 import loginValidator from '../validator/login';
@@ -19,9 +19,8 @@ const router = express.Router();
 const { params, validate } = loginValidator;
 
 router.route(path.login)
-    .get(loginGet)
-
-    .post( params, validate, loginPost);
+	.get(loginGet)
+	.post( params, validate, loginPost);
 
 ///////////////////////////////////////////////////////////////
 // Exportamos las rutas
