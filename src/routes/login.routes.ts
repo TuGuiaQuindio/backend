@@ -1,11 +1,15 @@
 // Requerimos express
 import express from 'express';
+////////////////////////////////////////////////////////////////
+//IMPORTACIONDE PATHS
 import path from "./paths";
-import { User } from "../interface/user";
-import { Request, Response } from 'express';
-import authSrv from "../services/auth.service";
+////////////////////////////////////////////////////////////////
+//IMPORTACIONDES DE VALIDADORES DE DATOS
 import loginValidator from '../validator/login';
-
+////////////////////////////////////////////////////////////////
+//IMPORTAR CONTROLADORES
+import { loginGet, loginPost } from '../controllers/login.controller';
+////////////////////////////////////////////////////////////////
 const router = express.Router();
 ////////////////////////////////////////////////////////////////
 /**
@@ -15,39 +19,9 @@ const router = express.Router();
 const { params, validate } = loginValidator;
 
 router.route(path.login)
-    .get((req:Request, res:Response) => {
-        res.send("Hi from Login -GET !!");
-    })
-    .post( params, validate, async (req:Request, res:Response) => {
-        // Obtenemos los datos del body
-        const { email, password } = req.body as User;
-        try{
-            // obtenemos el token
-            const token = await authSrv.login(email, password);
-            // si retorna el toquen
-            // Si nos retorna un false es porque ocurrio un error
-            if(token === false){
-                // Respondemos al cliente
-                return res.status(401).json({msg:"credenciales incorrectas"});
-            // Por lo contrario repondemos
-            }else{
-                return res.status(200).json({
-                    token
-                });
-                console.log("token: ",token);
-            }
-        }catch(e){// Si nos devuelve un error
-            // Mostramos el error
-            console.error(e);
-            // Respondemos al server
-            return res.status(401).json({
-                msg: "Invalid credentials"
-            })
-        }
-    });
+    .get(loginGet)
 
-////////////////////////////////////////////////////////////////
-// });
+    .post( params, validate, loginPost);
 
 ///////////////////////////////////////////////////////////////
 // Exportamos las rutas
