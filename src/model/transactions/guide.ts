@@ -3,7 +3,7 @@
 import { getRepository } from "typeorm";
 import { GuideSignup } from "../../interface/signup-guide";
 import { Guide } from '../entity/Guide'
-import { createRoles } from './roles.controller';
+import { createRoles } from './roles';
 
 // Controlador
 // Crear usuario -> Registrar nuevo Guia 
