@@ -1,6 +1,4 @@
-
 ////////////////////////////////////////////////
-
 // Importamos
 import { getRepository } from "typeorm";
 import { GuideSignup } from "../interface/signup-guide";
@@ -53,6 +51,7 @@ export const    createGuide = async (values: GuideSignup, password:string) => {
     return results;
 }
 
+// VALIDAMOS EL guia
 const validatedGuide =  async ( NoDocument : string ) => {
 
     // Busca el guia por el documento 
