@@ -1,5 +1,5 @@
 import { getRepository } from 'typeorm';
-import { Roles } from '../models/entity/Rol';
+import { Roles } from '../entity/Rol';
 
 ////////////////////////////////
 //Guardamos el dato a roles 

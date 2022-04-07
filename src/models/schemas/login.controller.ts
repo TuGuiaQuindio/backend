@@ -1,8 +1,8 @@
 // Controlador para el logueo de 'USUARIOS'
 import { getRepository } from 'typeorm';
-import { Guide } from '../models/entity/Guide';
-import { Company } from '../models/entity/Company';
-import { Roles } from '../models/entity/Rol';
+import { Guide } from '../entity/Guide';
+import { Company } from '../entity/Company';
+import { Roles } from '../entity/Rol';
 
 // !! Controlador para obtener un usuarios por medio del email
 

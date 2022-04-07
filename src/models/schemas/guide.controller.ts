@@ -1,9 +1,9 @@
 ////////////////////////////////////////////////
 // Importamos
 import { getRepository } from "typeorm";
-import { GuideSignup } from "../interface/signup-guide";
-import { Guide } from '../models/entity/Guide'
-import { createRoles } from '../controllers/roles.controller';
+import { GuideSignup } from "../../interface/signup-guide";
+import { Guide } from '../entity/Guide'
+import { createRoles } from './roles.controller';
 
 // Controlador
 // Crear usuario -> Registrar nuevo Guia 

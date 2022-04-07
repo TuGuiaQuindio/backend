@@ -4,8 +4,8 @@
 import { GuideSignup } from "../interface/signup-guide";
 import { CompanySignup } from "../interface/signup-company";
 
-import { createGuide } from '../controllers/guide.controller'
-import { createCompany } from '../controllers/company.controller';
+import { createGuide } from '../models/schemas/guide.controller'
+import { createCompany } from '../models/schemas/company.controller';
 import bcrypt from "./bcrypt.service"
 
 // Decostruimos

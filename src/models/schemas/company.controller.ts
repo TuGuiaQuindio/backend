@@ -1,9 +1,9 @@
 ////////////////////////////////////////////////
 
 import { getRepository } from 'typeorm';
-import { CompanySignup } from '../interface/signup-company'
-import { Company } from '../models/entity/Company';
-import { createRoles } from '../controllers/roles.controller';
+import { CompanySignup } from '../../interface/signup-company'
+import { Company } from '../entity/Company';
+import { createRoles } from './roles.controller';
 
 ////////////////////////////////////////////////
 
