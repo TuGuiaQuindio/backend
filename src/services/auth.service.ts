@@ -2,10 +2,12 @@
 
 import { createToken }  from '../services/token.service';
 import { getRole, getGuide, getCompany  } from '../model/transactions/login';
+
 import bcrypt from '../services/bcrypt.service';
 import { Roles } from '../constants/role.constants';
 	
 export default {
+  
 	login : async (email:string, password:string) =>{
 		// Ingresamos a la DB
 		// Se busca usuario por el email
@@ -51,7 +53,6 @@ export default {
 				return token;
 			}
 		}
-
 		return false;
 	},
 };
