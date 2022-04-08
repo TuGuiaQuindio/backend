@@ -1,11 +1,11 @@
 
 // * Todos los paths del server, las rutas
 export default {
-    raiz:'/',
-    login: '/login',
-    registerGuide:'/guide/signup',
-    registerCompany:'/company/signup',
-    home: '/home',
-}
+	raiz:'/',
+	login: '/login',
+	registerGuide:'/signup/guide',
+	registerCompany:'/signup/company',
+	home: '/home',
+};
 
 // export const login = '/login'

@@ -1,63 +1,46 @@
+// CONTROLADOR DE REGISTRO DE GUIA
+import { Request, Response } from'express';
 
-////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+//IMPORTACIONES DE SERVICIOS
+import signup from '../services/signup-db.service';
+////////////////////////////////////////////////////////////////
+//IMPORTAMOS LAS INTERFACES
+import { GuideSignup } from '../interface/signup-guide';
+////////////////////////////////////////////////////////////////
 
-// Importamos
-import { getRepository } from "typeorm";
-import { GuideSignup } from "../interface/signup-guide";
-import { Guide } from '../models/entity/Guide'
-import { createRoles } from '../controllers/roles.controller';
+// ->>RUTA GET 
+export const guideSignup_get = async(req:Request, res:Response) => {
+	res.send('Get - signup !!');
+};
 
-// Controlador
-// Crear usuario -> Registrar nuevo Guia 
-export const    createGuide = async (values: GuideSignup, password:string) => {
-    // Obtengo los datos del cliente por parametro
+// ->> RUTA POST
+export const guideSignup_post = async(req:Request, res:Response) => {
 
-    // Creamos objeto con datos
-    const guide: GuideSignup = {
-        NoDocument : values.NoDocument,
-        firstName : values.firstName,
-        lastName : values.lastName,
-        age: values.age,
-        city : values.city,
-        phoneNumber : values.phoneNumber,
-        rol: values.rol,
-        // pass haseado
-        password : password,
-    }
+	// res.send("POST");
+	// Obtenemos los datos del body
+	const { NoDocument, firstName, lastName, age, city, phoneNumber, rol, password } = req.body as GuideSignup;//Lo referenciamos con la interface
+	try {
+		// Hacemos el registro de los datos
+		const register = await signup( { NoDocument,firstName, lastName, age, city, phoneNumber, rol, password}, 'guide' );
+		if(register != undefined) {
+			// Respondemos al Server
+			res.status(200).json({
+				register,
+				msg:'User signed up successfull'
+			});
+		}else {
+			console.log('-> User already exists !');
+			// Si no respondemos al cliente
+			res.status(303).json({ msg : 'User exists !!' });
+			
+		}
+	} catch (e) {
+		console.error(e);
+		// Respondemos al cliente
+		res.status(401).json({
+			msg:'Error'
+		});
+	}
 
-    console.log(values, "Values")
-
-    // Obtenemos el usuario a buscar
-    let userFound : boolean = await validatedGuide(guide.NoDocument);
-    
-    // Validamos si el guia existe
-    if(userFound) return undefined;
-    
-    // console.log("Email de controller :22: ",guide.emailEmail);
-    
-    ////////////////////////////////////////////////
-    // Guardamos el email en ROLES
-    const {email, rol} = guide.rol;
-    const resultsRoles = await createRoles(email, rol);
-    //se valida que el rol se haya registrado correctamente
-    if (!resultsRoles) return undefined;
-    ///////////////////////////////////////////////
-
-    // Por el contrario, si el usuario fue encontrado
-    // Creamos el usuario
-    const newGuide = getRepository(Guide).create(guide);
-    // Guardamos el usuario creado
-    const results = await getRepository(Guide).save(newGuide);
-    console.log("results :: ", results);
-    // Retornamos los resutados
-    return results;
-}
-
-const validatedGuide =  async ( NoDocument : string ) => {
-
-    // Busca el guia por el documento 
-    const guideFound = await getRepository(Guide).findOne({NoDocument});
-    console.log("X- Usuario registrado -X ", guideFound);
-    // Retornamos y nos devuelve un booleano
-    return guideFound !== undefined;
 };

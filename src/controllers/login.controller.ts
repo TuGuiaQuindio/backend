@@ -1,22 +1,44 @@
-// Controlador para el logueo de 'USUARIOS'
-import { getRepository } from 'typeorm';
-import { Guide } from '../models/entity/Guide';
-import { Company } from '../models/entity/Company';
-import { Roles } from '../models/entity/Rol';
+//Controlador para el login
 
-// !! Controlador para obtener un usuarios por medio del email
+import { Request, Response } from 'express';
+////////////////////////////////////////////////////////////////
+// IMPORTACIONES DE SERVICIOS
+import authSrv from '../services/auth.service';
+////////////////////////////////////////////////////////////////
+//IMPORTACIONES DE INTERFACES
+import { User } from '../interface/user';
+////////////////////////////////////////////////////////
 
-export const getRole = async (email : string) : Promise<Roles | undefined> => {
-    // Buscamos y obtenemos el usuario
-    return getRepository(Roles).findOne({ email });
+// ->> RUTA GET
+export const loginGet = (req:Request, res:Response) => {
+	res.send('Hi from Login -GET !!!!');
 };
-
-export const getGuide = async (email: string) : Promise<Guide | undefined> =>{
-    // buscamos el guia 
-    return getRepository(Guide).findOne({ rol: {email} });
+////////////////////////////////////////////////////////////////
+// ->>RUTA POST
+export const loginPost = async (req:Request, res:Response) => {
+	// Obtenemos los datos del body
+	const { email, password } = req.body as User;
+	try{
+		// obtenemos el token
+		const token = await authSrv.login(email, password);
+		// si retorna el toquen
+		// Si nos retorna un false es porque ocurrio un error
+		if(token === false){
+			// Respondemos al cliente
+			return res.status(401).json({msg:'credenciales incorrectas'});
+			// Por lo contrario repondemos
+		}else{
+			console.log('token: ',token);
+			return res.status(200).json({
+				token
+			});
+		}
+	}catch(e){// Si nos devuelve un error
+		// Mostramos el error
+		console.error(e);
+		// Respondemos al server
+		return res.status(401).json({
+			msg: 'Invalid credentials'
+		});
+	}
 };
-
-export const getCompany = async (email: string): Promise<Company | undefined> =>{
-    // Buscamos la Compañia-Empresa
-    return getRepository(Company).findOne({rol: {email} });
-}
