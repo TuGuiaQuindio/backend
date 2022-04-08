@@ -9,7 +9,7 @@ import { createRoles } from './roles';
 
 // Controlador
 // Crear usuario -> Registrar nuevo Guia 
-export const    createGuide = async (values: GuideSignup, password:string) => {
+export const createGuide = async (values: GuideSignup, password:string) => {
 	
 	// Obtenemos el usuario a buscar
 	const userFound : boolean = await validatedGuide(values.NoDocument);
