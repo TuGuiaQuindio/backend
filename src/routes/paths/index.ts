@@ -3,8 +3,8 @@
 export default {
 	raiz:'/',
 	login: '/login',
-	registerGuide:'/guide/signup',
-	registerCompany:'/company/signup',
+	registerGuide:'/signup/guide',
+	registerCompany:'/signup/company',
 	home: '/home',
 };
 

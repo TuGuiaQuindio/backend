@@ -16,7 +16,7 @@ const router = express.Router();
 ////////////////////////////////////////////////////////////////
 
 const { params, validate } = tokenValidator; 
-
+// RUTA -> '/home'
 // Ruta del Home page
 router.route(path.home)
 	.get( params, validate, isAuth, homeGet);

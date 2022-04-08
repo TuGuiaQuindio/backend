@@ -17,7 +17,7 @@ const router = express.Router();
  */
 // Deconstruimos lel objeto
 const { params, validate } = signUpValidator;
-
+// RUTA -> '/signup/guide'
 router.route(path.registerGuide)
 	.get(guideSignup_get)
 	.post(params,validate,guideSignup_post);

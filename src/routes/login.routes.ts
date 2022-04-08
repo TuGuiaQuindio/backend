@@ -17,7 +17,7 @@ const router = express.Router();
  */
 // Añado los validators, deconstruccion 
 const { params, validate } = loginValidator;
-
+// RUTA -> '/login'
 router.route(path.login)
 	.get(loginGet)
 	.post( params, validate, loginPost);
