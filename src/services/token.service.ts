@@ -5,6 +5,7 @@ import { readFileSync } from 'fs';
 import { join } from 'path';
 
 // Generamos y validamos los tokens
+
 export const createToken = async (email:string, rol: number) => {
 	const key = readFileSync(
 		join(process.cwd(), '.secret', 'sign.key')
