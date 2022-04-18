@@ -4,10 +4,8 @@ import { getRepository } from 'typeorm';
 import { GuideSignup } from '../../interface/signup-guide';
 //Entidad
 import { Guide } from '../entity/Guide';
-
+//Trancision de datos tipo : Rol
 import { createRoles } from './roles';
-
-// Controlador
 // Crear usuario -> Registrar nuevo Guia 
 export const createGuide = async (values: GuideSignup, password:string) => {
 	
