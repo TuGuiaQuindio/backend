@@ -11,7 +11,7 @@ import { User } from '../interface/user';
 
 // ->> RUTA GET
 export const loginGet = (req:Request, res:Response) => {
-	res.send('Hi from Login -GET !!!!');
+	return res.send('Hi from Login -GET !!!!');
 };
 ////////////////////////////////////////////////////////////////
 // ->>RUTA POST

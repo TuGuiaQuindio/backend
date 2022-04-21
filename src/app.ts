@@ -1,15 +1,12 @@
 /**Se inicia el programa */
-import express from 'express';
-const app = express();
+import express, { Application } from 'express';
+const app :  Application = express();
 ///////////////////////////////////////////
 //IMPORTACIONES RUTAS
 import routerLogin from './routes/login.routes';
 import routerGuideSignup from './routes/guide-signup.routes';
 import routerCompanySingup from './routes/company-signup.routes';
 import routerHome from './routes/home.routes';
-//////////////////////////////////////////
-// Importamos unas configuraciones
-import config from './config';
 //////////////////////////////////////////
 //MORGAN
 import morgan from 'morgan';
@@ -36,13 +33,6 @@ app.use(routerGuideSignup);
 app.use(routerCompanySingup);
 app.use(routerHome);
 
-//////////////////////////////////////////////
-// Starting the server 
-app.listen(config.port, ()=>{
-	console.log(`
-#########################################################################
-🛡️  Server listening on port: ${config.port} :: nameProyect ${config.name} 🛡️
-#########################################################################
-		`);
-		
-});
+///////////////////////////////////////////////
+//Exporting app
+export default app;

@@ -2,12 +2,12 @@
   "name": "proyectotgq-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "ts:node": "ts-node src/app.ts",
     "clean": "rm -rf build",
     "start": "node build/src/app.js",
-    "dev": "nodemon build/src/app.js",
+    "dev": "nodemon build/src/index.js",
     "test": "jest"
   },
   "repository": {
