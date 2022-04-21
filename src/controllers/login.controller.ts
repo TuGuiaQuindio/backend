@@ -35,7 +35,7 @@ export const loginPost = async (req:Request, res:Response) => {
 		}
 	}catch(e){// Si nos devuelve un error
 		// Mostramos el error
-		console.error(e);
+		console.log(e);
 		// Respondemos al server
 		return res.status(401).json({
 			msg: 'Invalid credentials'

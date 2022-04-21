@@ -1,11 +1,15 @@
-
-{
+{ 
     "type" : "mysql",
     "host" : "localhost",
     "port" : "3306",
     "username" : "root",
     "password" : "0606",
-    "database" : "tgq_db",
-    "entities" : ["build/src/model/entity/**/*.js"],
+    "database" : "db_consumoApis",
+    "entities" : [
+		"src/model/entity/**/*.ts",
+		"src/model/entity/**/*.js",
+		"build/src/model/entity/**/*.ts",
+		"build/src/model/entity/**/*.js"
+	],
     "synchronize" : true
 }

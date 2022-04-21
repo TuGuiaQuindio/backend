@@ -12,8 +12,8 @@ import routerHome from './routes/home.routes';
 import morgan from 'morgan';
 //////////////////////////////////////////
 //IMPORTAMOS CONECCION A LA DB
-import { createConnection } from 'typeorm';
 import  'reflect-metadata';
+import { createConnection } from 'typeorm';
 /////////////////////////////////////////
 
 // Connexion a la db
