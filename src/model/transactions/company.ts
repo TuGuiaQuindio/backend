@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////
 
-import { getRepository } from 'typeorm';
+import { MySQLDataSource as dsource } from '../../config/datasources';
 import { CompanySignup } from '../../interface/signup-company';
 import { Company } from '../entity/Company';
 import { createRoles } from './roles';
@@ -39,9 +39,9 @@ export const createCompany = async (values: CompanySignup, password : string) =>
 	//////////////////////////////////////////////
 	// Por el contrario, si el usuario fue encontrado
 	// Creamos el usuario
-	const newCompany = getRepository(Company).create(company);
+	const newCompany = dsource.getRepository(Company).create(company);
 	// Guardamos el usuario creado
-	const results = await getRepository(Company).save(newCompany);
+	const results = await dsource.getRepository(Company).save(newCompany);
 	console.log('results :: ', results);
 	// Retornamos los resutados
 	return results;
@@ -49,7 +49,7 @@ export const createCompany = async (values: CompanySignup, password : string) =>
 // VALIDAR COMPAÑIA SI EXISTE
 const validatedCompany =  async ( nit : string ) => {
 	// Busca el guia por el documento 
-	const guideFound = await getRepository(Company).findOne({nit});
+	const guideFound = await dsource.getRepository(Company).findOne({ where : { nit } });
 	console.log('X- Usuario registrado -X ', guideFound);
 	// Retornamos y nos devuekve un booleano
 	return guideFound !== undefined;

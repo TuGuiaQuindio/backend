@@ -1,22 +1,22 @@
 // Controlador para el logueo de 'USUARIOS'
-import { getRepository } from 'typeorm';
+import { MySQLDataSource as dsource } from '../../config/datasources';
 import { Guide } from '../entity/Guide';
 import { Company } from '../entity/Company';
 import { Roles } from '../entity/Rol';
 
 // !! Controlador para obtener un usuarios por medio del email
 
-export const getRole = async (email : string) : Promise<Roles | undefined> => {
+export const getRole = async (email : string) : Promise<Roles | null> => {
 	// Buscamos y obtenemos el usuario
-	return getRepository(Roles).findOne({ email });
+	return dsource.getRepository(Roles).findOne({ where : { email } });
 };
 
-export const getGuide = async (email: string) : Promise<Guide | undefined> =>{
+export const getGuide = async (email: string) : Promise<Guide | null> =>{
 	// buscamos el guia 
-	return getRepository(Guide).findOne({ rol: {email} });
+	return dsource.getRepository(Guide).findOne({ where : { rol: {email} } });
 };
 
-export const getCompany = async (email: string): Promise<Company | undefined> =>{
+export const getCompany = async (email: string): Promise<Company | null> =>{
 	// Buscamos la Compañia-Empresa
-	return getRepository(Company).findOne({rol: {email} });
+	return dsource.getRepository(Company).findOne({ where : { rol: {email} } });
 };

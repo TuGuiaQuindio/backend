@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////
 // Importamos
-import { getRepository } from 'typeorm';
+import { MySQLDataSource as dsource } from '../../config/datasources';
 import { GuideSignup } from '../../interface/signup-guide';
 //Entidad
 import { Guide } from '../entity/Guide';
@@ -41,9 +41,9 @@ export const createGuide = async (values: GuideSignup, password:string) => {
 
 	// Por el contrario, si el usuario fue encontrado
 	// Creamos el usuario
-	const newGuide = getRepository(Guide).create(guide);
+	const newGuide = dsource.getRepository(Guide).create(guide);
 	// Guardamos el usuario creado
-	const results = await getRepository(Guide).save(newGuide);
+	const results = await dsource.getRepository(Guide).save(newGuide);
 	console.log('results :: ', results);
 	// Retornamos los resutados
 	return results;
@@ -53,8 +53,8 @@ export const createGuide = async (values: GuideSignup, password:string) => {
 const validatedGuide =  async ( NoDocument : string ) => {
 
 	// Busca el guia por el documento 
-	console.log('HOLAA!!');
-	const guideFound = await getRepository(Guide).findOne({NoDocument});
+	console.log('Entry validateGuide - transaction/guide');
+	const guideFound = await dsource.getRepository(Guide).findOne({ where : { NoDocument }});
 	console.log('X- Usuario registrado -X ', guideFound);
 	// Retornamos y nos devuelve un booleano
 	return guideFound !== undefined;

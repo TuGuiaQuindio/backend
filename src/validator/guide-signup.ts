@@ -18,11 +18,9 @@ export default {
 			.not().isEmpty().withMessage('Empty field !'),
 		body('phoneNumber')
 			.not().isEmpty().withMessage('Empty field !'),
-		/**
-		 * body('rol')
-		 * .not().isEmpty().withMessage('Empty field !')
-		 * .isObject().withMessage('Please provide a valid rol!'), 
-		 */
+		body('rol')
+			.not().isEmpty().withMessage('Empty field !')
+			.isObject().withMessage('Please provide a valid rol!'), 
 		body('password')
 			.not().isEmpty().withMessage('Empty field !')
 			.isLength({min:7 , max:30}).withMessage('Debe de contener min 7 caracteres'),

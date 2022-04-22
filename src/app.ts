@@ -12,12 +12,12 @@ import routerHome from './routes/home.routes';
 import morgan from 'morgan';
 //////////////////////////////////////////
 //IMPORTAMOS CONECCION A LA DB
-import  'reflect-metadata';
-import { createConnection } from 'typeorm';
+// import { createConnection } from 'typeorm';
+// import  'reflect-metadata';
 /////////////////////////////////////////
 
 // Connexion a la db
-createConnection();
+// createConnection();
 
 ///////////////////////////////////////////
 // Middlewares

@@ -11,7 +11,7 @@ import { User } from '../interface/user';
 
 // ->> RUTA GET
 export const loginGet = (req:Request, res:Response) => {
-	return res.send('Hi from Login -GET !!!!');
+	return res.status(200).send('Login-GET');
 };
 ////////////////////////////////////////////////////////////////
 // ->>RUTA POST
@@ -28,7 +28,7 @@ export const loginPost = async (req:Request, res:Response) => {
 			return res.status(401).json({msg:'credenciales incorrectas'});
 			// Por lo contrario repondemos
 		}else{
-			console.log('token: ',token);
+			// console.log('token: ',token);
 			return res.status(200).json({
 				token
 			});
