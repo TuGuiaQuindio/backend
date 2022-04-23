@@ -18,7 +18,7 @@ export default {
 	username: process.env.MYSQL_USERNAME,
 	password: process.env.MYSQL_PASSWORD,
 	database: process.env.MYSQL_DATABASE,
-	logging : process.env.MYSQL_LOGGING,
-	synchronize: process.env.DB_SYNCHRONIZE,
+	logging : process.env.LOGGING === 'true',
+	synchronize: process.env.DB_SYNCHRONIZE === 'true',
 	entities: getEntities().split(',')
 } as DataSourceOptions;
