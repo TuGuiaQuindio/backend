@@ -8,7 +8,6 @@ import { MySQLDataSource as dsource }  from '../../src/config/datasources';
 //Importamos 
 import app from '../../src/app';
 import request from 'supertest';
-import e from 'express';
 // import { loginGet, loginPost } from '../../src/controllers/login.controller';
 
 // console.log(process.env);

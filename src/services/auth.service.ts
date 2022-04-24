@@ -5,9 +5,11 @@ import { getRole, getGuide, getCompany  } from '../model/transactions/login';
 
 import bcrypt from '../services/bcrypt.service';
 import { Roles } from '../constants/role.constants';
+
+//Deconstruccion 
+const { verify } = bcrypt;
 	
 export default {
-  
 	login : async (email:string, password:string) =>{
 		// Ingresamos a la DB
 		// Se busca usuario por el email
@@ -24,7 +26,7 @@ export default {
 			// validamos los datos del objeto (USER)
 			const passHash = guideFound?.password;
 			// Desencriptamos y validamos password
-			if (bcrypt.verify(passHash, password)){
+			if (await verify(passHash, password)){
 				// creamos el token 
 				const token = await createToken(email,roleFound.rol);
 				// pasamos el token al cliente
@@ -43,7 +45,7 @@ export default {
 			const passHash = companyFound?.password;
 
 			// Desencriptamos y validamos password
-			if (bcrypt.verify(passHash, password)){
+			if (await verify(passHash, password)){
 				// creamos el token 
 				const token = await createToken(email, roleFound.rol);
 				// pasamos el token al cliente

@@ -6,7 +6,7 @@ import { join } from 'path';
 
 // Generamos y validamos los tokens
 
-export const createToken = async (email:string, rol: number) => {
+export const createToken = async (email:string, rol: number) : Promise<string> => {
 	const key = readFileSync(
 		join(process.cwd(), '.secret', 'sign.key')
 	);
