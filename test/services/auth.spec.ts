@@ -7,7 +7,7 @@ import { MySQLDataSource as dsource } from '../../src/config/datasources';
 //import function
 import auth from '../../src/services/auth.service';
 
-//Deconstruccion
+//Deconstrucciona
 const { login } = auth;
 
 describe('--- Authentication service ---', () => {

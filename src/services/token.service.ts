@@ -6,11 +6,13 @@ import { join } from 'path';
 
 // Generamos y validamos los tokens
 
-export const createToken = async (email:string, rol: number) : Promise<string> => {
+export const createToken = async (email:string, rol: number, options?: Partial<jwt.SignOptions> ) : Promise<string> => {
 	const key = readFileSync(
 		join(process.cwd(), '.secret', 'sign.key')
 	);
-	return jwt.sign( { email, rol },key , { algorithm: 'RS256', expiresIn: 60 * 60 });
+	const defaultOptions: jwt.SignOptions = { algorithm: 'RS256', expiresIn: 60 * 60 };
+	const signOptions: jwt.SignOptions = { ...defaultOptions, ...options};
+	return jwt.sign( { email, rol },key , signOptions);
 };
 
 

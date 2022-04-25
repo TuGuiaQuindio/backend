@@ -13,6 +13,7 @@ describe('--- TESTING BCRYP ---', () => {
 			// console.log(hash);
 			expect(hash).toBeTruthy();
 		});
+		//Verificamos el hash con el dato
 		it('Responds with a verification of the hash and the data: boolean : TRUE', async () => {
 			const responds = await verify(hash, '123456789');
 			// console.log(responds);
@@ -22,7 +23,6 @@ describe('--- TESTING BCRYP ---', () => {
 		//Se pasa dos parametros, el hash y un dato que no coincida al verificarlo
 		it('Should responds a boolean : FALSE', async () => {
 			const responds = await verify(hash, '3214');
-			expect(responds).not;
 			expect(responds).toBe(false);
 		});
 	});
