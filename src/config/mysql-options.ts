@@ -8,7 +8,10 @@ const getEntities = (): string => {
 	};
 	// console.log('->',process.env);
 	
-	return isTesting ? entities.ts : entities.js;
+	const entitiesPath = isTesting ? entities.ts : entities.js;
+
+	if(!entitiesPath) console.warn('WARN: No entities path had been loaded.');
+	return entitiesPath ?? '';
 };
 
 export default {

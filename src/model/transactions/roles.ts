@@ -10,8 +10,9 @@ export const createRoles = async (email : string , type : number) => {
 		email : email,
 		rol : type
 	};
-	//tratamos 
+	//tratamos 	
 	try {
+		console.log(dsource);
 		// obtenemos la conexion y creamos el rol
 		const newRol = dsource.getRepository(Roles).create(rol);
 		// guardamos el nuevo rol

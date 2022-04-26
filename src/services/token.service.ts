@@ -17,12 +17,12 @@ export const createToken = async (email:string, rol: number, options?: Partial<j
 
 
 // Verificamos el token obtenido 
-export const verifyToken = async ( token : string )=>{
+export const verifyToken = async ( token : string ) : Promise<string | undefined | jwt.JwtPayload> => {
 	// leemos la llave
 	const cert = readFileSync( join(process.cwd(), '.secret', 'sign.key') );
 	// Tratamos 
 	try {
-		const decoded = jwt.verify(token, cert, { algorithms: ['RS256'] });
+		const decoded : string | jwt.JwtPayload = jwt.verify(token, cert, { algorithms: ['RS256'] });
 		return decoded;
 	} catch(err) {
 		// err
