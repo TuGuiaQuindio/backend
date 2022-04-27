@@ -7,10 +7,9 @@ export const isAuth = async (req: Request, res: Response, next: NextFunction) =>
 	// Obtengo el token JWT 
 	const { authorization } = req.headers;
 	// Comprobación de undefined
-	console.warn('INSIDE', res.status(401));
 	if (!authorization) return res.status(401).json({ msg: 'Unauthorized' });
 	const token = authorization.split(' ')[1];
-	console.log('Token', token);
+	console.log('Token Ingresado:: ', token);
 
 	// Valido el token JWT
 	const payload = await verifyToken(token);
