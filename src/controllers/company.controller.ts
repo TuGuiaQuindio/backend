@@ -27,20 +27,20 @@ export const companySignup_post = async(req:Request, res:Response) => {
 		//Validamos la respuesta
 		if(register != undefined) {
 			// Respondemos al Server
-			res.status(200).json({
+			return res.status(200).json({
 				register,
 				msg:'User signed up successfull'
 			});
 		}else {
 			console.log('-> User already exists !');
 			// Si no respondemos al cliente
-			res.status(303).json({ msg : 'User exists !!' });
+			return res.status(303).json({ msg : 'User exists !!' });
 			
 		}
 	} catch (e) {
 		console.error(e);
 		// Respondemos al servidor 
-		res.status(422).json({
+		return res.status(422).json({
 			mgs:'Error'
 		});
 	}

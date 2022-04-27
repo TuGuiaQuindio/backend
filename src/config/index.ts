@@ -3,14 +3,14 @@
 
 export default {
 
-    /**
-     * Tu puerto favorito
-     */
-    port : process.env.PORT || 3000,
+	/**
+	 * Tu puerto favorito
+	 */
+	port : process.env.PORT || 3000,
 
-    /**
-     * Nombre proyecto
-     */
-    name: 'TuGuiaQuindio-backend',
-    
-}
+	/**
+	 * Nombre proyecto
+	 */
+	name: 'TuGuiaQuindio-backend',
+	
+};

@@ -18,13 +18,13 @@ async function signup(values: GuideSignup | CompanySignup,  type: 'guide' | 'com
 		// Definimos el tipo de Usuario 'GUIDE'
 		values = values as GuideSignup;
 		// Esperamos a que encripten la contraseña
-		const password = await bcryptHash(values.password);
+		const password : string = await bcryptHash(values.password);
 		// console.log("FROM signUp - SERVICE");
 
 		console.log('Email service:: ', values.rol.email);
 		
 		// Obtenemos los datos y lo pasamos al ORM
-		const guideResuls = createGuide(values, password);
+		const guideResuls = await createGuide(values, password);
 		// Resornamos los datos devueltos
 		
 		return guideResuls;
@@ -35,10 +35,10 @@ async function signup(values: GuideSignup | CompanySignup,  type: 'guide' | 'com
 		// Definimos el tipo de Usuario 'COMPANY'
 		values = values as CompanySignup;
 		// Esperamos a que encripten la contraseña
-		const password = await bcryptHash(values.password);
+		const password : string = await bcryptHash(values.password);
 		
 		//obtemos los datos, lo pasamos al ORM
-		const companyResults = createCompany(values, password);
+		const companyResults = await createCompany(values, password);
 		// Resornamos el valor devueltos
 		return companyResults;
 	}
