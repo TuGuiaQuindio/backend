@@ -9,7 +9,7 @@ import { createRoles } from './roles';
 
 // Controlador
 // Crea usuarios de tipo Compañia
-export const createCompany = async (values: CompanySignup, password : string) => {
+export const createCompany = async (values: CompanySignup, password : string) : Promise<Company | undefined> => {
 
 	// Deconstruimos los datos 
 	const company = {
@@ -47,7 +47,7 @@ export const createCompany = async (values: CompanySignup, password : string) =>
 	return results;
 };
 // VALIDAR COMPAÑIA SI EXISTE
-const validatedCompany =  async ( nit : string ) => {
+const validatedCompany =  async ( nit : string ) : Promise< boolean > => {
 	// Busca el guia por el documento 
 	const guideFound = await dsource.getRepository(Company).findOne({ where : { nit } });
 	console.log('X- Usuario registrado -X ', guideFound);

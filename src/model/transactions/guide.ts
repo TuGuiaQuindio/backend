@@ -7,7 +7,7 @@ import { Guide } from '../entity/Guide';
 //Trancision de datos tipo : Rol
 import { createRoles } from './roles';
 // Crear usuario -> Registrar nuevo Guia 
-export const createGuide = async (values: GuideSignup, password:string) => {
+export const createGuide = async (values: GuideSignup, password:string) : Promise<Guide | undefined> => {
 	
 	// Obtenemos el usuario a buscar
 	const userFound : boolean = await validatedGuide(values.NoDocument);
@@ -38,7 +38,6 @@ export const createGuide = async (values: GuideSignup, password:string) => {
 	//se valida que el rol se haya registrado correctamente
 	if (!resultsRoles) return undefined;
 	///////////////////////////////////////////////
-
 	// Por el contrario, si el usuario fue encontrado
 	// Creamos el usuario
 	const newGuide = dsource.getRepository(Guide).create(guide);
@@ -50,8 +49,7 @@ export const createGuide = async (values: GuideSignup, password:string) => {
 };
 
 // VALIDAMOS EL guia
-const validatedGuide =  async ( NoDocument : string ) => {
-
+const validatedGuide =  async ( NoDocument : string ) : Promise< boolean > => {
 	// Busca el guia por el documento 
 	console.log('Entry validateGuide - transaction/guide');
 	const guideFound = await dsource.getRepository(Guide).findOne({ where : { NoDocument }});

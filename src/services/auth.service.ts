@@ -10,7 +10,7 @@ import { Roles } from '../constants/role.constants';
 const { verify } = bcrypt;
 	
 export default {
-	login : async (email:string, password:string) =>{
+	login : async (email:string, password:string) : Promise<string | boolean>=>{
 		// Ingresamos a la DB
 		// Se busca usuario por el email
 		const roleFound = await getRole(email) ;

@@ -3,7 +3,7 @@ import { Roles } from '../entity/Rol';
 
 ////////////////////////////////
 //Guardamos el dato a roles 
-export const createRoles = async (email : string , type : number) => {
+export const createRoles = async (email : string , type : number) : Promise<boolean>=> {
 
 	// creamos el rol
 	const rol = {

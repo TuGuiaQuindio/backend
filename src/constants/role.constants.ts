@@ -2,4 +2,4 @@
 export enum Roles  {
     GUIDE = 1,
     COMPANY = 2
-};
+}

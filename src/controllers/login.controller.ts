@@ -20,7 +20,7 @@ export const loginPost = async (req:Request, res:Response) => {
 	const { email, password } = req.body as User;
 	try{
 		// obtenemos el token
-		const token = await authSrv.login(email, password);
+		const token : string | boolean = await authSrv.login(email, password);
 		// si retorna el toquen
 		// Si nos retorna un false es porque ocurrio un error
 		if(token === false){
