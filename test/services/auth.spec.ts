@@ -11,13 +11,18 @@ import auth from '../../src/services/auth.service';
 const { login } = auth;
 
 describe('--- Authentication service ---', () => {
-	beforeAll(async () => { await dsource.initialize(); });
 	describe('All valid', () => {
-		it('should respons with a TOKEN', async () => {
+		beforeAll(async () => { await dsource.initialize(); });
+		it('should respons with a TOKEN with a type of STRING', async () => {
 			const response = await login('jeico@gmail.com', '12345678');
-			// TODO -> VALIDAR QUE RESPONDA CON UN TOKEN
 			expect(response).toBeTruthy();
+			expect(typeof response).toBe('string');
 		});
+		it('Should responds wiyth un false', async () => {
+			//Se le pasa datos vacios
+			const responds = await login('','');
+			expect(responds).toBe(false);
+		});
+		afterAll(async () => { await dsource.destroy(); });
 	});
-	afterAll(async () => { await dsource.destroy(); });
 });

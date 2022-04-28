@@ -1,3 +1,5 @@
+//TESTING PARA LA TRANSACCION DE DATOS DE LA DB
+
 import 'reflect-metadata';
 import dotenv from 'dotenv';
 dotenv.config();

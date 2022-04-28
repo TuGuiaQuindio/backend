@@ -1,3 +1,5 @@
+//TESTING DE ENCRIPTACION DE DATOS
+
 import bcrypt from '../../src/services/bcrypt.service';
 
 const { bcryptHash, verify } = bcrypt;

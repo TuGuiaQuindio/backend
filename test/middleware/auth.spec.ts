@@ -1,3 +1,5 @@
+// TESTING de middleware de autentificacion 
+
 import { Request, Response, NextFunction } from 'express';
 import { isAuth } from '../../src/middleware/auth';
 
@@ -29,7 +31,6 @@ describe('Authorization middleware', () => {
 			headers : {
 			}
 		};
-
 		await isAuth(mockReq as Request, mockRes as Response, nextFunction);
 		expect(mockRes.json).toBeCalledWith(expectedResponse);
 	});
@@ -42,6 +43,4 @@ describe('Authorization middleware', () => {
 		};
 		await isAuth(mockReq as Request, mockRes as Response, nextFunction);
 	});
-
-
 });
