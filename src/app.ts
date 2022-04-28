@@ -4,9 +4,14 @@ const app :  Application = express();
 ///////////////////////////////////////////
 //IMPORTACIONES RUTAS
 import routerLogin from './routes/login.routes';
-import routerGuideSignup from './routes/guide-signup.routes';
-import routerCompanySingup from './routes/company-signup.routes';
+//Company
+import routerCompanySingup from './routes/Company/company-signup.routes';
+//Guide
+import routerGuideSignup from './routes/Guide/guide-signup.routes';
+import routerGuideProfileConfig from './routes/Guide/profile.config.routes';
+//
 import routerHome from './routes/home.routes';
+//////////////////////////////////////////
 //////////////////////////////////////////
 //MORGAN
 import morgan from 'morgan';
@@ -32,7 +37,7 @@ app.use(routerLogin);
 app.use(routerGuideSignup);
 app.use(routerCompanySingup);
 app.use(routerHome);
-
+app.use(routerGuideProfileConfig);
 ///////////////////////////////////////////////
 //Exporting app
 export default app;

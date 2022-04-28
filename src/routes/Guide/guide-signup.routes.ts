@@ -1,14 +1,15 @@
+//RUTA DE SIGN-UP DE GUIDE
 import express from 'express';
 
 /////////////////////////////////////////////////////////
 //IMPORTAMOS PATHS
-import path from './paths';
+import path from '../paths';
 ////////////////////////////////////////
 //IMPORTAMOS VALIDADORES
-import signUpValidator from '../validator/guide-signup';
+import signUpValidator from '../../validator/guide-signup';
 ////////////////////////////////////////
 //IMPORTAMOS CONTROLADORES
-import { guideSignup_get, guideSignup_post } from '../controllers/guide.controller';
+import { guideSignup_get, guideSignup_post } from '../../controllers/Guide/guide.controller';
 
 const router = express.Router();
 ///////////////////////////////////////////////

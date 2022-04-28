@@ -1,6 +1,7 @@
 ////////////////////////////////////////////////
 // Importamos
 import { MySQLDataSource as dsource } from '../../config/datasources';
+import { CompanySignup } from '../../interface/signup-company';
 import { GuideSignup } from '../../interface/signup-guide';
 //Entidad
 import { Guide } from '../entity/Guide';
@@ -10,10 +11,11 @@ import { createRoles } from './roles';
 export const createGuide = async (values: GuideSignup, password:string) : Promise<Guide | undefined> => {
 	
 	// Obtenemos el usuario a buscar
-	const userFound : boolean = await validatedGuide(values.NoDocument);
+	const userFound : boolean | undefined = await validatedGuide(values.NoDocument);
+	console.log('Status User/Guide validado', userFound);
 	
 	// Validamos si el guia existe
-	console.log('DESPUES DEL VALIDAOR');
+	console.log('DESPUES DEL VALIDAOR En transaction');
 	if(userFound) return undefined;
 
 	// Obtengo los datos del cliente por parametro
@@ -22,9 +24,9 @@ export const createGuide = async (values: GuideSignup, password:string) : Promis
 		NoDocument : values.NoDocument,
 		firstName : values.firstName,
 		lastName : values.lastName,
-		age: values.age,
-		city : values.city,
-		phoneNumber : values.phoneNumber,
+		// age: values.age,
+		// city : values.city,
+		// phoneNumber : values.phoneNumber,
 		rol: values.rol,
 		// pass haseado
 		password : password,
@@ -53,7 +55,7 @@ const validatedGuide =  async ( NoDocument : string ) : Promise< boolean > => {
 	// Busca el guia por el documento 
 	console.log('Entry validateGuide - transaction/guide');
 	const guideFound = await dsource.getRepository(Guide).findOne({ where : { NoDocument }});
-	console.log('X- Usuario registrado -X ', guideFound);
+	console.log('X- Usuario registrado -X :', guideFound);
 	// Retornamos y nos devuelve un booleano
-	return guideFound !== undefined;
+	return guideFound != undefined;
 };

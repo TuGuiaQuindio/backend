@@ -10,8 +10,10 @@ import bcrypt from './bcrypt.service';
 
 // Decostruimos
 const { bcryptHash } = bcrypt;
-
-async function signup(values: GuideSignup | CompanySignup,  type: 'guide' | 'company') {
+// values: Partial<GuideSignup | CompanySignup>
+//TYPE 1 -> Guide
+//TYPE 2 -> Company
+async function signup (values: Exclude<GuideSignup, {age:number,city:string, phoneNumber:string}> | Exclude<CompanySignup, {phoneNumber:string, mainActivity:string}>,  type: 'guide' | 'company') {
 	// Validamos el tipo 
 	// Tipo guia
 	if(type == 'guide'){
@@ -21,7 +23,7 @@ async function signup(values: GuideSignup | CompanySignup,  type: 'guide' | 'com
 		const password : string = await bcryptHash(values.password);
 		// console.log("FROM signUp - SERVICE");
 
-		console.log('Email service:: ', values.rol.email);
+		console.log('Email signUp-service:: ', values.rol.email);
 		
 		// Obtenemos los datos y lo pasamos al ORM
 		const guideResuls = await createGuide(values, password);

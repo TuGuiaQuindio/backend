@@ -3,10 +3,10 @@ import { Request, Response } from'express';
 
 ////////////////////////////////////////////////////////////////
 //IMPORTACIONES DE SERVICIOS
-import signup from '../services/signup-db.service';
+import signup from '../../services/signup-db.service';
 ////////////////////////////////////////////////////////////////
 //IMPORTAMOS LAS INTERFACES
-import { GuideSignup } from '../interface/signup-guide';
+import { GuideSignup } from '../../interface/signup-guide';
 ////////////////////////////////////////////////////////////////
 
 // ->>RUTA GET 
@@ -19,10 +19,10 @@ export const guideSignup_post = async(req:Request, res:Response) => {
 
 	// res.send("POST");
 	// Obtenemos los datos del body
-	const { NoDocument, firstName, lastName, age, city, phoneNumber, rol, password } = req.body as GuideSignup;//Lo referenciamos con la interface
+	const { NoDocument, firstName, lastName, rol, password } = req.body as GuideSignup;//Lo referenciamos con la interface
 	try {
 		// Hacemos el registro de los datos
-		const register = await signup( { NoDocument,firstName, lastName, age, city, phoneNumber, rol, password}, 'guide' );
+		const register = await signup( { NoDocument, firstName, lastName, rol, password }, 'guide' );
 		if(register != undefined) {
 			// Respondemos al Server
 			res.status(200).json({
@@ -32,7 +32,7 @@ export const guideSignup_post = async(req:Request, res:Response) => {
 		}else {
 			console.log('-> User already exists !');
 			// Si no respondemos al cliente
-			res.status(303).json({ msg : 'User exists !!' });
+			res.status(403).json({ msg : 'User exists !!' });
 			
 		}
 	} catch (e) {

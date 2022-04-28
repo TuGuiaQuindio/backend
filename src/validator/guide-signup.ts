@@ -11,13 +11,6 @@ export default {
 			.not().isEmpty().withMessage('Empty field !'),
 		body('lastName')
 			.not().isEmpty().withMessage('Empty field !'),
-		body('age')
-			.not().isEmpty().withMessage('Empty field!')
-			.isNumeric().withMessage('Datos no numerico!'),
-		body('city')
-			.not().isEmpty().withMessage('Empty field !'),
-		body('phoneNumber')
-			.not().isEmpty().withMessage('Empty field !'),
 		body('rol')
 			.not().isEmpty().withMessage('Empty field !')
 			.isObject().withMessage('Please provide a valid rol!'), 

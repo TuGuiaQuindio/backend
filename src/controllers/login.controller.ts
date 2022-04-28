@@ -25,7 +25,7 @@ export const loginPost = async (req:Request, res:Response) => {
 		// Si nos retorna un false es porque ocurrio un error
 		if(token === false){
 			// Respondemos al cliente
-			return res.status(401).json({msg:'credenciales incorrectas'});
+			return res.status(401).json({msg:'Invalid Credentials'});
 			// Por lo contrario repondemos
 		}else{
 			// console.log('token: ',token);
@@ -38,7 +38,7 @@ export const loginPost = async (req:Request, res:Response) => {
 		console.log(e);
 		// Respondemos al server
 		return res.status(401).json({
-			msg: 'Invalid credentials'
+			msg: 'Invalid Credentials'
 		});
 	}
 };

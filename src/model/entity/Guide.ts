@@ -12,29 +12,29 @@ export class Guide {
 	@PrimaryGeneratedColumn()
 		id : number;
 
-	@Column()
+	@Column({default : null})
 		NoDocument : string;
 
-	@Column()
+	@Column({default : null})
 		firstName : string;
 
-	@Column()
+	@Column({default : null})
 		lastName : string;
 
-	@Column()
+	@Column({default : null})
 		age: number;
 
-	@Column()
+	@Column({default : null})
 		city : string;
 
-	@Column()
+	@Column({default : null})
 		phoneNumber : string;
 
 	@OneToOne(()=> Roles)
 	@JoinColumn()
 		rol : Roles;
 
-	@Column()
+	@Column({default : null})
 		password : string;
 
 	// Foreign key

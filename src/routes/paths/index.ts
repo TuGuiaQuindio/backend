@@ -6,6 +6,7 @@ export default {
 	registerGuide:'/signup/guide',
 	registerCompany:'/signup/company',
 	home: '/home',
+	configProfile : '/guide/profile/config',
 };
 
 // export const login = '/login'

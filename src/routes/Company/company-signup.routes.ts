@@ -2,13 +2,13 @@
 import express from 'express';
 ///////////////////////////////////////
 //IMPOTACIONES DE PATHS
-import path from './paths/index';
+import path from '../paths/index';
 //////////////////////////////////////
 //IMPORTACIONES DE VALIDADORES
-import signUpValidator from '../validator/company-signup';
+import signUpValidator from '../../validator/company-signup';
 ////////////////////////////////////////////
 //IMPORTACIONES DE CONTROLADORES
-import { companySignup_get, companySignup_post } from '../controllers/company.controller'; 
+import { companySignup_get, companySignup_post } from '../../controllers/Company/company.controller'; 
 // Obtenemos las rutas
 const router = express.Router();
 /////////////////////////////////////////////////

@@ -11,26 +11,26 @@ export class Company {
 	@PrimaryGeneratedColumn()
 		id : number;
 
-	@Column()
+	@Column({default : null})
 		nameCompany : string;
 
-	@Column()
+	@Column({default : null})
 		nit : string;
 
-	@Column()
+	@Column({default : null})
 		phoneNumber : string;
 
-	@Column()
+	@Column({default : null})
 		direction : string;
 
-	@Column()
+	@Column({default : null})
 		mainActivity : string;
 
 	@OneToOne(()=> Roles)
 	@JoinColumn()
 		rol : Roles;
 
-	@Column()
+	@Column({default : null})
 		password : string;
 
 
