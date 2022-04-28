@@ -1,6 +1,8 @@
 // Interfaz para tener el full registro del usuario guia
 
-export interface GuideSignup_extra {
+import { UserSignup } from './user-signup';
+
+export interface GuideSignup_extra extends UserSignup {
 
     //Full datos del usuario
     NoDocument:string;

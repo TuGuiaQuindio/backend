@@ -9,11 +9,7 @@ export default {
 			.not().isEmpty().withMessage('Empty field'),
 		body('nit')
 			.not().isEmpty().withMessage('Empty field'),
-		body('phoneNumber')
-			.not().isEmpty().withMessage('Empty field'),
 		body('direction')
-			.not().isEmpty().withMessage('Empty field'),
-		body('mainActivity')
 			.not().isEmpty().withMessage('Empty field'),
 		body('rol.email')
 			.not().isEmpty().withMessage('Empty field')

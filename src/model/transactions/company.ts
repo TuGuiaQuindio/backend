@@ -15,9 +15,7 @@ export const createCompany = async (values: CompanySignup, password : string) : 
 	const company = {
 		nameCompany : values.nameCompany,
 		nit : values.nit,
-		phoneNumber : values.phoneNumber,
 		direction : values.direction,
-		mainActivity : values.mainActivity,
 		rol : values.rol,
 		// pass haseado
 		password : password
@@ -52,5 +50,5 @@ const validatedCompany =  async ( nit : string ) : Promise< boolean > => {
 	const guideFound = await dsource.getRepository(Company).findOne({ where : { nit } });
 	console.log('X- Usuario registrado -X ', guideFound);
 	// Retornamos y nos devuekve un booleano
-	return guideFound !== undefined;
+	return guideFound != undefined;
 };

@@ -18,11 +18,11 @@ export const companySignup_get = async(req:Request, res:Response) => {
 //->>RUTA POST
 export const companySignup_post = async(req:Request, res:Response) => {
 // Obtenemos los datos del body
-	const { nameCompany, nit, phoneNumber, direction, mainActivity, rol, password } = req.body as CompanySignup;
+	const { nameCompany, nit, direction, rol, password } = req.body as CompanySignup;
 	// Tratamos de hacer esto
 	try {
 		// Hacemos el registro de la empresa
-		const register = await signup( { nameCompany, nit, phoneNumber, direction, mainActivity, rol, password } , 'company' );
+		const register = await signup( { nameCompany, nit, direction, rol, password } , 'company' );
 		
 		//Validamos la respuesta
 		if(register != undefined) {

@@ -1,7 +1,6 @@
 ////////////////////////////////////////////////
 // Importamos
 import { MySQLDataSource as dsource } from '../../config/datasources';
-import { CompanySignup } from '../../interface/signup-company';
 import { GuideSignup } from '../../interface/signup-guide';
 //Entidad
 import { Guide } from '../entity/Guide';
@@ -24,9 +23,6 @@ export const createGuide = async (values: GuideSignup, password:string) : Promis
 		NoDocument : values.NoDocument,
 		firstName : values.firstName,
 		lastName : values.lastName,
-		// age: values.age,
-		// city : values.city,
-		// phoneNumber : values.phoneNumber,
 		rol: values.rol,
 		// pass haseado
 		password : password,

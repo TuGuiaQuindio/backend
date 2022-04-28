@@ -12,9 +12,10 @@ import routerGuideProfileConfig from './routes/Guide/profile.config.routes';
 //
 import routerHome from './routes/home.routes';
 //////////////////////////////////////////
-//////////////////////////////////////////
 //MORGAN
 import morgan from 'morgan';
+//HELMET
+import helmet from 'helmet'; 
 //////////////////////////////////////////
 //IMPORTAMOS CONECCION A LA DB
 // import { createConnection } from 'typeorm';
@@ -27,7 +28,7 @@ import morgan from 'morgan';
 ///////////////////////////////////////////
 // Middlewares
 app.use(morgan('dev'));
-
+app.use(helmet());
 // Para que express lea los json, los pueda entender
 app.use(express.json());
 
