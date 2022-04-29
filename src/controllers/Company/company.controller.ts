@@ -6,7 +6,7 @@ import { Request, Response } from 'express';
 import signup from '../../services/signup-db.service';
 ////////////////////////////////////////////////
 //IMPORTACIONES DE INTERFACES
-import { CompanySignup } from '../../interface/signup-company';
+import { CompanySignup } from '../../interface/Company/signup-company';
 ////////////////////////////////////////////////
 //->>RUTA GET
 export const companySignup_get = async(req:Request, res:Response) => {

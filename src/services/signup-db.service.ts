@@ -1,8 +1,8 @@
 
 // En este archivo se registraran los datos del usuario al DB 
 
-import { GuideSignup } from '../interface/signup-guide';
-import { CompanySignup } from '../interface/signup-company';
+import { GuideSignup } from '../interface/Guide/signup-guide';
+import { CompanySignup } from '../interface/Company/signup-company';
 
 import { createGuide } from '../model/transactions/guide';
 import { createCompany } from '../model/transactions/company';

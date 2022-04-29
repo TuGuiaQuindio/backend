@@ -1,5 +1,5 @@
 import { MySQLDataSource as dsource } from '../../config/datasources';
-import { Roles } from '../entity/Rol';
+import { Roles } from '../entity/sql/Rol';
 
 ////////////////////////////////
 //Guardamos el dato a roles 

@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////
 
 import { MySQLDataSource as dsource } from '../../config/datasources';
-import { CompanySignup } from '../../interface/signup-company';
-import { Company } from '../entity/Company';
+import { CompanySignup } from '../../interface/Company/signup-company';
+import { Company } from '../entity/sql/Company';
 import { createRoles } from './roles';
 
 ////////////////////////////////////////////////

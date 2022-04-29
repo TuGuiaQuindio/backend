@@ -1,3 +1,5 @@
+//Documento que contendra los datos de los lenguajes
+
 import { Column } from 'typeorm';
 
 export class Language {

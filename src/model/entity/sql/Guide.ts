@@ -22,7 +22,7 @@ export class Guide {
 		lastName : string;
 
 	@Column({default : null})
-		age: number;
+		dataOfBirth: number;
 
 	@Column({default : null})
 		city : string;

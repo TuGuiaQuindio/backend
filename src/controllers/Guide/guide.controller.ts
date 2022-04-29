@@ -6,7 +6,11 @@ import { Request, Response } from'express';
 import signup from '../../services/signup-db.service';
 ////////////////////////////////////////////////////////////////
 //IMPORTAMOS LAS INTERFACES
-import { GuideSignup } from '../../interface/signup-guide';
+import { GuideSignup } from '../../interface/Guide/signup-guide';
+////////////////////////////////////////////////////////////////
+//IMPORTAMOS ENTIDADES
+import { Guide } from '../../model/entity/sql/Guide';
+import { Company } from '../../model/entity/sql/Company';
 ////////////////////////////////////////////////////////////////
 
 // ->>RUTA GET 
@@ -22,7 +26,7 @@ export const guideSignup_post = async(req:Request, res:Response) => {
 	const { NoDocument, firstName, lastName, rol, password } = req.body as GuideSignup;//Lo referenciamos con la interface
 	try {
 		// Hacemos el registro de los datos
-		const register = await signup( { NoDocument, firstName, lastName, rol, password }, 'guide' );
+		const register : Guide | Company | undefined = await signup( { NoDocument, firstName, lastName, rol, password }, 'guide' );
 		if(register != undefined) {
 			// Respondemos al Server
 			res.status(200).json({

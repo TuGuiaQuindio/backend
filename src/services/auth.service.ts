@@ -28,7 +28,7 @@ export default {
 			// Desencriptamos y validamos password
 			if (await verify(passHash, password)){
 				// creamos el token 
-				const token = await createToken(email,roleFound.rol);
+				const token = await createToken( email, roleFound.rol, guideFound.id);
 				// pasamos el token al cliente
 				console.log('El token generado es:: ', token);
 				// Retornamos 

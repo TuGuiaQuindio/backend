@@ -15,7 +15,8 @@ export default {
 			.not().isEmpty().withMessage('Empty field')
 			.isEmail().withMessage('Please provide a alid email!'),
 		body('password')
-			.not().isEmpty().withMessage('Empty field'),
+			.not().isEmpty().withMessage('Empty field')
+			.isLength({min:7 , max:30}).withMessage('Debe de contener min 7 caracteres'),
 	],
 	// Validamos
 	validate: function(req:Request, res:Response, next:NextFunction) {

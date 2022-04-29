@@ -1,9 +1,9 @@
 ////////////////////////////////////////////////
 // Importamos
 import { MySQLDataSource as dsource } from '../../config/datasources';
-import { GuideSignup } from '../../interface/signup-guide';
+import { GuideSignup } from '../../interface/Guide/signup-guide';
 //Entidad
-import { Guide } from '../entity/Guide';
+import { Guide } from '../entity/sql/Guide';
 //Trancision de datos tipo : Rol
 import { createRoles } from './roles';
 // Crear usuario -> Registrar nuevo Guia 

@@ -1,8 +1,8 @@
 // Controlador para el logueo de 'USUARIOS'
 import { MySQLDataSource as dsource } from '../../config/datasources';
-import { Guide } from '../entity/Guide';
-import { Company } from '../entity/Company';
-import { Roles } from '../entity/Rol';
+import { Guide } from '../entity/sql/Guide';
+import { Company } from '../entity/sql/Company';
+import { Roles } from '../entity/sql/Rol';
 
 // !! Controlador para obtener un usuarios por medio del email
 
