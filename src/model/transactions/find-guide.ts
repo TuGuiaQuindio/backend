@@ -4,7 +4,7 @@ import { Guide } from '../entity/sql/Guide';
 import { Company } from '../entity/sql/Company';
 import { Roles } from '../entity/sql/Rol';
 
-// !! Controlador para obtener un usuarios por medio del email
+// !! Controlador para obtener un usuarios por medio del -> EMAIL <-
 
 export const getRole = async (email : string) : Promise<Roles | null> => {
 	// Buscamos y obtenemos el usuario
@@ -19,4 +19,18 @@ export const getGuide = async (email: string) : Promise<Guide | null> =>{
 export const getCompany = async (email: string): Promise<Company | null> =>{
 	// Buscamos la Compañia-Empresa
 	return dsource.getRepository(Company).findOne({ where : { rol: {email} } });
+};
+
+// !! Encontrar guias por medio del -> ID <-
+
+
+// !! Encontrar guias por medio de -> NoDocument <-
+// ?VALIDAMOS EL guia
+export const validatedGuide =  async ( NoDocument : string ) : Promise< boolean > => {
+	// Busca el guia por el documento 
+	console.log('Entry validateGuide - transaction/find-guide');
+	const guideFound = await dsource.getRepository(Guide).findOne({ where : { NoDocument }});
+	console.log('X- Usuario registrado -X :', guideFound);
+	// Retornamos y nos devuelve un booleano
+	return guideFound != undefined;
 };

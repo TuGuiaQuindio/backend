@@ -6,7 +6,11 @@ import { GuideSignup } from '../../interface/Guide/signup-guide';
 import { Guide } from '../entity/sql/Guide';
 //Trancision de datos tipo : Rol
 import { createRoles } from './roles';
-// Crear usuario -> Registrar nuevo Guia 
+//////////////////////////////////////////
+//IMPORTAR FIND_GUIDE POR NoDocument
+import { validatedGuide } from './find-guide';
+
+// ?Crear usuario -> Registrar nuevo Guia 
 export const createGuide = async (values: GuideSignup, password:string) : Promise<Guide | undefined> => {
 	
 	// Obtenemos el usuario a buscar
@@ -46,12 +50,12 @@ export const createGuide = async (values: GuideSignup, password:string) : Promis
 	return results;
 };
 
-// VALIDAMOS EL guia
-const validatedGuide =  async ( NoDocument : string ) : Promise< boolean > => {
-	// Busca el guia por el documento 
-	console.log('Entry validateGuide - transaction/guide');
-	const guideFound = await dsource.getRepository(Guide).findOne({ where : { NoDocument }});
-	console.log('X- Usuario registrado -X :', guideFound);
-	// Retornamos y nos devuelve un booleano
-	return guideFound != undefined;
+/** 
+ * ? UPDATE DATA
+ */
+export const updateGuide = () => {
+	//Actualizamos los datos
+	
+	
+
 };
