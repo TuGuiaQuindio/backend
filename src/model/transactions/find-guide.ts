@@ -22,7 +22,10 @@ export const getCompany = async (email: string): Promise<Company | null> =>{
 };
 
 // !! Encontrar guias por medio del -> ID <-
-
+export const getGuideId = async ( id ?: number ) => { 
+	//Buscamos el guia por el Id
+	return dsource.getRepository(Guide).findOne({ where : { id } });
+};
 
 // !! Encontrar guias por medio de -> NoDocument <-
 // ?VALIDAMOS EL guia

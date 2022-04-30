@@ -24,16 +24,19 @@ export const profileConfig_put = async (req:Request, res:Response) => {
 	//Obtenemos los parametros por ruta
 	const { id } = req.params;
 	console.log('Id user to update :: ',id);
+	//TODO -> ORGANIZAR LAS FUNCIONES A LLAMAR
 	try {
-		const registerMysql = updateData( { id, firstName, lastName, password, dataOfBirth, city, phoneNumber}, 'mysql' );
-		const registerMongo = updateData( { information}, 'mongodb' );
+		const registerMysql = await updateData( { id, firstName, lastName, password, dataOfBirth, city, phoneNumber}, 'mysql' );
+		const registerMongo = await updateData( { information}, 'mongodb' );
 		//Validar si los datos estan guardados correctamente	
-		if(!registerMongo || !registerMysql) {
-			//Undefined
-			res.status(500).json({ msg : 'Error :: Save Data' });
+		// if(!registerMongo || !registerMysql) {
+		if(!registerMysql){
+			//false
+			return res.status(403).json({ msg : 'Error :: User doesn`t exist' });
 		}else {
+			//True
 			//Existe el registro
-
+			return res.status(200).json({ msg : 'User update'});
 		}
 	}catch(err){
 		console.log(err);
