@@ -17,7 +17,7 @@ const router = express.Router();
  */
 const { params, validate } = signUpValidator;
 // RUTA '/company/signup'
-router.route(path.registerCompany)
+router.route(path.signupCompany)
 	.get(companySignup_get)
 	.post(params, validate, companySignup_post );
 

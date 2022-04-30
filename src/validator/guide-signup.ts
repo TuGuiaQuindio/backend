@@ -11,7 +11,7 @@ export default {
 			.not().isEmpty().withMessage('Empty field !'),
 		body('lastName')
 			.not().isEmpty().withMessage('Empty field !'),
-		body('rol.email')
+		body('rol')
 			.not().isEmpty().withMessage('Empty field !')
 			.isObject().withMessage('Please provide a valid rol!'), 
 		body('password')

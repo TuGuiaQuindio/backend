@@ -10,7 +10,7 @@ import paths from '../paths';
 
 ///////////////////////////////////////////////
 //IMPORTAMOS CONTROLADORES
-import { profileConfig_get, profileConfig_post } from '../../controllers/Guide/profile.config.controller'; 
+import { profileConfig_get, profileConfig_put } from '../../controllers/Guide/profile.config.controller'; 
 //////////////////////////////////////////////
 // construimos rutas
 const router = express.Router();    
@@ -20,9 +20,8 @@ const router = express.Router();
 /**
  * Configuracion del perfil GUIDE
  */
-router.route(paths.configProfile)
-	.get(profileConfig_get)
-	.post(profileConfig_post);
+router.route(paths.configProfilePut)
+	.put(profileConfig_put);
 
 ////////////////////////////////////////////////////////////////
 //exportamos rutas 
