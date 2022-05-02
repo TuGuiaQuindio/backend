@@ -13,6 +13,7 @@ export const isAuth = async (req: Request, res: Response, next: NextFunction) =>
 
 	// Valido el token JWT
 	const payload = await verifyToken(token);
+	// devuleve el cuerpo del payload del token
 	if (payload) {
 		res.locals.payload = payload;
 		next();
