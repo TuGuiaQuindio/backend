@@ -4,7 +4,8 @@
 import { GuideSignup_extra } from '../interface/Guide/signup-guide.extra';
 ////////////////////////////////////////////////
 //IMPORTAMOS DE TRANSACTIONS
-import { getGuideId } from '../model/transactions/find-guide';
+import { getGuideId } from '../model/entity/sql/transaction/find.g-c';
+import { updateGuide } from '../model/entity/sql/transaction/guide';
 ////////////////////////////////////////////////
 export const updateData  = async (values : GuideSignup_extra, type : 'mysql' | 'mongodb') => {
 	//Actualizar datos
@@ -12,6 +13,7 @@ export const updateData  = async (values : GuideSignup_extra, type : 'mysql' | '
 	if(type === 'mysql'){
 		//Definimos el tipo de usuario 'GUIDE'
 		values = values as GuideSignup_extra;
+		console.log('******** Update Service MySQL ************');
 		console.log('GET DATA FOR MySQL:: ', values);
 		
 		//Convertimos el id en Numerico
@@ -26,20 +28,21 @@ export const updateData  = async (values : GuideSignup_extra, type : 'mysql' | '
 			// User NO exite
 			console.log('Results :: ',resultsGuide);
 			//FALSE->No exite
-			return false;
+			return undefined;
 		}
 		// User SI Exite
 		console.log('Results :: ',resultsGuide);
 		//send data to update
-		const dataUpdate = '' ;
+		const dataUpdate : boolean = await updateGuide( id, resultsGuide, values);
 		//Retornamos con la respuesta
 		// ->todo salio correcto
-		return true;
+		return dataUpdate;
 	}
 	//MONGO
 	else if(type === 'mongodb'){
 		//
 		values = values as GuideSignup_extra;
+		console.log('********* Update Service MongoDB **********');
 		console.log('GET DATA FOR MongoDB :: ', values);
 		
 	}

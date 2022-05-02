@@ -1,7 +1,7 @@
 // import token from './token-services';
 
 import { createToken }  from '../services/token.service';
-import { getRole, getGuide, getCompany  } from '../model/transactions/find-guide';
+import { getRole, getGuide, getCompany  } from '../model/entity/sql/transaction/find.g-c';
 
 import bcrypt from '../services/bcrypt.service';
 import { Roles } from '../constants/role.constants';
