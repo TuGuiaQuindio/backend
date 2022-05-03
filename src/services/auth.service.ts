@@ -10,7 +10,7 @@ import { Roles } from '../constants/role.constants';
 const { verify } = bcrypt;
 	
 export default {
-	login : async (email:string, password:string) : Promise<string | boolean>=>{
+	login : async (email:string, password:string) : Promise<object | boolean>=>{
 		// Ingresamos a la DB
 		// Se busca usuario por el email
 		const roleFound = await getRole(email) ;
@@ -21,6 +21,8 @@ export default {
 		if((roleFound?.rol == Roles.GUIDE)){
 			// obtenemos el guia 
 			const guideFound = await getGuide(roleFound.email);
+			console.log('-> GuindeFound :: ',guideFound);
+			
 			// validamos si el guia fue encontrado
 			if (!guideFound) return false;
 			// validamos los datos del objeto (USER)
@@ -31,8 +33,15 @@ export default {
 				const token = await createToken( email, roleFound.rol, guideFound.id);
 				// pasamos el token al cliente
 				console.log('El token generado es:: ', token);
+				//Objeto a retornar
+				const guide = {
+					role : roleFound.rol,
+					name: guideFound.firstName,
+					token: token
+				};
+
 				// Retornamos 
-				return token;
+				return guide;
 			}else {return false;}
 		// Por el contrario, si el usuario es de tipo COMPAÑIA
 		}else if (roleFound?.rol == Roles.COMPANY){
@@ -50,9 +59,14 @@ export default {
 				const token = await createToken(email, roleFound.rol);
 				// pasamos el token al cliente
 				console.log('El token generado es:: ', token);
-				
+				//Objeto a rotornar
+				const company = {
+					role : roleFound.rol, 
+					name : companyFound.nameCompany,
+					token : token
+				}; 
 				// Retornamos 
-				return token;
+				return company;
 			}
 		}
 		return false;

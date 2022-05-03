@@ -7,9 +7,8 @@ import { join } from 'path';
 // Generamos y validamos los tokens
 
 export const createToken = async ( email:string, rol: number, id?: number, options?: Partial<jwt.SignOptions> ) : Promise<string> => {
-	const key = readFileSync(
-		join(process.cwd(), '.secret', 'sign.key')
-	);
+	//leemos llave
+	const key : Buffer = await readKey();
 	const defaultOptions: jwt.SignOptions = { algorithm: 'RS256', expiresIn: 60 * 60 };
 	const signOptions: jwt.SignOptions = { ...defaultOptions, ...options};
 	return jwt.sign( { id, email, rol },key , signOptions);
@@ -19,10 +18,15 @@ export const createToken = async ( email:string, rol: number, id?: number, optio
 // Verificamos el token obtenido 
 export const verifyToken = async ( token : string ) : Promise<string | undefined | jwt.JwtPayload> => {
 	// leemos la llave
-	const cert = readFileSync( join(process.cwd(), '.secret', 'sign.key') );
+	const cert : Buffer = await readKey();
 	// Tratamos 
 	try {
-		const decoded : string | jwt.JwtPayload = jwt.verify(token, cert, { algorithms: ['RS256'] });
+		//Decodificamos el token
+		/**
+		 * @param token a decodificar
+		 * @param cert Llave para el token
+		 */
+		const decoded : string | jwt.JwtPayload = await decodeToken( token, cert );
 		return decoded;
 	} catch(err) {
 		// err
@@ -30,6 +34,16 @@ export const verifyToken = async ( token : string ) : Promise<string | undefined
 		return undefined;    
 	}
 };
+//Leer la llave
+export const readKey = async () => {
+	return readFileSync( join(process.cwd(), '.secret', 'sign.key') );
+};
 
-
-
+// Decode token 
+export const decodeToken = async ( token: string, key : Buffer ) =>{
+	return jwt.verify(token, key, { algorithms: ['RS256'] });
+};
+//Separar token obtenido 
+export const pullApartToken = async ( data : string ) : Promise<string> => { 
+	return data.split(' ')[1];
+};

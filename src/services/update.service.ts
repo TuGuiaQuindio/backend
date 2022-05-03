@@ -17,7 +17,9 @@ export const updateData  = async (values : GuideSignup_extra, type : 'mysql' | '
 		console.log('GET DATA FOR MySQL:: ', values);
 		
 		//Convertimos el id en Numerico
-		const id : number = await convertStrNum(values.id);
+		const id : number | undefined = values.id;
+		//Validamos si exite
+		if(!id) return false;
 		/**
 		 * Validamos si el usuario guia exite
 		 *  */
@@ -47,8 +49,3 @@ export const updateData  = async (values : GuideSignup_extra, type : 'mysql' | '
 		
 	}
 };
-
-//Convertir string a numero
-async function convertStrNum( data ?: string ) : Promise<number> {
-	return Number(data);
-}
