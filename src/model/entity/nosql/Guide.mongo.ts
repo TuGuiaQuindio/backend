@@ -5,10 +5,13 @@ import { Information } from './Guide-Information.mongo';
 
 //Crear entidad -> Coleccion
 @Entity()
-export class User {
+export class Guide {
 
 	@ObjectIdColumn()
 		id: ObjectID;
+	
+	@Column()
+		document : string;
 
 	@Column(type => Information)
 		info : Information;

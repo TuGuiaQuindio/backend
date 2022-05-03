@@ -3,9 +3,11 @@
 //IMPORTAMOS INTERFACES
 import { GuideSignup_extra } from '../interface/Guide/signup-guide.extra';
 ////////////////////////////////////////////////
-//IMPORTAMOS DE TRANSACTIONS
+//IMPORTAMOS DE TRANSACTIONS SQL
 import { getGuideId } from '../model/entity/sql/transaction/find.g-c';
 import { updateGuide } from '../model/entity/sql/transaction/guide';
+//IMPORTAMOS DE TRANSACTIONS NoSQL
+import { createGuideInfo } from '../model/entity/nosql/transaction/Guide.data';
 ////////////////////////////////////////////////
 export const updateData  = async (values : GuideSignup_extra, type : 'mysql' | 'mongodb') => {
 	//Actualizar datos
@@ -29,7 +31,7 @@ export const updateData  = async (values : GuideSignup_extra, type : 'mysql' | '
 		if(!resultsGuide){
 			// User NO exite
 			console.log('Results :: ',resultsGuide);
-			//FALSE->No exite
+			//Undefined ->No exite
 			return undefined;
 		}
 		// User SI Exite
@@ -47,5 +49,13 @@ export const updateData  = async (values : GuideSignup_extra, type : 'mysql' | '
 		console.log('********* Update Service MongoDB **********');
 		console.log('GET DATA FOR MongoDB :: ', values);
 		
+		//Creamos la informacion del guia
+		const resultsGuide = await createGuideInfo(values);
+		console.log('Service resultsGuide :: ',resultsGuide);
+		
+		//False 
+		if (!resultsGuide){ return false; }
+		//True
+		// return resultsGuide;
 	}
 };

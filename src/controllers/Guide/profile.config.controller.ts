@@ -20,27 +20,24 @@ export const profileConfig_put = async (req:Request, res:Response) => {
 	//Obtenemos el ID del Headers
 	const id : number = await getId(authorization);
 	console.log('-> ID payload :: ', id);
-	if(id == 0) return res.status(500).json({ error:'Unauthorized' });
+	if(id == 0) return res.status(500).json({ error:'ID Not Found - Unauthorized' });
 	
 	// Get Data to configure for the 'Body'
 	const { firstName, lastName, dataOfBirth, city, phoneNumber, information } = req.body as GuideSignup_extra;
 	// console.log('Id user to update :: ',id);
 	//Save or update data in MySQL and MongoDB
 	try {
-		//TODO -> ORGANIZAR LAS FUNCIONES A LLAMAR
 		const registerMysql : boolean | undefined = await updateData( { id, firstName, lastName, dataOfBirth, city, phoneNumber}, 'mysql' );
-		// !const registerMongo = await updateData( { information }, 'mongodb' );
+		const registerMongo : boolean | undefined = await updateData( { information }, 'mongodb' );
+		//TODO -> ORGANIZAR LAS FUNCIONES A LLAMAR
 		//Validar si los datos estan guardados correctamente	
 		// !if(!registerMongo || !registerMysql) {
-		if(registerMysql == undefined){
-			//undefined
+		if(registerMysql == undefined){//Undefined
 			return res.status(404).json({ msg : 'Error :: User doesn`t exist' });
 		
-		}else if(!registerMysql){
-			//False
+		}else if(!registerMysql){//false
 			return res.status(500).json({ msg : 'ERROR :: There was an error updating data'});
-		}else {
-			//True
+		}else {//True
 			//Existe el registro
 			return res.status(200).json({ msg : 'User update'});
 		}
