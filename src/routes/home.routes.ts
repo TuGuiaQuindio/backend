@@ -14,7 +14,7 @@ import { homeGet } from '../controllers/home.controller';
 
 const router = express.Router();
 ////////////////////////////////////////////////////////////////
-
+//Deconstrucción
 const { params, validate } = tokenValidator; 
 // RUTA -> '/home'
 // Ruta del Home page

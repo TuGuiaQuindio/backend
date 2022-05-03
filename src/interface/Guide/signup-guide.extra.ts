@@ -6,7 +6,7 @@ import { Information } from './info';
 //Configuracion del perfil
 export interface GuideSignup_extra{
     
-    id ?: string;
+    id ?: number;
     firstName ?: string;
     lastName ?: string;
     password ?: string;

@@ -9,9 +9,9 @@ import paths from '../paths';
 //IMPORTAMOS EL AUTENTIFICADOR
 import { isAuth } from '../../middleware/auth';
 //////////////////////////////////////////////
-//IMPORTAMOS VALIDADORES
-
-///////////////////////////////////////////////
+///IMPORTAMOS VALIDADORES
+import validatorJwt from '../../validator/jwt.validator';
+////////////////////////////////////////////////////
 //IMPORTAMOS CONTROLADORES
 import { profileConfig_put } from '../../controllers/Guide/profile.config.controller'; 
 //////////////////////////////////////////////
@@ -19,12 +19,14 @@ import { profileConfig_put } from '../../controllers/Guide/profile.config.contro
 const router = express.Router();    
 
 //////////////////////////////////////////////
+//Deconstrucción
+const { params, validate } = validatorJwt;
 
 /**
  * Configuracion del perfil GUIDE
  */
-router.route(paths.configProfilePut)
-	.put( isAuth, profileConfig_put );
+router.route(paths.guideProfileConfig)
+	.put( params, validate, isAuth, profileConfig_put );
 
 ////////////////////////////////////////////////////////////////
 //exportamos rutas 

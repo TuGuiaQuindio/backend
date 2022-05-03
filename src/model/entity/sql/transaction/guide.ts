@@ -56,7 +56,7 @@ export const createGuide = async (values: GuideSignup, password:string) : Promis
 /** 
  * ? UPDATE DATA
  */
-export const updateGuide = async ( id : number, guide : Guide, values : GuideSignup_extra) => {
+export const updateGuide = async ( id : number , guide : Guide, values : GuideSignup_extra) => {
 	//Actualizamos los datos
 	try{
 		const results = await dsource.getRepository(Guide).update(id, {
