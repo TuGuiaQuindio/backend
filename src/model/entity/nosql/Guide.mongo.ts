@@ -13,7 +13,7 @@ export class Guide {
 	@Column()
 		document : string;
 
-	@Column(type => Information)
+	@Column((type) => Information)
 		info : Information;
 
 }

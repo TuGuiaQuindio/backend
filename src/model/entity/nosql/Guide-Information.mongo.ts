@@ -8,7 +8,7 @@ export class Information {
 	// 	this.theme = theme;
 	// }
 	
-	@Column(type => Language)
+	@Column((type) => Language)
 		languages: Language[];
 
 	@Column()

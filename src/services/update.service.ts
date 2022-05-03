@@ -50,12 +50,13 @@ export const updateData  = async (values : GuideSignup_extra, type : 'mysql' | '
 		console.log('GET DATA FOR MongoDB :: ', values);
 		
 		//Creamos la informacion del guia
-		const resultsGuide = await createGuideInfo(values);
+		const resultsGuide : boolean = await createGuideInfo(values);
 		console.log('Service resultsGuide :: ',resultsGuide);
-		
+
 		//False 
 		if (!resultsGuide){ return false; }
+		
 		//True
-		// return resultsGuide;
+		return resultsGuide;
 	}
 };

@@ -31,11 +31,11 @@ export const profileConfig_put = async (req:Request, res:Response) => {
 		const registerMongo : boolean | undefined = await updateData( { information }, 'mongodb' );
 		//TODO -> ORGANIZAR LAS FUNCIONES A LLAMAR
 		//Validar si los datos estan guardados correctamente	
-		// !if(!registerMongo || !registerMysql) {
-		if(registerMysql == undefined){//Undefined
+		if(registerMongo == undefined || registerMysql == undefined) {
+		// if(registerMysql == undefined){//Undefined
 			return res.status(404).json({ msg : 'Error :: User doesn`t exist' });
 		
-		}else if(!registerMysql){//false
+		}else if(!registerMysql || !registerMongo){//false
 			return res.status(500).json({ msg : 'ERROR :: There was an error updating data'});
 		}else {//True
 			//Existe el registro

@@ -1,6 +1,7 @@
 import 'reflect-metadata';
 /////////////////////////////////////////
 //IMPORTAR CONECCION A LA DB
+import { getMongoManager } from 'typeorm';
 import { MongoDatasource as dsource } from '../../../../config/datasources';
 /////////////////////////////////////////
 //IMPORTAMOS ENTIDADES
@@ -16,7 +17,7 @@ import { GuideSignup_extra } from '../../../../interface/Guide/signup-guide.extr
 
 
 //Guardamos los datos de usuario GUIDE extras
-export const createGuideInfo = async ( values : GuideSignup_extra ) => {
+export const createGuideInfo = async ( values : GuideSignup_extra ) : Promise<boolean> => {
 	
 	//Get Data
 	const data = {
@@ -34,20 +35,18 @@ export const createGuideInfo = async ( values : GuideSignup_extra ) => {
 		newGuideInfo.info.theme = 'Dark';
 		newGuideInfo.info.languages = [new Language('Ingles',6)];
 		
-		//TODO-> ERROR EN CREAR, REPOSITORY es el error
-		const createGuide = dsource.getMongoRepository(Guide).create(newGuideInfo);
-		console.log('INFO GUIDE CREADO...');
-
-		const resultsGuide = dsource.getMongoRepository(Guide).save(createGuide);
-		console.log('Guide MONGODB :: ',resultsGuide);
+		//TODO-> ORGANIZAR ERROR, ERROR Create Mongo-Info:  TypeError: Cannot convert undefined or null to object
+		console.log('Saving an new USER-GUIDE');
+		const manager = await dsource.manager.save(newGuideInfo);
+		console.log('Saved an new user-Guide with id : ', newGuideInfo.id);
+		console.log(manager);
+		
 	} catch (error) {
 		//MOstramos el error
-		console.log(error);
+		console.log('ERROR Create Mongo-Info: ',error);
 		return false;
 		
 	}
-	
-	
 	//Retornamos > Todo Salio Bien
 	return true;
 
