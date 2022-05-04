@@ -22,9 +22,7 @@ export const createGuideInfo = async ( values : GuideSignup_extra ) : Promise<bo
 	//Get Data
 	const data = {
 		lenguaje : values.information?.langueges,
-
 		theme : values.information?.theme
-
 	};
 	console.log('CREANDO INFO GUIDE...');
 	try {
@@ -33,13 +31,23 @@ export const createGuideInfo = async ( values : GuideSignup_extra ) : Promise<bo
 		newGuideInfo.document = '24';
 		newGuideInfo.info = new Information();
 		newGuideInfo.info.theme = 'Dark';
-		newGuideInfo.info.languages = [new Language('Ingles',6)];
-		
+		newGuideInfo.info.languages = [
+			new Language('English', 0),
+			new Language('English', 0),
+			new Language('English', 0),
+		];
+
 		//TODO-> ORGANIZAR ERROR, ERROR Create Mongo-Info:  TypeError: Cannot convert undefined or null to object
 		console.log('Saving an new USER-GUIDE');
-		const manager = await dsource.manager.save(newGuideInfo);
+		console.log(newGuideInfo);
+		console.log(dsource.options);
+		const repository = dsource.getMongoRepository(Guide);
+		const result = repository.create(newGuideInfo);
+		await repository.save(result);
+		// const manager = await dsource.mongoManager.save(newGuideInfo);
+		// const manager = await dsource.manager.save(newGuideInfo);
 		console.log('Saved an new user-Guide with id : ', newGuideInfo.id);
-		console.log(manager);
+		console.log(result);
 		
 	} catch (error) {
 		//MOstramos el error

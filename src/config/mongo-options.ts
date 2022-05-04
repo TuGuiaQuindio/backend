@@ -1,7 +1,7 @@
 import { DataSourceOptions } from 'typeorm';
+import { Guide } from '../model/entity/nosql/Guide.mongo';
 
 //Importamos las entidades
-import { getNoSqlEntities } from './getEntities';
 
 export default { 
 	type : 'mongodb',
@@ -10,5 +10,7 @@ export default {
 	database : process.env.MONGO_DATABASE,
 	synchronize : process.env.MONGODB_SYNCHRONIZE,
 	logging : process.env.MONGODB_LOGGING,
-	entities : getNoSqlEntities().split(',')
+	entities : [
+		Guide
+	]
 } as DataSourceOptions;

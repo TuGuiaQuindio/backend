@@ -16,6 +16,8 @@ import routerHome from './routes/home.routes';
 import morgan from 'morgan';
 //HELMET
 import helmet from 'helmet'; 
+//CORS
+import cors from 'cors';
 //////////////////////////////////////////
 //IMPORTAMOS CONECCION A LA DB
 // import { createConnection } from 'typeorm';
@@ -25,8 +27,14 @@ import helmet from 'helmet';
 // Connexion a la db
 // createConnection();
 
+
 ///////////////////////////////////////////
+const originOptions : cors.CorsOptions = {
+	origin : 'http://localhost:3000'
+};
 // Middlewares
+
+app.use(cors(originOptions));
 app.use(morgan('dev'));
 app.use(helmet());
 // Para que express lea los json, los pueda entender
