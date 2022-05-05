@@ -20,14 +20,10 @@ import helmet from 'helmet';
 import cors from 'cors';
 //////////////////////////////////////////
 //IMPORTAMOS CONECCION A LA DB
-// import { createConnection } from 'typeorm';
-// import  'reflect-metadata';
+import { connectDB } from './model/entity/nosql/conection/conection-mongodg';
 /////////////////////////////////////////
-
 // Connexion a la db
-// createConnection();
-
-
+connectDB();
 ///////////////////////////////////////////
 const originOptions : cors.CorsOptions = {
 	origin : 'http://localhost:3000'

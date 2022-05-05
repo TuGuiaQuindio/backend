@@ -3,11 +3,12 @@ import { Request, Response } from 'express';
 
 /////////////////////////////////////////
 // IMPORTAMOS SERVICIOS
-import { updateData } from '../../services/update.service';
+import { updateDataSql, updateDataNoSql } from '../../services/update.service';
 import { pullApartToken, verifyToken } from '../../services/token.service';
 ////////////////////////////////////////
 //IMPORTAMOS INTERFACES
 import { GuideSignup_extra } from '../../interface/Guide/signup-guide.extra';
+import { GuideInfo } from '../../interface/Guide/guideInfo';
 import { Payload } from '../../interface/payload-token';
 ////////////////////////////////////////////////////////////////
 
@@ -23,13 +24,13 @@ export const profileConfig_put = async (req:Request, res:Response) => {
 	if(id == 0) return res.status(500).json({ error:'ID Not Found - Unauthorized' });
 	
 	// Get Data to configure for the 'Body'
-	const { firstName, lastName, dataOfBirth, city, phoneNumber, information } = req.body as GuideSignup_extra;
+	const { firstName, lastName, dataOfBirth, city, phoneNumber } = req.body as GuideSignup_extra;
+	const { information } = req.body as GuideInfo;
 	// console.log('Id user to update :: ',id);
 	//Save or update data in MySQL and MongoDB
 	try {
-		const registerMysql : boolean | undefined = await updateData( { id, firstName, lastName, dataOfBirth, city, phoneNumber}, 'mysql' );
-		const registerMongo : boolean | undefined = await updateData( { information }, 'mongodb' );
-		//TODO -> ORGANIZAR LAS FUNCIONES A LLAMAR
+		const registerMysql : boolean | undefined = await updateDataSql( { id, firstName, lastName, dataOfBirth, city, phoneNumber} );
+		const registerMongo : boolean | undefined = await updateDataNoSql( { id, information } );
 		//Validar si los datos estan guardados correctamente	
 		if(registerMongo == undefined || registerMysql == undefined) {
 		// if(registerMysql == undefined){//Undefined
