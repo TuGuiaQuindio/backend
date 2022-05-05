@@ -9,7 +9,7 @@ import { getGuideId } from '../model/entity/sql/transaction/find.g-c';
 import { updateGuide } from '../model/entity/sql/transaction/guide';
 //IMPORTAMOS DE TRANSACTIONS NoSQL
 import { createGuideInfo } from '../model/entity/nosql/transaction/guide-create.info';
-import { getGuideInfoOne, getGuideInfoAll } from '../model/entity/nosql/transaction/find.g-c'; 
+import { getGuideInfoOne } from '../model/entity/nosql/transaction/find.g-c'; 
 ////////////////////////////////////////////////
 
 //SQL -> MySQL
@@ -51,20 +51,28 @@ export const updateDataNoSql = async (values : GuideInfo) =>{
 	values = values as GuideInfo;
 	console.log('********* Update Service MongoDB **********');
 	console.log('GET DATA FOR MongoDB :: ', values);
-	
-	//Buscamos si exite ya la informacion
+	console.log(values.information.languages);
+	//Buscamos si exite ya la informacion 
 	//Si existe, se actualiza
-	const results = await getGuideInfoOne('01'); 
+	const results = await getGuideInfoOne(values.id); 
 	// Mostramos el dato obtenido
 	console.log('Guide-info got ::',results);
 	
-	//Si la informacion no exite 
-	//Creamos la informacion del guia
-	const resultsGuide : boolean = await createGuideInfo(values);
-	console.log('Service resultsGuide :: ',resultsGuide);
-	//False 
-	if (!resultsGuide){ return false; }
+	if(results){
+		//Si el Guide-Info existe
+		//Update data
+		//updateGuideInfo();
+
+	}else{
+		//Not exist Data
+		//Creamos la informacion del guia
+		const resultsGuide : boolean = await createGuideInfo(values);
+		console.log('Service resultsGuide :: ',resultsGuide);
+		//False 
+		if (!resultsGuide){ return false; }
+		
+	}
 	
 	//True
-	return resultsGuide;
+	// return resultsGuide;
 };

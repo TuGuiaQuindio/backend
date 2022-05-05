@@ -15,17 +15,9 @@ import { GuideInfo } from '../../../../interface/Guide/guideInfo';
 //Guardamos los datos de usuario GUIDE extras
 export const createGuideInfo = async ( values : GuideInfo ) : Promise<boolean> => {
 	
-	//Get Data
-	// const data = {
-	// 	id : values.id,
-	// 	document : values.document,
-	// 	information : values.information ,
-	// 	lenguaje : values.information.langueges,
-	// 	theme : values.information.theme
-	// };
 	console.log('CREANDO INFO GUIDE...');
 	try {
-		await executeQuery();
+		await executeQuery(values);
 	} catch (error) {
 		//MOstramos el error
 		console.log('ERROR Create Mongo-Info: ',error);
@@ -35,22 +27,17 @@ export const createGuideInfo = async ( values : GuideInfo ) : Promise<boolean> =
 	return true;
 };
 // Ejecutar un query
-async function executeQuery() {
+async function executeQuery(values : GuideInfo) {
 	//Create User-Guide
 	const guideInfo = new GuideInfoModel({
-		id : 1,
+		id : values.id,
 		information : {
-			theme : 'Dark',
-			language : [
-				{
-					name : 'English',
-					experience : 4
-				}
-			],
+			theme : values.information.theme,
+			language : values.information.languages,
 		},
 	});
 	//Save Guide
 	await guideInfo.save();
-	//
+	//Show results
 	console.log(guideInfo);
 }

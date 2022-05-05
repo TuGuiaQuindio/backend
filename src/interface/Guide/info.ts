@@ -5,6 +5,6 @@ import { Language } from './language';
 
 export interface Information {
 
-    langueges : Language;
+    languages : Language[];
     theme : string;
 }

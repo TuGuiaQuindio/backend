@@ -9,16 +9,13 @@
 import GuideInfoModel from '../Guide-info';
 //////////////////////////////////////////
 
-//Encontrar todos los GuideInfoModel registrados
+//!Encontrar todos los GuideInfoModel registrados
 export const getGuideInfoAll = async () => {
-	// connectDB();
-	const results = await GuideInfoModel.find();
-	// disconnection();
-	return  results;
+	return await GuideInfoModel.find();
 };
 
 //!Buscar por documento 
 //Encontrar un unico GuideInfo por Documento
-export const getGuideInfoOne = async (document : string) => {
+export const getGuideInfoOne = async (document : number) => {
 	return await GuideInfoModel.findOne({document});
 };
