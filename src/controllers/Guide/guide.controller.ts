@@ -4,6 +4,7 @@ import { Request, Response } from'express';
 ////////////////////////////////////////////////////////////////
 //IMPORTACIONES DE SERVICIOS
 import signup from '../../services/signup-db.service';
+import { getResponse } from '../../services/response-message.service';
 ////////////////////////////////////////////////////////////////
 //IMPORTAMOS LAS INTERFACES
 import { GuideSignup } from '../../interface/Guide/signup-guide';
@@ -31,12 +32,12 @@ export const guideSignup_post = async(req:Request, res:Response) => {
 			// Respondemos al Server
 			res.status(200).json({
 				register,
-				msg:'User signed up successfull'
+				...getResponse('R001')
 			});
 		}else {
 			console.log('-> User already exists !');
 			// Si no respondemos al cliente
-			res.status(403).json({ msg : 'User exists !!' });
+			res.status(403).json(getResponse('R002'));
 			
 		}
 	} catch (e) {
