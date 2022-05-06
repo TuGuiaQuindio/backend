@@ -8,12 +8,16 @@ import { GuideInfo } from '../interface/Guide/guideInfo';
 import { getGuideId } from '../model/entity/sql/transaction/find.g-c';
 import { updateGuide } from '../model/entity/sql/transaction/guide';
 //IMPORTAMOS DE TRANSACTIONS NoSQL
-import { createGuideInfo } from '../model/entity/nosql/transaction/guide-create.info';
+import { createGuideInfo } from '../model/entity/nosql/transaction/create.info-guide';
 import { getGuideInfoOne } from '../model/entity/nosql/transaction/find.g-c'; 
+import { updateGuideInfo } from '../model/entity/nosql/transaction/update.info-guide'; 
+////////////////////////////////////////////////
+//IMPORTAMOS ENTIDADES
+import { Guide } from '../model/entity/sql/Guide';
 ////////////////////////////////////////////////
 
 //SQL -> MySQL
-export const updateDataSql  = async (values : GuideSignup_extra) => {
+export const updateDataSql  = async (values : GuideSignup_extra) : Promise<boolean | undefined> => {
 	//Actualizar datos
 	//Definimos el tipo de usuario 'GUIDE'
 	values = values as GuideSignup_extra;
@@ -28,7 +32,7 @@ export const updateDataSql  = async (values : GuideSignup_extra) => {
 	 * Validamos si el usuario guia exite
 	 *  */
 	//Buscamos por el id 
-	const resultsGuide = await getGuideId(id);
+	const resultsGuide : Guide | null  = await getGuideId(id);
 	//Validamos si lo encontro
 	if(!resultsGuide){
 		// User NO exite
@@ -54,15 +58,22 @@ export const updateDataNoSql = async (values : GuideInfo) =>{
 	console.log(values.information.languages);
 	//Buscamos si exite ya la informacion 
 	//Si existe, se actualiza
+	console.log('*SEARCHING por este id->',values.id);
 	const results = await getGuideInfoOne(values.id); 
 	// Mostramos el dato obtenido
 	console.log('Guide-info got ::',results);
 	
 	if(results){
 		//Si el Guide-Info existe
+		//Exist Data
 		//Update data
-		//updateGuideInfo();
-
+		const resultsUpdate : boolean = await updateGuideInfo(values);
+		//ERROR ACTUALIZANDO DATOS
+		// UPDATE CORRUPTED
+		if(!resultsUpdate){return false;}
+		//OK ALL
+		//SI EXITE
+		return true;
 	}else{
 		//Not exist Data
 		//Creamos la informacion del guia
@@ -70,9 +81,6 @@ export const updateDataNoSql = async (values : GuideInfo) =>{
 		console.log('Service resultsGuide :: ',resultsGuide);
 		//False 
 		if (!resultsGuide){ return false; }
-		
+		return true;
 	}
-	
-	//True
-	// return resultsGuide;
 };

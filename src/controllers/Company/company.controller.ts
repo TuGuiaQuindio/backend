@@ -4,6 +4,7 @@ import { Request, Response } from 'express';
 /////////////////////////////////////////////////
 //IMPORTACIONES DE SERVICIOS
 import signup from '../../services/signup-db.service';
+import { getResponse } from '../../services/response-message.service';
 ////////////////////////////////////////////////
 //IMPORTACIONES DE INTERFACES
 import { CompanySignup } from '../../interface/Company/signup-company';
@@ -29,12 +30,12 @@ export const companySignup_post = async(req:Request, res:Response) => {
 			// Respondemos al Server
 			return res.status(200).json({
 				register,
-				msg:'User signed up successfull'
+				...getResponse('R001')
 			});
 		}else {
 			console.log('-> User already exists !');
 			// Si no respondemos al cliente
-			return res.status(303).json({ msg : 'User exists !!' });
+			return res.status(303).json(getResponse('R002'));
 			
 		}
 	} catch (e) {

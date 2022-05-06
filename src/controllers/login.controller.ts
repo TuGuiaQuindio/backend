@@ -4,6 +4,7 @@ import { Request, Response } from 'express';
 ////////////////////////////////////////////////////////////////
 // IMPORTACIONES DE SERVICIOS
 import authSrv from '../services/auth.service';
+import { getResponse } from '../services/response-message.service';
 ////////////////////////////////////////////////////////////////
 //IMPORTACIONES DE INTERFACES
 import { User } from '../interface/user';
@@ -25,12 +26,13 @@ export const loginPost = async (req:Request, res:Response) => {
 		// Si nos retorna un false es porque ocurrio un error
 		if(result === false){
 			// Respondemos al cliente
-			return res.status(401).json({msg:'Invalid Credentials'});
+			return res.status(401).json(getResponse('L002'));
 			// Por lo contrario repondemos
 		}else{
 			// console.log('token: ',token);
 			return res.status(200).json({
-				result
+				result,
+				...getResponse('L001')
 			});
 		}
 	}catch(e){// Si nos devuelve un error
