@@ -14,8 +14,8 @@ export const getGuideInfoAll = async () => {
 	return await GuideInfoModel.find();
 };
 
-//!Buscar por documento 
+//!Buscar por ID
 //Encontrar un unico GuideInfo por Documento
-export const getGuideInfoOne = async (document : number) => {
-	return await GuideInfoModel.findOne({document});
+export const getGuideInfoOne = async (id : number) => {
+	return await GuideInfoModel.findOne({id});
 };

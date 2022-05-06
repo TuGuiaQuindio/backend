@@ -1,5 +1,10 @@
-import { prop } from '@typegoose/typegoose';
+import { modelOptions, prop } from '@typegoose/typegoose';
 
+@modelOptions({
+	schemaOptions :  {
+		timestamps : true
+	}
+})
 export class Language{
 
 	@prop()

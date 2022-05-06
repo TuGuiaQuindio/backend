@@ -1,17 +1,12 @@
-/////////////////////////////////////////
+////////////////////////////////////////////////
 // IMPORTAMOS MODEL
 import GuideInfoModel from '../Guide-info'; 
-/////////////////////////////////////////
-//IMPORTAMOS ENTIDADES
-
-//////////////////////////////////////////
+////////////////////////////////////////////////
 //IMPORTAMOS INTERFACES
-// 1. Create an interface representing a document in MongoDB.
 import { GuideInfo } from '../../../../interface/Guide/guideInfo';
-
+////////////////////////////////////////////////
 //Transacion de datos 
 //Se encarga de actualizar los datos de usuario
-
 //Guardamos los datos de usuario GUIDE extras
 export const createGuideInfo = async ( values : GuideInfo ) : Promise<boolean> => {
 	
