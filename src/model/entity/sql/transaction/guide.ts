@@ -11,13 +11,13 @@ import { createRoles } from './roles';
 import { GuideSignup_extra } from '../../../../interface/Guide/signup-guide.extra';
 //////////////////////////////////////////
 //IMPORTAR FIND_GUIDE POR NoDocument
-import { validatedGuide } from './find.g-c';
+import { getGuideDoc } from './find.g-c';
 
 // ?CREATE -> Registrar nuevo Guia 
 export const createGuide = async (values: GuideSignup, password:string) : Promise<Guide | undefined> => {
 	
 	// Obtenemos el usuario a buscar
-	const userFound : boolean | undefined = await validatedGuide(values.NoDocument);
+	const userFound : boolean | undefined = await getGuideDoc(values.NoDocument);
 	console.log('Status User/Guide validado', userFound);
 	
 	// Validamos si el guia existe
@@ -34,8 +34,6 @@ export const createGuide = async (values: GuideSignup, password:string) : Promis
 		// pass haseado
 		password : password,
 	};
-	console.log(values, 'Values');
-	// console.log("Email de controller :22: ",guide.emailEmail);
 	////////////////////////////////////////////////
 	// Guardamos el email en ROLES
 	const {email, rol} = guide.rol;
@@ -52,11 +50,10 @@ export const createGuide = async (values: GuideSignup, password:string) : Promis
 	// Retornamos los resutados
 	return results;
 };
-
-/** 
- * ? UPDATE DATA
- */
-export const updateGuide = async ( id : number , guide : Guide, values : GuideSignup_extra) => {
+//? ////////////////////////////////////////////////////////////
+//? ////////////////////////////////////////////////////////////
+// ? UPDATE DATA
+export const updateGuide = async ( id : number , values : GuideSignup_extra) => {
 	//Actualizamos los datos
 	try{
 		const results = await dsource.getRepository(Guide).update(id, {
@@ -69,8 +66,7 @@ export const updateGuide = async ( id : number , guide : Guide, values : GuideSi
 		//Mostrar respuesta
 		console.log('FROM UPDATEGUIDE -> ', results);
 	}catch(err){
-		console.log('ERROR ::  updateGuide');
-		console.log(err);
+		console.log('ERROR ::  updateGuide :: ', err);
 		//ERROR
 		return false;
 	}

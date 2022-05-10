@@ -11,6 +11,3 @@ export class Information {
 		language : Language[];
 
 }
-//CREATE MODEL
-// const informacionModel = getModelForClass(Information);
-// export default informacionModel;

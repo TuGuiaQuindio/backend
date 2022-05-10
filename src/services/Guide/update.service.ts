@@ -9,9 +9,9 @@ import { GuideInfo } from '../../interface/Guide/guideInfo';
 import { getGuideId } from '../../model/entity/sql/transaction/find.g-c';
 import { updateGuide } from '../../model/entity/sql/transaction/guide';
 //IMPORTAMOS DE TRANSACTIONS NoSQL
-import { createGuideInfo } from '../../model/entity/nosql/transaction/create.info-guide';
+import { createGuideInfo } from '../../model/entity/nosql/transaction/guide';
+import { updateGuideInfo } from '../../model/entity/nosql/transaction/guide'; 
 import { getGuideInfoOne } from '../../model/entity/nosql/transaction/find.g-c'; 
-import { updateGuideInfo } from '../../model/entity/nosql/transaction/update.info-guide'; 
 ////////////////////////////////////////////////
 //IMPORTAMOS ENTIDADES
 import { Guide } from '../../model/entity/sql/Guide';
@@ -43,7 +43,7 @@ export const updateDataSql  = async (values : GuideSignup_extra) : Promise<boole
 	// User SI Exite
 	console.log('Results :: ',resultsGuide);
 	//send data to update
-	const dataUpdate : boolean = await updateGuide( id, resultsGuide, values);
+	const dataUpdate : boolean = await updateGuide( id, values);
 	//Retornamos con la respuesta
 	// ->todo salio correcto
 	return dataUpdate;
@@ -68,9 +68,7 @@ export const updateDataNoSql = async (values : GuideInfo) =>{
 		//Exist Data
 		//Update data
 		const resultsUpdate : boolean = await updateGuideInfo(values);
-		//ERROR ACTUALIZANDO DATOS
-		// UPDATE CORRUPTED
-		if(!resultsUpdate){return false;}
+		if(!resultsUpdate){return false;}//ERROR ACTUALIZANDO DATOS
 		//OK ALL
 		//SI EXITE
 		return true;
@@ -80,7 +78,7 @@ export const updateDataNoSql = async (values : GuideInfo) =>{
 		const resultsGuide : boolean = await createGuideInfo(values);
 		console.log('Service resultsGuide :: ',resultsGuide);
 		//False 
-		if (!resultsGuide){ return false; }
+		if (!resultsGuide) return false;
 		return true;
 	}
 };

@@ -1,14 +1,26 @@
+//IMPORTAMOS CONFIGURACIONES
 import { MySQLDataSource as dsource } from '../../../../config/datasources';
-import { CompanySignup } from '../../../../interface/Company/data-sql';
+////////////////////////////////////////////////
+//IMPORTAMOS ENTIDADES
 import { Company } from '../Company';
 import { createRoles } from './roles';
-
-////////////////////////////////////////////////
+import { getCompanyNit } from './find.g-c';
+/////////////////////////////////////////////////
+//IMPORTAMOS INTERFACES
+import { CompanySignup } from '../../../../interface/Company/data-sql';
+import { DataSql } from '../../../../interface/Company/data-sql';
+/////////////////////////////////////////////////
 
 // Controlador
 // Crea usuarios de tipo Compañia
 export const createCompany = async (values: CompanySignup, password : string) : Promise<Company | undefined> => {
 
+	// Obtenemos el usuario a buscar
+	const userFound : boolean = await getCompanyNit(values.nit);
+	// Validamos si el guia existe
+	if(userFound) return undefined;
+	
+	// Obtengo los datos del cliente por parametro
 	// Deconstruimos los datos 
 	const company = {
 		nameCompany : values.nameCompany,
@@ -18,13 +30,6 @@ export const createCompany = async (values: CompanySignup, password : string) : 
 		// pass haseado
 		password : password
 	};
-
-	// Obtenemos el usuario a buscar
-	const userFound : boolean = await validatedCompany(company.nit);
-	// Validamos si el guia existe
-	if(userFound) return undefined;
-	
-
 	//////////////////////////////////////////////
 	//Guardamos el email en ROLES
 	//Obtenemos rol y lo deconstruimos
@@ -42,11 +47,26 @@ export const createCompany = async (values: CompanySignup, password : string) : 
 	// Retornamos los resutados
 	return results;
 };
-// VALIDAR COMPAÑIA SI EXISTE
-const validatedCompany =  async ( nit : string ) : Promise< boolean > => {
-	// Busca el guia por el documento 
-	const guideFound = await dsource.getRepository(Company).findOne({ where : { nit } });
-	console.log('X- Usuario registrado -X ', guideFound);
-	// Retornamos y nos devuekve un booleano
-	return guideFound != undefined;
+
+//? ////////////////////////////////////////////////////////////
+//? ////////////////////////////////////////////////////////////
+// ? UPDATE DATA
+export const updateCompany = async  ( id : number, values : DataSql ) : Promise<boolean> => {
+	//Actualizamos los datos
+	try {
+		//Tratamos
+		const resultsUpdate = await dsource.getRepository(Company).update( id, {
+			nameCompany : values.nameCompany,
+			direction : values.direction,
+			phoneNumber : values.phoneNumber,
+		});
+		//Show Results
+		console.log('FROM UPDATECOMPANY :: ', resultsUpdate);
+	} catch (e) {
+		//Error
+		console.log('ERROR Update Company :: ',e);
+		return false;
+	}
+	// -> TODO OK
+	return true;
 };

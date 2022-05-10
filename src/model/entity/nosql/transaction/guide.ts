@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////
 // IMPORTAMOS MODEL
-import GuideInfoModel from '../Guide-info'; 
+import GuideInfoModel from '../Guide/GuideInfo'; 
 ////////////////////////////////////////////////
 //IMPORTAMOS INTERFACES
 import { GuideInfo } from '../../../../interface/Guide/guideInfo';
@@ -36,3 +36,30 @@ async function executeQuery(values : GuideInfo) {
 	//Show results
 	console.log(guideInfo);
 }
+
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+
+//ACTUALIZAR INFORMACION GUIA
+export const updateGuideInfo = async ( values : GuideInfo ) : Promise<boolean> => {
+	//Obtenemos el id
+	const id : number = values.id;
+	try {
+		//Actualizamos los datos
+		const results : null | GuideInfo = await GuideInfoModel.findOneAndUpdate({id}, {
+			information : {
+				theme : values.information.theme,
+				language : values.information.languages
+			}
+		});
+		//Show Results
+		console.log('RESULTS Update OK-> ',results);
+
+	} catch (error) {
+		console.log('ERROR updating DATA = ', error);
+		return false;
+	}
+	//OK ALL
+	return true;
+};

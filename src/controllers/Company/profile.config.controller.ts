@@ -27,9 +27,9 @@ export const  profileConfig_put = async (req:Request, res:Response) =>{
 	//Save or update data in MySQL and MongoDB
 	try {
 		// MySQL
-		const registerSql = updateDataSql({ id, nameCompany, direction, phoneNumber });
+		const registerSql = await updateDataSql({ id, nameCompany, direction, phoneNumber });
 		// MongoDB
-		const registerNoSql = updateDataNoSql({ id, mainActivity });
+		const registerNoSql = await updateDataNoSql({ id, mainActivity });
 		//Validar si los datos estan guardados correctamente	
 		if(registerNoSql == undefined || registerSql == undefined) {
 		// if(registerMysql == undefined){//Undefined

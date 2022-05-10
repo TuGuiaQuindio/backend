@@ -15,15 +15,14 @@ export const getRole = async (email : string) : Promise<Roles | null> => {
 //! //////////////////////////////////////////////////////
 //! //////////////////////////////////////////////////////
 // * --> GUIDE <--
-// !! Encontrar guias por medio del -> ID <-
+// !! Encontrar 'GUIDE' por medio del -> ID <-
 
 export const getGuideId = async ( id ?: number ) : Promise<Guide | null> => { 
 	//Buscamos el guia por el Id
 	return dsource.getRepository(Guide).findOne({ where : { id } });
 };
-
-// !! Encontrar guias por medio de -> NoDocument <-
-export const validatedGuide =  async ( NoDocument : string ) : Promise< boolean > => {
+// !! Encontrar 'GUIDE' por medio de -> NoDocument <-
+export const getGuideDoc =  async ( NoDocument : string ) : Promise< boolean > => {
 	// Busca el guia por el documento 
 	console.log('Entry validateGuide - transaction/find-guide');
 	const guideFound = await dsource.getRepository(Guide).findOne({ where : { NoDocument }});
@@ -31,23 +30,30 @@ export const validatedGuide =  async ( NoDocument : string ) : Promise< boolean 
 	// Retornamos y nos devuelve un booleano
 	return guideFound != undefined;
 };
-
-// !! Econtrar Guia por medio de -> Email <-
+// !! Econtrar 'GUIDE' por medio de -> Email <-
 export const getGuide = async (email: string) : Promise<Guide | null> =>{
 	// buscamos el guia 
 	return dsource.getRepository(Guide).findOne({ where : { rol: {email} } });
 };
 
+
 //! /////////////////////////////////////////////////////
 //! /////////////////////////////////////////////////////
 // * --> COMPANY <--
-// ! Econtrar Empresa por medio de -> ID <-
+// ! Econtrar 'COMPANY' por medio de -> ID <-
 export const getCompanyId = async (id : number) : Promise<Company | null> => {
 	return dsource.getRepository(Company).findOne({ where : { id }});
 };
-
-// !! Econtrar Empresa por medio de -> Email <-
+// !! Econtrar 'COMPANY' por medio de -> Email <-
 export const getCompany = async (email: string): Promise<Company | null> =>{
 	// Buscamos la Compañia-Empresa
 	return dsource.getRepository(Company).findOne({ where : { rol: {email} } });
+};
+// !! Encontrar 'COMPANY' por medio de -> Nit <-
+export const getCompanyNit =  async ( nit : string ) : Promise< boolean > => {
+	// Busca el guia por el documento 
+	const guideFound = await dsource.getRepository(Company).findOne({ where : { nit } });
+	console.log('X- Usuario registrado -X ', guideFound);
+	// Retornamos y nos devuekve un booleano
+	return guideFound != undefined;
 };
