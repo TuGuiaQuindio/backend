@@ -1,5 +1,4 @@
 // CONTROLADOR DE COMPAÑIA
-
 import { Request, Response } from 'express';
 /////////////////////////////////////////////////
 //IMPORTACIONES DE SERVICIOS
@@ -7,14 +6,7 @@ import signup from '../../services/signup-db.service';
 import { getResponse } from '../../services/response-message.service';
 ////////////////////////////////////////////////
 //IMPORTACIONES DE INTERFACES
-import { CompanySignup } from '../../interface/Company/signup-company';
-////////////////////////////////////////////////
-//->>RUTA GET
-export const companySignup_get = async(req:Request, res:Response) => {
-
-	res.send('Signup company');
-};
-
+import { CompanySignup } from '../../interface/Company/data-sql';
 /////////////////////////////////////////////////////
 //->>RUTA POST
 export const companySignup_post = async(req:Request, res:Response) => {
@@ -41,8 +33,6 @@ export const companySignup_post = async(req:Request, res:Response) => {
 	} catch (e) {
 		console.error(e);
 		// Respondemos al servidor 
-		return res.status(422).json({
-			mgs:'Error'
-		});
+		return res.status(500).json(getResponse('E001'));
 	}
 };

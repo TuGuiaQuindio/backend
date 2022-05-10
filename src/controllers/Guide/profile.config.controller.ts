@@ -1,42 +1,40 @@
+// GUIDE
 //CONTROLADOR DE PROFILE/CONFIG
 import { Request, Response } from 'express';
 
 /////////////////////////////////////////
 // IMPORTAMOS SERVICIOS
-import { updateDataSql, updateDataNoSql } from '../../services/update.service';
-import { pullApartToken, verifyToken } from '../../services/token.service';
+import { updateDataSql, updateDataNoSql } from '../../services/Guide/update.service';
+import { getId } from '../../services/token.service';
 ////////////////////////////////////////
 //IMPORTAMOS INTERFACES
 import { GuideSignup_extra } from '../../interface/Guide/signup-guide.extra';
 import { GuideInfo } from '../../interface/Guide/guideInfo';
-import { Payload } from '../../interface/payload-token';
 ////////////////////////////////////////////////////////////////
 
-//->> RUTA POST
+//->> RUTA PUT
 //Validar datos de entrada
 export const profileConfig_put = async (req:Request, res:Response) => { 
 	//Obtenemos cabecera
-	// const { authorization } = req.headers;
 	const authorization : string | undefined = req.headers.authorization;
 	//Obtenemos el ID del Headers
 	const id : number = await getId(authorization);
-	console.log('-> ID payload :: ', id);
-	if(id == 0) return res.status(500).json({ error:'ID Not Found - Unauthorized' });
-	
+	console.log('-> ID payload - Guide :: ', id);
+	if(id == 0) return res.status(422).json({ error:'ID Not Found - Unauthorized' });
 	// Get Data to configure for the 'Body'
 	const { firstName, lastName, dataOfBirth, city, phoneNumber } = req.body as GuideSignup_extra;
 	const { information } = req.body as GuideInfo;
-	// console.log('Id user to update :: ',id);
 	//Save or update data in MySQL and MongoDB
 	try {
-		const registerMysql : boolean | undefined = await updateDataSql( { id, firstName, lastName, dataOfBirth, city, phoneNumber} );
-		const registerMongo : boolean | undefined = await updateDataNoSql( { id, information } );
+		// MySQL
+		const registerSql : boolean | undefined = await updateDataSql( { id, firstName, lastName, dataOfBirth, city, phoneNumber} );
+		// MongoDB
+		const registerNoSql : boolean | undefined = await updateDataNoSql( { id, information } );
 		//Validar si los datos estan guardados correctamente	
-		if(registerMongo == undefined || registerMysql == undefined) {
+		if(registerNoSql == undefined || registerSql == undefined) {
 		// if(registerMysql == undefined){//Undefined
 			return res.status(404).json({ msg : 'Error :: User doesn`t exist' });
-		
-		}else if(!registerMysql || !registerMongo){//false
+		}else if(!registerSql || !registerNoSql){//false
 			return res.status(500).json({ msg : 'ERROR :: There was an error updating data'});
 		}else {//True
 			//Existe el registro
@@ -47,26 +45,3 @@ export const profileConfig_put = async (req:Request, res:Response) => {
 		res.status(500).json({ msg : 'Error :: ' });
 	}
 };
-
-//Funcion solo para obtener el token
-async function getToken(authorization ?: string) : Promise<string>{
-	//VAlidamos de que si llegue
-	if (!authorization) return '';
-	//Decodificamos cabecera para asi obtener el id
-	const token : string = await pullApartToken( authorization );
-	return token;
-}
-
-//Obtenemos el ID que nos da el token en el payload
-async function getId( authorization ?: string) : Promise<number> {
-	//Validamos el token
-	if (!authorization) return 0;
-	//Obtenemos el token
-	const token : string = await getToken( authorization );
-	//Decode token
-	const decodeToken = await verifyToken(token) as Payload;
-	//Data token
-	//Decosntruccion, {id}
-	const { id } = decodeToken;
-	return id;
-}

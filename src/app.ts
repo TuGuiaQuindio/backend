@@ -6,11 +6,13 @@ const app :  Application = express();
 import routerLogin from './routes/login.routes';
 //Company
 import routerCompanySingup from './routes/Company/company-signup.routes';
+import routerCompanyProfileConfig from './routes/Company/profile.config.routes';
 //Guide
 import routerGuideSignup from './routes/Guide/guide-signup.routes';
 import routerGuideProfileConfig from './routes/Guide/profile.config.routes';
 //
 import routerHome from './routes/home.routes';
+
 //////////////////////////////////////////
 //MORGAN
 import morgan from 'morgan';
@@ -25,8 +27,9 @@ import { connectDB } from './model/entity/nosql/conection/conection-mongodg';
 // Connexion a la db
 connectDB();
 ///////////////////////////////////////////
+//OPCIONES DE LOS CORS
 const originOptions : cors.CorsOptions = {
-	origin : 'http://localhost:3000'
+	origin : new RegExp(process.env.CORS_ORIGIN as string ?? 'http://localhost:3000')
 };
 // Middlewares
 
@@ -43,6 +46,7 @@ app.use(routerGuideSignup);
 app.use(routerCompanySingup);
 app.use(routerHome);
 app.use(routerGuideProfileConfig);
+app.use(routerCompanyProfileConfig);
 ///////////////////////////////////////////////
 //Exporting app
 export default app;

@@ -8,7 +8,7 @@ import path from '../paths/index';
 import signUpValidator from '../../validator/company-signup';
 ////////////////////////////////////////////
 //IMPORTACIONES DE CONTROLADORES
-import { companySignup_get, companySignup_post } from '../../controllers/Company/company.controller'; 
+import { companySignup_post } from '../../controllers/Company/company.controller'; 
 // Obtenemos las rutas
 const router = express.Router();
 /////////////////////////////////////////////////
@@ -18,7 +18,6 @@ const router = express.Router();
 const { params, validate } = signUpValidator;
 // RUTA '/company/signup'
 router.route(path.signupCompany)
-	.get(companySignup_get)
 	.post(params, validate, companySignup_post );
 
 ////////////////////////////////////////////////////7

@@ -1,7 +1,5 @@
-////////////////////////////////////////////////
-
 import { MySQLDataSource as dsource } from '../../../../config/datasources';
-import { CompanySignup } from '../../../../interface/Company/signup-company';
+import { CompanySignup } from '../../../../interface/Company/data-sql';
 import { Company } from '../Company';
 import { createRoles } from './roles';
 

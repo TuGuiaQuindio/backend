@@ -1,30 +1,30 @@
+// GUIA
 // Actualizamos datos de tipo de usuario
 ////////////////////////////////////////////////
 //IMPORTAMOS INTERFACES
-import { GuideSignup_extra } from '../interface/Guide/signup-guide.extra';
-import { GuideInfo } from '../interface/Guide/guideInfo';
+import { GuideSignup_extra } from '../../interface/Guide/signup-guide.extra';
+import { GuideInfo } from '../../interface/Guide/guideInfo';
 ////////////////////////////////////////////////
 //IMPORTAMOS DE TRANSACTIONS SQL
-import { getGuideId } from '../model/entity/sql/transaction/find.g-c';
-import { updateGuide } from '../model/entity/sql/transaction/guide';
+import { getGuideId } from '../../model/entity/sql/transaction/find.g-c';
+import { updateGuide } from '../../model/entity/sql/transaction/guide';
 //IMPORTAMOS DE TRANSACTIONS NoSQL
-import { createGuideInfo } from '../model/entity/nosql/transaction/create.info-guide';
-import { getGuideInfoOne } from '../model/entity/nosql/transaction/find.g-c'; 
-import { updateGuideInfo } from '../model/entity/nosql/transaction/update.info-guide'; 
+import { createGuideInfo } from '../../model/entity/nosql/transaction/create.info-guide';
+import { getGuideInfoOne } from '../../model/entity/nosql/transaction/find.g-c'; 
+import { updateGuideInfo } from '../../model/entity/nosql/transaction/update.info-guide'; 
 ////////////////////////////////////////////////
 //IMPORTAMOS ENTIDADES
-import { Guide } from '../model/entity/sql/Guide';
+import { Guide } from '../../model/entity/sql/Guide';
 ////////////////////////////////////////////////
 
 //SQL -> MySQL
 export const updateDataSql  = async (values : GuideSignup_extra) : Promise<boolean | undefined> => {
 	//Actualizar datos
 	//Definimos el tipo de usuario 'GUIDE'
-	values = values as GuideSignup_extra;
-	console.log('******** Update Service MySQL ************');
+	// values = values as GuideSignup_extra;
+	console.log('******** Update GUIDE Service MySQL ************');
 	console.log('GET DATA FOR MySQL:: ', values);
-	
-	//Convertimos el id en Numerico
+	//Obtenemos el id
 	const id : number | undefined = values.id;
 	//Validamos si exite
 	if(!id) return false;
@@ -52,8 +52,8 @@ export const updateDataSql  = async (values : GuideSignup_extra) : Promise<boole
 //NoSQL -> MONGO
 export const updateDataNoSql = async (values : GuideInfo) =>{
 	//
-	values = values as GuideInfo;
-	console.log('********* Update Service MongoDB **********');
+	//values = values as GuideInfo;
+	console.log('********* Update GUIDE Service MongoDB **********');
 	console.log('GET DATA FOR MongoDB :: ', values);
 	console.log(values.information.languages);
 	//Buscamos si exite ya la informacion 

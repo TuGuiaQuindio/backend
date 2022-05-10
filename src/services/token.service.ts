@@ -1,11 +1,16 @@
+///////////////////////////////////////////////////////////
+//IMPORTACIONES DE INTERFACES
+import { Payload } from '../interface/payload-token';
+///////////////////////////////////////////////////////////
 import jwt from 'jsonwebtoken';
-
-// import config from '../config/index';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 
-// Generamos y validamos los tokens
 
+
+
+////////////////////////////////////////////////////////////
+// Generamos y validamos los tokens
 export const createToken = async ( email:string, rol: number, id?: number, options?: Partial<jwt.SignOptions> ) : Promise<string> => {
 	//leemos llave
 	const key : Buffer = await readKey();
@@ -47,3 +52,20 @@ export const decodeToken = async ( token: string, key : Buffer ) =>{
 export const pullApartToken = async ( data : string ) : Promise<string> => { 
 	return data.split(' ')[1];
 };
+
+//////////////////////////////////////////////////
+//OBTENER DATOS DEL TOKEN
+//OBTENER SOLO EL ID DEL PAYLOAD
+//Obtenemos el ID que nos da el token en el payload
+export async function getId( authorization ?: string) : Promise<number> {
+	//Validamos el token
+	if (!authorization) return 0;
+	//Obtenemos el token
+	const token : string = await pullApartToken( authorization );
+	//Decode token
+	const decodeToken = await verifyToken(token) as Payload;
+	//Data token
+	//Decosntruccion, {id}
+	const { id } = decodeToken;
+	return id;
+}

@@ -23,9 +23,6 @@ export class Company {
 	@Column({default : null})
 		direction : string;
 
-	@Column({default : null})
-		mainActivity : string;
-
 	@OneToOne(()=> Roles)
 	@JoinColumn()
 		rol : Roles;
