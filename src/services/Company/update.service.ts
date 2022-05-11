@@ -54,10 +54,10 @@ export const updateDataNoSql = async ( values : DataNoSql ) : Promise<boolean | 
 	const results = await getCompanyInfoOne(values.id);
 	//Show results
 	console.log(results);
-	
+	//Validamos
 	if (results) {
 		// if User exits -> Data Update
-		const update : boolean = await updateCompanyInfo();
+		const update : boolean = await updateCompanyInfo(values);
 		//Si ocurre un error
 		if(!update) return false;
 		//SI TODO OK
@@ -65,7 +65,7 @@ export const updateDataNoSql = async ( values : DataNoSql ) : Promise<boolean | 
 	}
 	//Else User not exits -> Create Data
 	//Creamos la informacion
-	const createInfo : boolean = await createCompanyInfo();
+	const createInfo : boolean = await createCompanyInfo(values);
 	console.log('Service Results Company :: ', createInfo);
 	//Validamos 
 	if(!createInfo) return false;//Ocurrio un error

@@ -9,7 +9,6 @@ import { GuideInfo } from '../../../../interface/Guide/guideInfo';
 //Se encarga de actualizar los datos de usuario
 //Guardamos los datos de usuario GUIDE extras
 export const createGuideInfo = async ( values : GuideInfo ) : Promise<boolean> => {
-	
 	console.log('CREANDO INFO GUIDE...');
 	try {
 		await executeQuery(values);
@@ -34,7 +33,7 @@ async function executeQuery(values : GuideInfo) {
 	//Save Guide
 	await guideInfo.save();
 	//Show results
-	console.log(guideInfo);
+	console.log('GuideInfo Results : ',guideInfo);
 }
 
 ////////////////////////////////////////////////////////////////
@@ -43,6 +42,7 @@ async function executeQuery(values : GuideInfo) {
 
 //ACTUALIZAR INFORMACION GUIA
 export const updateGuideInfo = async ( values : GuideInfo ) : Promise<boolean> => {
+	console.log('Actualizando Datos...');
 	//Obtenemos el id
 	const id : number = values.id;
 	try {
