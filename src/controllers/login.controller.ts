@@ -16,7 +16,7 @@ export const loginGet = (req:Request, res:Response) => {
 };
 ////////////////////////////////////////////////////////////////
 // ->>RUTA POST
-export const loginPost = async (req:Request, res:Response) => {
+export const loginPost = async (req:Request, res:Response) : Promise<Response> => {
 	// Obtenemos los datos del body
 	const { email, password } = req.body as User;
 	try{

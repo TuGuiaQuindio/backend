@@ -14,7 +14,7 @@ import { DataNoSql, DataSql } from '../../interface/Company/data-sql';
 /////////////////////////////////////////////////
 
 // ->> RUTA PUT
-export const  profileConfig_put = async (req:Request, res:Response) =>{
+export const  profileConfig_put = async (req:Request, res:Response) : Promise<Response> =>{
 	//Obtenemos cabecera
 	const authorization : string | undefined = req.headers.authorization;
 	//Obtenemos el ID del headers

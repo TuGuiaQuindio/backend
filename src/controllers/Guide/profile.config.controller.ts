@@ -14,7 +14,7 @@ import { GuideInfo } from '../../interface/Guide/guideInfo';
 
 //->> RUTA PUT
 //Validar datos de entrada
-export const profileConfig_put = async (req:Request, res:Response) => { 
+export const profileConfig_put = async (req:Request, res:Response) : Promise<Response> => { 
 	//Obtenemos cabecera
 	const authorization : string | undefined = req.headers.authorization;
 	//Obtenemos el ID del Headers
@@ -42,6 +42,6 @@ export const profileConfig_put = async (req:Request, res:Response) => {
 		}
 	}catch(err){
 		console.log(err);
-		res.status(500).json({ msg : 'Error :: ' });
+		return res.status(500).json({ msg : 'Error :: ' });
 	}
 };
