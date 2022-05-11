@@ -6,7 +6,7 @@ import { Response, Request } from 'express';
 /////////////////////////////////////////////////
 //IMPORTACIONES DE SERVICIOS
 import { getResponse } from '../../services/response-message.service';
-import { getId } from '../../services/token.service';
+import { getId, getRole } from '../../services/token.service';
 import { updateDataSql, updateDataNoSql } from '../../services/Company/update.service';
 /////////////////////////////////////////////////
 //IMPORTACIONES DE INTERFACES
@@ -19,7 +19,12 @@ export const  profileConfig_put = async (req:Request, res:Response) : Promise<Re
 	const authorization : string | undefined = req.headers.authorization;
 	//Obtenemos el ID del headers
 	const id : number = await getId(authorization); 
-	console.log('-> ID payload - Company :: ', id);
+	//Obtenemos el rol
+	const rol : number = await getRole(authorization);
+	// Validamos el rol que coincida
+	if(rol != 2) return res.status(403).json(getResponse('A002'));
+	//CONTINUA
+	console.log('-> payload - Company :: ID:',id ,'- ROL:',rol);
 	if(id == 0) return res.status(422).json({ error:'ID Not found - Unauthorized' });
 	//Obtenemos los datos del body
 	const { nameCompany, direction, phoneNumber } = req.body as DataSql ;

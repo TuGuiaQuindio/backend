@@ -69,3 +69,16 @@ export async function getId( authorization ?: string) : Promise<number> {
 	const { id } = decodeToken;
 	return id;
 }
+
+export async function getRole( authorization ?: string) : Promise<number> {
+	//Validamos el token
+	if (!authorization) return 0;
+	//Obtenemos el token
+	const token : string = await pullApartToken( authorization );
+	//Decode token
+	const decodeToken = await verifyToken(token) as Payload;
+	//Data token
+	//Decosntruccion, {id}
+	const { rol } = decodeToken;
+	return rol;
+}

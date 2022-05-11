@@ -5,7 +5,8 @@ import { Request, Response } from 'express';
 /////////////////////////////////////////
 // IMPORTAMOS SERVICIOS
 import { updateDataSql, updateDataNoSql } from '../../services/Guide/update.service';
-import { getId } from '../../services/token.service';
+import { getId, getRole } from '../../services/token.service';
+import { getResponse } from '../../services/response-message.service';
 ////////////////////////////////////////
 //IMPORTAMOS INTERFACES
 import { GuideSignup_extra } from '../../interface/Guide/signup-guide.extra';
@@ -19,7 +20,12 @@ export const profileConfig_put = async (req:Request, res:Response) : Promise<Res
 	const authorization : string | undefined = req.headers.authorization;
 	//Obtenemos el ID del Headers
 	const id : number = await getId(authorization);
-	console.log('-> ID payload - Guide :: ', id);
+	//Obtenemos el rol
+	const rol : number = await getRole(authorization);
+	// Validamos el rol que coincida
+	console.log('-> payload - Guide :: ID:',id ,'- ROL:',rol);
+	if(rol != 1) return res.status(403).json(getResponse('A002'));
+	//CONTINUA
 	if(id == 0) return res.status(422).json({ error:'ID Not Found - Unauthorized' });
 	// Get Data to configure for the 'Body'
 	const { firstName, lastName, dataOfBirth, city, phoneNumber } = req.body as GuideSignup_extra;
