@@ -4,6 +4,8 @@ const company = '/company';
 const signup = '/signup';
 const profile = '/profile';
 const config = '/config';
+const upload = '/upload';
+const photo = '/photo';
 
 // * Todos los paths del server, las rutas
 export default {
@@ -14,4 +16,5 @@ export default {
 	home : '/home',
 	guideProfileConfig : guide + profile + config,
 	CompanyProfileConfig : company + profile + config,
+	guideUploadPhoto : guide + profile + upload + photo,
 };

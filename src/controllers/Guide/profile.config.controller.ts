@@ -2,12 +2,12 @@
 //CONTROLADOR DE PROFILE/CONFIG
 import { Request, Response } from 'express';
 
-/////////////////////////////////////////
+////////////////////////////////////////////////////////////////
 // IMPORTAMOS SERVICIOS
 import { updateDataSql, updateDataNoSql } from '../../services/Guide/update.service';
 import { getId, getRole } from '../../services/token.service';
 import { getResponse } from '../../services/response-message.service';
-////////////////////////////////////////
+////////////////////////////////////////////////////////////////
 //IMPORTAMOS INTERFACES
 import { GuideSignup_extra } from '../../interface/Guide/signup-guide.extra';
 import { GuideInfo } from '../../interface/Guide/guideInfo';

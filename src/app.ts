@@ -10,6 +10,7 @@ import routerCompanyProfileConfig from './routes/Company/profile.config.routes';
 //Guide
 import routerGuideSignup from './routes/Guide/guide-signup.routes';
 import routerGuideProfileConfig from './routes/Guide/profile.config.routes';
+import routerGuideProfileUploadPhoto from './routes/Guide/photo.upload.routes';
 //
 import routerHome from './routes/home.routes';
 
@@ -42,11 +43,15 @@ app.use(express.json());
 // ------> Routes <-------
 // Utilizamos las rutas
 app.use(routerLogin);
-app.use(routerGuideSignup);
-app.use(routerCompanySingup);
 app.use(routerHome);
-app.use(routerGuideProfileConfig);
+// ---> Company <---
+app.use(routerCompanySingup);
 app.use(routerCompanyProfileConfig);
+// ---> Guide <---
+app.use(routerGuideSignup);
+app.use(routerGuideProfileConfig);
+app.use(routerGuideProfileUploadPhoto);
+///////////////////////////////////////////////
 ///////////////////////////////////////////////
 //Exporting app
 export default app;
