@@ -3,31 +3,34 @@
 import { GuideInfo } from '../../interface/Guide/guideInfo';
 /////////////////////////////////////////////////////////////
 // IMPORTAMOS TRANSACCIONES
-import { createInfoImg, updateInfoImg } from '../../model/entity/nosql/transaction/guide';
+import { createInfoImg } from '../../model/entity/nosql/transaction/guide';
 import { getGuideInfoOne } from '../../model/entity/nosql/transaction/find.g-c';
+/////////////////////////////////////////////////////////////
+//IMPORTAMOS ENTIDADES
 import { ImageGuide } from '../../model/entity/nosql/Guide/Image';
 /////////////////////////////////////////////////////////////
 
 
 //Guardamos los datos del archivo
 export const saveInfoImg = async ( id: number, values : GuideInfo) : Promise<boolean | undefined | null> => {
-	console.log('SEARCHING IMG...');
+	console.log('----------------------------------------------------------------');
+	console.log('SEARCHING INFO IMG...');
 	//Buscamos si exite la Info de foto
 	const foundInfoGuide = await getGuideInfoOne(id);
 	console.log('results guideInfo: : ',foundInfoGuide,'\n',values.information.images);
 	//Validamos si la info EXISTE
 	if (!foundInfoGuide) {
-		console.log('INFORMACION NO EXISTE');
+		console.log('NOT EXIST INFORMATION');
 		return null;
 	}
 	
-	//OBTENEMOS DATOS DEL CLIENTE
+	//OBTENEMOS DATOS DEL CLIENTE en matriz
 	const dataCli : Array<ImageGuide> = values.information.images;
 	//Obtenemos el _id del objeto encontrado
 	const objId : object = foundInfoGuide._id;
 	//Obtenemos datos en matriz
-	const dataInfoImg : Array<ImageGuide> = foundInfoGuide.information.image;
-	//Obtenemos validador -> si existe info previa
+	const dataInfoImg : Array<ImageGuide> = foundInfoGuide.information.images;
+	//Respuesta de validador -> si existe info previa
 	const resultsData : boolean = await dataExist(dataInfoImg, dataCli); 
 	//Si los datos existen
 	//NO crear
@@ -50,7 +53,7 @@ export const saveInfoImg = async ( id: number, values : GuideInfo) : Promise<boo
 /////////////////////////////////////////////////////////////
 //VALIDAMOS SI LA INFO YA EXISTE
 async function dataExist( data : Array<ImageGuide>, dataCli : Array<ImageGuide> ) : Promise<boolean> {
-	//
+	//obtenemos la info
 	const infoCli : ImageGuide = dataCli[0];
 	//Obtemos el nombre del archivo del cliente
 	const origNameCli : string = infoCli.originalName; 

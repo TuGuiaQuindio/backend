@@ -26,6 +26,7 @@ export interface Image {
 export interface Document{
     title : string;
     description : string;
+    originalName : string;
     size : number;
     path : string;
 }

@@ -19,8 +19,8 @@ export class Information {
 	@prop({
 		type: () => [ImageGuide],
 		_id : false,})
-		image : ImageGuide[];
+		images : ImageGuide[];
 
 	@prop({type: () => [DocumentGuide]})
-		document : DocumentGuide[];
+		documents : DocumentGuide[];
 }

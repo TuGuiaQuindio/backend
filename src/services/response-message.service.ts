@@ -23,7 +23,7 @@ export const responses: ResponseMessage[] = [
 	{ code: 'U001', msg: 'Archivo ya existe' },
 	{ code: 'U002', msg: 'Información no existe' },
 	{ code: 'U003', msg: 'Error en guardar datos en DB' },
-	{ code: 'U004', msg: 'Info-Foto guardada exitosamente' },
+	{ code: 'U004', msg: 'Info-Archivo guardada exitosamente' },
 	
 ];
 

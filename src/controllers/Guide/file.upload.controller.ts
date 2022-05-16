@@ -7,9 +7,9 @@ import { GuideInfo } from '../../interface/Guide/guideInfo';
 /////////////////////////////////////////////////////
 //IMPORTAMOS SERVICIOS
 import { pullApartMimetype, saveInfoImg } from '../../services/Guide/uploadImg.service';
+import { saveInfoDoc } from '../../services/Guide/uploadDoc.service';
 import { getId, getRole } from '../../services/token.service';
 import { getResponse } from '../../services/response-message.service';
-import { title } from 'process';
 /////////////////////////////////////////////////////
 /////////////////////////////////////////////////////
 export const uploadFile = async (req : Request, res : Response) => {
@@ -41,6 +41,7 @@ export const uploadFile = async (req : Request, res : Response) => {
 		infoDocu(req, res, id, title, description);
 	}
 };
+
 ////////////////////////////////////////////////////////////////////
 const infoDocu = async (req : Request, res : Response, id:number, title:string, description:string) => {
 	//Obtenemos datos
@@ -50,6 +51,7 @@ const infoDocu = async (req : Request, res : Response, id:number, title:string, 
 				{
 					title : title,
 					description : description,
+					originalName : req.file?.originalname,
 					size : req.file?.size,
 					path : req.file?.path
 				},
@@ -59,10 +61,26 @@ const infoDocu = async (req : Request, res : Response, id:number, title:string, 
 	console.log('Data File Client: ', data);
 
 	try {
-		//
-		
+		//Obtenemos el id
+		const results : boolean | undefined | null = await saveInfoDoc(id,data);
+		//Validamos respuesta
+		if(results == null){
+			//Undefined
+			//Info no existe
+			return res.status(404).json(getResponse('U002'));
+		}else if(!results){
+			//false
+			//Datos ya existe
+			return res.status(422).json(getResponse('U001'));
+		}else if(results == undefined){
+			//error en guardar en DB
+			return res.status(500).json(getResponse('U003'));
+		}
+		//ALL OK
+		return res.status(200).json(getResponse('U004'));
 	} catch (err) {
 		console.log(err);
+		return res.status(500).json(getResponse('E001'));
 	}
 	
 };

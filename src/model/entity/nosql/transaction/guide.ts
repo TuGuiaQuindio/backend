@@ -68,11 +68,9 @@ export const updateGuideInfo = async ( values : GuideInfo ) : Promise<boolean> =
 
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////
 // !IMAGENES
-// ? Guardar informacion de Archivos
+// ? Guardar informacion de Archivos -> Img
 export const createInfoImg = async ( id: object, values : GuideInfo ) : Promise<boolean> => {
-	//Obtenemos el id
 	console.log('FROM TRANSACTION');
 	try {
 		await executeQueryCreateInfoImg(id, values);
@@ -84,7 +82,7 @@ export const createInfoImg = async ( id: object, values : GuideInfo ) : Promise<
 };
 async function executeQueryCreateInfoImg(objId : object , values : GuideInfo){
 	//Actualizamos datos
-	const resultsInfo = await GuideInfoModel.findByIdAndUpdate(objId, { $push : { 'information.image': [...values.information.images]}});
+	const resultsInfo = await GuideInfoModel.findByIdAndUpdate(objId, { $push : { 'information.images': [...values.information.images]}});
 	console.log(resultsInfo);
 }
 
@@ -106,4 +104,24 @@ export const updateInfoImg = async (id : number, values : GuideInfo) : Promise<b
 
 async function executeQueryUpdateInfoImg(id : number, values : GuideInfo) {
 	//
+}
+
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+//!DOCUMENTS
+export const createInfoDoc = async (objId : object, values : GuideInfo) : Promise<boolean> => {
+	console.log('FROM TRANSACTION');
+	//Tratamos
+	try {
+		await executeQueryCreateInfoDoc(objId,values);
+	} catch (err) {
+		console.log('ERROR :: ',err);
+		return false;
+	}
+	return true;
+};
+async function executeQueryCreateInfoDoc(objId : object, values : GuideInfo) {
+	//Ingresamos datos
+	const resultsInfo = await GuideInfoModel.findByIdAndUpdate(objId, { $push : { 'information.documents' : [...values.information.documents] } });
+	console.log(resultsInfo);
 }

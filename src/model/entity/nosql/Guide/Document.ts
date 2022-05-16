@@ -10,6 +10,9 @@ export class DocumentGuide {
 	
 	@prop()
 		description : string;
+	
+	@prop({ type : ()=> String })
+		originalName : string;
 
 	@prop({type: () => Number})
 		size : number;
