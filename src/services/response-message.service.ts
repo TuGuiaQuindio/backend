@@ -16,7 +16,7 @@ export const responses: ResponseMessage[] = [
 	//ERRORES
 	{ code: 'E001', msg: 'Error interno del servidor' },
 	{ code: 'E002', msg: 'Credemciales invalidas' },
-	//
+	//Autenticacion
 	{ code: 'A001', msg: 'Unauthorized : Es necesario autenticar' },
 	{ code: 'A002', msg: 'Unauthorized : El cliente no posee los permisos suficientes' },
 	//Upload File
