@@ -4,8 +4,7 @@ import { Request, Response, NextFunction } from 'express';
 // IMPORTAMOS SERVICIOS
 import { verifyToken, pullApartToken } from '../services/token.service';
 import { getResponse } from '../services/response-message.service';
-
-
+////////////////////////////////////////////////////////////////////////////
 
 export const isAuth = async (req: Request, res: Response, next: NextFunction) => {
 	// Obtengo el token JWT 

@@ -30,7 +30,7 @@ export const guideSignup_post = async(req:Request, res:Response) : Promise<Respo
 			// Respondemos al Server
 			return res.status(200).json({
 				register,
-				...getResponse('R001')
+				...getResponse('R200')
 			});
 		}else {
 			console.log('-> User already exists !');

@@ -7,6 +7,8 @@
 //////////////////////////////////////////
 // IMPORTACIONES DE NOSQL-TRANSACTION
 import GuideInfoModel from '../Guide/GuideInfo';
+// import ImageGuideModel from '../Guide/Image';
+
 import CompanyInfoModel from '../Company/CompnayInfo';
 //////////////////////////////////////////
 
@@ -23,6 +25,11 @@ export const getGuideInfoOne = async (id : number) => {
 //!Encontrar -> todos <- los GuideInfoModel registrados
 export const getGuideInfoAll = async () => {
 	return await GuideInfoModel.find();
+};
+// !Encontrar por ->ID<- Imagen
+export const getImgGuideId = async (id: number) => {
+	return await GuideInfoModel.findOne({id});
+
 };
 
 //! /////////////////////////////////////////////////////////////////

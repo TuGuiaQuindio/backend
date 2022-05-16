@@ -32,15 +32,13 @@ export const loginPost = async (req:Request, res:Response) : Promise<Response> =
 			// console.log('token: ',token);
 			return res.status(200).json({
 				result,
-				...getResponse('L001')
+				...getResponse('L200')
 			});
 		}
 	}catch(e){// Si nos devuelve un error
 		// Mostramos el error
 		console.log(e);
 		// Respondemos al server
-		return res.status(401).json({
-			msg: 'Invalid Credentials'
-		});
+		return res.status(401).json(getResponse('E002'));//Invalid credentials
 	}
 };

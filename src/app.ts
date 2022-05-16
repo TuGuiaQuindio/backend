@@ -10,7 +10,7 @@ import routerCompanyProfileConfig from './routes/Company/profile.config.routes';
 //Guide
 import routerGuideSignup from './routes/Guide/guide-signup.routes';
 import routerGuideProfileConfig from './routes/Guide/profile.config.routes';
-import routerGuideProfileUploadPhoto from './routes/Guide/photo.upload.routes';
+import routerGuideProfileUploadPhoto from './routes/Guide/file.upload.routes';
 //
 import routerHome from './routes/home.routes';
 

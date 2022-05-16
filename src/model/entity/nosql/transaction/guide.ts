@@ -1,6 +1,7 @@
 ////////////////////////////////////////////////
 // IMPORTAMOS MODEL
 import GuideInfoModel from '../Guide/GuideInfo'; 
+// import ImageGuideModel from '../Guide/Image';
 ////////////////////////////////////////////////
 //IMPORTAMOS INTERFACES
 import { GuideInfo } from '../../../../interface/Guide/guideInfo';
@@ -63,3 +64,46 @@ export const updateGuideInfo = async ( values : GuideInfo ) : Promise<boolean> =
 	//OK ALL
 	return true;
 };
+
+
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+// !IMAGENES
+// ? Guardar informacion de Archivos
+export const createInfoImg = async ( id: object, values : GuideInfo ) : Promise<boolean> => {
+	//Obtenemos el id
+	console.log('FROM TRANSACTION');
+	try {
+		await executeQueryCreateInfoImg(id, values);
+	} catch (err) {
+		console.log('ERROR :: ',err);
+		return false;
+	}
+	return true;
+};
+async function executeQueryCreateInfoImg(objId : object , values : GuideInfo){
+	//Actualizamos datos
+	const resultsInfo = await GuideInfoModel.findByIdAndUpdate(objId, { $push : { 'information.image': [...values.information.images]}});
+	console.log(resultsInfo);
+}
+
+
+//Actualizamos la informacion de la imagen
+export const updateInfoImg = async (id : number, values : GuideInfo) : Promise<boolean> => {
+	//
+	try {
+		const results = 0;//await getGuideInfoOne(id);
+		console.log('results guideInfo: : ',results);
+		//TODO DEFINIMOS SI GUARDAR EL DATO
+		console.log(values.information);
+		await executeQueryUpdateInfoImg(id, values);
+	} catch (err) {
+		console.log(err);
+	}
+	return true;
+};
+
+async function executeQueryUpdateInfoImg(id : number, values : GuideInfo) {
+	//
+}

@@ -1,9 +1,31 @@
-//IMPORTAMOS la interfaz de info adeicional
-import { Information } from './info';
-
 // Interfas de guia de informacion
 export interface GuideInfo {
     id :number;
     document ?: string;
     information : Information;
+}
+
+interface Information {
+
+    languages : Language[];
+    theme : string;
+    images : Image[]; 
+    documents : Document[];
+}
+interface Language {
+    name : string;
+    experience : number;
+}
+export interface Image {
+    title : string;
+    description : string;
+    originalName : string;
+    size : number;
+    path : string;
+}
+export interface Document{
+    title : string;
+    description : string;
+    size : number;
+    path : string;
 }
