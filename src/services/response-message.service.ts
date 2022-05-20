@@ -2,11 +2,6 @@ import { ResponseMessage } from '../interface/response-message';
 
 //Codigos generados
 export const responses: ResponseMessage[] = [
-	/**
-	 * TODO -> Que tal si en los codigos colocamos los codigos del http ->
-	 * TODO -> EJE: E001 -> E500 | A002 -> A403
-	 * TODO -> VER TODAS LAS POSIBILIDADES
-	 */
 	//Sign-Up
 	{ code: 'R200', msg: 'Usuario registrado correctamente'},
 	{ code: 'R002', msg: 'No se puede registrar el usuario porque ya existe dentro de la base de datos' },
@@ -24,6 +19,12 @@ export const responses: ResponseMessage[] = [
 	{ code: 'U002', msg: 'Información no existe' },
 	{ code: 'U003', msg: 'Error en guardar datos en DB' },
 	{ code: 'U004', msg: 'Info-Archivo guardada exitosamente' },
+	//Change Password
+	{ code: 'P001', msg: 'Datos no coinciden : (newPass , confirmPass) ' },
+	{ code: 'P002', msg: 'Contraseña actual no coincide : (currentPassword)' },
+	{ code: 'P003', msg: 'Error en actualización' },
+	{ code: 'P004', msg : 'Contraseña actualizada con exito' },
+
 	
 ];
 

@@ -11,6 +11,7 @@ import routerCompanyProfileConfig from './routes/Company/profile.config.routes';
 import routerGuideSignup from './routes/Guide/guide-signup.routes';
 import routerGuideProfileConfig from './routes/Guide/profile.config.routes';
 import routerGuideProfileUploadPhoto from './routes/Guide/file.upload.routes';
+import routerGuideProfileChangePass from './routes/Guide/chagePass.routes';
 //
 import routerHome from './routes/home.routes';
 
@@ -51,6 +52,7 @@ app.use(routerCompanyProfileConfig);
 app.use(routerGuideSignup);
 app.use(routerGuideProfileConfig);
 app.use(routerGuideProfileUploadPhoto);
+app.use(routerGuideProfileChangePass);
 ///////////////////////////////////////////////
 ///////////////////////////////////////////////
 //Exporting app

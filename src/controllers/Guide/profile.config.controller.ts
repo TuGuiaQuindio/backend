@@ -24,6 +24,7 @@ export const profileConfig_put = async (req:Request, res:Response) : Promise<Res
 	const rol : number = await getRole(authorization);
 	// Validamos el rol que coincida
 	console.log('-> payload - Guide :: ID:',id ,'- ROL:',rol);
+	// ROL GUIDE = 1 
 	if(rol != 1) return res.status(403).json(getResponse('A002'));
 	//CONTINUA
 	if(id == 0) return res.status(422).json({ error:'ID Not Found - Unauthorized' });

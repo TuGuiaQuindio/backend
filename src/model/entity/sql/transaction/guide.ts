@@ -73,3 +73,21 @@ export const updateGuide = async ( id : number , values : GuideSignup_extra) => 
 	//->TODO OK
 	return true;
 };
+
+export const updatePass = async (id : number, pass : string) => {
+	console.log('updatePass : ', pass);
+	
+	try {
+		const result = await dsource.getRepository(Guide).update(id , {
+			password : pass
+		});
+		//Show results
+		console.log('FROM updatePass',result);
+		
+	} catch (err) {
+		console.log('ERROR :: Update Password - ',err);		
+		return false;
+	}
+	//ALL OK
+	return true;
+};
