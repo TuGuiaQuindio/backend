@@ -7,6 +7,7 @@ import routerLogin from './routes/login.routes';
 //Company
 import routerCompanySingup from './routes/Company/company-signup.routes';
 import routerCompanyProfileConfig from './routes/Company/profile.config.routes';
+import routerCompanyProfileChangePass from './routes/Company/changePass.routes';
 //Guide
 import routerGuideSignup from './routes/Guide/guide-signup.routes';
 import routerGuideProfileConfig from './routes/Guide/profile.config.routes';
@@ -48,6 +49,7 @@ app.use(routerHome);
 // ---> Company <---
 app.use(routerCompanySingup);
 app.use(routerCompanyProfileConfig);
+app.use(routerCompanyProfileChangePass);
 // ---> Guide <---
 app.use(routerGuideSignup);
 app.use(routerGuideProfileConfig);

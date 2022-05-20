@@ -70,3 +70,20 @@ export const updateCompany = async  ( id : number, values : DataSql ) : Promise<
 	// -> TODO OK
 	return true;
 };
+//Actualizar contraseña
+export const updatePass = async (id : number, pass : string) => {
+	console.log('updatePass : ', pass);
+
+	try {
+		const result = await dsource.getRepository(Company).update(id, {
+			password : pass
+		});
+		//Show result
+		console.log('FROM updatePass-> ',result);
+	} catch (err) {
+		console.log('ERROR :: UPDATE Password ',err);
+		return false;
+	}
+	//ALL OK
+	return true;
+};	

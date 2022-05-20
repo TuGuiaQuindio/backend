@@ -82,7 +82,7 @@ export const updatePass = async (id : number, pass : string) => {
 			password : pass
 		});
 		//Show results
-		console.log('FROM updatePass',result);
+		console.log('FROM updatePass-> ' ,result);
 		
 	} catch (err) {
 		console.log('ERROR :: Update Password - ',err);		

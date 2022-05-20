@@ -1,30 +1,28 @@
-// Cambiar contraseña
-
+//API DE COAMBIAR CONTRASEÑA
 import express, { Router } from 'express';
 ///////////////////////////////////////////////
 //IMPORTAMOS PATH
 import path from '../paths/index';
 ///////////////////////////////////////////////
-//IMPORTAMOS VALIDADORES
-import validatorJwt from '../../validator/jwt.validator';
-import validatorData from '../../validator/changePass';
-///////////////////////////////////////////////
 //IMPORTAMOS MIDDLEWARES
 import { isAuth } from '../../middleware/auth';
 ///////////////////////////////////////////////
 //IMPORTAMOS CONTROLADORES
-import { changePass_put } from '../../controllers/Guide/changePass.controller';
+import { changePass_put } from '../../controllers/Company/changePass.controller';
 ///////////////////////////////////////////////
-//Construimos RUTA
-const router : Router = express.Router();
+//IMPORTAMOS VALIDADORES
+import jwtValidator from '../../validator/jwt.validator';
+import dataValidator from '../../validator/changePass';
+///////////////////////////////////////////////
 
-//DECONSTRUCCION
-//?Validador token
-const { params, validate } = validatorJwt;
-//?Validador campos Datos
-const { paramsData, validateData } = validatorData;
+//COntruimos router
+const router: Router = express.Router();
 
-router.route(path.changePassGuide)
+//Deconstruccion
+const { params, validate } = jwtValidator;
+const { paramsData, validateData } = dataValidator;
+
+router.route(path.changePassCompany)
 /**
  * !PRIMERO
  * -> params , Validate = Son del token
@@ -32,6 +30,7 @@ router.route(path.changePassGuide)
  */
 	.put(params, validate, paramsData, validateData, isAuth, changePass_put);
 
+
 ///////////////////////////////////////////////
-//Export
+// EXPORT 
 export default router;

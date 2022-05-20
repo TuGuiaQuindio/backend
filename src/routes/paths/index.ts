@@ -22,5 +22,6 @@ export default {
 	//UPLOAD FILE
 	guideUploadPhoto : guide + profile + upload + photo,
 	//RECOVER PASSWORD
-	recoverPass : guide + profile + changePass,
+	changePassGuide : guide + profile + changePass,
+	changePassCompany : company + profile + changePass
 };
