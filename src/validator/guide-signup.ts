@@ -16,7 +16,7 @@ export default {
 			.isObject().withMessage('Please provide a valid rol!'), 
 		body('password')
 			.not().isEmpty().withMessage('Empty field !')
-			.isLength({min:7 , max:30}).withMessage('Debe de contener min 7 caracteres'),
+			.isLength({min:7 , max:30}).withMessage('Debe de contener min 7, max 30 caracteres'),
 	],
 	// Validamos
 	validate: function(req:Request, res:Response, next:NextFunction){

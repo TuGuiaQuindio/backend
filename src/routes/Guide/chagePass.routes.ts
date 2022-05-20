@@ -7,6 +7,7 @@ import path from '../paths/index';
 ///////////////////////////////////////////////
 //IMPORTAMOS VALIDADORES
 import validatorJwt from '../../validator/jwt.validator';
+import validatorData from '../../validator/changePass';
 ///////////////////////////////////////////////
 //IMPORTAMOS MIDDLEWARES
 import { isAuth } from '../../middleware/auth';
@@ -18,10 +19,18 @@ import { changePass_put } from '../../controllers/Guide/changePass.controller';
 const router = express.Router();
 
 //DECONSTRUCCION
+//?Validador token
 const { params, validate } = validatorJwt;
+//?Validador campos Datos
+const { paramsData, validateData } = validatorData;
 
 router.route(path.recoverPass)
-	.put(params, validate, isAuth, changePass_put);
+/**
+ * !PRIMERO
+ * -> params , Validate = Son del token
+ * -> paramsData , validateData = Son los campos
+ */
+	.put(params, validate, paramsData, validateData, isAuth, changePass_put);
 
 ///////////////////////////////////////////////
 //Export
