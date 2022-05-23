@@ -19,7 +19,6 @@ export const createToken = async ( email:string, rol: number, id?: number, optio
 	return jwt.sign( { id, email, rol },key , signOptions);
 };
 
-
 // Verificamos el token obtenido 
 export const verifyToken = async ( token : string ) : Promise<string | undefined | jwt.JwtPayload> => {
 	// leemos la llave

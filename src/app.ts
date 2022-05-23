@@ -15,7 +15,7 @@ import routerGuideProfileUploadPhoto from './routes/Guide/file.upload.routes';
 import routerGuideProfileChangePass from './routes/Guide/chagePass.routes';
 //
 import routerHome from './routes/home.routes';
-
+import routerRecoverPass from './routes/recoverPass.routes';
 //////////////////////////////////////////
 //MORGAN
 import morgan from 'morgan';
@@ -46,6 +46,7 @@ app.use(express.json());
 // Utilizamos las rutas
 app.use(routerLogin);
 app.use(routerHome);
+app.use(routerRecoverPass);
 // ---> Company <---
 app.use(routerCompanySingup);
 app.use(routerCompanyProfileConfig);

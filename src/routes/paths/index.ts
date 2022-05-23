@@ -12,6 +12,7 @@ const changePass = '/changePass';
 export default {
 	raiz : '/',
 	login : '/login',
+	recover : '/recoverPass',
 	//SIGN-UP
 	signupGuide : signup + guide,
 	signupCompany : signup + company,

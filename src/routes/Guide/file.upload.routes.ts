@@ -23,13 +23,15 @@ const router = express.Router();
 //Decosntruimos
 const { params, validate } = validatorJwt;
 
+const nameFile = upload.single('myFile');
+
 /**
  * Subir archivos
  * 
  */
 router.route(path.guideUploadPhoto)
 	.get()
-	.post(params, validate, isAuth, upload.single('myFile'), uploadFile);
+	.post(params, validate, isAuth, nameFile, uploadFile);
 
 /////////////////////////////////////////////////////
 export default router;

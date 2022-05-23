@@ -30,7 +30,6 @@ router.route(path.changePassCompany)
  */
 	.put(params, validate, paramsData, validateData, isAuth, changePass_put);
 
-
 ///////////////////////////////////////////////
 // EXPORT 
 export default router;
