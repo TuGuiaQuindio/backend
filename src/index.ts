@@ -10,7 +10,7 @@ import app from './app';
 /////////////////////////////////////////
 //IMPORTAMOS CONECCION A LA DB
 import  'reflect-metadata';
-import { MySQLDataSource } from './config/datasources';
+import { MySQLDataSource } from './config/connection/Mysql/datasources';
 /////////////////////////////////////////
 
 

@@ -8,6 +8,7 @@ import { recoverPass } from '../services/recoverPass.service';
 ////////////////////////////////////////////////
 //IMPORTAMOS INTERFACES
 import { DataRecover } from '../interface/recoverPass';
+import { getResponse } from '../services/response-message.service';
 ////////////////////////////////////////////////
 
 ////////////////////////////////////////////////
@@ -19,28 +20,37 @@ export const recoverPas = async ( req : Request, res : Response ) => {
 	const { email } = req.body as DataRecover;
 	console.log('Email obtenido: ', email);
 	/**
-	 * TODO -> Se crea el token con emil y rol
-	 * TODO -> 1)Paso a seguir : Guardar token en Redis
+	//  * TODO -> Se crea el token con emil y rol
+	//  * TODO -> 1)Paso a seguir : Guardar token en Redis
 	 * TODO -> 2)enviar codigo de confirmacion al usuario(gmail)
 	 * TODO -> 3)Crear ruta de validar token y resetear PASSWORD
 	 * TODO -> MIRAR QUE PASO SIGUE   
 	 */
 	try {
 		const results : boolean | null | undefined | string = await recoverPass({email});
-		if(results == null){
+		if(results === null){
 			//Not exist
-			return res.status(404).json({msg:'Credenciales Incorrectas'});
-		}else if (results == false){
+			return res.status(404).json(getResponse('RP03'));
+		}else if(results == false){
 			//Error en el server
-			return res.status(500).json({msg:'Ocurrio un error(createToken), intente de nuevo'});
+			return res.status(500).json(getResponse('RP02'));
+		}else if(results === undefined){
+			//Error al guardar token - code
+			return res.status(500).json(getResponse('RP01'));
+		}else if(results === 'exists'){
+			//Code - Token ya creado
+			return res.status(202).json({
+				results,
+				...getResponse('RP06')
+			});
 		}
 		//All ok
 		return res.status(200).json({
 			results,
-			msg:'Token generado'
+			...getResponse('RP05')
 		});
 	} catch (error) {
 		console.log('ERROR: ', error);
-		return res.status(500).json({msg:'Ocurrio un error en el controlador'});
+		return res.status(500).json(getResponse('RP04'));
 	}
 };

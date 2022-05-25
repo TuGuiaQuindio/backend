@@ -25,9 +25,10 @@ import helmet from 'helmet';
 import cors from 'cors';
 //////////////////////////////////////////
 //IMPORTAMOS CONECCION A LA DB
-import { connectDB } from './model/entity/nosql/conection/conection-mongodg';
+import { connectDB } from './config/connection/MongoDB/conection-mongodg';
 /////////////////////////////////////////
 // Connexion a la db
+//Mongo
 connectDB();
 ///////////////////////////////////////////
 //OPCIONES DE LOS CORS
@@ -35,7 +36,6 @@ const originOptions : cors.CorsOptions = {
 	origin : new RegExp(process.env.CORS_ORIGIN as string ?? 'http://localhost:3000')
 };
 // Middlewares
-
 app.use(cors(originOptions));
 app.use(morgan('dev'));
 app.use(helmet());

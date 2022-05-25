@@ -1,5 +1,5 @@
 // Controlador para el logueo de 'USUARIOS'
-import { MySQLDataSource as dsource } from '../../../../config/datasources';
+import { MySQLDataSource as dsource } from '../../../../config/connection/Mysql/datasources';
 import { Guide } from '../Guide';
 import { Company } from '../Company';
 import { Roles } from '../Rol';

@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////
 // Importamos
-import { MySQLDataSource as dsource } from '../../../../config/datasources';
+import { MySQLDataSource as dsource } from '../../../../config/connection/Mysql/datasources';
 import { GuideSignup } from '../../../../interface/Guide/signup-guide';
 //Entidad
 import { Guide } from '../Guide';

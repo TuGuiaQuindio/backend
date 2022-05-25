@@ -24,7 +24,18 @@ export const responses: ResponseMessage[] = [
 	{ code: 'P002', msg: 'Contraseña actual no coincide : (currentPassword)' },
 	{ code: 'P003', msg: 'Error en actualización' },
 	{ code: 'P004', msg : 'Contraseña actualizada con exito' },
-
+	//Recover password of code
+	{ code: 'RP01', msg: 'Error al guardar code-token' },
+	{ code: 'RP02', msg: 'Ocurrio un error(createToken), intente de nuevo' },
+	{ code: 'RP03', msg: 'Credenciales Incorrectas' },
+	{ code: 'RP04', msg: 'Ocurrio un error en el controlador' },
+	{ code: 'RP05', msg: 'TOKEN-CODE GENERADO' },
+	{ code: 'RP06', msg: 'Token ya Generado' },
+	//
+	{ code: '', msg: '' },
+	{ code: '', msg: '' },
+	{ code: '', msg: '' },
+	{ code: '', msg: '' },
 	
 ];
 

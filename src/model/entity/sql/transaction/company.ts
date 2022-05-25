@@ -1,5 +1,5 @@
 //IMPORTAMOS CONFIGURACIONES
-import { MySQLDataSource as dsource } from '../../../../config/datasources';
+import { MySQLDataSource as dsource } from '../../../../config/connection/Mysql/datasources';
 ////////////////////////////////////////////////
 //IMPORTAMOS ENTIDADES
 import { Company } from '../Company';

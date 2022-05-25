@@ -1,4 +1,4 @@
-import { MySQLDataSource as dsource } from '../../../../config/datasources';
+import { MySQLDataSource as dsource } from '../../../../config/connection/Mysql/datasources';
 import { Roles } from '../Rol';
 
 ////////////////////////////////
