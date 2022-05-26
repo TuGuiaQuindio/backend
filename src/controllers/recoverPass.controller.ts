@@ -13,9 +13,8 @@ import { getResponse } from '../services/response-message.service';
 
 ////////////////////////////////////////////////
 
-////////////////////////////////////////////////
 //CONTROLADOR
-export const recoverPas = async ( req : Request, res : Response ) => {
+export const recoverPass_post = async ( req : Request, res : Response ) => {
 	//Recibimos datos
 	const { email } = req.body as DataRecover;
 	console.log('Email obtenido: ', email);
@@ -24,7 +23,6 @@ export const recoverPas = async ( req : Request, res : Response ) => {
 	//  * TODO -> 1)Paso a seguir : Guardar token en Redis
 	 * TODO -> 2)enviar codigo de confirmacion al usuario(gmail)
 	 * TODO -> 3)Crear ruta de validar token y resetear PASSWORD
-	 * TODO -> MIRAR QUE PASO SIGUE   
 	 */
 	try {
 		const results : boolean | null | undefined | string = await recoverPass({email});
@@ -46,8 +44,10 @@ export const recoverPas = async ( req : Request, res : Response ) => {
 		}
 		//All ok
 		return res.status(200).json({
-			results,
-			...getResponse('RP05')
+			Warning : 'CODIGO con 10 min de vida',
+			'Code Generado' : results,
+			...getResponse('RP05'),
+			
 		});
 	} catch (error) {
 		console.log('ERROR: ', error);

@@ -31,9 +31,9 @@ export const responses: ResponseMessage[] = [
 	{ code: 'RP04', msg: 'Ocurrio un error en el controlador' },
 	{ code: 'RP05', msg: 'TOKEN-CODE GENERADO' },
 	{ code: 'RP06', msg: 'Token ya Generado' },
-	//
-	{ code: '', msg: '' },
-	{ code: '', msg: '' },
+	// Reset pass, Codigo
+	{ code: 'C001', msg: 'Codigo invalido' },
+	{ code: 'C002', msg: 'Codigo correcto' },
 	{ code: '', msg: '' },
 	{ code: '', msg: '' },
 	

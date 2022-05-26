@@ -1,5 +1,4 @@
 //Validamos los datos de entrada del cambio de contraseña
-
 import { Request, Response, NextFunction } from 'express'; 
 import { body, validationResult } from 'express-validator';
 

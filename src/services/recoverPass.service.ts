@@ -17,15 +17,17 @@ export const recoverPass = async (values : DataRecover ) : Promise<boolean | str
 	if(!foundEmail) return null;//User not exist
 	//Obtenemos los datos
 	const email :  string = foundEmail.email;
+	const rol : number = foundEmail.rol;
 	// Exist
 	//Se crea el token 
 	try {
 		//creamos el 'token'
-		const tokenRecover : string = await createTokenRecover();
-		console.log('-> ',tokenRecover);
+		const createCode : string = await createTokenRecover();
+		console.log('-> ',createCode);
+
 		//!Almacenamos 'token - codigo' 
-		const response : boolean|null = await saveTokenRecover(tokenRecover, email);
-		console.log('Response token: ',response);
+		const response : boolean|null = await saveTokenRecover(createCode, email, rol);
+		console.log('Response Code: ',response);
 		//Validamos la respuesta
 		if (response === false){
 			return undefined;
@@ -35,11 +37,11 @@ export const recoverPass = async (values : DataRecover ) : Promise<boolean | str
 		}
 		// ALL OK
 		//True
-		//TODO-> SE ENVIA TOKEN Y RUTA DE AUTENTIFICACION 
-		return tokenRecover;
+		//TODO-> SE ENVIA CODE Y RUTA DE AUTENTIFICACION 
+		return createCode;
 	} catch (error) {
 		//Algo salio mal
-		console.log('Error al generar el token: ', error);
+		console.log('Error al generar el Codigo: ', error);
 		return false;
 	}
 };
@@ -47,6 +49,7 @@ export const recoverPass = async (values : DataRecover ) : Promise<boolean | str
 //?Creamos el 'Token' 'Codigo'
 const createTokenRecover = async () : Promise<string> => {
 	const length = 6;
-	const nanoid = customAlphabet('1234567890abcdefg', 10);
+	const values ='1234567890abcdefg';
+	const nanoid = customAlphabet(values, 10);
 	return nanoid(length);
 };

@@ -1,0 +1,22 @@
+//API PARA RESETEAR CONTRASEÑA
+import express from 'express';
+//////////////////////////////////////////////////////
+//IMPORTAMOS PATH
+import path from './paths/index';
+/////////////////////////////////////////////////////
+//IMPORTAMOS CONTROLLER
+import { resetPass_post } from '../controllers/reset-pass.controller';
+//////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////
+
+
+//Construimos rutas
+const router = express.Router();
+
+//Ruta de confirmacion de codigo y reset pass
+router.route(path.resetPass)
+	.put(resetPass_post);
+
+//////////////////////////////////////////////////////
+export default router;

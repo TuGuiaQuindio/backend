@@ -16,6 +16,7 @@ import routerGuideProfileChangePass from './routes/Guide/chagePass.routes';
 //
 import routerHome from './routes/home.routes';
 import routerRecoverPass from './routes/recoverPass.routes';
+import routerResetPass from './routes/reset-pass.routes';
 //////////////////////////////////////////
 //MORGAN
 import morgan from 'morgan';
@@ -47,6 +48,7 @@ app.use(express.json());
 app.use(routerLogin);
 app.use(routerHome);
 app.use(routerRecoverPass);
+app.use(routerResetPass);
 // ---> Company <---
 app.use(routerCompanySingup);
 app.use(routerCompanyProfileConfig);

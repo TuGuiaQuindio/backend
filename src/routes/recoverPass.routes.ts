@@ -5,10 +5,10 @@ import express from 'express';
 import path from './paths/index';
 ////////////////////////////////////////////////
 //IMPORTAMOS CONTROLLER
-import { recoverPas } from '../controllers/recoverPass.controller';
+import { recoverPass_post } from '../controllers/recoverPass.controller';
 ////////////////////////////////////////////////
 //IMPORTAMOS VALIDADORES
-
+import validatorData from '../validator/recoverPass';
 ////////////////////////////////////////////////
 //IMPORTAMOS AUTENTIFICADOR
 
@@ -16,9 +16,12 @@ import { recoverPas } from '../controllers/recoverPass.controller';
 //Construimos rutas
 const router = express.Router();
 
+//Decostruimos
+const { params, validate } = validatorData;
+
 //Creamos API
 router.route(path.recover)
-	.put(recoverPas);
+	.post(params, validate, recoverPass_post);
 
 
 ////////////////////////////////////////////////

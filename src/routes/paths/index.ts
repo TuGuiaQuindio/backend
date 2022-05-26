@@ -13,6 +13,7 @@ export default {
 	raiz : '/',
 	login : '/login',
 	recover : '/recoverPass',
+	resetPass : '/reset-pass',
 	//SIGN-UP
 	signupGuide : signup + guide,
 	signupCompany : signup + company,
