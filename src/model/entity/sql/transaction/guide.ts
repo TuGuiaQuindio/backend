@@ -74,7 +74,7 @@ export const updateGuide = async ( id : number , values : GuideSignup_extra) => 
 	return true;
 };
 
-export const updatePass = async (id : number, pass : string) => {
+export const updatePass = async (id : number, pass : string) : Promise<boolean> => {
 	console.log('updatePass : ', pass);
 	
 	try {

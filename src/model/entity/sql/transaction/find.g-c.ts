@@ -16,7 +16,6 @@ export const getRole = async (email : string) : Promise<Roles | null> => {
 //! //////////////////////////////////////////////////////
 // * --> GUIDE <--
 // !! Encontrar 'GUIDE' por medio del -> ID <-
-
 export const getGuideId = async ( id ?: number ) : Promise<Guide | null> => { 
 	//Buscamos el guia por el Id
 	return dsource.getRepository(Guide).findOne({ where : { id } });
@@ -31,7 +30,7 @@ export const getGuideDoc =  async ( NoDocument : string ) : Promise< boolean > =
 	return guideFound != undefined;
 };
 // !! Econtrar 'GUIDE' por medio de -> Email <-
-export const getGuide = async (email: string) : Promise<Guide | null> =>{
+export const getGuideEmail = async (email: string) : Promise<Guide | null> =>{
 	// buscamos el guia 
 	return dsource.getRepository(Guide).findOne({ where : { rol: {email} } });
 };
@@ -45,7 +44,7 @@ export const getCompanyId = async (id : number) : Promise<Company | null> => {
 	return dsource.getRepository(Company).findOne({ where : { id }});
 };
 // !! Econtrar 'COMPANY' por medio de -> Email <-
-export const getCompany = async (email: string): Promise<Company | null> =>{
+export const getCompanyEmail = async (email: string): Promise<Company | null> =>{
 	// Buscamos la Compañia-Empresa
 	return dsource.getRepository(Company).findOne({ where : { rol: {email} } });
 };

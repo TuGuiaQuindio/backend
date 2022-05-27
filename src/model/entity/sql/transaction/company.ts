@@ -71,7 +71,7 @@ export const updateCompany = async  ( id : number, values : DataSql ) : Promise<
 	return true;
 };
 //Actualizar contraseña
-export const updatePass = async (id : number, pass : string) => {
+export const updatePassword = async (id : number, pass : string) => {
 	console.log('updatePass : ', pass);
 
 	try {

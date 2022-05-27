@@ -1,7 +1,7 @@
 // import token from './token-services';
 
 import { createToken }  from '../services/token.service';
-import { getRole, getGuide, getCompany  } from '../model/entity/sql/transaction/find.g-c';
+import { getRole, getGuideEmail, getCompanyEmail  } from '../model/entity/sql/transaction/find.g-c';
 
 import bcrypt from '../services/bcrypt.service';
 import { Roles } from '../constants/role.constants';
@@ -20,7 +20,7 @@ export default {
 		// ? = Este es para comprobar si existe
 		if((roleFound?.rol == Roles.GUIDE)){
 			// obtenemos el guia 
-			const guideFound = await getGuide(roleFound.email);
+			const guideFound = await getGuideEmail(roleFound.email);
 			console.log('-> GuindeFound :: ',guideFound);
 			
 			// validamos si el guia fue encontrado
@@ -47,7 +47,7 @@ export default {
 		}else if (roleFound?.rol == Roles.COMPANY){
 
 			// Obtener Objeto - compañia
-			const companyFound = await getCompany(roleFound.email);
+			const companyFound = await getCompanyEmail(roleFound.email);
 			// validamos si el guia fue encontrado
 			if (!companyFound) return false;
 			// validamos los datos del objeto (USER)

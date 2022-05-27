@@ -12,7 +12,8 @@ import { ChangePass } from '../../interface/change-password';
 import { getCompanyId } from '../../model/entity/sql/transaction/find.g-c';
 //////////////////////////////////////////////////////////////////
 //IMPORTACIONES TRANSACCIONES
-import { updatePass } from '../../model/entity/sql/transaction/company';
+import { updatePassword } from '../../model/entity/sql/transaction/company';
+//////////////////////////////////////////////////////////////////
 
 export const changePassword = async ( id : number, values : ChangePass) : Promise<boolean | undefined | null> => {
 	console.log('CHANGE PASSWORD SERVICE - GUIDE');
@@ -40,7 +41,7 @@ export const changePassword = async ( id : number, values : ChangePass) : Promis
 	
 	// Actualizamos PASSWORD
 	try {
-		const resultUpdate = await updatePass(id, newPassHass);
+		const resultUpdate = await updatePassword(id, newPassHass);
 		console.log('Result Service Update : ',resultUpdate);
 	} catch (error) {
 		console.log(error);

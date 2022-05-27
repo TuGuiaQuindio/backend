@@ -7,7 +7,7 @@ import { Request, Response } from 'express';
 import { recoverPass } from '../services/recoverPass.service';
 ////////////////////////////////////////////////
 //IMPORTAMOS INTERFACES
-import { DataRecover } from '../interface/recoverPass';
+import { DataRecover } from '../interface/dataRedis';
 import { getResponse } from '../services/response-message.service';
 ////////////////////////////////////////////////
 

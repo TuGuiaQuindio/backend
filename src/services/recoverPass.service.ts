@@ -1,10 +1,10 @@
 ////////////////////////////////////////////////////////
 //IPORTAMOS TRANSACCIONES
 import { getRole } from '../model/entity/sql/transaction/find.g-c';
-import { saveTokenRecover } from '../model/entity/nosql/transaction/redis/data';
+import { saveCode } from '../model/entity/nosql/transaction/redis/data';
 ////////////////////////////////////////////////////////
 //IMPORTAMOS INTERFACES
-import { DataRecover } from '../interface/recoverPass';
+import { DataRecover } from '../interface/dataRedis';
 ////////////////////////////////////////////////////////
 //IMPORTAMOS SERVICIOS
 import { customAlphabet } from 'nanoid';
@@ -12,21 +12,21 @@ import { customAlphabet } from 'nanoid';
 
 export const recoverPass = async (values : DataRecover ) : Promise<boolean | string | null | undefined> => {
 	// Validamos si el email existe
-	const foundEmail = await getRole(values.email); 
-	console.log(foundEmail);
-	if(!foundEmail) return null;//User not exist
+	const foundRol = await getRole(values.email); 
+	console.log(foundRol);
+	if(!foundRol) return null;//User not exist
 	//Obtenemos los datos
-	const email :  string = foundEmail.email;
-	const rol : number = foundEmail.rol;
+	const email :  string = foundRol.email;
+	const rol : number = foundRol.rol;
 	// Exist
 	//Se crea el token 
 	try {
 		//creamos el 'token'
-		const createCode : string = await createTokenRecover();
+		const createCode : string = await createCodeRecovery();
 		console.log('-> ',createCode);
 
-		//!Almacenamos 'token - codigo' 
-		const response : boolean|null = await saveTokenRecover(createCode, email, rol);
+		//!Almacenamos 'codigo' 
+		const response : boolean|null = await saveCode(createCode, email, rol);
 		console.log('Response Code: ',response);
 		//Validamos la respuesta
 		if (response === false){
@@ -46,10 +46,36 @@ export const recoverPass = async (values : DataRecover ) : Promise<boolean | str
 	}
 };
 
-//?Creamos el 'Token' 'Codigo'
-const createTokenRecover = async () : Promise<string> => {
+//?Creamos el 'Codigo'
+const createCodeRecovery = async () : Promise<string> => {
+	//Cantidad del codigo
 	const length = 6;
-	const values ='1234567890abcdefg';
-	const nanoid = customAlphabet(values, 10);
+	//Valores generados
+	const characters : string = await generateRandomString(30);
+	const numbers : number = await generateRandomNumber(1, 99999999999);
+	//Sumamos las respuestas generadas
+	const value : string = characters + numbers;
+	console.log('Values: ',value);
+	const nanoid = customAlphabet(value, 10);
 	return nanoid(length);
+};
+
+//GENERADOR DE CARACTERES
+const  generateRandomString = async (num : number) : Promise<string> => {
+	//Cantidad de caracteres
+	const characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+	//Bandera
+	let result1 = '';
+	const charactersLength : number = characters.length;
+	//Generamos
+	for ( let i = 0; i < num; i++ ) {
+		result1 += characters.charAt(Math.floor(Math.random() * charactersLength));
+		// result1 += characters.charAt(Math.random() * charactersLength);
+	}
+	return result1;
+};
+//GENERADOR DE NUMEROS
+const generateRandomNumber = async (min : number, max : number) : Promise<number> => {
+	const number : number = Math.floor(Math.random() * (max * min)) + min;
+	return number;
 };

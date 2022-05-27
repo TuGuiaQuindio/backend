@@ -34,8 +34,8 @@ export const responses: ResponseMessage[] = [
 	// Reset pass, Codigo
 	{ code: 'C001', msg: 'Codigo invalido' },
 	{ code: 'C002', msg: 'Codigo correcto' },
-	{ code: '', msg: '' },
-	{ code: '', msg: '' },
+	{ code: 'C003', msg: 'Usuario no encontrado!' },
+	{ code: 'C004', msg: 'Contraseña actualizada con exito!' },
 	
 ];
 

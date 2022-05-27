@@ -3,19 +3,21 @@
 // IMPORTAMOS CLIENTE REDIS
 import { redisClient } from '../../../../../config/connection/Redis/conection';
 //////////////////////////////////////////////
-
+//IMPORTACIONES INTERFACES
+import { ResetPass } from '../../../../../interface/dataRedis';
 //////////////////////////////////////////////
 
-export const saveTokenRecover = async (code : string, email : string, rol : number) : Promise<boolean | null> => {
+//Guardar codigo generado saveCodeGenerated
+export const saveCode = async (code : string, email : string, rol : number) : Promise<boolean | null> => {
 	//Obtenemos el tado
 	console.log('LOADING DATA...');
 	console.log('SEARCHING DATA...');
-	const getStore : string | null = await redisClient.get(email);
-	console.log('Dato obtenido redis: ', getStore);
+	const getData : string | null = await redisClient.get(email);
+	console.log('Dato obtenido redis: ', getData);
 	//Validamos si el token ta existe
-	if(getStore){console.log('DATA FOUND!'); return null;}//Ya existe el token 
+	if(getData){console.log('DATA FOUND, EXISTS!'); return null;}//Ya existe el token 
+	
 	console.log('DATA NOT FOUND!');
-
 	//No existe el token - codigo
 	console.log('SAVING CODE IN REDIS...');
 	try {
@@ -41,10 +43,10 @@ const exprireData = async (email : string) : Promise<boolean> => {
 	// Tiempo de expiracion
 	// * 1m -> 60s
 	// *** (segundos * minutos)
-	const segundos = 60 * 10; 
+	const segundos = (60 * 10); 
 	try {
-		const expireData = await redisClient.expire(email,segundos);
-		console.log('Exprire Data: ',expireData);
+		const expireData : boolean = await redisClient.expire(email,segundos);
+		console.log('Exprire Data: ',expireData, ' en ', segundos,'s');
 	} catch (error) {
 		console.log('ERROR en asignar expiracion a codigo>> ', error);
 		return false;
@@ -55,7 +57,7 @@ const exprireData = async (email : string) : Promise<boolean> => {
 
 //////////////////////////////////////////////////////
 //?VALIDATED CODE
-export const validatedCode = async (code : string) : Promise<boolean | null |undefined> =>{
+export const isValidatedCode = async (code : string) : Promise<null|undefined|object> =>{
 	//TODO-> ESTO SE PUEDE HACER MEJOR, BUSCAR FORMA
 	//TODO-> MIRAR UN MEJOR NOMBRE AL SCRIPT
 	//Buscamos todos los que coincidan
@@ -66,13 +68,14 @@ export const validatedCode = async (code : string) : Promise<boolean | null |und
 	//Email bandera
 	let email : string | null = null;
 	//rol bandera
-	let rol : string | null = null;
+	let rol : number | null = null;
 	//Pasamos por cada dato obtenido
 	for(const ele of response){
 		//Buscamos el dato 
 		const data = await redisClient.get(ele);
 		//No hay datos
-		if(!data){return undefined;}
+		console.log('22222');
+		if(!data) return undefined;
 		//Parseamos el objeto
 		const valuesData = JSON.parse(data);
 		//Validamos si CODIGO coincide con el codigo ingresado
@@ -85,9 +88,14 @@ export const validatedCode = async (code : string) : Promise<boolean | null |und
 			rol = valuesData.rol;
 		}
 	}
-
-	console.log('codeRedis: ',codeRedis,'\nemail: ',email,'\nrol: ',rol);
-	if(codeRedis == null) return null;//Codigo No valido
+	//console.log('codeRedis: ',codeRedis,'\nemail: ',email,'\nrol: ',rol);
+	if(codeRedis == null && email == null && rol == null) return null;//Codigo No valido
+	//Datos de Redis
+	const dataRedis : object = {
+		code : codeRedis,
+		email ,
+		rol
+	}as ResetPass;
 	//Codigo valido
-	return true;
+	return dataRedis;
 };
