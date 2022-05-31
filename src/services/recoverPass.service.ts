@@ -8,6 +8,7 @@ import { DataRecover } from '../interface/dataRedis';
 ////////////////////////////////////////////////////////
 //IMPORTAMOS SERVICIOS
 import { customAlphabet } from 'nanoid';
+import { sendEmailRecoveyPass } from './sendMenssage.service';
 ////////////////////////////////////////////////////////
 
 export const recoverPass = async (values : DataRecover ) : Promise<boolean | string | null | undefined> => {
@@ -22,11 +23,11 @@ export const recoverPass = async (values : DataRecover ) : Promise<boolean | str
 	//Se crea el token 
 	try {
 		//creamos el 'token'
-		const createCode : string = await createCodeRecovery();
-		console.log('-> ',createCode);
+		const codeRecovery : string = await createCodeRecovery();
+		console.log('-> ',codeRecovery);
 
 		//!Almacenamos 'codigo' 
-		const response : boolean|null = await saveCode(createCode, email, rol);
+		const response : boolean|null = await saveCode(codeRecovery, email, rol);
 		console.log('Response Code: ',response);
 		//Validamos la respuesta
 		if (response === false){
@@ -37,8 +38,11 @@ export const recoverPass = async (values : DataRecover ) : Promise<boolean | str
 		}
 		// ALL OK
 		//True
-		//TODO-> SE ENVIA CODE Y RUTA DE AUTENTIFICACION 
-		return createCode;
+		//SE ENVIA CODE Y RUTA DE AUTENTIFICACION 
+		//Se envia correo
+		await sendEmailRecoveyPass(codeRecovery,email);
+		////////////////////
+		return codeRecovery;
 	} catch (error) {
 		//Algo salio mal
 		console.log('Error al generar el Codigo: ', error);

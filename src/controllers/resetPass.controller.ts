@@ -23,6 +23,8 @@ export const resetPass_post = async (req : Request, res : Response) : Promise<Re
 	const { newPass, confirmPass } = req.body;
 	const resultPass : boolean = await validatedPass(newPass, confirmPass);
 	console.log('Result Pass new: ', resultPass);
+	//Validamos respuesta
+	if(!resultPass) return res.status(403).json(getResponse('C005'));
 	// Cambiar contraseña
 	const response : null|undefined|boolean = await changePass(resultValidateCode as ResetPass, newPass);
 	//Validaciones de la respuesta

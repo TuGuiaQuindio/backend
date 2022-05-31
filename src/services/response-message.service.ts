@@ -36,6 +36,11 @@ export const responses: ResponseMessage[] = [
 	{ code: 'C002', msg: 'Codigo correcto' },
 	{ code: 'C003', msg: 'Usuario no encontrado!' },
 	{ code: 'C004', msg: 'Contraseña actualizada con exito!' },
+	{ code: 'C005', msg: 'Las contraseñas no coinciden!' },
+	{ code: '', msg: '' },
+	{ code: '', msg: '' },
+	{ code: '', msg: '' },
+	{ code: '', msg: '' },
 	
 ];
 
