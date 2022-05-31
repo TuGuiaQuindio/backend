@@ -19,7 +19,7 @@ import { Company } from '../../model/entity/sql/Company';
 // SQL -> MySQL
 export const updateDataSql = async ( values : DataSql  ) : Promise<boolean | undefined> => {
 	//Actualizar datos
-	console.log('****** Entry Update company Service MySQL ******');
+	console.log('**** Entry Update company Service MySQL ******');
 	//Obtenemos el id
 	const id : number | undefined = values.id;
 	//VAlidamos si exite 

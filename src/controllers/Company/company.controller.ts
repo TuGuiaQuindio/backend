@@ -11,11 +11,11 @@ import { CompanySignup } from '../../interface/Company/data-sql';
 //->>RUTA POST
 export const companySignup_post = async(req:Request, res:Response) : Promise<Response> => {
 // Obtenemos los datos del body
-	const { nameCompany, nit, direction, rol, password } = req.body as CompanySignup;
+	const { nameCompany, nit, address, rol, password } = req.body as CompanySignup;
 	// Tratamos de hacer esto
 	try {
 		// Hacemos el registro de la empresa
-		const register = await signup( { nameCompany, nit, direction, rol, password } , 'company' );
+		const register = await signup( { nameCompany, nit, address, rol, password } , 'company' );
 		
 		//Validamos la respuesta
 		if(register != undefined) {

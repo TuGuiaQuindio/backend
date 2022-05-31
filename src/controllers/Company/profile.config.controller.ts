@@ -27,12 +27,12 @@ export const  profileConfig_put = async (req:Request, res:Response) : Promise<Re
 	console.log('-> payload - Company :: ID:',id ,'- ROL:',rol);
 	if(id == 0) return res.status(422).json({ error:'ID Not found - Unauthorized' });
 	//Obtenemos los datos del body
-	const { nameCompany, direction, phoneNumber } = req.body as DataSql ;
+	const { nameCompany, address, phoneNumber } = req.body as DataSql ;
 	const { mainActivity } = req.body as DataNoSql;
 	//Save or update data in MySQL and MongoDB
 	try {
 		// MySQL
-		const registerSql = await updateDataSql({ id, nameCompany, direction, phoneNumber });
+		const registerSql = await updateDataSql({ id, nameCompany, address, phoneNumber });
 		// MongoDB
 		const registerNoSql = await updateDataNoSql({ id, mainActivity });
 		//Validar si los datos estan guardados correctamente	

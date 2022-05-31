@@ -21,7 +21,7 @@ export class Company {
 		phoneNumber : string;
 
 	@Column({default : null})
-		direction : string;
+		address : string;
 
 	@OneToOne(()=> Roles)
 	@JoinColumn()

@@ -25,7 +25,7 @@ export const createCompany = async (values: CompanySignup, password : string) : 
 	const company = {
 		nameCompany : values.nameCompany,
 		nit : values.nit,
-		direction : values.direction,
+		address : values.address,
 		rol : values.rol,
 		// pass haseado
 		password : password
@@ -57,7 +57,7 @@ export const updateCompany = async  ( id : number, values : DataSql ) : Promise<
 		//Tratamos
 		const resultsUpdate = await dsource.getRepository(Company).update( id, {
 			nameCompany : values.nameCompany,
-			direction : values.direction,
+			address : values.address,
 			phoneNumber : values.phoneNumber,
 		});
 		//Show Results

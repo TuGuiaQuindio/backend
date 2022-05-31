@@ -6,7 +6,7 @@ export interface CompanySignup extends UserSignup {
     nit : string;
     nameCompany ?: string;
     phoneNumber ?: string;
-    direction ?: string;
+    address ?: string;
 }
 
 //Interface de datos MySQL
@@ -14,7 +14,7 @@ export interface DataSql {
     id ?: number;
     nameCompany ?: string;
     phoneNumber ?: string;
-    direction ?: string;
+    address ?: string;
 }
 
 //Interface de Datos NoSQL
