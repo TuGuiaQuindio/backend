@@ -11,6 +11,7 @@ import { getResponse } from '../../services/response-message.service';
 //IMPORTAMOS INTERFACES
 import { GuideSignup_extra } from '../../interface/Guide/signup-guide.extra';
 import { GuideInfo } from '../../interface/Guide/guideInfo';
+import { info } from 'console';
 ////////////////////////////////////////////////////////////////
 
 //->> RUTA PUT
@@ -32,6 +33,15 @@ export const profileConfig_put = async (req:Request, res:Response) : Promise<Res
 	const { firstName, lastName, dataOfBirth, city, phoneNumber } = req.body as GuideSignup_extra;
 	const { information } = req.body as GuideInfo;
 	//Save or update data in MySQL and MongoDB
+
+	if(!information) return res.status(404).json({
+		msg:'Datos de informacion no obtenidos', 
+		data: 'information :{'+
+			'languages:['+
+				'{name: string, experience: number},'+
+				'],'+
+			'theme:string}'});
+
 	try {
 		// MySQL
 		const registerSql : boolean | undefined = await updateDataSql( { id, firstName, lastName, dataOfBirth, city, phoneNumber} );
