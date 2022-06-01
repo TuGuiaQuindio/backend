@@ -9,7 +9,7 @@ export default {
 			.not().isEmpty().withMessage('Empty field'),
 		body('nit')
 			.not().isEmpty().withMessage('Empty field'),
-		body('direction')
+		body('address')
 			.not().isEmpty().withMessage('Empty field'),
 		body('rol.email')
 			.not().isEmpty().withMessage('Empty field')
