@@ -74,7 +74,6 @@ export const isValidatedCode = async (code : string) : Promise<null|undefined|ob
 		//Buscamos el dato 
 		const data = await redisClient.get(ele);
 		//No hay datos
-		console.log('22222');
 		if(!data) return undefined;
 		//Parseamos el objeto
 		const valuesData = JSON.parse(data);

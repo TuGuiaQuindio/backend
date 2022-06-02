@@ -36,12 +36,12 @@ export const updateDataSql  = async (values : GuideSignup_extra) : Promise<boole
 	//Validamos si lo encontro
 	if(!resultsGuide){
 		// User NO exite
-		console.log('Results :: ',resultsGuide);
+		console.log('Results found Guide by ID:: ',resultsGuide);
 		//Undefined ->No exite
 		return undefined;
 	}
 	// User SI Exite
-	console.log('Results :: ',resultsGuide);
+	console.log('Results found by ID:: ',resultsGuide);
 	//send data to update
 	const dataUpdate : boolean = await updateGuide( id, values);
 	//Retornamos con la respuesta

@@ -8,7 +8,7 @@ export interface GuideSignup_extra{
     lastName ?: string;
     password ?: string;
     //Data extra
-    dataOfBirth ?: number;
+    birthDate ?: number;
     city ?: string;
     phoneNumber ?: string;
 }

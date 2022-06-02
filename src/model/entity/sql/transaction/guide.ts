@@ -55,11 +55,32 @@ export const createGuide = async (values: GuideSignup, password:string) : Promis
 // ? UPDATE DATA
 export const updateGuide = async ( id : number , values : GuideSignup_extra) => {
 	//Actualizamos los datos
+	//Si el dato es nulo
+	if(!values.birthDate){
+		//Dato birthDate vacio
+		try{
+			const results = await dsource.getRepository(Guide).update(id, {
+				firstName : values.firstName,
+				lastName : values.lastName,
+				city : values.city,
+				birthDate: null,
+				phoneNumber : values.phoneNumber,
+			});
+			//Mostrar respuesta
+			console.log('FROM UPDATEGUIDE -> ', results);
+		}catch(err){
+			console.log('ERROR ::  updateGuide :: ', err);
+			//ERROR
+			return false;
+		}
+	}
+
+	//Por el contrario
 	try{
 		const results = await dsource.getRepository(Guide).update(id, {
 			firstName : values.firstName,
 			lastName : values.lastName,
-			dataOfBirth : values.dataOfBirth,
+			birthDate : values.birthDate,
 			city : values.city,
 			phoneNumber : values.phoneNumber,
 		});

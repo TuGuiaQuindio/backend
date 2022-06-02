@@ -18,12 +18,7 @@ export const recoverPass_post = async ( req : Request, res : Response ) => {
 	//Recibimos datos
 	const { email } = req.body as DataRecover;
 	console.log('Email obtenido: ', email);
-	/**
-	//  * TODO -> Se crea el token con emil y rol
-	//  * TODO -> 1)Paso a seguir : Guardar token en Redis
-	 * TODO -> 2)enviar codigo de confirmacion al usuario(gmail)
-	 * TODO -> 3)Crear ruta de validar token y resetear PASSWORD
-	 */
+	
 	try {
 		const results : boolean | null | undefined | string = await recoverPass({email});
 		if(results === null){

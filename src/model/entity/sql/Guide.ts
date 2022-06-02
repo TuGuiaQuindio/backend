@@ -1,6 +1,5 @@
 // Entidades del ORM
 import { Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn } from 'typeorm';
-
 import { Roles } from './Rol';
 
 // LLamamos decorador 
@@ -21,8 +20,12 @@ export class Guide {
 	@Column({default : null})
 		lastName : string;
 
-	@Column({default : null})
-		dataOfBirth: number;
+	@Column({
+		type: 'date',
+		default : null,
+		nullable: true,
+	})
+		birthDate: Date | null;
 
 	@Column({default : null})
 		city : string;

@@ -18,7 +18,7 @@ export const resetPass_post = async (req : Request, res : Response) : Promise<Re
 		//Codigo no valido
 		return res.status(406).json(getResponse('C001'));
 	}
-	//Codigo Valido
+	//Codigo Valido	
 	//Validamos que la contraseña coincidan
 	const { newPass, confirmPass } = req.body;
 	const resultPass : boolean = await validatedPass(newPass, confirmPass);
