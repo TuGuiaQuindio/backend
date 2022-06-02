@@ -9,6 +9,11 @@ import { getResponse } from '../services/response-message.service';
 import { ResetPass } from '../interface/dataRedis';
 ////////////////////////////////////////////////
 
+export const resetPass_get = (req:Request,res:Response) =>{
+	return res.send('RECOVEY PASSWORD');
+};
+
+
 export const resetPass_post = async (req : Request, res : Response) : Promise<Response> => {
 	// Obtenemos codigo
 	const { code } = req.body;
