@@ -52,75 +52,51 @@ export const sendEmailRecoveyPass = async ( code : string, email : string) => {
 
         body,footer{
             background-color: white;
-            /*width: 50%;*/
-        }
-
-        article{
-            /* border: 2px solid red; */
-            /* width: 100%; */
-            margin-left: var(--margin-left);
-            margin-bottom: 5rem;
-        }
-        footer{
-            margin-left: var(--margin-left);
-            margin-top: 1.2rem;
-            margin-bottom: 1.2rem;
-            font-size: 12px;
-            color: #A5A0A0;
+            /* width: 50%; */
         }
 
         .color_verde{
             /* width: 50%; */
             height: 0.2rem;
-            background-color: #4DE235;
+            background-color: #7ECA78;
         }
 
-        .title{
-        }
-
-        .p_hi{
-            margin-bottom: 2rem;
-        }
-
-        .p_code{
-            font-size: 2rem;
-            margin: 0;
-        }
-        
-        .container_menssage2{
-            color: #606060;
-        }
-
-        a{
-            font-size: 1rem;
-            font-weight: 600;
-        }
-        
-        .separador{
-            /* width: ; */
-            height: 1px;
-            background-color: #A5A0A0;
-            margin-left: 0.8rem;
-        }
     </style>
 </head>
+<div style="Margin:0 auto;max-width:600px;min-width:320px;width:320px;width:calc(28000% - 167400px);word-wrap:break-word;word-break:break-word">
+    <div style="border-collapse:collapse;display:table;width:100%;background-color:#f1f3fc">
+        <div style="text-align:left;color:#8e8e8e;font-size:14px;line-height:21px;font-family:sans-serif">
+            <div style="margin-left:30px;margin-right:30px;Margin-top:24px;Margin-bottom:24px">
+                <div style="line-height:8px;font-size:1px">&nbsp;
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="color_verde"></div>
-<body>
-    <article>
-        <div class="title">
+<body style="max-width:600px;">
+    <div style="Margin:0 auto;max-width:600px;min-width:320px;width:320px;width:calc(28000% - 167400px);word-wrap:break-word;word-break:break-word">
+        <article style="margin-left: var(--margin-left);margin-bottom: 5rem;">
+            <div class="title">
             <h1>Password Recovery</h1>
         </div>
         <!-- <div id="logo">
             <img src="" alt="logo">
         </div> -->
-        <div class="conteiner_menssage">
-            <b><p class="p_hi">Hi</p></b>
-            <p>Here is your TuGuiaQuindio verification code:</p>
+        <div class="conteiner_menssage", style="margin-bottom: 0.5rem;">
+            <b><p class="p_hi" style="margin-bottom: 2rem;">Hi</p></b>
+            <span>
+                Here is your TuGuiaQuindio verification code:
+            </span>
         </div>
         <div class="conteiner_code">
-            <b><p class="p_code">${code}</p></b>
+            <b><p class="p_code" style="font-size: 2rem; margin: 0;">
+                <strong>
+                    ${code}
+                </strong>
+            </p></b>
         </div>
-        <div class="container_menssage2">
+        <div class="container_menssage2" style="color: #606060;">
             <ul>
                 <li>
                     This code will expire in 10 minutes, please verify soon
@@ -128,18 +104,29 @@ export const sendEmailRecoveyPass = async ( code : string, email : string) => {
             </ul>
         </div>
         <div class="container_url">
-            <a href="${ruta}">Link to reset password</a>
+            <a href="${ruta}" style="font-size: 1rem; font-weight: 600;">Recovery Password</a>
         </div>
         
     </article>
-    <div class="separador">
-
+</div>
+    <div style="margin-left:30px;margin-right:30px">
+        <p style="height:1px;background-color:#e5e5e5;border:0;line-height:1px;font-size:0;padding:0;width:100%;margin-top:0">&nbsp;</p>
     </div>
 </body>
 <footer>
     <p>@2022 TuGuiaQuindio , All rights reserved.</p>
-</footer>
+</footer style="margin-left: var(--margin-left);margin-top: 1.2rem;margin-bottom: 1.2rem;font-size: 12px;color: #A5A0A0;">
 <div class="color_verde"></div>
+<div style="Margin:0 auto;max-width:600px;min-width:320px;width:320px;width:calc(28000% - 167400px);word-wrap:break-word;word-break:break-word">
+    <div style="border-collapse:collapse;display:table;width:100%;background-color:#f1f3fc">
+        <div style="text-align:left;color:#8e8e8e;font-size:14px;line-height:21px;font-family:sans-serif">
+            <div style="margin-left:30px;margin-right:30px;Margin-top:24px;Margin-bottom:24px">
+                <div style="line-height:8px;font-size:1px">&nbsp;
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </html>`;
 	//Opciones del destino
 	const mailOptions = {
