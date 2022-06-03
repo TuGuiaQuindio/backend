@@ -9,6 +9,9 @@ import { changePassword } from '../../services/Guide/changePass.service';
 //IMOPRTACIONES INTERFACES 
 import { ChangePass } from '../../interface/change-password';
 ////////////////////////////////////////////////////////////////
+//IMPORTAMOS CONSTATNTES
+import { Roles } from '../../constants/role.constants';
+////////////////////////////////////////////////////////////////
 
 export const changePass_put = async ( req : Request, res : Response ) => {
 	console.log('CHANGE PASSWORD - GUIDE');
@@ -21,7 +24,7 @@ export const changePass_put = async ( req : Request, res : Response ) => {
 	console.log('-> Payload - Guide :: ID :', id, '- ROl :',rol );
 	//Validamos que el rol coincida
 	// ROL GUIDE = 1
-	if(rol != 1) return res.status(403).json(getResponse('A002'));
+	if(rol != Roles.GUIDE) return res.status(403).json(getResponse('A002'));
 	//VALIDAMOS EL ID 
 	if(id == 0) return res.status(422).json({ error:'ID Not Found - Unauthorized' });
 	//CONTINUA

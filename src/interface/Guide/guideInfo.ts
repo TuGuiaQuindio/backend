@@ -30,3 +30,11 @@ export interface Document{
     size : number;
     path : string;
 }
+
+//COMPLETAR INFORMACION
+export interface CompleteData{
+    phoneNumber : string;
+    city : string;
+    birthDate : Date;
+    hasTransporter : boolean;
+}

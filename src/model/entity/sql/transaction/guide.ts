@@ -9,6 +9,7 @@ import { createRoles } from './roles';
 //////////////////////////////////////////
 //IMPORTAMOS INTERFACES
 import { GuideSignup_extra } from '../../../../interface/Guide/signup-guide.extra';
+import { CompleteData } from '../../../../interface/Guide/guideInfo';
 //////////////////////////////////////////
 //IMPORTAR FIND_GUIDE POR NoDocument
 import { getGuideDoc } from './find.g-c';
@@ -107,6 +108,29 @@ export const updatePass = async (id : number, pass : string) : Promise<boolean> 
 		
 	} catch (err) {
 		console.log('ERROR :: Update Password - ',err);		
+		return false;
+	}
+	//ALL OK
+	return true;
+};
+
+//? //////////////////////////////////////////////////////////////
+//? //////////////////////////////////////////////////////////////
+//? INSERT DATA
+export const insertGuideData = async (id : number, values : CompleteData ) : Promise<boolean> => {
+	//INSERTAR DATOS
+	try {
+		const resultInsert = await dsource.getRepository(Guide)
+			.update(id, {
+				phoneNumber : values.phoneNumber,
+				city : values.city,
+				birthDate : values.birthDate,
+				hasTransporter : values.hasTransporter
+			});
+		//Mostramos resultados
+		console.log('Result Insert-> ',resultInsert);
+	} catch (error) {
+		console.log('ERROR al insertar datos <Guia>-> ',error);
 		return false;
 	}
 	//ALL OK

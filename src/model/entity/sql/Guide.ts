@@ -29,6 +29,12 @@ export class Guide {
 
 	@Column({default : null})
 		city : string;
+	
+	@Column({
+		type: 'boolean',
+		default : null
+	})
+		hasTransporter : boolean;
 
 	@Column({default : null})
 		phoneNumber : string;

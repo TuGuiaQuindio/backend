@@ -6,7 +6,7 @@ import express from 'express';
 import path from '../paths';
 /////////////////////////////////////////////////////
 //IMPOTAMOS CONTROLADORES
-import { uploadFile } from '../../controllers/Guide/file.upload.controller';
+import { uploadFile_post } from '../../controllers/Guide/file.upload.controller';
 /////////////////////////////////////////////////////
 //IMPORTAMOS EL AUTENTIFICADOR
 import { isAuth } from '../../middleware/auth';
@@ -31,7 +31,7 @@ const nameFile = upload.single('myFile');
  */
 router.route(path.guideUploadPhoto)
 	.get()
-	.post(params, validate, isAuth, nameFile, uploadFile);
+	.post(params, validate, isAuth, nameFile, uploadFile_post);
 
 /////////////////////////////////////////////////////
 export default router;

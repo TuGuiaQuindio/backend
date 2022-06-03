@@ -3,20 +3,7 @@ import express, { Application } from 'express';
 const app :  Application = express();
 ///////////////////////////////////////////
 //IMPORTACIONES RUTAS
-import routerLogin from './routes/login.routes';
-//Company
-import routerCompanySingup from './routes/Company/company-signup.routes';
-import routerCompanyProfileConfig from './routes/Company/profile.config.routes';
-import routerCompanyProfileChangePass from './routes/Company/changePass.routes';
-//Guide
-import routerGuideSignup from './routes/Guide/guide-signup.routes';
-import routerGuideProfileConfig from './routes/Guide/profile.config.routes';
-import routerGuideProfileUploadPhoto from './routes/Guide/file.upload.routes';
-import routerGuideProfileChangePass from './routes/Guide/chagePass.routes';
-//
-import routerHome from './routes/home.routes';
-import routerRecoverPass from './routes/recoverPass.routes';
-import routerResetPass from './routes/reset-pass.routes';
+import { routes } from './routes/index.routes';
 //////////////////////////////////////////
 //MORGAN
 import morgan from 'morgan';
@@ -45,19 +32,7 @@ app.use(express.json());
 
 // ------> Routes <-------
 // Utilizamos las rutas
-app.use(routerLogin);
-app.use(routerHome);
-app.use(routerRecoverPass);
-app.use(routerResetPass);
-// ---> Company <---
-app.use(routerCompanySingup);
-app.use(routerCompanyProfileConfig);
-app.use(routerCompanyProfileChangePass);
-// ---> Guide <---
-app.use(routerGuideSignup);
-app.use(routerGuideProfileConfig);
-app.use(routerGuideProfileUploadPhoto);
-app.use(routerGuideProfileChangePass);
+routes(app);
 ///////////////////////////////////////////////
 ///////////////////////////////////////////////
 //Exporting app

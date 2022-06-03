@@ -12,7 +12,7 @@ import { getId, getRole } from '../../services/token.service';
 import { getResponse } from '../../services/response-message.service';
 /////////////////////////////////////////////////////
 /////////////////////////////////////////////////////
-export const uploadFile = async (req : Request, res : Response) => {
+export const uploadFile_post = async (req : Request, res : Response) => {
 	//Subir Archivos
 	//Obtenemos cabecera
 	const authorization : string | undefined = req.headers.authorization; 

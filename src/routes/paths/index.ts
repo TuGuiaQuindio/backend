@@ -7,6 +7,7 @@ const config = '/config';
 const upload  = '/upload';
 const photo = '/photo';
 const changePass = '/changePass';
+const completeData = '/completeData';
 
 // * Todos los paths del server, las rutas
 export default {
@@ -25,5 +26,8 @@ export default {
 	guideUploadPhoto : guide + profile + upload + photo,
 	//RECOVER PASSWORD
 	changePassGuide : guide + profile + changePass,
-	changePassCompany : company + profile + changePass
+	changePassCompany : company + profile + changePass,
+	//COMPLETE DATA
+	completeDataGuide : guide + completeData,
+	completeDataCompany : company + completeData,
 };
