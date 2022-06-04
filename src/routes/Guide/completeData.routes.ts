@@ -1,9 +1,8 @@
 //COMPLEtAR DATOS
-
-import express from 'express';
+import express, { Router } from 'express';
 //////////////////////////////////////////////
 //IMPORTAMOS PATH
-import path from '../paths';
+import path from '../paths/index';
 //////////////////////////////////////////////
 //IMPORTAMOS CONTROLADORES
 import { completeData_post } from '../../controllers/Guide/completeData.controller';
@@ -12,15 +11,15 @@ import { completeData_post } from '../../controllers/Guide/completeData.controll
 
 //////////////////////////////////////////////
 //IMPORTAMOS AUTH
-
+import { isAuth } from '../../middleware/auth';
 //////////////////////////////////////////////
 
 //Contruiir ruta
-const router = express.Router();
+const router : Router = express.Router();
 
 
 router.route(path.completeDataGuide)
-	.post(completeData_post);
+	.post( isAuth, completeData_post );
 
 ////////////////////////////////////////////////////
 //EXPORTAMOS

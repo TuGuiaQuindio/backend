@@ -7,7 +7,7 @@ import { createRoles } from './roles';
 import { getCompanyNit } from './find.g-c';
 /////////////////////////////////////////////////
 //IMPORTAMOS INTERFACES
-import { CompanySignup } from '../../../../interface/Company/data-sql';
+import { CompanySignup, CompleteDataSql } from '../../../../interface/Company/data-sql';
 import { DataSql } from '../../../../interface/Company/data-sql';
 /////////////////////////////////////////////////
 
@@ -87,3 +87,19 @@ export const updatePassword = async (id : number, pass : string) => {
 	//ALL OK
 	return true;
 };	
+
+//? //////////////////////////////////////////////////////////////
+//?COMPLETAR INFORMACION PERSONAL
+export const updateDataNew = async (id : number, values : CompleteDataSql) : Promise<boolean> => {
+	try {
+		await dsource.getRepository(Company)
+			.update(id,{
+				phoneNumber : values.phoneNumber,
+			});
+	} catch (error) {
+		console.log('ERROR en actualizar los datos, ',error);
+		return false;		
+	}
+	//ALL OK
+	return true;
+};

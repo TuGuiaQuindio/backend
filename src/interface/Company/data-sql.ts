@@ -19,6 +19,9 @@ export interface DataSql {
 
 //Interface de Datos NoSQL
 export interface DataNoSql {
-    id : number;
     mainActivity ?: string;
+}
+
+export interface CompleteDataSql{
+    phoneNumber : string;
 }

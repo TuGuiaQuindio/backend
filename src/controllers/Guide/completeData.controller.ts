@@ -12,7 +12,6 @@ import { Roles } from '../../constants/role.constants';
 import { completeDataService } from '../../services/Guide/completeData.service';
 //////////////////////////////////////////////
 //////////////////////////////////////////////
-//////////////////////////////////////////////
 
 export const completeData_post = async (req:Request, res:Response) : Promise<Response> => {
 	//OBTENEMOS EL TOKEN 

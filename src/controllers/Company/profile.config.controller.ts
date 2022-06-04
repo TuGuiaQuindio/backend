@@ -34,7 +34,7 @@ export const  profileConfig_put = async (req:Request, res:Response) : Promise<Re
 		// MySQL
 		const registerSql = await updateDataSql({ id, nameCompany, address, phoneNumber });
 		// MongoDB
-		const registerNoSql = await updateDataNoSql({ id, mainActivity });
+		const registerNoSql = await updateDataNoSql(id, { mainActivity });
 		//Validar si los datos estan guardados correctamente	
 		if(registerNoSql == undefined || registerSql == undefined) {
 		// if(registerMysql == undefined){//Undefined

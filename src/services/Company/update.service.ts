@@ -43,33 +43,31 @@ export const updateDataSql = async ( values : DataSql  ) : Promise<boolean | und
 };
 
 // NoSQL -> MongoDB 
-export const updateDataNoSql = async ( values : DataNoSql ) : Promise<boolean | undefined> => {
+export const updateDataNoSql = async (id : number, values : DataNoSql ) : Promise<boolean | undefined> => {
 	//Actualizar datos
 
 	console.log('****** Entry Update company Service Mongo ******');
 	// console.log('## Datos recibidos ## \n', values);
 	//Buscamos si la informacion existe
-	console.log('*SEARCHING por este id->',values.id);
+	console.log('*SEARCHING por este id->',id);
 	//Buscamos si existe la informacion 
-	const results = await getCompanyInfoOne(values.id);
+	const results = await getCompanyInfoOne(id);
 	//Show results
 	console.log(results);
 	//Validamos
 	if (results) {
 		// if User exits -> Data Update
-		const update : boolean = await updateCompanyInfo(values);
-		//Si ocurre un error
-		if(!update) return false;
-		//SI TODO OK
-		return true;
+		const update : boolean = await updateCompanyInfo(id, values);
+		//False; Ocurrio un error
+		//True: ALL ok
+		return update;
 	}
 	//Else User not exits -> Create Data
 	//Creamos la informacion
-	const createInfo : boolean = await createCompanyInfo(values);
+	const createInfo : boolean = await createCompanyInfo(id, values);
 	console.log('Service Results Company :: ', createInfo);
-	//Validamos 
-	if(!createInfo) return false;//Ocurrio un error
-	//-> Todo OK
+	//False; Ocurrio un error
+	//True: ALL ok
 	return true;
 };
 

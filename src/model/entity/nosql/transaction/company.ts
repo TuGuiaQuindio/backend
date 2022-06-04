@@ -7,11 +7,11 @@ import { DataNoSql } from '../../../../interface/Company/data-sql';
 ////////////////////////////////////////////////////////
 
 
-export const createCompanyInfo = async ( values : DataNoSql ) : Promise<boolean> => {
+export const createCompanyInfo = async (id :number, values : DataNoSql ) : Promise<boolean> => {
 	console.log('CREANDO INFO COMPANY...');
 	try {
 		//Creamos la informacion
-		await executeQueryCreate(values);
+		await executeQueryCreate(id, values);
 	} catch (err) {
 		console.log('ERROR al crear la Info: ',err);
 		return false;
@@ -21,10 +21,10 @@ export const createCompanyInfo = async ( values : DataNoSql ) : Promise<boolean>
 };  
 
 //Query 
-const executeQueryCreate = async ( values : DataNoSql ) => {
+const executeQueryCreate = async ( id : number, values : DataNoSql ) => {
 	
 	const companyInfo = new CompanyInfoModel({
-		id : values.id,
+		id : id,
 		mainActivity : values.mainActivity,
 	});
 	//Save Info
@@ -36,11 +36,11 @@ const executeQueryCreate = async ( values : DataNoSql ) => {
 ////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////
 
-export const updateCompanyInfo = async ( values : DataNoSql ) : Promise<boolean> => {
+export const updateCompanyInfo = async (id : number, values : DataNoSql ) : Promise<boolean> => {
 	console.log('Actualizando Datos...');
 	try {
 		//Actualizamos la informacion
-		await executeQueryUpdate(values);
+		await executeQueryUpdate(id, values);
 	} catch (err) {
 		console.log(err);
 		return false;
@@ -49,9 +49,7 @@ export const updateCompanyInfo = async ( values : DataNoSql ) : Promise<boolean>
 	return true;
 };
 //Ejecutar query
-const executeQueryUpdate = async ( values : DataNoSql ) => {
-	//Obtenemos el id
-	const id : number = values.id;
+const executeQueryUpdate = async ( id : number, values : DataNoSql ) => {
 	//Actualizamos
 	const companyInfo = await CompanyInfoModel.findOneAndUpdate({id}, {
 		mainActivity : values.mainActivity,

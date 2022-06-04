@@ -1,0 +1,24 @@
+import express, { Router } from 'express';
+//////////////////////////////////////////////
+//IMPORTAMOS PATH
+import path from '../paths/index';
+////////////////////////////////////////////////////
+//IMPORTAMOS CONTROLADORES
+import { completeData_post } from '../../controllers/Company/completeData.controller';
+////////////////////////////////////////////////////
+//IMPORTAMOS VALIDADORES
+
+////////////////////////////////////////////////////
+//IMPORTAMOS AUTH
+import { isAuth } from '../../middleware/auth';
+////////////////////////////////////////////////////
+
+//!Construimos rutas
+const router : Router = express.Router();
+
+router.route(path.completeDataCompany)
+	.post(isAuth, completeData_post);
+
+/////////////////////////////////////////////////////////////
+//EXPORT 
+export default router;
