@@ -28,106 +28,135 @@ export const sendEmailRecoveyPass = async ( code : string, email : string) => {
 		// }
 	});
 
-	const contentHtml2 = `<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Send Email</title>
-    <style>
-        
-        :root{
-            --margin-left: 1.2rem
-        }
-
-        *{
-            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-        }
-
-        html{
-            background-color: rgb(218, 218, 218);
-            width: 50%;
-        }
-
-        body,footer{
-            background-color: white;
-            /* width: 50%; */
-        }
-
-        .color_verde{
-            /* width: 50%; */
-            height: 0.2rem;
-            background-color: #7ECA78;
-        }
-
-    </style>
-</head>
-<div style="Margin:0 auto;max-width:600px;min-width:320px;width:320px;width:calc(28000% - 167400px);word-wrap:break-word;word-break:break-word">
-    <div style="border-collapse:collapse;display:table;width:100%;background-color:#f1f3fc">
-        <div style="text-align:left;color:#8e8e8e;font-size:14px;line-height:21px;font-family:sans-serif">
-            <div style="margin-left:30px;margin-right:30px;Margin-top:24px;Margin-bottom:24px">
-                <div style="line-height:8px;font-size:1px">&nbsp;
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="color_verde"></div>
-<body style="max-width:600px;">
-    <div style="Margin:0 auto;max-width:600px;min-width:320px;width:320px;width:calc(28000% - 167400px);word-wrap:break-word;word-break:break-word">
-        <article style="margin-left: var(--margin-left);margin-bottom: 5rem;">
-            <div class="title">
-            <h1>Password Recovery</h1>
-        </div>
-        <!-- <div id="logo">
-            <img src="" alt="logo">
-        </div> -->
-        <div class="conteiner_menssage", style="margin-bottom: 0.5rem;">
-            <b><p class="p_hi" style="margin-bottom: 2rem;">Hi</p></b>
-            <span>
-                Here is your TuGuiaQuindio verification code:
-            </span>
-        </div>
-        <div class="conteiner_code">
-            <b><p class="p_code" style="font-size: 2rem; margin: 0;">
-                <strong>
-                    ${code}
-                </strong>
-            </p></b>
-        </div>
-        <div class="container_menssage2" style="color: #606060;">
-            <ul>
-                <li>
-                    This code will expire in 10 minutes, please verify soon
-                </li>
-            </ul>
-        </div>
-        <div class="container_url">
-            <a href="${ruta}" style="font-size: 1rem; font-weight: 600;">Recovery Password</a>
-        </div>
-        
-    </article>
-</div>
-    <div style="margin-left:30px;margin-right:30px">
-        <p style="height:1px;background-color:#e5e5e5;border:0;line-height:1px;font-size:0;padding:0;width:100%;margin-top:0">&nbsp;</p>
-    </div>
-</body>
-<footer>
-    <p>@2022 TuGuiaQuindio , All rights reserved.</p>
-</footer style="margin-left: var(--margin-left);margin-top: 1.2rem;margin-bottom: 1.2rem;font-size: 12px;color: #A5A0A0;">
-<div class="color_verde"></div>
-<div style="Margin:0 auto;max-width:600px;min-width:320px;width:320px;width:calc(28000% - 167400px);word-wrap:break-word;word-break:break-word">
-    <div style="border-collapse:collapse;display:table;width:100%;background-color:#f1f3fc">
-        <div style="text-align:left;color:#8e8e8e;font-size:14px;line-height:21px;font-family:sans-serif">
-            <div style="margin-left:30px;margin-right:30px;Margin-top:24px;Margin-bottom:24px">
-                <div style="line-height:8px;font-size:1px">&nbsp;
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</html>`;
+	const contentHtml2 = `<body>
+    <table style="border-collapse:collapse;table-layout:fixed;min-width:320px;width:100%;background-color:#f1f3fc" role="presentation" cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+                <td>
+                    <div>
+                        <div style="Margin:0 auto;max-width:600px;min-width:320px;width:320px;width:calc(28000% - 167400px);word-wrap:break-word;word-break:break-word">
+                            <div style="border-collapse:collapse;display:table;width:100%;background-color:#f1f3fc">
+                                <div style="text-align:left;color:#8e8e8e;font-size:14px;line-height:21px;font-family:sans-serif">
+                                    <div style="margin-left:30px;margin-right:30px;Margin-top:24px;Margin-bottom:24px">
+                                        <div style="line-height:8px;font-size:1px">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <p style="height:2px;background-color:#21b36c;border:0;line-height:1px;font-size:0;padding:0;width:100%;margin-top:0">
+                                        &nbsp;
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="Margin:0 auto;max-width:600px;min-width:320px;width:320px;width:calc(28000% - 167400px);word-wrap:break-word;word-break:break-word">
+                            <div style="max-width:600px;border-collapse:collapse;display:table;height:20px;background-color:#fff;border:0;line-height:20px;font-size:0;padding:0;width:100%;margin-top:0">
+                                &nbsp;
+                            </div>
+                            <div style="padding-top:20px;border-collapse:collapse;display:table;width:100%;background-color:#fff">
+                                <!-- <div style="text-align:left;color:#8e8e8e;font-size:14px;line-height:21px;font-family:Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif;float:right;max-width:320px;min-width:100px;width:320px;width:calc(72200px - 12000%)">
+                                    <div style="margin-left:30px;margin-right:30px;Margin-top:0;Margin-bottom:0">
+                                        <div style="font-size:12px;font-style:normal;font-weight:400;line-height:19px">
+                                            <img style="border:0;display:block;height:auto;max-width:42px" alt="" src="https://ci5.googleusercontent.com/proxy/NM2Z7z1IirVeHD1Rtlj5wKMwPAVq3TQ0FD0gWo-lRPv2XmDkn8yeKlspJS31rtHX1yZtjv24w0DElA=s0-d-e1-ft#http://static.trovo.live/logo_trovo.png" width="42" height="51">
+                                        </div>
+                                    </div>
+                                </div> -->
+                                <div style="text-align:left;color:#8e8e8e;font-size:14px;line-height:21px;font-family:Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif;max-width:400px;min-width:320px;width:320px;width:calc(8000% - 47600px)"><!--float:right PARA COLOCARLO FLOTANTE-->
+                                    <div style="margin-left:30px;margin-right:30px;Margin-top:13px;Margin-bottom:13px">
+                                        <div style="vertical-align:middle">
+                                            <p style="Margin-top:0;Margin-bottom:0;font-size:24px;line-height:28px" lang="x-size-24">
+                                                <strong>
+                                                    <span style="color:#000">
+                                                        Password Recovery
+                                                    </span>
+                                                </strong>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="Margin:0 auto;max-width:600px;min-width:320px;width:320px;width:calc(28000% - 167400px);word-wrap:break-word;word-break:break-word">
+                            <div style="border-collapse:collapse;display:table;width:100%;background-color:#fff">
+                                <div style="text-align:left;color:#8e8e8e;font-size:14px;line-height:21px;font-family:Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif">
+                                    <div style="margin-left:30px;margin-right:30px;Margin-top:10px">
+                                        <div style="vertical-align:middle">
+                                            <h1 style="Margin-top:0;Margin-bottom:20px;font-style:normal;font-weight:400;color:#808a99;font-size:16px;line-height:24px;font-family:Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif;text-align:left" lang="x-size-16">
+                                                <strong>
+                                                    <span style="color:#21b36c">Hi
+                                                    </span>
+                                                </strong>
+                                            </h1>
+                                        </div>
+                                    </div>
+                                    <div style="margin-left:30px;margin-right:30px">
+                                        <div style="vertical-align:middle">
+                                            <p style="Margin-top:0;Margin-bottom:5px;font-size:16px;line-height:24px" lang="x-size-16">
+                                                <span style="color:#000">
+                                                    Here is your TuGuiaQuindio verification code:
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div style="margin-left:30px;margin-right:30px">
+                                        <div style="vertical-align:middle">
+                                            <p style="Margin-top:0;Margin-bottom:5px;font-size:36px;line-height:43px" lang="x-size-36">
+                                                <span style="color:#000">
+                                                    <strong>
+                                                        ${code}
+                                                    </strong>
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div style="margin-left:30px;margin-right:30px">
+                                        <div style="vertical-align:middle;font-family:Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif">
+                                            <p style="Margin-top:0;Margin-bottom:30px;font-size:16px;line-height:24px">
+                                                <!-- <span style="color:#000">*This code will expire in 10 minutes, please verify soon</span> -->
+                                                <ul>
+                                                    <li>
+                                                        This code will expire in 10 minutes, please verify soon
+                                                    </li>
+                                                </ul>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div style="margin-left:30px;">
+                                        <a href="${ruta}" style="font-size: 1rem; font-weight: 600;">Recovery Password</a>
+                                    </div>
+                                    <div style="margin-left:30px;margin-right:30px; padding-top: 3rem;">
+                                    </div>
+                                    <div style="margin-left:30px;margin-right:30px">
+                                        <p style="height:1px;background-color:#e5e5e5;border:0;line-height:1px;font-size:0;padding:0;width:100%;margin-top:0">
+                                            &nbsp;
+                                        </p>
+                                    </div>
+                                    <div style="margin-left:30px;margin-right:30px;Margin-bottom:20px">
+                                        <div style="vertical-align:middle">
+                                            <p style="Margin-bottom:0;font-size:12px;line-height:18px" lang="x-size-12">@2022 TuGuiaQuindio. All rights reserved.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <div style="Margin:0 auto;max-width:600px;min-width:320px;width:320px;width:calc(28000% - 167400px);word-wrap:break-word;word-break:break-word">
+                        <p style="height:2px;background-color:#21b36c;border:0;line-height:1px;font-size:0;padding:0;width:100%;margin-top:0">
+                            &nbsp;
+                        </p>
+                        <div style="border-collapse:collapse;display:table;width:100%;background-color:#f1f3fc">
+                            <div style="text-align:left;color:#8e8e8e;font-size:14px;line-height:21px;font-family:sans-serif">
+                                <div style="margin-left:30px;margin-right:30px;Margin-top:24px;Margin-bottom:24px">
+                                    <div style="line-height:8px;font-size:1px">
+                                        &nbsp;
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>`;
 	//Opciones del destino
 	const mailOptions = {
 		from : 'Tu Guia Quindio',
