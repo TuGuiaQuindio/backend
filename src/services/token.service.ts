@@ -5,11 +5,8 @@ import { Payload } from '../interface/payload-token';
 import jwt from 'jsonwebtoken';
 import { readFileSync } from 'fs';
 import { join } from 'path';
-
-
-
-
 ////////////////////////////////////////////////////////////
+
 // Generamos y validamos los tokens
 export const createToken = async ( email:string, rol: number, id?: number, options?: Partial<jwt.SignOptions> ) : Promise<string> => {
 	//leemos llave
