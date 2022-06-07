@@ -8,6 +8,7 @@ const upload  = '/upload';
 const photo = '/photo';
 const changePass = '/changePass';
 const completeData = '/completeData';
+const verifyToken = '/verifyToken';
 
 // * Todos los paths del server, las rutas
 export default {
@@ -15,6 +16,7 @@ export default {
 	login : '/login',
 	recover : '/recoverPass',
 	resetPass : '/reset-pass',
+	verifyToken : verifyToken,
 	//SIGN-UP
 	signupGuide : signup + guide,
 	signupCompany : signup + company,
@@ -30,4 +32,5 @@ export default {
 	//COMPLETE DATA
 	completeDataGuide : guide + completeData,
 	completeDataCompany : company + completeData,
+	
 };

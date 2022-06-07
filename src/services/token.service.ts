@@ -5,6 +5,10 @@ import { Payload } from '../interface/payload-token';
 import jwt from 'jsonwebtoken';
 import { readFileSync } from 'fs';
 import { join } from 'path';
+
+////////////////////////////////////////////////////////////
+//IMPORTAMOS CONSTANTES
+import { Roles } from '../constants/role.constants';
 ////////////////////////////////////////////////////////////
 
 // Generamos y validamos los tokens
@@ -13,6 +17,19 @@ export const createToken = async ( email:string, rol: number, id?: number, optio
 	const key : Buffer = await readKey();
 	const defaultOptions: jwt.SignOptions = { algorithm: 'RS256', expiresIn: 60 * 60 };
 	const signOptions: jwt.SignOptions = { ...defaultOptions, ...options};
+
+	//Compañia
+	const permissions = [
+		{
+			access : 'FREE'
+		}
+	];
+	//COMPAÑIA
+	if(rol == Roles.COMPANY){
+		//AGREGAR PERMISOS
+		return jwt.sign( { id, email, rol, permissions }, key, signOptions );
+	}
+	//GUIA
 	return jwt.sign( { id, email, rol },key , signOptions);
 };
 

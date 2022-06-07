@@ -14,6 +14,7 @@ export const responses: ResponseMessage[] = [
 	//Autenticacion
 	{ code: 'A001', msg: 'Unauthorized : Es necesario autenticar' },
 	{ code: 'A002', msg: 'Unauthorized : El cliente no posee los permisos suficientes' },
+	{ code: 'A003', msg: 'Unauthorized : Token Expirado' },
 	//Upload File
 	{ code: 'U001', msg: 'Archivo ya existe' },
 	{ code: 'U002', msg: 'Información no existe' },

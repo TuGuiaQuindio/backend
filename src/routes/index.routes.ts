@@ -7,6 +7,7 @@ import routerLogin from './login.routes';
 import routerHome from './home.routes';
 import routerRecoverPass from './recoverPass.routes';
 import routerResetPass from './reset-pass.routes';
+import routerVerifyTokenDecode from './verifyToken.routes';
 //COMPANY
 import routerCompanySingup from './Company/company-signup.routes';
 import routerCompanyProfileConfig from './Company/profile.config.routes';
@@ -27,6 +28,7 @@ const _routes : [Router][] = [
 	[routerHome],
 	[routerRecoverPass],
 	[routerResetPass],
+	[routerVerifyTokenDecode],
 	//?COMPANY
 	[routerCompanySingup],
 	[routerCompanyProfileConfig],

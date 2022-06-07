@@ -9,7 +9,7 @@ import path from '../paths';
 import signUpValidator from '../../validator/guide-signup';
 ////////////////////////////////////////
 //IMPORTAMOS CONTROLADORES
-import { guideSignup_get, guideSignup_post } from '../../controllers/Guide/guide.controller';
+import { guideSignup_get, guideSignup_post } from '../../controllers/Guide/guideSignUp.controller';
 
 const router = express.Router();
 ///////////////////////////////////////////////

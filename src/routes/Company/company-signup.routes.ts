@@ -8,7 +8,7 @@ import path from '../paths/index';
 import signUpValidator from '../../validator/company-signup';
 ////////////////////////////////////////////
 //IMPORTACIONES DE CONTROLADORES
-import { companySignup_post } from '../../controllers/Company/company.controller'; 
+import { companySignup_post } from '../../controllers/Company/companySignUp.controller'; 
 // Obtenemos las rutas
 const router = express.Router();
 /////////////////////////////////////////////////
