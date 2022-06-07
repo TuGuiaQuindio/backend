@@ -7,11 +7,11 @@ import { DataNoSql } from '../../../../interface/Company/data-sql';
 ////////////////////////////////////////////////////////
 
 
-export const createCompanyInfo = async (id :number, values : DataNoSql ) : Promise<boolean> => {
+export const createCompanyInfo = async (id :number, values : DataNoSql, completeData ?: boolean ) : Promise<boolean> => {
 	console.log('CREANDO INFO COMPANY...');
 	try {
 		//Creamos la informacion
-		await executeQueryCreate(id, values);
+		await executeQueryCreate(id, values, completeData);
 	} catch (err) {
 		console.log('ERROR al crear la Info: ',err);
 		return false;
@@ -21,11 +21,12 @@ export const createCompanyInfo = async (id :number, values : DataNoSql ) : Promi
 };  
 
 //Query 
-const executeQueryCreate = async ( id : number, values : DataNoSql ) => {
+const executeQueryCreate = async ( id : number, values : DataNoSql, completeData ?: boolean ) => {
 	
 	const companyInfo = new CompanyInfoModel({
 		id : id,
 		mainActivity : values.mainActivity,
+		completeData : completeData
 	});
 	//Save Info
 	await companyInfo.save();
@@ -36,11 +37,11 @@ const executeQueryCreate = async ( id : number, values : DataNoSql ) => {
 ////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////
 
-export const updateCompanyInfo = async (id : number, values : DataNoSql ) : Promise<boolean> => {
+export const updateCompanyInfo = async (id : number, values : DataNoSql, completeData ?: boolean ) : Promise<boolean> => {
 	console.log('Actualizando Datos...');
 	try {
 		//Actualizamos la informacion
-		await executeQueryUpdate(id, values);
+		await executeQueryUpdate(id, values, completeData);
 	} catch (err) {
 		console.log(err);
 		return false;
@@ -49,10 +50,11 @@ export const updateCompanyInfo = async (id : number, values : DataNoSql ) : Prom
 	return true;
 };
 //Ejecutar query
-const executeQueryUpdate = async ( id : number, values : DataNoSql ) => {
+const executeQueryUpdate = async ( id : number, values : DataNoSql, completeData ?: boolean ) => {
 	//Actualizamos
 	const companyInfo = await CompanyInfoModel.findOneAndUpdate({id}, {
 		mainActivity : values.mainActivity,
+		completeData,
 	});
 	//Show results
 	console.log('Results update : ',companyInfo);

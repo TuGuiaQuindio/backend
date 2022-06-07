@@ -14,6 +14,12 @@ class GuideInfo {
 
 	@prop()
 		information : Information;
+	
+	@prop({
+		type:Boolean,
+		default : false
+	})
+		completeData:boolean;
 }
 
 //Create model

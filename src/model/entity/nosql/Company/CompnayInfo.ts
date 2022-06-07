@@ -13,6 +13,11 @@ export class CompanyInfo {
 		type : String,
 	})
 		mainActivity : string;
+
+	@prop({
+		type:Boolean
+	})
+		completeData : boolean;
 }
 
 //CREATE MODEL

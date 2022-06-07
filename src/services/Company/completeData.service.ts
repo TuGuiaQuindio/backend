@@ -30,6 +30,9 @@ export const completeDataServiceSql = async (id : number, values : CompleteDataS
 
 export const completeDataServiceNoSql = async ( id : number, values : DataNoSql  ) => {
 	//
+	//Los datos ya estan completos
+	const completeData = true; //Estado true
+
 	console.log('**** COMPLETE COMPANY DATA NoSQL ****');
 	//Buscamos usuario si existe
 	const companyDataFound = await getCompanyInfoOne(id);
@@ -37,7 +40,7 @@ export const completeDataServiceNoSql = async ( id : number, values : DataNoSql 
 	if(companyDataFound){
 		//Transaccion de datos
 		//Guardar datos
-		const resultIs : boolean = await updateCompanyInfo(id, values);
+		const resultIs : boolean = await updateCompanyInfo(id, values, completeData);
 		// Retornamos resultado
 		//False -> Error en actualizar datos
 		//True -> All ok
@@ -45,7 +48,7 @@ export const completeDataServiceNoSql = async ( id : number, values : DataNoSql 
 	} 
 	//Compañia INFO no existe
 	//Se crea info
-	const createInfo : boolean = await createCompanyInfo(id, values);
+	const createInfo : boolean = await createCompanyInfo(id, values, completeData);
 	//False; Ocurrio un error
 	//True: ALL ok
 	return createInfo; 
