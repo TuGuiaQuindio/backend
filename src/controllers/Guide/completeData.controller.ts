@@ -9,7 +9,7 @@ import { getId, getRole } from '../../services/token.service';
 //////////////////////////////////////////////
 //IMPORTAMOS CONSTANTES
 import { Roles } from '../../constants/role.constants';
-import { completeDataService } from '../../services/Guide/completeData.service';
+import { completeDataServiceSql } from '../../services/Guide/completeData.service';
 //////////////////////////////////////////////
 //////////////////////////////////////////////
 
@@ -27,10 +27,10 @@ export const completeData_post = async (req:Request, res:Response) : Promise<Res
 	if(id == 0) return res.status(422).json({ error:'ID Not Found - Unauthorized' });
 	//CONTINUA
 	//OBTENEMOS LOS DATOS
-	const { phoneNumber, city, birthDate, hasTransporter } = req.body as CompleteData;
+	const { phoneNumber, city, birthDate, hasTransport } = req.body as CompleteData;
 
 	try {
-		const result : boolean | null = await completeDataService( id ,{phoneNumber, city, birthDate, hasTransporter});
+		const result : boolean | null = await completeDataServiceSql( id ,{phoneNumber, city, birthDate, hasTransport});
 		//Validamos 
 		if (result == null) {
 			// NO existe el usuario

@@ -125,7 +125,7 @@ export const insertGuideData = async (id : number, values : CompleteData ) : Pro
 				phoneNumber : values.phoneNumber,
 				city : values.city,
 				birthDate : values.birthDate,
-				hasTransporter : values.hasTransporter
+				hasTransport : values.hasTransport
 			});
 		//Mostramos resultados
 		console.log('Result Insert-> ',resultInsert);

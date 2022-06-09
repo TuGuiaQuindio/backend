@@ -7,17 +7,20 @@ import path from '../paths/index';
 import { completeData_post } from '../../controllers/Company/completeData.controller';
 ////////////////////////////////////////////////////
 //IMPORTAMOS VALIDADORES
-
+import dataValidator from '../../validator/company/completeData.validator';
 ////////////////////////////////////////////////////
 //IMPORTAMOS AUTH
 import { isAuth } from '../../middleware/auth';
 ////////////////////////////////////////////////////
 
+//Decosntruimos
+const { params, validate } = dataValidator;
+
 //!Construimos rutas
 const router : Router = express.Router();
 
 router.route(path.completeDataCompany)
-	.post(isAuth, completeData_post);
+	.post(params, validate, isAuth, completeData_post);
 
 /////////////////////////////////////////////////////////////
 //EXPORT 

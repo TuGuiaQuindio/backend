@@ -6,7 +6,7 @@ import express from 'express';
 import path from '../paths';
 ////////////////////////////////////////
 //IMPORTAMOS VALIDADORES
-import signUpValidator from '../../validator/guide-signup';
+import signUpValidator from '../../validator/guide/guide-signup';
 ////////////////////////////////////////
 //IMPORTAMOS CONTROLADORES
 import { guideSignup_get, guideSignup_post } from '../../controllers/Guide/guideSignUp.controller';

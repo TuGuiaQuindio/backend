@@ -5,6 +5,7 @@ import GuideInfoModel from '../Guide/GuideInfo';
 ////////////////////////////////////////////////
 //IMPORTAMOS INTERFACES
 import { GuideInfo } from '../../../../interface/Guide/guideInfo';
+import { IsNull } from 'typeorm';
 ////////////////////////////////////////////////
 //Transacion de datos 
 //Se encarga de actualizar los datos de usuario
@@ -38,8 +39,6 @@ async function executeQuery(values : GuideInfo) {
 }
 
 ////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////
 
 //ACTUALIZAR INFORMACION GUIA
 export const updateGuideInfo = async ( values : GuideInfo ) : Promise<boolean> => {
@@ -65,6 +64,33 @@ export const updateGuideInfo = async ( values : GuideInfo ) : Promise<boolean> =
 	return true;
 };
 
+//UPDATE DATA - completeData
+
+export const createDataInfo = async (id : number, completeData : boolean) => {
+
+	let bandera = null;
+
+	//Actualizamos los datos
+	try {
+		const guideInfo = new GuideInfoModel({
+			id : id,
+			information : {
+				theme : null,
+				language : [],
+			},
+			completeData
+		});
+		//Save Guide
+		await guideInfo.save();
+		console.log('Resultado de completar datos: ',guideInfo);
+		bandera = guideInfo;
+	} catch (error) {
+		console.log('ERROR al crear los datos, completeData: ',error);
+		return false;
+	}
+	//ALL OK
+	return bandera;
+};
 
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////

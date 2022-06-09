@@ -5,7 +5,7 @@ import express from 'express';
 import path from '../paths/index';
 //////////////////////////////////////
 //IMPORTACIONES DE VALIDADORES
-import signUpValidator from '../../validator/company-signup';
+import signUpValidator from '../../validator/company/company-signup';
 ////////////////////////////////////////////
 //IMPORTACIONES DE CONTROLADORES
 import { companySignup_post } from '../../controllers/Company/companySignUp.controller'; 

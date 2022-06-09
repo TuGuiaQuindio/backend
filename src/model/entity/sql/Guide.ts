@@ -34,7 +34,7 @@ export class Guide {
 		type: 'boolean',
 		default : null
 	})
-		hasTransporter : boolean;
+		hasTransport : boolean;
 
 	@Column({default : null})
 		phoneNumber : string;
