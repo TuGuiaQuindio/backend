@@ -6,7 +6,7 @@ export default {
 	params: [
 		body('phoneNumber')
 			.not().isEmpty().withMessage('Required field!')
-			.matches(/^(?:\(\+[0-9]{1,3}\)|\+[0-9]{1,3}|.?)\s?[0-9]{3}[\s-]?[0-9]{3}[\s-]?[0-9]{2,6}[\s-]?[0-9]{2,6}$/).withMessage('Not a valid token'),
+			.matches(/^(?:\(\+[0-9]{1,3}\)|\+[0-9]{1,3}|.?)\s?[0-9]{3}[\s-]?[0-9]{3}[\s-]?[0-9]{2,6}[\s-]?[0-9]{2,6}$/).withMessage('Not a valid Data'),
 		body('mainActivity')
 			.not().isEmpty().withMessage('Required field!'),
 	],
