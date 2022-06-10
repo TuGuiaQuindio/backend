@@ -11,7 +11,7 @@ import { getCompanyEmail, getGuideEmail } from '../model/entity/sql/transaction/
 import { ResetPass } from '../interface/dataRedis';
 /////////////////////////////////////////////////////////
 //IMPORTACIONES DE CONSTANTES
-import { Roles } from '../constants/role.constants';
+import { Roles } from '../constants/constants';
 /////////////////////////////////////////////////////////
 //IMPORTACIONES DE SERVICIOS
 import bcryptService from './bcrypt.service';

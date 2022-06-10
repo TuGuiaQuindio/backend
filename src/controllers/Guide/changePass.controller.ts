@@ -10,7 +10,7 @@ import { changePassword } from '../../services/Guide/changePass.service';
 import { ChangePass } from '../../interface/change-password';
 ////////////////////////////////////////////////////////////////
 //IMPORTAMOS CONSTATNTES
-import { Roles } from '../../constants/role.constants';
+import { Roles } from '../../constants/constants';
 ////////////////////////////////////////////////////////////////
 
 export const changePass_put = async ( req : Request, res : Response ) => {

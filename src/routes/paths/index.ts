@@ -9,6 +9,7 @@ const photo = '/photo';
 const changePass = '/changePass';
 const completeData = '/completeData';
 const verifyToken = '/verifyToken';
+const createVacancy = '/createVacancy';
 
 // * Todos los paths del server, las rutas
 export default {
@@ -32,5 +33,8 @@ export default {
 	//COMPLETE DATA
 	completeDataGuide : guide + completeData,
 	completeDataCompany : company + completeData,
+	// crear vacantes Empresa
+	createVacancy : company + createVacancy,
+
 	
 };

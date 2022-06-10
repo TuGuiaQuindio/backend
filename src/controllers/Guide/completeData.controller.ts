@@ -8,7 +8,7 @@ import { getResponse } from '../../services/response-message.service';
 import { getId, getRole } from '../../services/token.service';
 //////////////////////////////////////////////
 //IMPORTAMOS CONSTANTES
-import { Roles } from '../../constants/role.constants';
+import { Roles } from '../../constants/constants';
 import { completeDataServiceSql } from '../../services/Guide/completeData.service';
 //////////////////////////////////////////////
 //////////////////////////////////////////////

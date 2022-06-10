@@ -18,6 +18,12 @@ export class CompanyInfo {
 		type:Boolean
 	})
 		completeData : boolean;
+	
+	@prop({
+		type: ()=> [Number]
+	})
+		vacancies:Array<number>;
+
 }
 
 //CREATE MODEL

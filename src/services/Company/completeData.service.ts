@@ -1,7 +1,7 @@
 //////////////////////////////////////////////////////////////////////////////
 //IMPORTAMOS ENTIDADES
 //NoSQL
-import { createCompanyInfo, updateCompanyInfo } from '../../model/entity/nosql/transaction/company';
+import { createCompanyInfo, updateCompanyInfo } from '../../model/entity/nosql/transaction/companyInfo';
 //SQL
 import { Company } from '../../model/entity/sql/Company';
 import { updateDataNew } from '../../model/entity/sql/transaction/company';
@@ -11,7 +11,7 @@ import { getCompanyId } from '../../model/entity/sql/transaction/find.g-c';
 
 //////////////////////////////////////////////////////////////////////////////
 //IMPORTAMOS INTERFACES
-import { CompleteDataSql, DataNoSql } from '../../interface/Company/data-sql';
+import { CompleteDataSql, DataNoSql } from '../../interface/Company/data';
 import { getCompanyInfoOne } from '../../model/entity/nosql/transaction/find.g-c';
 
 //////////////////////////////////////////////////////////////////////////////

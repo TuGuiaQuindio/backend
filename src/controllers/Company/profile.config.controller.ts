@@ -10,7 +10,7 @@ import { getId, getRole } from '../../services/token.service';
 import { updateDataSql, updateDataNoSql } from '../../services/Company/update.service';
 /////////////////////////////////////////////////
 //IMPORTACIONES DE INTERFACES
-import { DataNoSql, DataSql } from '../../interface/Company/data-sql';
+import { DataNoSql, DataSql } from '../../interface/Company/data';
 /////////////////////////////////////////////////
 
 // ->> RUTA PUT

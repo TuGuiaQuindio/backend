@@ -1,14 +1,14 @@
 import { Request,Response } from 'express';
 //////////////////////////////////////////////
 //IMPORTAMOC INTERFACES
-import { CompleteDataSql, DataNoSql } from '../../interface/Company/data-sql';
+import { CompleteDataSql, DataNoSql } from '../../interface/Company/data';
 //////////////////////////////////////////////
 //IMPORTAMOS SERVICIOS
 import { getId, getRole } from '../../services/token.service';
 import { getResponse } from '../../services/response-message.service';
 //////////////////////////////////////////////
 //IMPORTAMOS CONSTANTES
-import { Roles } from '../../constants/role.constants';
+import { Roles } from '../../constants/constants';
 import { completeDataServiceNoSql, completeDataServiceSql } from '../../services/Company/completeData.service';
 //////////////////////////////////////////////
 //////////////////////////////////////////////

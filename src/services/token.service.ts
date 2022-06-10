@@ -8,7 +8,7 @@ import { join } from 'path';
 
 ////////////////////////////////////////////////////////////
 //IMPORTAMOS CONSTANTES
-import { Roles } from '../constants/role.constants';
+import { Roles } from '../constants/constants';
 ////////////////////////////////////////////////////////////
 
 // Generamos y validamos los tokens
@@ -95,3 +95,16 @@ export async function getRole( authorization ?: string) : Promise<number> {
 	const { rol } = decodeToken;
 	return rol;
 }
+//Obtener permisos
+export const getAccessPermit = async (authorization?:string):Promise<[]|undefined> => {
+	//Validamos el token
+	if (!authorization) return undefined;
+	//Obtenemos el token
+	const token : string = await pullApartToken( authorization );
+	//Decode token
+	const decodeToken = await verifyToken(token) as Payload;
+	//Data token
+	//Deconstruimos
+	const { permissions } = decodeToken;
+	return permissions;
+};

@@ -7,8 +7,8 @@ import { createRoles } from './roles';
 import { getCompanyNit } from './find.g-c';
 /////////////////////////////////////////////////
 //IMPORTAMOS INTERFACES
-import { CompanySignup, CompleteDataSql } from '../../../../interface/Company/data-sql';
-import { DataSql } from '../../../../interface/Company/data-sql';
+import { CompanySignup, CompleteDataSql } from '../../../../interface/Company/data';
+import { DataSql } from '../../../../interface/Company/data';
 /////////////////////////////////////////////////
 
 // Controlador

@@ -3,7 +3,7 @@
 import CompanyInfoModel from '../Company/CompnayInfo';
 ////////////////////////////////////////////////////////
 // IMPORTACIONES INTERFACES
-import { DataNoSql } from '../../../../interface/Company/data-sql';
+import { DataNoSql } from '../../../../interface/Company/data';
 ////////////////////////////////////////////////////////
 
 

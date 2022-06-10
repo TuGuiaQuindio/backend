@@ -25,3 +25,22 @@ export interface DataNoSql {
 export interface CompleteDataSql{
     phoneNumber : string;
 }
+
+//entry data of vacancy 
+export interface Vacancy{
+    title:string;
+    description:string;
+    salary:number;
+    schedule:string;
+}
+
+export interface DataVacancy {
+    idCompany:number;
+    title:string;
+    description:string;
+    salary:number;
+    schedule:string;
+    email: string;
+    phoneNumber: number;
+    address: string;
+}

@@ -63,9 +63,9 @@ const createCodeRecovery = async () : Promise<string> => {
 	const nanoid = customAlphabet(value, 10);
 	return nanoid(length);
 };
-
+//TODO->Separar los generadores a un servicio independiente
 //GENERADOR DE CARACTERES
-const  generateRandomString = async (num : number) : Promise<string> => {
+const generateRandomString = async (num : number) : Promise<string> => {
 	//Cantidad de caracteres
 	const characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
 	//Bandera

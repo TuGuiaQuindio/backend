@@ -2,7 +2,7 @@
 // Actualizamos datos de tipo de usuario
 ////////////////////////////////////////////////
 //IMPORTACIONES DE INTERFACES
-import { DataSql, DataNoSql } from '../../interface/Company/data-sql';
+import { DataSql, DataNoSql } from '../../interface/Company/data';
 ////////////////////////////////////////////////
 //IMPORTAMOS DE TRANSACTIONS SQL
 import { getCompanyId } from '../../model/entity/sql/transaction/find.g-c';
@@ -10,7 +10,7 @@ import { updateCompany } from '../../model/entity/sql/transaction/company';
 ////////////////////////////////////////////////
 //IMPORTAMOS DE TRANSACTIONS NoSQL
 import { getCompanyInfoOne } from '../../model/entity/nosql/transaction/find.g-c';
-import { createCompanyInfo, updateCompanyInfo } from '../../model/entity/nosql/transaction/company';
+import { createCompanyInfo, updateCompanyInfo } from '../../model/entity/nosql/transaction/companyInfo';
 ////////////////////////////////////////////////
 //IMPORTAMOS ENTIDADES
 import { Company } from '../../model/entity/sql/Company';

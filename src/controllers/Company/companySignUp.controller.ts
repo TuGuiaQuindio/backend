@@ -6,7 +6,7 @@ import signup from '../../services/signup-db.service';
 import { getResponse } from '../../services/response-message.service';
 ////////////////////////////////////////////////
 //IMPORTACIONES DE INTERFACES
-import { CompanySignup } from '../../interface/Company/data-sql';
+import { CompanySignup } from '../../interface/Company/data';
 /////////////////////////////////////////////////////
 //->>RUTA POST
 export const companySignup_post = async(req:Request, res:Response) : Promise<Response> => {
