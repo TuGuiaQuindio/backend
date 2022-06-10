@@ -2,10 +2,11 @@
 import { createClient, RedisClientOptions } from 'redis';
 //Opciones de la DB
 const options = {
-	port : process.env.REDIS_PORT,
-	host : process.env.REDIS_HOST,
+	url: `redis://${process.env.REDIS_HOST}:${process.env.REDIS_PORT}`,
 	password : process.env.REDIS_PASSWORD,
 } as RedisClientOptions;
+
+console.warn('Opciones de redis: ',options);
 
 // Se crea el cliente
 const redisClient = createClient(options);
