@@ -4,13 +4,14 @@ import { createToken }  from '../services/token.service';
 import { getRole, getGuideEmail, getCompanyEmail  } from '../model/entity/sql/transaction/find.g-c';
 
 import bcrypt from '../services/bcrypt.service';
-import { Roles } from '../constants/role.constants';
+import { Roles } from '../constants/constants';
+import { Auth } from '../interface/user';
 
 //Deconstruccion 
 const { verify } = bcrypt;
 	
 export default {
-	login : async (email:string, password:string) : Promise<object | boolean>=>{
+	login : async (email:string, password:string) : Promise<Auth | boolean>=>{
 		// Ingresamos a la DB
 		// Se busca usuario por el email
 		const roleFound = await getRole(email) ;
@@ -34,11 +35,11 @@ export default {
 				// pasamos el token al cliente
 				console.log('El token generado es:: ', token);
 				//Objeto a retornar
-				const guide = {
+				const guide:Auth = {
 					role : roleFound.rol,
 					name: guideFound.firstName,
 					token: token
-				};
+				} as Auth;
 
 				// Retornamos 
 				return guide;
@@ -60,11 +61,11 @@ export default {
 				// pasamos el token al cliente
 				console.log('El token generado es:: ', token);
 				//Objeto a rotornar
-				const company = {
+				const company:Auth = {
 					role : roleFound.rol, 
 					name : companyFound.nameCompany,
 					token : token
-				}; 
+				} as Auth; 
 				// Retornamos 
 				return company;
 			}
