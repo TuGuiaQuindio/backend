@@ -22,8 +22,6 @@ export const createVacancyService = async ( id:number,values:Vacancy, accessPerm
 	//ACCESO FREE 
 	if(access == 'FREE'){
 		console.log('ACCESS FREE');		
-		//TODO->1)Obtenemos datos adicionales 
-		//TODO	(publishedIn, email company, phoneNumber, address )
 		console.log('Busacndo Empresa...');
 		const companyFound : Company|null = await getCompanyId(id);
 		//Obtenemos datos adicionales
@@ -45,18 +43,16 @@ export const createVacancyService = async ( id:number,values:Vacancy, accessPerm
 		}
 
 		console.log('Company found EMAIL: ',companyFound);
-		//TODO->2)Se crea la vacante
 		//Se crea la vacante
 		const resultNewVacancy : DataVacancy = newVacancy(id,values,companyFound);
 		//Se crea y guarda en MongoDB
 		const resultVacancy = await createVacancy(resultNewVacancy);
 		if (!resultVacancy) return false;//ERROR en crear vacante
 		//Se guarda el ObjectId en la lista
-		//TODO->Se agraga el ObjectId de la bacante
 		const objectIdVacancy:object = resultVacancy._id;
 		//Agregamos objeto 
 		const resultAddVacancy:boolean = await addVacancies(id,objectIdVacancy);
-
+		//TODO->VALIDAR QUE LOS PERMISOS FUNCIONEN, QUE SOLO CREE 3 SI ES FREE
 		if(!resultAddVacancy) return false; //ERROR EN agregar a lista vacante
 		return true;
 	}
