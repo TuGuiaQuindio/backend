@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////
 //IMPORTAMOS MODELO
-import CompanyInfoModel from '../Company/CompnayInfo';
+import CompanyInfoModel from '../Company/CompanyInfo';
 ////////////////////////////////////////////////////////
 // IMPORTACIONES INTERFACES
 import { DataNoSql } from '../../../../interface/Company/data';
@@ -59,3 +59,20 @@ const executeQueryUpdate = async ( id : number, values : DataNoSql, completeData
 	//Show results
 	console.log('Results update : ',companyInfo);
 };
+
+//Agregar el id de la vacante
+export const addVacancies = async (id:number, idVacancies:object): Promise<boolean> => {
+	//
+	console.log('Object-> ',idVacancies);
+	try {
+		const response = await CompanyInfoModel.updateOne({id},
+			{$addToSet:{'vacancies':idVacancies}}
+		);
+	} catch (error) {
+		console.log('ERROR en agregar vacante: ',error);
+		return false;
+	}
+	//ALL OK
+	return true;
+};
+

@@ -9,7 +9,7 @@ import { getCompanyId } from '../../model/entity/sql/transaction/find.g-c';
 import { updateCompany } from '../../model/entity/sql/transaction/company';
 ////////////////////////////////////////////////
 //IMPORTAMOS DE TRANSACTIONS NoSQL
-import { getCompanyInfoOne } from '../../model/entity/nosql/transaction/find.g-c';
+import { getCompanyInfoOneId } from '../../model/entity/nosql/transaction/find.g-c';
 import { createCompanyInfo, updateCompanyInfo } from '../../model/entity/nosql/transaction/companyInfo';
 ////////////////////////////////////////////////
 //IMPORTAMOS ENTIDADES
@@ -51,7 +51,7 @@ export const updateDataNoSql = async (id : number, values : DataNoSql ) : Promis
 	//Buscamos si la informacion existe
 	console.log('*SEARCHING por este id->',id);
 	//Buscamos si existe la informacion 
-	const results = await getCompanyInfoOne(id);
+	const results = await getCompanyInfoOneId(id);
 	//Show results
 	console.log(results);
 	//Validamos

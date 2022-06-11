@@ -12,7 +12,7 @@ import { getCompanyId } from '../../model/entity/sql/transaction/find.g-c';
 //////////////////////////////////////////////////////////////////////////////
 //IMPORTAMOS INTERFACES
 import { CompleteDataSql, DataNoSql } from '../../interface/Company/data';
-import { getCompanyInfoOne } from '../../model/entity/nosql/transaction/find.g-c';
+import { getCompanyInfoOneId } from '../../model/entity/nosql/transaction/find.g-c';
 
 //////////////////////////////////////////////////////////////////////////////
 //Insertamos datos nuevos -> SQL
@@ -35,7 +35,7 @@ export const completeDataServiceNoSql = async ( id : number, values : DataNoSql 
 
 	console.log('**** COMPLETE COMPANY DATA NoSQL ****');
 	//Buscamos usuario si existe
-	const companyDataFound = await getCompanyInfoOne(id);
+	const companyDataFound = await getCompanyInfoOneId(id);
 	//Validamos 
 	if(companyDataFound){
 		//Transaccion de datos

@@ -27,10 +27,10 @@ export class Vacancies {
 	})
 		schedule:string;
 	
-	// @prop({
-	// 	type:String
-	// })
-	// 	publishedOn:string;
+	@prop({
+		type:String,
+	})
+		nameCompany:string;
 
 	@prop({
 		type:String
@@ -47,6 +47,11 @@ export class Vacancies {
 	})
 		address:string;
 	
+	@prop({
+		type:Date
+	})
+		publishedOn:Date;
+		
 }	
 //Creamos modelo
 console.log('CREANDO MODELO VACANTES...');

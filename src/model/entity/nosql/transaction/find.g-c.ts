@@ -9,7 +9,7 @@
 import GuideInfoModel from '../Guide/GuideInfo';
 // import ImageGuideModel from '../Guide/Image';
 
-import CompanyInfoModel from '../Company/CompnayInfo';
+import CompanyInfoModel from '../Company/CompanyInfo';
 //////////////////////////////////////////
 
 
@@ -35,6 +35,6 @@ export const getImgGuideId = async (id: number) => {
 //! /////////////////////////////////////////////////////////////////
 //! /////////////////////////////////////////////////////////////////
 // ! COMPANY
-export const getCompanyInfoOne = async ( id : number ) => {
+export const getCompanyInfoOneId = async ( id : number ) => {
 	return await CompanyInfoModel.findOne({id});
 };

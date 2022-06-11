@@ -43,4 +43,5 @@ export interface DataVacancy {
     email: string;
     phoneNumber: number;
     address: string;
+    publishedOn:Date;
 }

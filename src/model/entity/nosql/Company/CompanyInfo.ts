@@ -20,9 +20,10 @@ export class CompanyInfo {
 		completeData : boolean;
 	
 	@prop({
-		type: ()=> [Number]
+		type: ()=> [Object],
+		default:[]
 	})
-		vacancies:Array<number>;
+		vacancies:Array<object	>;
 
 }
 

@@ -9,9 +9,12 @@ import { DataVacancy } from '../../../../interface/Company/data';
 ///////////////////////////////////////////////////////////////
 
 //Crear vacante
-export const createVacancy = async (values:DataVacancy) : Promise<boolean> => {
+export const createVacancy = async (values:DataVacancy) => {
 	//
 	console.log('Creando vacante...');
+	//Centinela
+	let resultVacancy = null ;
+
 	try {
 		//Creamos vacante
 		const vacancy = new  VacancyModel({
@@ -20,18 +23,14 @@ export const createVacancy = async (values:DataVacancy) : Promise<boolean> => {
 		//Guardamos vacante
 		await vacancy.save();
 		console.log('Result vacancy: ', vacancy);
-		console.log('#',typeof(vacancy._id));
-		const data = vacancy._id;
-		const r = data.split('(')[1];
-		console.log(r);
-		
-		
-		
+		resultVacancy = vacancy;
 	} catch (error) {
 		console.log('ERROR en la creacion de vacante: ',error);
 		return false;
 	}
-	//ALL OK
-	return true;
+	//Retornamos
+	return resultVacancy;
 };
+
+
 
