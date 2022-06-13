@@ -10,6 +10,7 @@ const changePass = '/changePass';
 const completeData = '/completeData';
 const verifyToken = '/verifyToken';
 const createVacancy = '/createVacancy';
+const showVacancies = '/vacancies';
 
 // * Todos los paths del server, las rutas
 export default {
@@ -35,6 +36,8 @@ export default {
 	completeDataCompany : company + completeData,
 	// crear vacantes Empresa
 	createVacancy : company + createVacancy,
+	//Mostrar las vacantes
+	showVacancies: guide + showVacancies,
 
 	
 };

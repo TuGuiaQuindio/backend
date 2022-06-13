@@ -5,7 +5,7 @@ import { DataVacancy, Vacancy } from '../../interface/Company/data';
 import { addVacancies } from '../../model/entity/nosql/transaction/companyInfo';
 //////////////////////////////////////////////////////////////////
 //IMPORTAMOS ENTIDADES
-import { createVacancy } from '../../model/entity/nosql/transaction/companyVacancies';
+import { createVacancy } from '../../model/entity/nosql/transaction/vacancies';
 import { getCompanyInfoOneId } from '../../model/entity/nosql/transaction/find.g-c';
 import { Company } from '../../model/entity/sql/Company';
 import { getCompanyId } from '../../model/entity/sql/transaction/find.g-c';

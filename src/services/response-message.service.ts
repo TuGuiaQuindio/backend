@@ -43,9 +43,9 @@ export const responses: ResponseMessage[] = [
 	{ code: 'V002', msg: 'Ocurrio un error en el servidor!' },
 	{ code: 'V003', msg: 'NO tiene permisos para crear mas vacantes' },
 	{ code: 'V004', msg: 'INFORMACION de empresa no encontrada' },
-	//
-	{ code: '', msg: '' },
-	{ code: '', msg: '' },
+	//Show vacancies
+	{ code: 'SV01', msg: 'Vacantes no encontradas' },
+	{ code: 'SV02', msg: 'Error al obtener las vacantes' },
 	{ code: '', msg: '' },
 	{ code: '', msg: '' },
 	{ code: '', msg: '' },
