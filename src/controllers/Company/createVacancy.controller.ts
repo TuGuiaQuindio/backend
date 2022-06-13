@@ -32,8 +32,16 @@ export const createVacancy_post = async (req:Request, res:Response) : Promise<Re
 	//CONTINUA);
 	//Obtenemos datos
 	const { title, description, salary, schedule } = req.body as Vacancy; 
-
-	const response = await createVacancyService(id,{title, description, salary, schedule}, accessPermit);
-
-	return res.status(200).json({msq:'MELO'});
+	//Pasamos datos
+	const response:boolean|null|undefined = await createVacancyService(id,{title, description, salary, schedule}, accessPermit);
+	//Validamos la respuesta
+	if (response == false) {
+		return res.status(500).json(getResponse('V002'));//ERROR del server
+	}else if(response === null){
+		return res.status(404).json(getResponse('V004'));
+	}else if(response === undefined){
+		return res.status(403).json(getResponse('V003'));
+	}
+	//ALL OK
+	return res.status(200).json(getResponse('V001'));
 };

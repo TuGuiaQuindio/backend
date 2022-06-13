@@ -38,6 +38,13 @@ export const responses: ResponseMessage[] = [
 	{ code: 'C003', msg: 'Usuario no encontrado!' },
 	{ code: 'C004', msg: 'Contraseña actualizada con exito!' },
 	{ code: 'C005', msg: 'Las contraseñas no coinciden!' },
+	//Create vacancy
+	{ code: 'V001', msg: 'Vacante creada con exito!' },
+	{ code: 'V002', msg: 'Ocurrio un error en el servidor!' },
+	{ code: 'V003', msg: 'NO tiene permisos para crear mas vacantes' },
+	{ code: 'V004', msg: 'INFORMACION de empresa no encontrada' },
+	//
+	{ code: '', msg: '' },
 	{ code: '', msg: '' },
 	{ code: '', msg: '' },
 	{ code: '', msg: '' },

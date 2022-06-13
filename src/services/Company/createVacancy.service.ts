@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////
 //IMPORTAMOS INTERFACES
-import { NumberVacantes } from '../../constants/constants';
+import { getNumberAccess } from '../../constants/constants';
 import { DataVacancy, Vacancy } from '../../interface/Company/data';
 import { addVacancies } from '../../model/entity/nosql/transaction/companyInfo';
 //////////////////////////////////////////////////////////////////
@@ -12,9 +12,7 @@ import { getCompanyId } from '../../model/entity/sql/transaction/find.g-c';
 //////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////
 
-
-export const createVacancyService = async ( id:number,values:Vacancy, accessPermit:[] ) => {
-	//
+export const createVacancyService = async ( id:number,values:Vacancy, accessPermit:[] ) : Promise<boolean|null|undefined> => {
 	console.log('ID: ',id, '\n->',values,'\n',);
 	//OBTENEMOS EL PERMISO PARA SABER CUAL TIENE
 	const access: string|null = getAccess(accessPermit);
@@ -35,13 +33,15 @@ export const createVacancyService = async ( id:number,values:Vacancy, accessPerm
 		//Obtenemos la lista de las vacantes
 		const accessPermit:object[] = resultCompany.vacancies;
 		console.log('List permisses: ',accessPermit);		
+		//Obtener el numero de acuerdo al permisp
+		const permitNumber:number = getPermitNumber(access);
 		//Validar la longtud de la lista de vacantes
-		if(accessPermit.length > NumberVacantes.FREE){
+		if(accessPermit.length >= permitNumber){
 			//Se restrige la creacion de vacantes
 			//Retornamos que no tiene acceso
-			return;
+			console.log('NO TIENE PERMISOS PARA CREAR MAS VACANTES');
+			return undefined;
 		}
-
 		console.log('Company found EMAIL: ',companyFound);
 		//Se crea la vacante
 		const resultNewVacancy : DataVacancy = newVacancy(id,values,companyFound);
@@ -56,17 +56,14 @@ export const createVacancyService = async ( id:number,values:Vacancy, accessPerm
 		if(!resultAddVacancy) return false; //ERROR EN agregar a lista vacante
 		return true;
 	}
+	//Validar si es otro permiso
+	// else if (access == 'PREMIUM'){}
 	//ACCESO DIFERENTE
 	console.log('DIFFERENT ACCESS');
-	
-
-
 };
-
 
 //Crear objeto
 function newVacancy(id:number, values:Vacancy, companyFound:Company){
-
 	//Obtenemos la hora creando el objeto
 	const dataTime = new Date().toUTCString();//Para universal
 	//Crear nueva vacante
@@ -98,4 +95,15 @@ const getAccess = (accessPermit:[]): string|null => {
 	if (!access) return null;
 	//Retornamos permisos
 	return access?.access;
+};
+
+const getPermitNumber = (access:string) : number => {
+	//Obtenemos el objeto del permiso
+	const permitNumber : number|undefined = getNumberAccess(access)?.NumberVacancies;
+	//Validamos si es numerico
+	if(!permitNumber) {
+		console.log('undefined');
+		return 1; 
+	}
+	return permitNumber;
 };

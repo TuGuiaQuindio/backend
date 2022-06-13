@@ -24,7 +24,7 @@ export const createVacancy = async (values:DataVacancy) => {
 		await vacancy.save();
 		console.log('Result vacancy: ', vacancy);
 		resultVacancy = vacancy;
-	} catch (error) {
+	}catch (error) {
 		console.log('ERROR en la creacion de vacante: ',error);
 		return false;
 	}
