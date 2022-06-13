@@ -65,7 +65,7 @@ export const addVacancies = async (id:number, idVacancies:object): Promise<boole
 	//
 	console.log('Object-> ',idVacancies);
 	try {
-		const response = await CompanyInfoModel.updateOne({id},
+		await CompanyInfoModel.updateOne({id},
 			{$addToSet:{'vacancies':idVacancies}}
 		);
 	} catch (error) {
