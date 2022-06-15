@@ -4,7 +4,7 @@ import { GuideInfo } from '../../interface/Guide/guideInfo';
 /////////////////////////////////////////////////////////////
 // IMPORTAMOS TRANSACCIONES
 import { createInfoImg } from '../../model/entity/nosql/transaction/guide';
-import { getGuideInfoOne } from '../../model/entity/nosql/transaction/find.g-c';
+import { getGuideInfoOne } from '../../model/entity/nosql/transaction/findInfo.g-c';
 /////////////////////////////////////////////////////////////
 //IMPORTAMOS ENTIDADES
 import { ImageGuide } from '../../model/entity/nosql/Guide/Image';

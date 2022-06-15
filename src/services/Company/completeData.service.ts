@@ -12,7 +12,7 @@ import { getCompanyId } from '../../model/entity/sql/transaction/find.g-c';
 //////////////////////////////////////////////////////////////////////////////
 //IMPORTAMOS INTERFACES
 import { CompleteDataSql, DataNoSql } from '../../interface/Company/data';
-import { getCompanyInfoOneId } from '../../model/entity/nosql/transaction/find.g-c';
+import { getCompanyInfoOneId } from '../../model/entity/nosql/transaction/findInfo.g-c';
 
 //////////////////////////////////////////////////////////////////////////////
 //Insertamos datos nuevos -> SQL

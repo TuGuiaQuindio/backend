@@ -11,7 +11,7 @@ import { updateGuide } from '../../model/entity/sql/transaction/guide';
 //IMPORTAMOS DE TRANSACTIONS NoSQL
 import { createGuideInfo } from '../../model/entity/nosql/transaction/guide';
 import { updateGuideInfo } from '../../model/entity/nosql/transaction/guide'; 
-import { getGuideInfoOne } from '../../model/entity/nosql/transaction/find.g-c'; 
+import { getGuideInfoOne } from '../../model/entity/nosql/transaction/findInfo.g-c'; 
 ////////////////////////////////////////////////
 //IMPORTAMOS ENTIDADES
 import { Guide } from '../../model/entity/sql/Guide';

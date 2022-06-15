@@ -13,6 +13,7 @@ import { isAuth } from '../../middleware/auth';
 //Constuimos rutas
 const router : Router = express.Router();
 
+//TODO -> APUNTARSE A LA VACANTE EL GUIA 
 router.route(path.showVacancies)
 	.get(isAuth, showVacancies_get);
 

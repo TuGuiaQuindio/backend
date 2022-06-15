@@ -46,6 +46,13 @@ export const responses: ResponseMessage[] = [
 	//Show vacancies
 	{ code: 'SV01', msg: 'Vacantes no encontradas' },
 	{ code: 'SV02', msg: 'Error al obtener las vacantes' },
+	//Update vacancy
+	{ code: 'UV01', msg: 'Vacante no encontrada' },
+	{ code: 'UV02', msg: 'Error al actualizar la vacante' },
+	{ code: 'UV03', msg: 'Vacante actualiza' },
+	{ code: '', msg: '' },
+	{ code: '', msg: '' },
+	{ code: '', msg: '' },
 	{ code: '', msg: '' },
 	{ code: '', msg: '' },
 	{ code: '', msg: '' },

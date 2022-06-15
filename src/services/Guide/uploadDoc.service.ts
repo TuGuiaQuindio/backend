@@ -3,7 +3,7 @@ import { GuideInfo } from '../../interface/Guide/guideInfo';
 
 ////////////////////////////////////////////////////////////////////
 // IMPORTAMOS TRANSACCIONES
-import { getGuideInfoOne } from '../../model/entity/nosql/transaction/find.g-c';
+import { getGuideInfoOne } from '../../model/entity/nosql/transaction/findInfo.g-c';
 import { createInfoDoc } from '../../model/entity/nosql/transaction/guide';
 ////////////////////////////////////////////////////////////////////
 //IMPORTAMOS ENTIDADES

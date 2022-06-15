@@ -13,7 +13,7 @@ import routerCompanySingup from './Company/company-signup.routes';
 import routerCompanyProfileConfig from './Company/profile.config.routes';
 import routerCompanyProfileChangePass from './Company/changePass.routes';
 import routerCompanyCompleteData from './Company/completeData.routes';
-import routerCompanyCreateVacancy from './Company/createVacancy.routes';
+import routerCompanyVacancy from './Company/vacancy.routes';
 //GUIDE
 import routerGuideSignup from './Guide/guide-signup.routes';
 import routerGuideProfileConfig from './Guide/profile.config.routes';
@@ -36,7 +36,7 @@ const _routes : [Router][] = [
 	[routerCompanyProfileConfig],
 	[routerCompanyProfileChangePass],
 	[routerCompanyCompleteData],
-	[routerCompanyCreateVacancy],
+	[routerCompanyVacancy],
 	//?GUIDE
 	[routerGuideSignup],
 	[routerGuideProfileConfig],

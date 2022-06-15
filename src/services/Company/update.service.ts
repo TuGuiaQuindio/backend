@@ -9,7 +9,7 @@ import { getCompanyId } from '../../model/entity/sql/transaction/find.g-c';
 import { updateCompany } from '../../model/entity/sql/transaction/company';
 ////////////////////////////////////////////////
 //IMPORTAMOS DE TRANSACTIONS NoSQL
-import { getCompanyInfoOneId } from '../../model/entity/nosql/transaction/find.g-c';
+import { getCompanyInfoOneId } from '../../model/entity/nosql/transaction/findInfo.g-c';
 import { createCompanyInfo, updateCompanyInfo } from '../../model/entity/nosql/transaction/companyInfo';
 ////////////////////////////////////////////////
 //IMPORTAMOS ENTIDADES

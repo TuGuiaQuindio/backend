@@ -9,7 +9,7 @@ const photo = '/photo';
 const changePass = '/changePass';
 const completeData = '/completeData';
 const verifyToken = '/verifyToken';
-const createVacancy = '/createVacancy';
+const vacancyObjectIdOptional = /^\/company\/vacancy\/([a-fA-F0-9]{24})?$/;
 const showVacancies = '/vacancies';
 
 // * Todos los paths del server, las rutas
@@ -23,6 +23,9 @@ export default {
 	signupGuide : signup + guide,
 	signupCompany : signup + company,
 	home : '/home',
+	//Guinde Profile
+	guideProfile : guide, profile,
+	
 	//CONFING PROFILE
 	guideProfileConfig : guide + profile + config,
 	CompanyProfileConfig : company + profile + config,
@@ -35,7 +38,7 @@ export default {
 	completeDataGuide : guide + completeData,
 	completeDataCompany : company + completeData,
 	// crear vacantes Empresa
-	createVacancy : company + createVacancy,
+	vacancy : vacancyObjectIdOptional,
 	//Mostrar las vacantes
 	showVacancies: guide + showVacancies,
 

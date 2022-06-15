@@ -54,6 +54,9 @@ services:
                 condition: service_started
             redis:
                 condition: service_started
+        volumes:
+            - /app-tgq/node_modules
+            - .:/app-tgq
 
 
 
