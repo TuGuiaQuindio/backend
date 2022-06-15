@@ -50,7 +50,7 @@ export const updateGuideInfo = async ( values : GuideInfo ) : Promise<boolean> =
 		const results : null | GuideInfo = await GuideInfoModel.findOneAndUpdate({id}, {
 			information : {
 				theme : values.information.theme,
-				language : values.information.languages
+				languages: values.information.languages
 			}
 		});
 		//Show Results

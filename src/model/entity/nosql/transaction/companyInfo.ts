@@ -59,7 +59,7 @@ const executeQueryUpdate = async ( id : number, values : DataNoSql, completeData
 	//Show results
 	console.log('Results update : ',companyInfo);
 };
-
+//***VACANCIES
 //Agregar el id de la vacante
 export const addVacancies = async (id:number, idVacancies:object): Promise<boolean> => {
 	//
@@ -75,4 +75,17 @@ export const addVacancies = async (id:number, idVacancies:object): Promise<boole
 	//ALL OK
 	return true;
 };
-
+//?Update vacancies
+export const updateVacancies = async (id:number,vacancies:object[]) => {
+	//
+	try {
+		const result = await CompanyInfoModel.updateOne({id},{
+			vacancies
+		});
+		console.log('** ',result);
+	} catch (error) {
+		console.log('ERROR en actualizar las vacantes: ',error);
+		return false;
+	}
+	return true;
+};

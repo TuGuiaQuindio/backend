@@ -9,11 +9,13 @@ export class Information {
 
 	@prop({
 		type: () => String,
-		lowercase : true})
+		lowercase : true,
+		default:'light'
+	})
 		theme : string;
 
 	@prop({type: () => [Language]})//Es de tipo de dato de Language 
-		language : Language[];
+		languages : Language[];
 	
 	//Referenciamos
 	@prop({
@@ -23,4 +25,7 @@ export class Information {
 
 	@prop({type: () => [DocumentGuide]})
 		documents : DocumentGuide[];
+
+	@prop({type: () => Boolean })
+		completeData: boolean;
 }

@@ -4,7 +4,7 @@ import { GuideInfo } from '../../interface/Guide/guideInfo';
 /////////////////////////////////////////////////////////////
 // IMPORTAMOS TRANSACCIONES
 import { createInfoImg } from '../../model/entity/nosql/transaction/guide';
-import { getGuideInfoOne } from '../../model/entity/nosql/transaction/findInfo.g-c';
+import { getGuideInfoOneId } from '../../model/entity/nosql/transaction/findInfo.g-c';
 /////////////////////////////////////////////////////////////
 //IMPORTAMOS ENTIDADES
 import { ImageGuide } from '../../model/entity/nosql/Guide/Image';
@@ -16,7 +16,7 @@ export const saveInfoImg = async ( id: number, values : GuideInfo) : Promise<boo
 	console.log('----------------------------------------------------------------');
 	console.log('SEARCHING INFO IMG...');
 	//Buscamos si exite la Info de foto
-	const foundInfoGuide = await getGuideInfoOne(id);
+	const foundInfoGuide = await getGuideInfoOneId(id);
 	console.log('results guideInfo: : ',foundInfoGuide,'\n',values.information.images);
 	//Validamos si la info EXISTE
 	if (!foundInfoGuide) {

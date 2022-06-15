@@ -12,6 +12,9 @@ import { getResponse } from '../../services/response-message.service';
 import { GuideSignup_extra } from '../../interface/Guide/signup-guide.extra';
 import { GuideInfo } from '../../interface/Guide/guideInfo';
 ////////////////////////////////////////////////////////////////
+//IMPORTAMOS CONSTANTES
+import { Roles } from '../../constants/constants';
+////////////////////////////////////////////////////////////////
 
 //->> RUTA PUT
 //Validar datos de entrada
@@ -25,7 +28,7 @@ export const profileConfig_put = async (req:Request, res:Response) : Promise<Res
 	// Validamos el rol que coincida
 	console.log('-> payload - Guide :: ID:',id ,'- ROL:',rol);
 	// ROL GUIDE = 1 
-	if(rol != 1) return res.status(403).json(getResponse('A002'));
+	if(rol != Roles.GUIDE) return res.status(403).json(getResponse('A002'));
 	//CONTINUA
 	if(id == 0) return res.status(422).json({ error:'ID Not Found - Unauthorized' });
 	// Get Data to configure for the 'Body'

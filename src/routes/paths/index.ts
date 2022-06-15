@@ -24,8 +24,7 @@ export default {
 	signupCompany : signup + company,
 	home : '/home',
 	//Guinde Profile
-	guideProfile : guide, profile,
-	
+	guideProfile : guide + profile,
 	//CONFING PROFILE
 	guideProfileConfig : guide + profile + config,
 	CompanyProfileConfig : company + profile + config,

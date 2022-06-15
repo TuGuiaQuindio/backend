@@ -3,7 +3,7 @@ import { GuideInfo } from '../../interface/Guide/guideInfo';
 
 ////////////////////////////////////////////////////////////////////
 // IMPORTAMOS TRANSACCIONES
-import { getGuideInfoOne } from '../../model/entity/nosql/transaction/findInfo.g-c';
+import { getGuideInfoOneId } from '../../model/entity/nosql/transaction/findInfo.g-c';
 import { createInfoDoc } from '../../model/entity/nosql/transaction/guide';
 ////////////////////////////////////////////////////////////////////
 //IMPORTAMOS ENTIDADES
@@ -14,7 +14,7 @@ export const saveInfoDoc = async (id : number, values : GuideInfo) : Promise<boo
 	console.log('----------------------------------------------------------------');
 	console.log('SEARCHING INFO DOC...');
 	//Buscamos si la info existe
-	const foundInfoGuide = await getGuideInfoOne(id);
+	const foundInfoGuide = await getGuideInfoOneId(id);
 	console.log('-> ', foundInfoGuide);
 	//Validamos si la info existe
 	if(!foundInfoGuide){

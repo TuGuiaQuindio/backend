@@ -18,7 +18,7 @@ import CompanyInfoModel from '../Company/CompanyInfo';
 // ! GUIDE
 //!Buscar por -> ID <-
 //Encontrar un unico GuideInfo por Documento
-export const getGuideInfoOne = async (id : number) => {
+export const getGuideInfoOneId = async (id : number) => {
 	return await GuideInfoModel.findOne({id});
 };
 

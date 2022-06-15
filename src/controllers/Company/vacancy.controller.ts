@@ -62,14 +62,11 @@ export const vacancy_put = async (req:Request, res:Response) => {
 	//CONTINUA);
 	//Obtenemos datos
 	const { title, description, salary, schedule } = req.body;
-	const resultUpdate = updateVacancyService(objectId, {title, description, salary,schedule}) ;
+	const resultUpdate:boolean|null = await updateVacancyService(objectId, {title, description, salary,schedule}) ;
+	console.log('>> ',resultUpdate);
 	//Validamos respuesta
-	if(resultUpdate === null){
-		return res.status(404).json(getResponse('UV01'));
-	}
-	else if(resultUpdate === undefined){
-		return res.status(500).json(getResponse('UV02'));
-	}
+	if(resultUpdate === null)return res.status(404).json(getResponse('UV01'));
+	if(resultUpdate === false)return res.status(500).json(getResponse('UV02'));
 	//ALL OK
 	return res.status(200).json(getResponse('UV03'));
 };
@@ -90,9 +87,12 @@ export const vacancy_del = async (req:Request, res:Response) => {
 	if(id == 0) return res.status(422).json({ error:'ID Not Found - Unauthorized' });
 	//CONTINUA);
 	//Obtenemos datos
-	const response:boolean|null = await deleteVacancyService(id,objectId);
+	const response:boolean|null|undefined = await deleteVacancyService(id,objectId);
+	console.log('-> ',response);
 	//Validamos respouesta
-	if(response === null)return res.status(500).json({msg:'No se pudo eliminar la vacante'});
+	if(response===null)return res.status(500).json(getResponse('DV02'));
+	if(response===undefined)return res.status(403).json(getResponse('DV03'));
+	if(response===false) return res.status(500).json(getResponse('DV04'));
 	//ALL ok
-	return res.status(200).json({msg:'Vacante eliminada'});
+	return res.status(200).json(getResponse('DV01'));
 };

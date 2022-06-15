@@ -2,7 +2,7 @@
 //IMPORTAMOS INTERFACES
 import { getNumberAccess } from '../../constants/constants';
 import { DataVacancy, Vacancy } from '../../interface/Company/data';
-import { addVacancies } from '../../model/entity/nosql/transaction/companyInfo';
+import { addVacancies, updateVacancies } from '../../model/entity/nosql/transaction/companyInfo';
 //////////////////////////////////////////////////////////////////
 //IMPORTAMOS ENTIDADES
 import { createVacancy, delVacancyObjectId, getVacancyObjectId, updateVacancie } from '../../model/entity/nosql/transaction/vacancies';
@@ -103,50 +103,56 @@ export const updateVacancyService = async (objectId:string, values:Vacancy) => {
 	console.log('Valores a actualizar: ', values);
 	//Validamos si existe la vacante
 	const foundVacancy = await getVacancyObjectId(objectId);
-	console.log('* ',foundVacancy);
+	console.log('*-> ',foundVacancy);
 	//Validamos que exista
 	if(!foundVacancy)return null;
 	// Actualizamos
-	const result = await updateVacancie(objectId, values);
+	const result:boolean = await updateVacancie(objectId, values);
 	//Validamos 
-	if(!result)return undefined;
-	console.log('-> ',result);
 	return result;
 };
 
 //?Eliminar vacante de "vacancies"
-export const deleteVacancyService = async (id:number, objectId:string):Promise<boolean|null> => {
+export const deleteVacancyService = async (id:number, objectId:string):Promise<boolean|null|undefined> => {
 	//Buscamos vacante si existe
 	const foundVacancy = await getVacancyObjectId(objectId);
 	console.log('vacancy found: ',foundVacancy);
 	if(!foundVacancy)return null;//No encontrado
 	//Eliminamos
+	//Validamos de que si sea el id de la empresa
+	const isValid = isValidVacancy(objectId,id);
+	if(!isValid)return undefined; //Id empresa no valido
+	//All ok
 	const result : boolean = await delVacancyObjectId(objectId);
-	
 	if(!result)return false;//Ocurrio un error eliminando vacante
 	//*Eliminamos objectId de vacante en lista de vacantes 'companiInfos'
 	//Obtenemos la informacion de la empresa 
 	const companyInfo = await getCompanyInfoOneId(id);
 	if(!companyInfo) return false;//Error buscando vacante
 	console.log('*',companyInfo);
-	console.log('VACANCIES[]= ',companyInfo.vacancies);
+	//Obtenemos la lista de las vacantes
 	const vacancies:ObjectId[] = companyInfo.vacancies as ObjectId[];
-	
-	//Validamos cada ObjectId
-	for(const objId of vacancies){
-		//Validamos cada ObjectId de la lista
-		console.log('ObjectId= ',typeof objId);
-		console.dir(objId);
-		console.log('>> ',vacancies[0]);
-		//Validamos si el objectId coincide
-		//TODO-> VALIDAR LOS ObjectId que coincidan
-		if(objectId){
-			console.log('COINCIDE: ',objectId);
-		}
+	//Obtenemos el Index del Id que coincida
+	const indexObject = vacancies.findIndex(el => el.toString() === objectId);
+	console.log('Eliminando...');
+	try {
+		vacancies.splice(indexObject,1);
+	} catch (error) {
+		console.log('ERROR a eliminar Id de vacante: ',error);
 	}
+	console.log('Eliminado');
 	//Actualizar lista de vacantes
-	
+	const resultUpdate = await updateVacancies(id,vacancies);
 	//TRUE  -> All ok
 	//FALSE -> Error eliminando vacante 
-	return result;
+	return resultUpdate;
+};
+
+export const isValidVacancy = async (objectId:string,id:number) => {
+	const vacancy = await getVacancyObjectId(objectId);
+	console.log(vacancy);
+	if(!vacancy)return null;//Vacancy not found
+	//validar 
+	if(id != vacancy.idCompany)return false;
+	return true;
 };

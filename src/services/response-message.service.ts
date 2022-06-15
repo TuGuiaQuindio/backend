@@ -15,6 +15,10 @@ export const responses: ResponseMessage[] = [
 	{ code: 'A001', msg: 'Unauthorized : Es necesario autenticar' },
 	{ code: 'A002', msg: 'Unauthorized : El cliente no posee los permisos suficientes' },
 	{ code: 'A003', msg: 'Unauthorized : Token Expirado' },
+	//Profile
+	{ code: 'P001', msg: 'Los datos no fueron encontrados' },
+	{ code: 'P002', msg: 'Datos del usuario' },
+	{ code: '', msg: '' },
 	//Upload File
 	{ code: 'U001', msg: 'Archivo ya existe' },
 	{ code: 'U002', msg: 'Información no existe' },
@@ -50,10 +54,11 @@ export const responses: ResponseMessage[] = [
 	{ code: 'UV01', msg: 'Vacante no encontrada' },
 	{ code: 'UV02', msg: 'Error al actualizar la vacante' },
 	{ code: 'UV03', msg: 'Vacante actualiza' },
-	{ code: '', msg: '' },
-	{ code: '', msg: '' },
-	{ code: '', msg: '' },
-	{ code: '', msg: '' },
+	//Delete vacancy
+	{ code: 'DV01', msg: 'Vacante eliminada' },
+	{ code: 'DV02', msg: 'No se pudo eliminar la vacante' },
+	{ code: 'DV03', msg: 'No tiene los permisos: Id de la empresa no coincide!' },
+	{ code: 'DV04', msg: 'Error eliminando vacante' },
 	{ code: '', msg: '' },
 	{ code: '', msg: '' },
 	

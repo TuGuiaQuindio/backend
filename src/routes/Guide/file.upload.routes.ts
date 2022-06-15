@@ -23,8 +23,7 @@ const router = express.Router();
 //Decosntruimos
 const { params, validate } = validatorJwt;
 
-const nameFile = upload.single('myFile');
-
+const nameFile = upload.single('file');
 /**
  * Subir archivos
  * 

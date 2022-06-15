@@ -32,17 +32,18 @@ export const createVacancy = async (values:DataVacancy) => {
 };
 
 //?UPDATE VACANCY
-export const updateVacancie = async (objectId:string, values:Vacancy) => {
+export const updateVacancie = async (objectId:string, values:Vacancy):Promise<boolean> => {
 	try {
 		const responseUpdate = await VacancyModel.findByIdAndUpdate({_id:objectId},{
 			...values
 		});
-		return responseUpdate;
+		console.log(responseUpdate);
 	} catch (error) {
 		console.error('Error: on update vacancy: ',error);
 		return false;
 	}
-	
+	//All ok
+	return true;
 };
 //Mostrar todas las vacantes
 export const getVacancies = async () => {
@@ -60,11 +61,12 @@ export const getVacancyObjectId = async (objectId:string) => {
 	try {
 		const vacancy = await VacancyModel.findOne({_id:objectId}); 
 		console.log(vacancy);
+		return vacancy;
 	} catch (error) {
 		console.error('ERROR actualizamdo vacante',error);
 	}
 	//ALL OK
-	return true;
+	// return true;
 };
 //Eliminamos una vacante por ObjectId
 export const delVacancyObjectId = async (objectId:string):Promise<boolean> => {

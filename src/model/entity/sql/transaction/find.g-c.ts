@@ -16,9 +16,9 @@ export const getRole = async (email : string) : Promise<Roles | null> => {
 //! //////////////////////////////////////////////////////
 // * --> GUIDE <--
 // !! Encontrar 'GUIDE' por medio del -> ID <-
-export const getGuideId = async ( id ?: number ) : Promise<Guide | null> => { 
+export const getGuideId = async ( id : number ) : Promise<Guide | null> => { 
 	//Buscamos el guia por el Id
-	return dsource.getRepository(Guide).findOne({ where : { id } });
+	return await dsource.getRepository(Guide).findOne({ where : { id } });
 };
 // !! Encontrar 'GUIDE' por medio de -> NoDocument <-
 export const getGuideDoc =  async ( NoDocument : string ) : Promise< boolean > => {

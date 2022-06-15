@@ -21,6 +21,7 @@ import routerGuideProfileUploadPhoto from './Guide/file.upload.routes';
 import routerGuideProfileChangePass from './Guide/chagePass.routes';
 import routerGuideCompleteData from './Guide/completeData.routes';
 import routerGuideShowVacancies from './Guide/showVacancies.routes';
+import routerGuideProfile from './Guide/profile.routes';
 ///////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////
 
@@ -44,6 +45,7 @@ const _routes : [Router][] = [
 	[routerGuideProfileChangePass],
 	[routerGuideCompleteData],
 	[routerGuideShowVacancies],
+	[routerGuideProfile],
 ] ;
 
 //Pasamos por las rutas 

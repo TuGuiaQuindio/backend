@@ -11,7 +11,7 @@ import { updateGuide } from '../../model/entity/sql/transaction/guide';
 //IMPORTAMOS DE TRANSACTIONS NoSQL
 import { createGuideInfo } from '../../model/entity/nosql/transaction/guide';
 import { updateGuideInfo } from '../../model/entity/nosql/transaction/guide'; 
-import { getGuideInfoOne } from '../../model/entity/nosql/transaction/findInfo.g-c'; 
+import { getGuideInfoOneId } from '../../model/entity/nosql/transaction/findInfo.g-c'; 
 ////////////////////////////////////////////////
 //IMPORTAMOS ENTIDADES
 import { Guide } from '../../model/entity/sql/Guide';
@@ -55,13 +55,13 @@ export const updateDataNoSql = async (values : GuideInfo) =>{
 	//values = values as GuideInfo;
 	console.log('********* Update GUIDE Service MongoDB **********');
 	console.log('GET DATA FOR MongoDB :: ', values);
-	console.log(values.information.languages);
+	console.log('Lenguajes: ',values.information.languages);
 	//Buscamos si exite ya la informacion 
 	//Si existe, se actualiza
 	console.log('*SEARCHING por este id->',values.id);
-	const results = await getGuideInfoOne(values.id); 
+	const results = await getGuideInfoOneId(values.id); 
 	// Mostramos el dato obtenido
-	console.log('Guide-info got ::',results);
+	console.log('Guide-info got:: ',results);
 	
 	if(results){
 		//Si el Guide-Info existe

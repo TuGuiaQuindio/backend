@@ -7,10 +7,12 @@ export interface GuideInfo {
 
 interface Information {
 
-    languages : Language[];
     theme : string;
+    languages : Language[];
     images : Image[]; 
     documents : Document[];
+    //datos
+    completeData:boolean;
 }
 interface Language {
     name : string;
@@ -37,4 +39,17 @@ export interface CompleteData{
     city : string;
     birthDate : Date;
     hasTransport : boolean;
+}
+
+export interface GuideProfileData{
+    id :number;
+    document:string;
+    fistName:string;
+    lastName:string;
+    city:string;
+    phoneNumber:string
+    birthDate:Date;
+    email:string;
+    hasTransport:boolean;
+    information ?: Information;
 }
