@@ -9,7 +9,7 @@ import { createRoles } from './roles';
 //////////////////////////////////////////
 //IMPORTAMOS INTERFACES
 import { GuideSignup_extra } from '../../../../interface/Guide/signup-guide.extra';
-import { CompleteData } from '../../../../interface/Guide/guideInfo';
+import { CompleteDataSql } from '../../../../interface/Guide/guideInfo';
 //////////////////////////////////////////
 //IMPORTAR FIND_GUIDE POR NoDocument
 import { getGuideDoc } from './find.g-c';
@@ -117,7 +117,7 @@ export const updatePass = async (id : number, pass : string) : Promise<boolean> 
 //? //////////////////////////////////////////////////////////////
 //? //////////////////////////////////////////////////////////////
 //? INSERT DATA
-export const insertGuideData = async (id : number, values : CompleteData ) : Promise<boolean> => {
+export const insertGuideData = async (id : number, values : CompleteDataSql ) : Promise<boolean> => {
 	//INSERTAR DATOS
 	try {
 		const resultInsert = await dsource.getRepository(Guide)

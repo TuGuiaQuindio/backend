@@ -34,11 +34,18 @@ export interface Document{
 }
 
 //COMPLETAR INFORMACION
-export interface CompleteData{
+export interface CompleteDataSql{
     phoneNumber : string;
     city : string;
     birthDate : Date;
     hasTransport : boolean;
+}
+
+export interface CompleteDataNoSql{
+    availability:string;
+    aboutMe:string;
+    verified:boolean;
+    firstAid:boolean;
 }
 
 export interface GuideProfileData{
@@ -52,6 +59,11 @@ export interface GuideProfileData{
     email:string;
     hasTransport:boolean;
     information : Information;
+    availability:string;
+    aboutMe:string;
+    verified:boolean;
+    firstAid:boolean;
+
 }
 
 export interface GuideDataConfig {

@@ -16,10 +16,34 @@ class GuideInfo {
 		information : Information;
 	
 	@prop({
+		type: () => String,
+		default:null
+	})
+		availability:string;
+	@prop({
+		type: () => String,
+		default:null
+	})
+		aboutMe:string;
+
+	@prop({
+		type: () => Boolean,
+		default:false
+	})
+		verified:boolean;
+
+	@prop({
+		type: () => Boolean,
+		default:null
+	})
+		firstAid:boolean;
+
+	@prop({
 		type:Boolean,
 		default : false
 	})
 		completeData:boolean;
+	
 }
 
 //Create model

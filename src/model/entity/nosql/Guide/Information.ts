@@ -14,7 +14,7 @@ export class Information {
 	})
 		theme : string;
 
-	@prop({type: () => [Language]})//Es de tipo de dato de Language 
+	@prop({ type: () => [Language] })//Es de tipo de dato de Language 
 		languages : Language[];
 	
 	//Referenciamos
@@ -23,9 +23,7 @@ export class Information {
 		_id : false,})
 		images : ImageGuide[];
 
-	@prop({type: () => [DocumentGuide]})
+	@prop({ type: () => [DocumentGuide] })
 		documents : DocumentGuide[];
 
-	@prop({type: () => Boolean })
-		completeData: boolean;
 }

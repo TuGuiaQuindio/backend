@@ -4,7 +4,7 @@ import GuideInfoModel from '../Guide/GuideInfo';
 // import ImageGuideModel from '../Guide/Image';
 ////////////////////////////////////////////////
 //IMPORTAMOS INTERFACES
-import { GuideInfo } from '../../../../interface/Guide/guideInfo';
+import { CompleteDataNoSql, GuideInfo } from '../../../../interface/Guide/guideInfo';
 ////////////////////////////////////////////////
 //Transacion de datos 
 //Se encarga de actualizar los datos de usuario
@@ -48,12 +48,13 @@ export const updateGuideInfo = async ( values : GuideInfo ) : Promise<boolean> =
 	const id : number = values.id;
 	try {
 		//Actualizamos los datos
-		const results : null | GuideInfo = await GuideInfoModel.findOneAndUpdate({id}, {
-			information : {
-				theme : values.information.theme,
-				languages: values.information.languages
-			}
-		});
+		const results = await GuideInfoModel.updateOne({id}, 
+			{information : 
+				{
+					theme : values.information.theme,
+					languages: values.information.languages
+				}
+			});
 		//Show Results
 		console.log('RESULTS Update OK-> ',results);
 
@@ -152,3 +153,27 @@ async function executeQueryCreateInfoDoc(objId : object, values : GuideInfo) {
 	const resultsInfo = await GuideInfoModel.findByIdAndUpdate(objId, { $push : { 'information.documents' : [...values.information.documents] } });
 	console.log(resultsInfo);
 }
+
+//?UPDATE COMPLETE DATA
+export const updateCompleteData = async (id:number,values:CompleteDataNoSql):Promise<boolean> => {
+	console.log('COMPLETANDO DATOS...');
+	
+	try {
+		const result = await GuideInfoModel.updateOne({id},
+			{$set:
+				{
+					availability:values.availability,
+					aboutMe:values.aboutMe,
+					verified:values.verified,
+					firstAid:values.firstAid,
+				}
+			
+			});
+		console.log(result);
+	}catch(error) {
+		console.log('ERROR actualizando datos - completeData: ',error);
+		return false;
+	}
+	//ALL OK
+	return true;
+};

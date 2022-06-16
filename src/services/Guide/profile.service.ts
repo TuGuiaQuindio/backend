@@ -13,27 +13,8 @@ export const profileService = async (id:number, email:string) : Promise<GuidePro
 	if(!dataGuide) return null;
 	//Buscamos informacion -> MongoDB
 	const infoGuide = await getGuideInfoOneId(id);
-	//validmoas que este la informacion
-	// if (!infoGuide) {
-	// 	console.log('Obteniendo perfil...');
-	// 	//Buscamos rol
-	// 	// const getRol = getRole();
-	// 	//Crear datos
-	// 	const data:GuideProfileData = {
-	// 		id:dataGuide.id,
-	// 		document:dataGuide.NoDocument,
-	// 		fistName:dataGuide.firstName,	
-	// 		lastName:dataGuide.lastName,
-	// 		city:dataGuide.city,
-	// 		phoneNumber:dataGuide.phoneNumber,
-	// 		birthDate:dataGuide.birthDate,
-	// 		email:email,
-	// 		hasTransport:dataGuide.hasTransport,
-	// 	} as GuideProfileData;
-	// 	return data;
-	// }
+
 	console.log('Obteniendo perfil...');
-	
 	//Creamos objeto para pasar los datos
 	const data:GuideProfileData = {
 		id:dataGuide.id,
@@ -46,6 +27,11 @@ export const profileService = async (id:number, email:string) : Promise<GuidePro
 		email:email,
 		hasTransport:dataGuide.hasTransport,
 		information : infoGuide?.information || null,
+		availability: infoGuide?.availability || null,
+		aboutMe: infoGuide?.aboutMe || null,
+		verified: infoGuide?.verified || false,
+		firstAid: infoGuide?.firstAid || null,
+
 	} as GuideProfileData;
 	return data ;
 };
