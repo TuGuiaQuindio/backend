@@ -17,7 +17,11 @@ export const responses: ResponseMessage[] = [
 	{ code: 'A003', msg: 'Unauthorized : Token Expirado' },
 	//Profile
 	{ code: 'P001', msg: 'Los datos no fueron encontrados' },
-	{ code: 'P002', msg: 'Datos del usuario' },
+	{ code: 'P002', msg: 'Ocurrio un error actualizando datos' },
+	{ code: 'P003', msg: 'Datos actualizados' },
+	{ code: 'P004', msg: 'Datos no encontrados' },
+	{ code: 'P005', msg: 'Usuario no encontrado' },
+	{ code: '', msg: '' },
 	{ code: '', msg: '' },
 	//Upload File
 	{ code: 'U001', msg: 'Archivo ya existe' },
@@ -25,10 +29,11 @@ export const responses: ResponseMessage[] = [
 	{ code: 'U003', msg: 'Error en guardar datos en DB' },
 	{ code: 'U004', msg: 'Info-Archivo guardada exitosamente' },
 	//Change Password
-	{ code: 'P001', msg: 'Datos no coinciden : (newPass , confirmPass) ' },
-	{ code: 'P002', msg: 'Contraseña actual no coincide : (currentPassword)' },
-	{ code: 'P003', msg: 'Error en actualización' },
-	{ code: 'P004', msg : 'Contraseña actualizada con exito' },
+	{ code: 'CP01', msg: 'Datos no coinciden : (newPass , confirmPass) ' },
+	{ code: 'CP02', msg: 'Contraseña actual no coincide : (currentPassword)' },
+	{ code: 'CP03', msg: 'Error en actualización' },
+	{ code: 'CP04', msg : 'Contraseña actualizada con exito' },
+	{ code: 'CP05', msg: 'Usuario no encontrado' },
 	//Recover password of code
 	{ code: 'RP01', msg: 'Error al guardar code-token' },
 	{ code: 'RP02', msg: 'Ocurrio un error(createToken), intente de nuevo' },

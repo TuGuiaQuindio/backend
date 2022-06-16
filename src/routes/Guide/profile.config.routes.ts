@@ -13,7 +13,7 @@ import { isAuth } from '../../middleware/auth';
 import validatorJwt from '../../validator/jwt.validator';
 ////////////////////////////////////////////////////
 //IMPORTAMOS CONTROLADORES
-import { profileConfig_put } from '../../controllers/Guide/profile.config.controller'; 
+import { profileConfig_put, getProfileData } from '../../controllers/Guide/profile.config.controller'; 
 //////////////////////////////////////////////
 // construimos rutas
 const router = express.Router();    
@@ -26,6 +26,9 @@ const { params, validate } = validatorJwt;
  * Configuracion del perfil GUIDE
  */
 router.route(paths.guideProfileConfig)
+	//Pasar los datos
+	.get(isAuth, getProfileData)
+	//Actualizar datos
 	.put( params, validate, isAuth, profileConfig_put );
 
 ////////////////////////////////////////////////////////////////

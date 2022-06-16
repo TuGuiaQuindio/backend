@@ -29,7 +29,7 @@ export const changePass_put = async (req : Request, res : Response) => {
 	const { currentPassword, newPass, confirmPass } = req.body as ChangePass;
 	//Validamos si la contraseña NUEVA ES VALIDA
 	console.log(newPass, '-' , confirmPass);
-	if(newPass !== confirmPass) return res.status(412).json(getResponse('P001'));
+	if(newPass !== confirmPass) return res.status(412).json(getResponse('CP01'));
 	//Cambiamos contraseña
 	try {
 		//
@@ -37,15 +37,15 @@ export const changePass_put = async (req : Request, res : Response) => {
 		console.log('Result Controller : ',changePass);
 		//Validamos
 		if (changePass == null) {
-			return res.status(404).json();//User not found
+			return res.status(404).json(getResponse('CP05'));//User not found
 		}else if(changePass === undefined){
-			return res.status(412).json(getResponse('P003'));
+			return res.status(412).json(getResponse('CP03'));
 		}else if(changePass == false){
 			//Password Actual no coincide
-			return res.status(406).json(getResponse('P002'));
+			return res.status(406).json(getResponse('CP02'));
 		}
 		//ALL OK
-		return res.status(200).json(getResponse('P004'));
+		return res.status(200).json(getResponse('CP04'));
 	} catch (err) {
 		console.log(err);
 	}

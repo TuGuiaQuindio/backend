@@ -8,7 +8,7 @@ import path from '../paths';
 import { isAuth } from '../../middleware/auth';
 ////////////////////////////////////////////
 //IMPORTACIONES DE CONTROLADORES
-import { profileConfig_put } from '../../controllers/Company/profile.config.controller';
+import { getProfileData, profileConfig_put } from '../../controllers/Company/profile.config.controller';
 ///////////////////////////////////////}////////
 ///IMPORTAMOS VALIDADORES
 import validatorJwt from '../../validator/jwt.validator';
@@ -23,6 +23,7 @@ const { params, validate } = validatorJwt;
  */
 
 router.route(path.CompanyProfileConfig)
+	.get(isAuth, getProfileData)
 	.put( params, validate, isAuth, profileConfig_put );
 
 /////////////////////////////////////////////////////////////////////////////

@@ -3,7 +3,7 @@
 ////////////////////////////////////////////////
 //IMPORTAMOS INTERFACES
 import { GuideSignup_extra } from '../../interface/Guide/signup-guide.extra';
-import { GuideInfo } from '../../interface/Guide/guideInfo';
+import { GuideDataConfig, GuideInfo } from '../../interface/Guide/guideInfo';
 ////////////////////////////////////////////////
 //IMPORTAMOS DE TRANSACTIONS SQL
 import { getGuideId } from '../../model/entity/sql/transaction/find.g-c';
@@ -81,4 +81,25 @@ export const updateDataNoSql = async (values : GuideInfo) =>{
 		if (!resultsGuide) return false;
 		return true;
 	}
+};
+
+export const getData = async (id:number,email:string):Promise<GuideDataConfig|null> => {
+	//validar si el usuario-guia existe
+	const dataGuide:Guide|null = await getGuideId(id);
+	console.log('Data Guide: ',dataGuide);
+	//Validamos que el guia exista
+	if(!dataGuide)return null;
+
+	//Obtenemos datos necesarios
+	const data:GuideDataConfig = {
+		document:dataGuide.NoDocument,
+		email:email,
+		phoneNumber:dataGuide.phoneNumber,
+		birthData:dataGuide.birthDate,
+		city:dataGuide.city,
+		hasTransport:dataGuide.hasTransport
+	} as GuideDataConfig;
+	
+	return data;
+
 };

@@ -5,7 +5,6 @@ import GuideInfoModel from '../Guide/GuideInfo';
 ////////////////////////////////////////////////
 //IMPORTAMOS INTERFACES
 import { GuideInfo } from '../../../../interface/Guide/guideInfo';
-import { IsNull } from 'typeorm';
 ////////////////////////////////////////////////
 //Transacion de datos 
 //Se encarga de actualizar los datos de usuario
@@ -24,12 +23,14 @@ export const createGuideInfo = async ( values : GuideInfo ) : Promise<boolean> =
 };
 // Ejecutar un query
 async function executeQuery(values : GuideInfo) {
+	console.log('Transactions: ', values.information);
+	
 	//Create User-Guide
 	const guideInfo = new GuideInfoModel({
 		id : values.id,
 		information : {
 			theme : values.information.theme,
-			language : values.information.languages,
+			languages : values.information.languages,
 		},
 	});
 	//Save Guide

@@ -2,7 +2,7 @@
 // Actualizamos datos de tipo de usuario
 ////////////////////////////////////////////////
 //IMPORTACIONES DE INTERFACES
-import { DataSql, DataNoSql } from '../../interface/Company/data';
+import { DataSql, DataNoSql, CompanyDataConfig } from '../../interface/Company/data';
 ////////////////////////////////////////////////
 //IMPORTAMOS DE TRANSACTIONS SQL
 import { getCompanyId } from '../../model/entity/sql/transaction/find.g-c';
@@ -69,5 +69,30 @@ export const updateDataNoSql = async (id : number, values : DataNoSql ) : Promis
 	//False; Ocurrio un error
 	//True: ALL ok
 	return true;
+};
+
+
+export const getData = async (id:number,email:string):Promise<CompanyDataConfig|null> => {
+	//Validar si el usuario-empresa existe
+	const dataCompany = await getCompanyId(id);
+	//Validar si el usuario existe
+	if(!dataCompany)return null;//No existe info
+	
+	//validamos si esta la informacion en mongo
+	const dataCompanyMongo = await getCompanyInfoOneId(id);
+	//Validar si existe la informacion
+	// if(!dataCompanyMongo)return null;//No existe info
+	//Obtenemos datos necesarios
+	const data:CompanyDataConfig = {
+		email:email,
+		nit:dataCompany.nit,
+		phoneNumber:dataCompany.phoneNumber,
+		address:dataCompany.address,
+		mainActivity:dataCompanyMongo?.mainActivity || null,
+	}as CompanyDataConfig;
+
+	return data;
+
+	
 };
 

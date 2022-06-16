@@ -51,5 +51,14 @@ export interface GuideProfileData{
     birthDate:Date;
     email:string;
     hasTransport:boolean;
-    information ?: Information;
+    information : Information;
+}
+
+export interface GuideDataConfig {
+    document:string;
+    email:string;
+    phoneNumber:string;
+    birthData:Date;
+    city:string;
+    hasTransport:boolean;
 }

@@ -45,3 +45,11 @@ export interface DataVacancy {
     address: string;
     publishedOn:Date;
 }
+
+export interface CompanyDataConfig {
+    email:string;
+    nit:string;
+    phoneNumber:string;
+    address:string;
+    mainActivity:string;
+}
