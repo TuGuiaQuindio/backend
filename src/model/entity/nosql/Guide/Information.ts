@@ -1,4 +1,4 @@
-import { prop, Ref, PropType } from '@typegoose/typegoose';
+import { prop } from '@typegoose/typegoose';
 
 //IMPORTACIONES DE MODEL
 import { Language } from './Language';
