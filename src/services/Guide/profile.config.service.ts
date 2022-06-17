@@ -50,31 +50,30 @@ export const updateDataSql  = async (values : GuideSignup_extra) : Promise<boole
 };
 
 //NoSQL -> MONGO
-export const updateDataNoSql = async (values : GuideInfo) =>{
+export const updateDataNoSql = async (id:number, values : GuideInfo) =>{
 	//values = values as GuideInfo;
 	console.log('********* Update GUIDE Service MongoDB **********');
 	console.log('GET DATA FOR MongoDB :: ', values);
 	console.log('Lenguajes: ',values.information.languages);
 	//Buscamos si exite ya la informacion 
 	//Si existe, se actualiza
-	console.log('*SEARCHING por este id->',values.id);
-	const results = await getGuideInfoOneId(values.id); 
+	console.log('*SEARCHING por este id->',id);
+	const results = await getGuideInfoOneId(id); 
 	// Mostramos el dato obtenido
 	console.log('Guide-info went:: ',results);
 	if(results){
 		//Si el Guide-Info existe
 		//Exist Data
 		//Update data
-		const resultsUpdate : boolean = await updateGuideInfo(values);
-		if(!resultsUpdate){return false;}//ERROR ACTUALIZANDO DATOS
-		//OK ALL
-		//SI EXITE
-		return true;
+		const resultsUpdate : boolean = await updateGuideInfo(id,values);
+		//False-> ERROR ACTUALIZANDO DATOS
+		//True-> OK ALL
+		return resultsUpdate;
 	}
 	else{
 		//Not exist Data
 		//Creamos la informacion del guia
-		const resultsGuide : boolean = await createGuideInfo(values);
+		const resultsGuide : boolean = await createGuideInfo(id, values);
 		console.log('Service resultsGuide :: ',resultsGuide);
 		//False 
 		if (!resultsGuide) return false;

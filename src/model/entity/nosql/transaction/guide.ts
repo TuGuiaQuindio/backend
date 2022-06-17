@@ -9,10 +9,10 @@ import { CompleteDataNoSql, GuideInfo } from '../../../../interface/Guide/guideI
 //Transacion de datos 
 //Se encarga de actualizar los datos de usuario
 //Guardamos los datos de usuario GUIDE extras
-export const createGuideInfo = async ( values : GuideInfo ) : Promise<boolean> => {
+export const createGuideInfo = async ( id:number, values : GuideInfo ) : Promise<boolean> => {
 	console.log('CREANDO INFO GUIDE...');
 	try {
-		await executeQuery(values);
+		await executeQuery(id, values);
 	} catch (error) {
 		//MOstramos el error
 		console.log('ERROR Create Mongo-Info: ',error);
@@ -22,12 +22,12 @@ export const createGuideInfo = async ( values : GuideInfo ) : Promise<boolean> =
 	return true;
 };
 // Ejecutar un query
-async function executeQuery(values : GuideInfo) {
+async function executeQuery(id:number, values : GuideInfo) {
 	console.log('Transactions: ', values.information);
 	
 	//Create User-Guide
 	const guideInfo = new GuideInfoModel({
-		id : values.id,
+		id : id,
 		information : {
 			theme : values.information.theme,
 			languages : values.information.languages,
@@ -40,18 +40,18 @@ async function executeQuery(values : GuideInfo) {
 }
 
 ////////////////////////////////////////////////////////////////
-
 //ACTUALIZAR INFORMACION GUIA
-export const updateGuideInfo = async ( values : GuideInfo ) : Promise<boolean> => {
+export const updateGuideInfo = async ( id:number, values : GuideInfo ) : Promise<boolean> => {
 	console.log('Actualizando Datos...');
 	//Obtenemos el id
-	const id : number = values.id;
+	// const id : number = id;
 	try {
 		//Actualizamos los datos
+		//TODO->ORGANIZAR los datos para actualizar
 		const results = await GuideInfoModel.updateOne({id}, 
 			{information : 
 				{
-					theme : values.information.theme,
+					theme: values.information.theme,
 					languages: values.information.languages
 				}
 			});

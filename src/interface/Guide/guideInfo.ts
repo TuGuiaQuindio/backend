@@ -1,8 +1,11 @@
 // Interfas de guia de informacion
 export interface GuideInfo {
-    id :number;
     document ?: string;
     information : Information;
+    // availability:string;
+    // aboutMe:string;
+    // verified:boolean;
+    // firstAid:boolean;
 }
 
 interface Information {

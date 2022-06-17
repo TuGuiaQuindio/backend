@@ -33,14 +33,18 @@ export const profileConfig_put = async (req:Request, res:Response) : Promise<Res
 	if(id == 0) return res.status(422).json({ error:'ID Not Found - Unauthorized' });
 	// Get Data to configure for the 'Body'
 	const { firstName, lastName, birthDate, city, phoneNumber } = req.body as GuideSignup_extra;
-	const { information } = req.body as GuideInfo;
+	const { information, /*availability, aboutMe, verified, firstAid*/ } = req.body as GuideInfo;
+	const { availability, aboutMe, verified, firstAid } = req.body;
 	//Save or update data in MySQL and MongoDB
+
+	console.log('availability: ',availability,'\naboutMe:',aboutMe,'\nverified: ',verified,'\nfirstAid: ',firstAid);
+	
 
 	try {
 		// MySQL
 		const registerSql : boolean | undefined = await updateDataSql( { id, firstName, lastName, birthDate, city, phoneNumber} );
 		// MongoDB
-		const registerNoSql : boolean | undefined = await updateDataNoSql( { id, information } );
+		const registerNoSql : boolean | undefined = await updateDataNoSql( id,{ information } );
 		//Validar si los datos estan guardados correctamente	
 		if(registerNoSql == undefined || registerSql == undefined) {
 		// if(registerMysql == undefined){//Undefined
