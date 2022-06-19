@@ -3,6 +3,7 @@ const guide = '/guide';
 const company = '/company';
 const signup = '/signup';
 const profile = '/profile';
+const profiles = '/profiles';
 const config = '/config';
 const upload  = '/upload';
 const photo = '/photo';
@@ -11,6 +12,7 @@ const completeData = '/completeData';
 const verifyToken = '/verifyToken';
 const vacancyObjectIdOptional = /^\/company\/vacancy\/([a-fA-F0-9]{24})?$/;
 const showVacancies = '/vacancies';
+const visibility = '/visibility';
 
 // * Todos los paths del server, las rutas
 export default {
@@ -40,6 +42,9 @@ export default {
 	vacancy : vacancyObjectIdOptional,
 	//Mostrar las vacantes
 	showVacancies: guide + showVacancies,
-
+	//Show profile guides
+	showProfileGuides: company + profiles,
+	//Visibility
+	profileVisibility : guide + profile + visibility,
 	
 };

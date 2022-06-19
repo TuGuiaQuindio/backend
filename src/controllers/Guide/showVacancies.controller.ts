@@ -10,6 +10,7 @@ import { getResponse } from '../../services/response-message.service';
 
 
 export const showVacancies_get = async (req:Request, res:Response) => {
+	//TODO->VALIDAR ROL QUE CONSULTA
 	//Mostrar vacantes
 	const result = await showVacanciesService();
 	if(result == false){

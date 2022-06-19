@@ -7,9 +7,7 @@ export interface GuideInfo {
     // verified:boolean;
     // firstAid:boolean;
 }
-
 interface Information {
-
     theme : string;
     languages : Language[];
     images : Image[]; 
@@ -54,7 +52,7 @@ export interface CompleteDataNoSql{
 export interface GuideProfileData{
     id :number;
     document:string;
-    fistName:string;
+    firstName:string;
     lastName:string;
     city:string;
     phoneNumber:string
@@ -66,9 +64,8 @@ export interface GuideProfileData{
     aboutMe:string;
     verified:boolean;
     firstAid:boolean;
-
+    visibility:boolean;
 }
-
 export interface GuideDataConfig {
     document:string;
     email:string;
@@ -77,3 +74,18 @@ export interface GuideDataConfig {
     city:string;
     hasTransport:boolean;
 }
+interface Attachments{
+    imges:Image[];
+    document:Document[];
+}
+
+// export interface ProfilePreview{
+//     id:number;
+//     firstName:string;
+//     lastName:string;
+//     aboutMe:string;
+//     firstAid:boolean;
+//     hasTransport:boolean;
+//     languages:Language[];
+//     // documents:Attachments;
+// }

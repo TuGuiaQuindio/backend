@@ -21,7 +21,14 @@ export const responses: ResponseMessage[] = [
 	{ code: 'P003', msg: 'Datos actualizados' },
 	{ code: 'P004', msg: 'Datos no encontrados' },
 	{ code: 'P005', msg: 'Usuario no encontrado' },
-	{ code: '', msg: '' },
+	//Profile visibility
+	{ code: 'PV01', msg: 'Perfil visible!'},
+	{ code: 'PV02', msg: 'Datos no encontrados' },
+	{ code: 'PV03', msg: 'ERROR: actualizando datos!' },
+	//Show Profile
+	{ code: 'SP01', msg: 'perfiles cargados con exito!' },
+	{ code: 'SP02', msg: 'Error al obtener los datos' },
+	{ code: 'SP03', msg: 'No hay perfiles disponibles' },
 	{ code: '', msg: '' },
 	//Upload File
 	{ code: 'U001', msg: 'Archivo ya existe' },

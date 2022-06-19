@@ -15,6 +15,10 @@ export const getRole = async (email : string) : Promise<Roles | null> => {
 //! //////////////////////////////////////////////////////
 //! //////////////////////////////////////////////////////
 // * --> GUIDE <--
+// !! Obtener todos los usuarios
+export const getGuides = async () => {
+	return await dsource.getRepository(Guide).find();
+};
 // !! Encontrar 'GUIDE' por medio del -> ID <-
 export const getGuideId = async ( id : number ) : Promise<Guide | null> => { 
 	//Buscamos el guia por el Id

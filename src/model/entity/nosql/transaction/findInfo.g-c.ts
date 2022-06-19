@@ -29,7 +29,6 @@ export const getGuideInfoAll = async () => {
 // !Encontrar por ->ID<- Imagen
 export const getImgGuideId = async (id: number) => {
 	return await GuideInfoModel.findOne({id});
-
 };
 
 //! /////////////////////////////////////////////////////////////////

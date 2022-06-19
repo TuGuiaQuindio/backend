@@ -177,3 +177,20 @@ export const updateCompleteData = async (id:number,values:CompleteDataNoSql):Pro
 	//ALL OK
 	return true;
 };
+
+//?UPDATE VISIBILITY
+export const updateVisibility = async (id:number, visibility:boolean):Promise<boolean> => {
+	try {
+		const result = await GuideInfoModel.updateOne({id},
+			{
+				$set: {
+					visibility
+				}
+			});
+		console.table(result);
+	} catch (error) {
+		console.log('ERROR actualizando visibility: ',error);
+		return false;
+	}
+	return true;
+};

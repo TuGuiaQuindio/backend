@@ -14,6 +14,7 @@ import routerCompanyProfileConfig from './Company/profile.config.routes';
 import routerCompanyProfileChangePass from './Company/changePass.routes';
 import routerCompanyCompleteData from './Company/completeData.routes';
 import routerCompanyVacancy from './Company/vacancy.routes';
+import routerCompnayShowProfilesGuides from './showProfileGuide.routes';
 //GUIDE
 import routerGuideSignup from './Guide/guide-signup.routes';
 import routerGuideProfileConfig from './Guide/profile.config.routes';
@@ -22,6 +23,7 @@ import routerGuideProfileChangePass from './Guide/chagePass.routes';
 import routerGuideCompleteData from './Guide/completeData.routes';
 import routerGuideShowVacancies from './Guide/showVacancies.routes';
 import routerGuideProfile from './Guide/profile.routes';
+import routerGuideProfileVisibility from './Guide/profileVisibility.routes';
 ///////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////
 
@@ -38,6 +40,7 @@ const _routes : [Router][] = [
 	[routerCompanyProfileChangePass],
 	[routerCompanyCompleteData],
 	[routerCompanyVacancy],
+	[routerCompnayShowProfilesGuides],
 	//?GUIDE
 	[routerGuideSignup],
 	[routerGuideProfileConfig],
@@ -46,6 +49,7 @@ const _routes : [Router][] = [
 	[routerGuideCompleteData],
 	[routerGuideShowVacancies],
 	[routerGuideProfile],
+	[routerGuideProfileVisibility],
 ] ;
 
 //Pasamos por las rutas 

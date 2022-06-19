@@ -43,6 +43,12 @@ class GuideInfo {
 		default : false
 	})
 		completeData:boolean;
+
+	@prop({
+		type: () => Boolean,
+		default:false,
+	})
+		visibility:boolean;
 	
 }
 
