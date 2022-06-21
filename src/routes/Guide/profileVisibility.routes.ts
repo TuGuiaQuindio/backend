@@ -1,0 +1,20 @@
+import express, { Router }  from 'express';
+//////////////////////////////////////////////////////////
+//IMPORTAMOS PATH
+import path from '../paths/index';
+//////////////////////////////////////////////////////////
+//IMPORTAMOS AUTENTIFICADOR 
+import { isAuth } from '../../middleware/auth';
+//////////////////////////////////////////////////////////
+//IMPORTAMOS CONTROLADOR
+import { profileVisibility } from '../../controllers/Guide/profileVisibility.controller';
+//////////////////////////////////////////////////////////
+
+//Constuimos rutas
+const router : Router = express.Router();
+
+router.route(path.profileVisibility)
+	.post(isAuth, profileVisibility);
+
+//////////////////////////////////////////////////////////
+export default router;

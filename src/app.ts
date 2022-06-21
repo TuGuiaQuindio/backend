@@ -3,36 +3,37 @@ import express, { Application } from 'express';
 const app :  Application = express();
 ///////////////////////////////////////////
 //IMPORTACIONES RUTAS
-import routerLogin from './routes/login.routes';
-import routerGuideSignup from './routes/guide-signup.routes';
-import routerCompanySingup from './routes/company-signup.routes';
-import routerHome from './routes/home.routes';
+import { routes } from './routes/index.routes';
 //////////////////////////////////////////
 //MORGAN
 import morgan from 'morgan';
+//HELMET
+import helmet from 'helmet'; 
+//CORS
+import cors from 'cors';
 //////////////////////////////////////////
 //IMPORTAMOS CONECCION A LA DB
-// import { createConnection } from 'typeorm';
-// import  'reflect-metadata';
+import { connectDB } from './config/connection/MongoDB/conection-mongodg';
 /////////////////////////////////////////
-
 // Connexion a la db
-// createConnection();
-
+//Mongo
+connectDB();
 ///////////////////////////////////////////
+//OPCIONES DE LOS CORS
+const originOptions : cors.CorsOptions = {
+	origin : new RegExp(process.env.CORS_ORIGIN as string ?? 'http://localhost:3000')
+};
 // Middlewares
+app.use(cors(originOptions));
 app.use(morgan('dev'));
-
+app.use(helmet());
 // Para que express lea los json, los pueda entender
 app.use(express.json());
 
 // ------> Routes <-------
 // Utilizamos las rutas
-app.use(routerLogin);
-app.use(routerGuideSignup);
-app.use(routerCompanySingup);
-app.use(routerHome);
-
+routes(app);
+///////////////////////////////////////////////
 ///////////////////////////////////////////////
 //Exporting app
 export default app;

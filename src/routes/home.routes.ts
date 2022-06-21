@@ -1,7 +1,7 @@
 import express from 'express';
 ////////////////////////////////////////////////////////////////
 //IMPORTACIONES DE PATHS
-import path from './paths/index';
+import path from './paths';
 ////////////////////////////////////////////////////////////////
 //IMPORTACIONES DEl VALIDADOR TOKEN
 import tokenValidator from '../validator/jwt.validator';
@@ -14,7 +14,7 @@ import { homeGet } from '../controllers/home.controller';
 
 const router = express.Router();
 ////////////////////////////////////////////////////////////////
-
+//Deconstrucción
 const { params, validate } = tokenValidator; 
 // RUTA -> '/home'
 // Ruta del Home page

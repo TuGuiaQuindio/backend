@@ -1,3 +1,5 @@
+//TESTING QUE NOS DEVUELVE UN TOKEN
+
 // importamos las funciones de service
 import { createToken, verifyToken } from '../../src/services/token.service';
 

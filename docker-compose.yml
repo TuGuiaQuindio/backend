@@ -1,0 +1,62 @@
+version: '2.1'
+
+volumes: 
+    tgq_db_vol:
+    tgq_mongodb_vol:
+    tgq_redisdb_vol:
+
+services: 
+    mysql:
+        image: mysql:8
+        environment: 
+            MYSQL_USER: super_tgq
+            MYSQL_PASSWORD: 1234
+            MYSQL_ALLOW_EMPTY_PASSWORD: 1 
+#Exponiendo el puerto del contenedor en la red
+        expose:
+            - '3306'
+        volumes: 
+            - tgq_db_vol:/var/lib/mysql
+        healthcheck: 
+            test: ['CMD', 'mysqladmin', 'ping', '-h', 'localhost']
+            timeout: 20s
+            retries: 10
+        restart: always
+        container_name: tgq_mysqldb
+    #MongoDB
+    mongo:
+        image: mongo:5.0.6
+        expose:
+            - '27017'
+            # - '27000'
+        volumes: 
+            - tgq_mongodb_vol:/data/db
+        container_name: tgq_mongodb
+    #Redis
+    redis:
+        image: redis:7.0.0-alpine
+        expose:
+            - '6379'
+        volumes:
+            - tgq_redisdb_vol:/var/lib/redis
+        container_name: tgq_redisdb
+        command: >
+            --requirepass 0606
+    app:
+        build: .
+        image: project_tgq
+        ports: 
+            - '3000:3000'
+        depends_on:
+            mysql:
+                condition: service_healthy
+            mongo:
+                condition: service_started
+            redis:
+                condition: service_started
+        volumes:
+            - /app-tgq/node_modules
+            - .:/app-tgq
+
+
+
