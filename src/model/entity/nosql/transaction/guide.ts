@@ -4,7 +4,7 @@ import GuideInfoModel from '../Guide/GuideInfo';
 // import ImageGuideModel from '../Guide/Image';
 ////////////////////////////////////////////////
 //IMPORTAMOS INTERFACES
-import { CompleteDataNoSql, GuideInfo } from '../../../../interface/Guide/guideInfo';
+import { CompleteDataNoSql, GuideInfo, GuideInfoAdditional } from '../../../../interface/Guide/guideInfo';
 ////////////////////////////////////////////////
 //Transacion de datos 
 //Se encarga de actualizar los datos de usuario
@@ -41,19 +41,23 @@ async function executeQuery(id:number, values : GuideInfo) {
 
 ////////////////////////////////////////////////////////////////
 //ACTUALIZAR INFORMACION GUIA
-export const updateGuideInfo = async ( id:number, values : GuideInfo ) : Promise<boolean> => {
+export const updateGuideInfo = async ( id:number, values : GuideInfo, values2:GuideInfoAdditional ) : Promise<boolean> => {
 	console.log('Actualizando Datos...');
-	//Obtenemos el id
-	// const id : number = id;
 	try {
 		//Actualizamos los datos
 		//TODO->ORGANIZAR los datos para actualizar
 		const results = await GuideInfoModel.updateOne({id}, 
-			{information : 
-				{
-					theme: values.information.theme,
-					languages: values.information.languages
-				}
+			{$set: 
+				{information : 
+					{
+						theme: values.information.theme,
+						languages: values.information.languages
+					}
+				},
+			availability:values2.availability,
+			aboutMe:values2.aboutMe,
+			verified:values2.verified,
+			firstAid:values2.firstAid
 			});
 		//Show Results
 		console.log('RESULTS Update OK-> ',results);
@@ -68,7 +72,7 @@ export const updateGuideInfo = async ( id:number, values : GuideInfo ) : Promise
 
 //UPDATE DATA - completeData
 
-export const createDataInfo = async (id : number, completeData : boolean) => {
+export const createDataInfo = async (id : number,values:CompleteDataNoSql, completeData : boolean) => {
 
 	let bandera = null;
 
@@ -76,16 +80,16 @@ export const createDataInfo = async (id : number, completeData : boolean) => {
 	try {
 		const guideInfo = new GuideInfoModel({
 			id : id,
-			information : {
-				theme : null,
-				language : [],
-			},
+			availability:values.availability,
+			aboutMe:values.aboutMe,
+			verified:values.verified,
+			firstAid:values.firstAid,
 			completeData
 		});
 		//Save Guide
 		await guideInfo.save();
 		console.log('Resultado de completar datos: ',guideInfo);
-		bandera = guideInfo;
+		bandera = true;
 	} catch (error) {
 		console.log('ERROR al crear los datos, completeData: ',error);
 		return false;
@@ -157,7 +161,7 @@ async function executeQueryCreateInfoDoc(objId : object, values : GuideInfo) {
 //?UPDATE COMPLETE DATA
 export const updateCompleteData = async (id:number,values:CompleteDataNoSql):Promise<boolean> => {
 	console.log('COMPLETANDO DATOS...');
-	
+	console.log('ID: ',id);
 	try {
 		const result = await GuideInfoModel.updateOne({id},
 			{$set:

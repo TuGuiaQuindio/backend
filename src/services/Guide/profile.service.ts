@@ -34,6 +34,7 @@ export const profileService = async (id:number, email:string) : Promise<GuidePro
 		firstAid: infoGuide?.firstAid || null,
 		visibility: infoGuide?.visibility,
 	} as GuideProfileData;
+	console.log('Perfil obtenido');
 	return data ;
 };
 

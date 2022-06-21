@@ -34,7 +34,7 @@ export const completeData_post = async (req:Request, res:Response) : Promise<Res
 		const resultSql : boolean | null = await completeDataServiceSql( id ,{phoneNumber, city, birthDate, hasTransport});
 		const resultNoSql: boolean | null = await completeDataServiceNoSql(id,{availability, aboutMe, verified, firstAid});
 		//Validamos 
-		if (resultSql===null && resultNoSql===null) {
+		if (resultSql===null) {
 			// NO existe el usuario
 			return res.status(404).json({msg:'User not Found'});
 		}else if(resultSql===false){

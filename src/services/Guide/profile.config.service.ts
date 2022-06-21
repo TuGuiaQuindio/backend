@@ -3,7 +3,7 @@
 ////////////////////////////////////////////////
 //IMPORTAMOS INTERFACES
 import { GuideSignup_extra } from '../../interface/Guide/signup-guide.extra';
-import { GuideDataConfig, GuideInfo } from '../../interface/Guide/guideInfo';
+import { GuideDataConfig, GuideInfo, GuideInfoAdditional } from '../../interface/Guide/guideInfo';
 ////////////////////////////////////////////////
 //IMPORTAMOS DE TRANSACTIONS SQL
 import { getGuideId } from '../../model/entity/sql/transaction/find.g-c';
@@ -50,7 +50,7 @@ export const updateDataSql  = async (values : GuideSignup_extra) : Promise<boole
 };
 
 //NoSQL -> MONGO
-export const updateDataNoSql = async (id:number, values : GuideInfo) =>{
+export const updateDataNoSql = async (id:number, values : GuideInfo, values2: GuideInfoAdditional) =>{
 	//values = values as GuideInfo;
 	console.log('********* Update GUIDE Service MongoDB **********');
 	console.log('GET DATA FOR MongoDB :: ', values);
@@ -65,7 +65,8 @@ export const updateDataNoSql = async (id:number, values : GuideInfo) =>{
 		//Si el Guide-Info existe
 		//Exist Data
 		//Update data
-		const resultsUpdate : boolean = await updateGuideInfo(id,values);
+		const resultsUpdate : boolean = await updateGuideInfo(id,values, values2);
+		// await updateGuideInfoAddit(values2);
 		//False-> ERROR ACTUALIZANDO DATOS
 		//True-> OK ALL
 		return resultsUpdate;

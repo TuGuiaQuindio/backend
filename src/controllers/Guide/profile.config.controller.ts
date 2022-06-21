@@ -10,7 +10,7 @@ import { getResponse } from '../../services/response-message.service';
 ////////////////////////////////////////////////////////////////
 //IMPORTAMOS INTERFACES
 import { GuideSignup_extra } from '../../interface/Guide/signup-guide.extra';
-import { GuideDataConfig, GuideInfo } from '../../interface/Guide/guideInfo';
+import { GuideDataConfig, GuideInfo, GuideInfoAdditional } from '../../interface/Guide/guideInfo';
 ////////////////////////////////////////////////////////////////
 //IMPORTAMOS CONSTANTES
 import { Roles } from '../../constants/constants';
@@ -34,7 +34,7 @@ export const profileConfig_put = async (req:Request, res:Response) : Promise<Res
 	// Get Data to configure for the 'Body'
 	const { firstName, lastName, birthDate, city, phoneNumber } = req.body as GuideSignup_extra;
 	const { information, /*availability, aboutMe, verified, firstAid*/ } = req.body as GuideInfo;
-	const { availability, aboutMe, verified, firstAid } = req.body;
+	const { availability, aboutMe, verified, firstAid } = req.body as GuideInfoAdditional;
 	//Save or update data in MySQL and MongoDB
 
 	console.log('availability: ',availability,'\naboutMe:',aboutMe,'\nverified: ',verified,'\nfirstAid: ',firstAid);
@@ -44,7 +44,7 @@ export const profileConfig_put = async (req:Request, res:Response) : Promise<Res
 		// MySQL
 		const registerSql : boolean | undefined = await updateDataSql( { id, firstName, lastName, birthDate, city, phoneNumber} );
 		// MongoDB
-		const registerNoSql : boolean | undefined = await updateDataNoSql( id,{ information } );
+		const registerNoSql : boolean | undefined = await updateDataNoSql( id,{ information }, {availability, aboutMe, verified, firstAid} );
 		//Validar si los datos estan guardados correctamente	
 		if(registerNoSql == undefined || registerSql == undefined) {
 		// if(registerMysql == undefined){//Undefined

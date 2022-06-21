@@ -23,7 +23,8 @@ export class Information {
 		_id : false,})
 		images : ImageGuide[];
 
-	@prop({ type: () => [DocumentGuide] })
+	@prop({ type: () => [DocumentGuide], 
+		_id : false })
 		documents : DocumentGuide[];
 
 }

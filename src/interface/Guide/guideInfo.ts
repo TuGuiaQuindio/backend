@@ -2,11 +2,15 @@
 export interface GuideInfo {
     document ?: string;
     information : Information;
-    // availability:string;
-    // aboutMe:string;
-    // verified:boolean;
-    // firstAid:boolean;
 }
+
+export interface GuideInfoAdditional{
+    availability:string;
+    aboutMe:string;
+    verified:boolean;
+    firstAid:boolean;   
+}
+
 interface Information {
     theme : string;
     languages : Language[];
