@@ -11,7 +11,6 @@ import { CompleteDataNoSql, CompleteDataSql } from '../../interface/Guide/guideI
 //IMPORTAMOS TRANSACCIONES
 import { createDataInfo, updateCompleteData } from '../../model/entity/nosql/transaction/guide';
 import { getGuideInfoOneId } from '../../model/entity/nosql/transaction/findInfo.g-c';
-import { log } from 'console';
 ////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////
