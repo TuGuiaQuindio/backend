@@ -74,6 +74,8 @@ export const responses: ResponseMessage[] = [
 	{ code: 'DV04', msg: 'Error eliminando vacante' },
 	{ code: '', msg: '' },
 	{ code: '', msg: '' },
+	{ code: '', msg: '' },
+	{ code: '', msg: '' },
 	
 ];
 
