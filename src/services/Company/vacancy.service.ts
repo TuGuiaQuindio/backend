@@ -15,7 +15,7 @@ import { getAccess } from '../permits.service';
 import { ObjectId } from 'mongoose';
 //////////////////////////////////////////////////////////////////
 
-export const createVacancyService = async ( id:number,values:Vacancy, accessPermit:[] ) : Promise<boolean|null|undefined> => {
+export const createVacancyService = async ( id:number,values:Vacancy, accessPermit:[] ) : Promise<boolean|null|undefined|string> => {
 	console.log('ID: ',id, '\n->',values,'\n',);
 	//OBTENEMOS EL PERMISO PARA SABER CUAL TIENE
 	const access: string|null = getAccess(accessPermit);
@@ -23,7 +23,7 @@ export const createVacancyService = async ( id:number,values:Vacancy, accessPerm
 	//ACCESO FREE 
 	if(access == 'FREE'){
 		console.log('ACCESS FREE');		
-		console.log('Busacndo Empresa...');
+		console.log('Buscando Empresa...');
 		const companyFound : Company|null = await getCompanyId(id);
 		//Obtenemos datos adicionales
 		//Validamos que exista
@@ -32,7 +32,7 @@ export const createVacancyService = async ( id:number,values:Vacancy, accessPerm
 		//Validar cuantas vacantes han sido creadas con el mismo id
 		const resultCompany = await getCompanyInfoOneId(id);
 		//Validamos que exista
-		if(!resultCompany)return null;
+		if(!resultCompany)return 'empty';//No hay datos
 		//Obtenemos la lista de las vacantes
 		const accessPermit:object[] = resultCompany.vacancies;
 		console.log('List permisses: ',accessPermit);		
