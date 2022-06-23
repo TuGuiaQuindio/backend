@@ -59,6 +59,7 @@ export const responses: ResponseMessage[] = [
 	{ code: 'V002', msg: 'Ocurrio un error en el servidor!' },
 	{ code: 'V003', msg: 'NO tiene permisos para crear mas vacantes' },
 	{ code: 'V004', msg: 'INFORMACION de empresa no encontrada' },
+	{ code: 'V005', msg: 'No hay suficientes datos' },
 	//Show vacancies
 	{ code: 'SV01', msg: 'No hay vacantes' },
 	{ code: 'SV02', msg: 'Error al obtener las vacantes' },
@@ -71,6 +72,8 @@ export const responses: ResponseMessage[] = [
 	{ code: 'DV02', msg: 'No se pudo eliminar la vacante' },
 	{ code: 'DV03', msg: 'No tiene los permisos: Id de la empresa no coincide!' },
 	{ code: 'DV04', msg: 'Error eliminando vacante' },
+	{ code: '', msg: '' },
+	{ code: '', msg: '' },
 	{ code: '', msg: '' },
 	{ code: '', msg: '' },
 	

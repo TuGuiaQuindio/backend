@@ -45,7 +45,7 @@ export const recoverPass = async (values : DataRecover ) : Promise<boolean | str
 		return codeRecovery;
 	} catch (error) {
 		//Algo salio mal
-		console.log('Error al generar el Codigo: ', error);
+		console.log('Error al generar o guardar el Codigo: ', error);
 		return false;
 	}
 };
