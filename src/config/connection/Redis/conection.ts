@@ -18,8 +18,8 @@ redisClient.on('connect', () => {
 });
 //Se connecta
 redisClient.connect()
-	.then(res => {
-		console.log('Client Connect done: ', res);
+	.then((res) => {
+		console.log('Redis: Client Connect done: ', res);
 	}).catch(err => {
 		console.log('Error during REDIS client connection: ', err);
 	});
