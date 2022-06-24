@@ -13,8 +13,7 @@ import  'reflect-metadata';
 import { MySQLDataSource } from './config/connection/Mysql/datasources';
 /////////////////////////////////////////
 
-
-const start = (port : number, name : string)  => {
+const start = async (port : number, name : string) => {
 	try{
 		app.listen(port, ()=>{
 			console.log(`

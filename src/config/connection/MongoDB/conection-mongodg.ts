@@ -13,7 +13,7 @@ export async function connectDB() {
 	console.log('CONECTANDO...');
 	const db = await connect('mongodb://'+host+':'+port+'/'+noSql_db);
 	// const db = await connect(host+':'+port+'/'+noSql_db);
-	console.log('DataBase is connected to :: ', db.connection.db.databaseName);
+	console.log('Mongo:DataBase is connected to :: ', db.connection.db.databaseName);
 }
 
 //Disconnection
