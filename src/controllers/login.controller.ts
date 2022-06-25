@@ -23,7 +23,6 @@ export const loginPost = async (req:Request, res:Response) : Promise<Response> =
 	try{
 		// obtenemos el token
 		const result : Auth | boolean = await authSrv.login(email, password);
-
 		// si retorna el toquen
 		// Si nos retorna un false es porque ocurrio un error
 		if(result === false){
@@ -31,7 +30,7 @@ export const loginPost = async (req:Request, res:Response) : Promise<Response> =
 			return res.status(401).json(getResponse('L002'));
 			// Por lo contrario repondemos
 		}else{
-			const company = result as Auth;
+			/*const company = result as Auth;
 			
 			//Es empresa
 			console.log('>>ROLE: ',company.role);
@@ -43,9 +42,10 @@ export const loginPost = async (req:Request, res:Response) : Promise<Response> =
 					...getResponse('L200')
 				});
 			}
-			//GUIDE
+			//GUIDE*/
 			return res.status(200).json({
-				resultGuide: result,
+				// resultGuide: result,
+				result,
 				...getResponse('L200')
 			});
 		}
