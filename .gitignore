@@ -134,7 +134,7 @@ dist
 
 # Code generate :  (openssl genrsa -out sign.key 4096)
 # Se ignora la carpeta con la firma privada 
-.secret
+# .secret
 #Archivos -> Img - Doc
 uploads
 
