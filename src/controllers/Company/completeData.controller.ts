@@ -4,7 +4,6 @@ import { Request,Response } from 'express';
 import { CompleteDataSql, DataNoSql } from '../../interface/Company/data';
 //////////////////////////////////////////////
 //IMPORTAMOS SERVICIOS
-import { getId, getRole } from '../../services/token.service';
 import { getResponse } from '../../services/response-message.service';
 //////////////////////////////////////////////
 //IMPORTAMOS CONSTANTES
@@ -14,15 +13,15 @@ import { completeDataServiceNoSql, completeDataServiceSql } from '../../services
 //////////////////////////////////////////////
 
 export const completeData_post = async ( req : Request, res : Response ) => {
-	//OBTENEMOS EL TOKEN 
-	const { authorization } = req.headers;
-	//Obtener el id
-	const id : number = await getId(authorization);
-	//Obtener rol
-	const rol : number = await getRole(authorization);
-	console.log('Payload: ',id, rol);
+	//OBTENEMOS TOKEN
+	const { payload } = res.locals;
+	//OBTENEMOS ID  
+	const id : number = payload.id;
+	//OBTENEMOS ROL
+	const rol : number = payload.rol;
+	console.log('-> Payload - Company :: ID :', id, '- ROl :',rol );
 	//Validamos que el rol coincida
-	// ROL COMPANY = 1
+	// ROL COMPANY = 2
 	if(rol != Roles.COMPANY) return res.status(403).json(getResponse('A002'));
 	//VALIDAMOS EL ID 
 	if(id == 0) return res.status(422).json({ error:'ID Not Found - Unauthorized' });

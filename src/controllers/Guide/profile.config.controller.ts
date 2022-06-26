@@ -19,18 +19,19 @@ import { Roles } from '../../constants/constants';
 //->> RUTA PUT
 //Validar datos de entrada
 export const profileConfig_put = async (req:Request, res:Response) : Promise<Response> => { 
-	//Obtenemos cabecera
-	const authorization : string | undefined = req.headers.authorization;
-	//Obtenemos el ID del Headers
-	const id : number = await getId(authorization);
-	//Obtenemos el rol
-	const rol : number = await getRole(authorization);
-	// Validamos el rol que coincida
-	console.log('-> payload - Guide :: ID:',id ,'- ROL:',rol);
-	// ROL GUIDE = 1 
+	//OBTENEMOS TOKEN
+	const { payload } = res.locals;
+	//OBTENEMOS ID  
+	const id : number = payload.id;
+	//OBTENEMOS ROL
+	const rol : number = payload.rol;
+	console.log('-> Payload - Company :: ID :', id, '- ROl :',rol );
+	//Validamos que el rol coincida
+	// ROL COMPANY = 2
 	if(rol != Roles.GUIDE) return res.status(403).json(getResponse('A002'));
-	//CONTINUA
+	//VALIDAMOS EL ID 
 	if(id == 0) return res.status(422).json({ error:'ID Not Found - Unauthorized' });
+	//CONTINUA
 	// Get Data to configure for the 'Body'
 	const { firstName, lastName, birthDate, city, phoneNumber } = req.body as GuideSignup_extra;
 	const { information, /*availability, aboutMe, verified, firstAid*/ } = req.body as GuideInfo;

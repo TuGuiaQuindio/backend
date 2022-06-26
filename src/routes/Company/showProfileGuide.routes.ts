@@ -1,13 +1,13 @@
 import express, { Router }  from 'express';
 //////////////////////////////////////////////////////////
 //IMPORTAMOS PATH
-import path from './paths/index';
+import path from '../paths/index';
 //////////////////////////////////////////////////////////
 //IMPORTAMOS AUTENTIFICADOR 
-import { isAuth } from '../middleware/auth';
+import { isAuth } from '../../middleware/auth';
 //////////////////////////////////////////////////////////
 //IMPORTAMOS CONTROLADOR
-import { showProfile } from '../controllers/showProfileGuide.controller';
+import { showProfiles } from '../../controllers/Company/showProfileGuide.controller';
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
 
@@ -15,6 +15,6 @@ import { showProfile } from '../controllers/showProfileGuide.controller';
 const router : Router = express.Router();
 
 router.route(path.showProfileGuides)
-	.get(isAuth, showProfile);
+	.get(isAuth, showProfiles);
 //////////////////////////////////////////////////////////
 export default router;
