@@ -14,7 +14,7 @@ console.warn('Opciones de redis: ', options);
 const redisClient = createClient(options);
 //Creamos el cliente con la coneccion
 redisClient.on('connect', () => {
-	console.log('Connected');
+	console.log('CONNECTED REDIS');
 });
 //Se connecta
 redisClient.connect()
