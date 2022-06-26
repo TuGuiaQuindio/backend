@@ -5,7 +5,6 @@ import { Request, Response } from 'express';
 ////////////////////////////////////////////////////////////////
 // IMPORTAMOS SERVICIOS
 import { updateDataSql, updateDataNoSql, getData } from '../../services/Guide/profile.config.service';
-import { getId, getRole } from '../../services/token.service';
 import { getResponse } from '../../services/response-message.service';
 ////////////////////////////////////////////////////////////////
 //IMPORTAMOS INTERFACES
