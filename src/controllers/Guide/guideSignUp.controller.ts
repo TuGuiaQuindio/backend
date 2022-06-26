@@ -13,12 +13,6 @@ import { GuideSignup } from '../../interface/Guide/signup-guide';
 import { Guide } from '../../model/entity/sql/Guide';
 import { Company } from '../../model/entity/sql/Company';
 ////////////////////////////////////////////////////////////////
-
-// ->>RUTA GET 
-export const guideSignup_get = async(req:Request, res:Response) => {
-	res.send('Get - signup !!');
-};
-
 // ->> RUTA POST
 export const guideSignup_post = async(req:Request, res:Response) : Promise<Response>=> {
 	// Obtenemos los datos del body

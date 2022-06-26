@@ -8,22 +8,26 @@ import { GuideInfo } from '../../interface/Guide/guideInfo';
 //IMPORTAMOS SERVICIOS
 import { pullApartMimetype, saveInfoImg } from '../../services/Guide/uploadImg.service';
 import { saveInfoDoc } from '../../services/Guide/uploadDoc.service';
-import { getId, getRole } from '../../services/token.service';
 import { getResponse } from '../../services/response-message.service';
 /////////////////////////////////////////////////////
+//IMPORTAMOS CONTANTES
+import { Roles } from '../../constants/constants';
 /////////////////////////////////////////////////////
 export const uploadFile_post = async (req : Request, res : Response) => {
 	//Subir Archivos
-	//Obtenemos cabecera
-	const authorization : string | undefined = req.headers.authorization; 
-	//Obtenemos el ID del Headers
-	const id : number = await getId(authorization);
-	//Obtenemos el rol
-	const rol : number = await getRole(authorization);
-	console.log('-> payload - Guide :: ID:',id ,'- ROL:',rol);
-	
-	//Validamos "id"
+	//OBTENEMOS TOKEN
+	const { payload } = res.locals;
+	//OBTENEMOS ID  
+	const id : number = payload.id;
+	//OBTENEMOS ROL
+	const rol : number = payload.rol;
+	console.log('-> Payload - Company :: ID :', id, '- ROl :',rol );
+	//Validamos que el rol coincida
+	// ROL COMPANY = 2
+	if(rol != Roles.GUIDE) return res.status(403).json(getResponse('A002'));
+	//VALIDAMOS EL ID 
 	if(id == 0) return res.status(422).json({ error:'ID Not Found - Unauthorized' });
+	//CONTINUA
 	//Obtenemos los datos del cliente
 	const { title, description } = req.body;
 	//Obtenemos el tipo de Archivo

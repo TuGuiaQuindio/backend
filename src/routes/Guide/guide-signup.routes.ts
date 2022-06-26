@@ -9,7 +9,7 @@ import path from '../paths';
 import signUpValidator from '../../validator/guide/guide-signup';
 ////////////////////////////////////////
 //IMPORTAMOS CONTROLADORES
-import { guideSignup_get, guideSignup_post } from '../../controllers/Guide/guideSignUp.controller';
+import { guideSignup_post } from '../../controllers/Guide/guideSignUp.controller';
 
 const router = express.Router();
 ///////////////////////////////////////////////
@@ -20,7 +20,6 @@ const router = express.Router();
 const { params, validate } = signUpValidator;
 // RUTA -> '/signup/guide'
 router.route(path.signupGuide)
-	.get(guideSignup_get)
 	.post(params,validate,guideSignup_post);
 
 // Rutas con parametros

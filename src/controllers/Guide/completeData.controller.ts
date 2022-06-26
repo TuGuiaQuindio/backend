@@ -5,7 +5,6 @@ import { CompleteDataNoSql, CompleteDataSql } from '../../interface/Guide/guideI
 //////////////////////////////////////////////
 //IMPORTAMOS SERVICIOS
 import { getResponse } from '../../services/response-message.service';
-import { getId, getRole } from '../../services/token.service';
 //////////////////////////////////////////////
 //IMPORTAMOS CONSTANTES
 import { Roles } from '../../constants/constants';
@@ -14,14 +13,15 @@ import { completeDataServiceSql, completeDataServiceNoSql } from '../../services
 //////////////////////////////////////////////
 
 export const completeData_post = async (req:Request, res:Response) : Promise<Response> => {
-	//OBTENEMOS EL TOKEN 
-	const { authorization } = req.headers;
-	//Obtener el id
-	const id : number = await getId(authorization);
-	//Obtener rol
-	const rol : number = await getRole(authorization);
+	//OBTENEMOS TOKEN
+	const { payload } = res.locals;
+	//OBTENEMOS ID  
+	const id : number = payload.id;
+	//OBTENEMOS ROL
+	const rol : number = payload.rol;
+	console.log('-> Payload - Company :: ID :', id, '- ROl :',rol );
 	//Validamos que el rol coincida
-	// ROL GUIDE = 1
+	// ROL COMPANY = 2
 	if(rol != Roles.GUIDE) return res.status(403).json(getResponse('A002'));
 	//VALIDAMOS EL ID 
 	if(id == 0) return res.status(422).json({ error:'ID Not Found - Unauthorized' });

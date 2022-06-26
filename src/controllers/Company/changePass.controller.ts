@@ -5,23 +5,22 @@ import { Request, Response } from 'express';
 import { ChangePass } from '../../interface/change-password';
 ////////////////////////////////////////////////////////////////
 //IMPORTACIONES SERVICIOS
-import { getId, getRole } from '../../services/token.service';
 import { getResponse } from '../../services/response-message.service';
 import { changePassword } from '../../services/Company/changePass.service';
+import { Roles } from '../../constants/constants';
 ////////////////////////////////////////////////////////////////
 
 export const changePass_put = async (req : Request, res : Response) => {
-	console.log('CHANGE PASSWORD - COMPANY');
 	//OBTENEMOS TOKEN
-	const authorization : string | undefined = req.headers.authorization;
+	const { payload } = res.locals;
 	//OBTENEMOS ID  
-	const id : number = await getId(authorization);
+	const id : number = payload.id;
 	//OBTENEMOS ROL
-	const rol : number = await getRole(authorization);
+	const rol : number = payload.rol;
 	console.log('-> Payload - Company :: ID :', id, '- ROl :',rol );
 	//Validamos que el rol coincida
 	// ROL COMPANY = 2
-	if(rol != 2) return res.status(403).json(getResponse('A002'));
+	if(rol != Roles.COMPANY) return res.status(403).json(getResponse('A002'));
 	//VALIDAMOS EL ID 
 	if(id == 0) return res.status(422).json({ error:'ID Not Found - Unauthorized' });
 	//CONTINUA

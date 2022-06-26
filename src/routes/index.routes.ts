@@ -14,7 +14,7 @@ import routerCompanyProfileConfig from './Company/profile.config.routes';
 import routerCompanyProfileChangePass from './Company/changePass.routes';
 import routerCompanyCompleteData from './Company/completeData.routes';
 import routerCompanyVacancy from './Company/vacancy.routes';
-import routerCompnayShowProfilesGuides from './showProfileGuide.routes';
+import routerCompnayShowProfilesGuides from './Company/showProfileGuide.routes';
 //GUIDE
 import routerGuideSignup from './Guide/guide-signup.routes';
 import routerGuideProfileConfig from './Guide/profile.config.routes';
