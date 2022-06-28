@@ -3,5 +3,5 @@ WORKDIR /app-tgq
 COPY ./package.json .
 RUN npm i
 COPY . .
-EXPOSE 3000
+EXPOSE 3100
 CMD ["npm", "run", "dev"]
