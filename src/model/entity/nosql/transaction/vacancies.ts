@@ -3,7 +3,7 @@
 import VacancyModel from '../Company/vacancy';
 ///////////////////////////////////////////////////////////////
 //IMPORTAMOS INTERFACES
-import { DataVacancy, Vacancy } from '../../../../interface/Company/data';
+import { DataApplicantVacancy, DataVacancy, Vacancy } from '../../../../interface/Company/data';
 ///////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////
@@ -56,7 +56,7 @@ export const getVacancies = async () => {
 	}
 };
 
-//Buscar una vacante
+//Buscar una vacante ObjectId
 export const getVacancyObjectId = async (objectId:string) => {
 	try {
 		const vacancy = await VacancyModel.findOne({_id:objectId}); 
@@ -68,6 +68,20 @@ export const getVacancyObjectId = async (objectId:string) => {
 	//ALL OK
 	// return true;
 };
+
+//Buscar una vacante idVacancy
+export const getVacancyId = async (idVacancy:string) => {
+	try {
+		const vacancy = await VacancyModel.findOne({id:idVacancy}); 
+		console.log(vacancy);
+		return vacancy;
+	} catch (error) {
+		console.error('ERROR actualizamdo vacante',error);
+	}
+	//ALL OK
+	// return true;
+};
+
 //Eliminamos una vacante por ObjectId
 export const delVacancyObjectId = async (objectId:string):Promise<boolean> => {
 	try{
@@ -80,4 +94,19 @@ export const delVacancyObjectId = async (objectId:string):Promise<boolean> => {
 	//ALL OK
 	return true;
 };
-
+//AGREGAR aplicante a la vacante
+export const addApplicant = async (idVacancy:string, values:DataApplicantVacancy):Promise<boolean> => {
+	try {
+		const result = await VacancyModel.updateOne({id:idVacancy},
+			{$addToSet:{
+				applicants:
+					values
+			}
+			});
+		console.log('Result add data applicant: ',result);
+	} catch (error) {
+		console.log('ERROR: agregar aplicante a la vacante: ',error);
+		return false;
+	}
+	return true;
+};

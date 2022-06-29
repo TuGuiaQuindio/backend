@@ -35,6 +35,7 @@ export interface Vacancy{
 }
 
 export interface DataVacancy {
+    id:string;
     idCompany:number;
     title:string;
     description:string;
@@ -52,4 +53,10 @@ export interface CompanyDataConfig {
     phoneNumber:string;
     address:string;
     mainActivity:string;
+}
+
+//datos de aplicantes a la vacante
+export interface DataApplicantVacancy {
+    idGuide:number;
+    email:string;
 }

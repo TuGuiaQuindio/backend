@@ -13,6 +13,7 @@ const verifyToken = '/verifyToken';
 const vacancyObjectIdOptional = /^\/company\/vacancy\/([a-fA-F0-9]{24})?$/;
 const showVacancies = '/vacancies';
 const visibility = '/visibility';
+const applyVacancy = '/applyVacancy';
 
 // * Todos los paths del server, las rutas
 export default {
@@ -46,5 +47,7 @@ export default {
 	showProfileGuides: company + profiles,
 	//Visibility
 	profileVisibility : guide + profile + visibility,
+	//aplicar a vacante
+	applyVacancy : guide + applyVacancy,
 	
 };

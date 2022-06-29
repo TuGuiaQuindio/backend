@@ -23,7 +23,7 @@ export class CompanyInfo {
 		type: ()=> [Object],
 		default:[]
 	})
-		vacancies:Array<object	>;
+		vacancies:Array<object>;
 
 }
 
