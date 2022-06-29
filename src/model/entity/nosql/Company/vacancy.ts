@@ -3,6 +3,11 @@ import { prop, getModelForClass } from '@typegoose/typegoose';
 export class Vacancies {
 
 	@prop({
+		type:String
+	})
+		id:string;
+
+	@prop({
 		type:Number
 	})
 		idCompany:number;
@@ -51,7 +56,13 @@ export class Vacancies {
 		type:Date
 	})
 		publishedOn:Date;
-		
+	
+	@prop({
+		type: ()=>[Object],
+		default:[]
+	})
+		applicants:Array<object>;
+
 }	
 //Creamos modelo
 console.log('CREANDO MODELO VACANTES...');

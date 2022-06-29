@@ -22,8 +22,13 @@ connectDB();
 //OPCIONES DE LOS CORS
 const originOptions : cors.CorsOptions = {
 	origin : new RegExp(process.env.CORS_ORIGIN as string ?? 'http://localhost:3000')
+	// "origin": process.env.CORS_ORIGIN,
+	// "methods": "GET,PUT,POST,DELETE",
+	// "preflightContinue": false,
+	// "optionsSuccessStatus": 204,
 };
 // Middlewares
+// app.options('*', cors())
 app.use(cors(originOptions));
 app.use(morgan('dev'));
 app.use(helmet());

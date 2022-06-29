@@ -78,10 +78,6 @@ export interface GuideDataConfig {
     city:string;
     hasTransport:boolean;
 }
-interface Attachments{
-    imges:Image[];
-    document:Document[];
-}
 
 // export interface ProfilePreview{
 //     id:number;

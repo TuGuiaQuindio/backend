@@ -1,3 +1,4 @@
+import { nanoid } from 'nanoid';
 //////////////////////////////////////////////////////////////////
 //IMPORTAMOS INTERFACES
 import { getNumberAccess } from '../../constants/constants';
@@ -71,6 +72,7 @@ function newVacancy(id:number, values:Vacancy, companyFound:Company){
 	const dataTime = new Date().toUTCString();//Para universal
 	//Crear nueva vacante
 	const newVacancy : DataVacancy  = {
+		id:nanoid(),
 		idCompany: id,
 		title: values.title,
 		description: values.description,

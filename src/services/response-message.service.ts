@@ -72,9 +72,10 @@ export const responses: ResponseMessage[] = [
 	{ code: 'DV02', msg: 'No se pudo eliminar la vacante' },
 	{ code: 'DV03', msg: 'No tiene los permisos: Id de la empresa no coincide!' },
 	{ code: 'DV04', msg: 'Error eliminando vacante' },
-	{ code: '', msg: '' },
-	{ code: '', msg: '' },
-	{ code: '', msg: '' },
+	//Add applicant vacancy
+	{ code: 'AV01', msg: 'Aplico con exito!' },
+	{ code: 'AV02', msg: 'La vacante no existe' },
+	{ code: 'AV03', msg: 'Error al aplicar' },
 	{ code: '', msg: '' },
 	
 ];

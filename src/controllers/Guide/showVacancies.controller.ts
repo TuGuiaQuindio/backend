@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 /////////////////////////////////////////////////////////
 //IMPORTAMOS SERVICIOS
-import { showVacanciesService } from '../../services/Guide/showVacancies.service';
+import { showVacanciesService } from '../../services/Guide/vacancies.service';
 import { getResponse } from '../../services/response-message.service';
 /////////////////////////////////////////////////////////
 //IMPORTAMOS CONTANTES

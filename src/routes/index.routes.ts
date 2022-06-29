@@ -24,9 +24,9 @@ import routerGuideCompleteData from './Guide/completeData.routes';
 import routerGuideShowVacancies from './Guide/showVacancies.routes';
 import routerGuideProfile from './Guide/profile.routes';
 import routerGuideProfileVisibility from './Guide/profileVisibility.routes';
+import routerGuideApplyVacancy from './Guide/apply.vacancy.routes';
 ///////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////
-
 //Obtenemos las rutas y guardamos en un arreglo
 const _routes : [Router][] = [
 	[routerLogin],
@@ -50,6 +50,7 @@ const _routes : [Router][] = [
 	[routerGuideShowVacancies],
 	[routerGuideProfile],
 	[routerGuideProfileVisibility],
+	[routerGuideApplyVacancy],
 ] ;
 
 //Pasamos por las rutas 
