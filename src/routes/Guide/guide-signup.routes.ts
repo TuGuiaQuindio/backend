@@ -22,13 +22,6 @@ const { params, validate } = signUpValidator;
 router.route(path.signupGuide)
 	.post(params,validate,guideSignup_post);
 
-// Rutas con parametros
-router.route('/guide/:id')
-	.get()
-	.put()
-	.delete();
-
-
 ///////////////////////////////////////////////////////////////
 // Exportamos las rutas
 export default router;

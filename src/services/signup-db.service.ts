@@ -1,12 +1,13 @@
-
 // En este archivo se registraran los datos del usuario al DB 
-
+//IMPORTAMOS INTERFACES
 import { GuideSignup } from '../interface/Guide/signup-guide';
 import { CompanySignup } from '../interface/Company/data';
-
+//IMPORTAMOS TRANSACIONES
 import { createGuide } from '../model/entity/sql/transaction/guide';
 import { createCompany } from '../model/entity/sql/transaction/company';
+//IMPORTAMOS SERVICIOS
 import bcrypt from './bcrypt.service';
+import { generatePublicId } from './generateCode.service';
 
 // Decostruimos
 const { bcryptHash } = bcrypt;
@@ -19,16 +20,15 @@ async function signup (values: Exclude<GuideSignup, {age:number,city:string, pho
 	if(type == 'guide'){
 		// Definimos el tipo de Usuario 'GUIDE'
 		values = values as GuideSignup;
+		//Creamos el -> publicId
+		const publicId:string = await getPublicId(values.firstName, values.lastName);
 		// Esperamos a que encripten la contraseña
 		const password : string = await bcryptHash(values.password);
 		// console.log("FROM signUp - SERVICE");
-
 		console.log('Email signUp-service:: ', values.rol.email);
-		
 		// Obtenemos los datos y lo pasamos al ORM
-		const guideResuls = await createGuide(values, password);
+		const guideResuls = await createGuide(values,publicId,password);
 		// Resornamos los datos devueltos
-		
 		return guideResuls;
 	}
 	
@@ -45,5 +45,10 @@ async function signup (values: Exclude<GuideSignup, {age:number,city:string, pho
 		return companyResults;
 	}
 }
+//Generamos el publicId
+const getPublicId = async (firstName:string, lastName:string):Promise<string> => {
+	return await generatePublicId(firstName, lastName);
+};
+
 
 export default signup;
