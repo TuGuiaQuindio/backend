@@ -19,7 +19,7 @@ export const guideSignup_post = async(req:Request, res:Response) : Promise<Respo
 	const { NoDocument, firstName, lastName, rol, password } = req.body as GuideSignup;//Lo referenciamos con la interface
 	try {
 		// Hacemos el registro de los datos
-		const register : Guide | Company | undefined = await signup( { NoDocument, firstName, lastName, rol, password }, 'guide' );
+		const register : Guide | Company | undefined = await signup({ NoDocument, firstName, lastName, rol, password }, 'guide');
 		if(register != undefined) {
 			// Respondemos al Server
 			return res.status(200).json({

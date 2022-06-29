@@ -11,6 +11,9 @@ export class Guide {
 	@PrimaryGeneratedColumn()
 		id : number;
 
+	@Column({default:null})
+		publicId:string;
+	
 	@Column({default : null})
 		NoDocument : string;
 

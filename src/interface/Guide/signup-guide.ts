@@ -4,7 +4,7 @@ import { UserSignup } from '../user-signup';
 
 export interface GuideSignup extends UserSignup {
 
-    // id:number;
+    publicId?:string;
     NoDocument:string;
     firstName:string;
     lastName:string;
