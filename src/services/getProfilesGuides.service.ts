@@ -63,8 +63,10 @@ const joinInfo = async (listGuideNoSql:Array<any>):Promise<boolean|Array<GuidePr
 		//Dato vacio
 		if(!guideData)return false; //ERROR al obtener los datos
 		//Se crea los datos definitivos
+		//deconstruimos 
 		const data:GuideProfileData = {
 			id:ele.id,
+			publicId:guideData.publicId,
 			document:guideData.NoDocument,
 			firstName:guideData.firstName,
 			lastName:guideData.lastName,
