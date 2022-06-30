@@ -7,8 +7,8 @@ import { saveCode } from '../model/entity/nosql/transaction/redis/data';
 import { DataRecover } from '../interface/dataRedis';
 ////////////////////////////////////////////////////////
 //IMPORTAMOS SERVICIOS
-import { customAlphabet } from 'nanoid';
 import { sendEmailRecoveyPass } from './sendMenssage.service';
+import { createCodeRecovery } from './generateCode.service';
 ////////////////////////////////////////////////////////
 
 export const recoverPass = async (values : DataRecover ) : Promise<boolean | string | null | undefined> => {
@@ -25,7 +25,6 @@ export const recoverPass = async (values : DataRecover ) : Promise<boolean | str
 		//creamos el 'token'
 		const codeRecovery : string = await createCodeRecovery();
 		console.log('-> ',codeRecovery);
-
 		//!Almacenamos 'codigo' 
 		const response : boolean|null = await saveCode(codeRecovery, email, rol);
 		console.log('Response Code: ',response);
@@ -48,38 +47,4 @@ export const recoverPass = async (values : DataRecover ) : Promise<boolean | str
 		console.log('Error al generar o guardar el Codigo: ', error);
 		return false;
 	}
-};
-
-//?Creamos el 'Codigo'
-const createCodeRecovery = async () : Promise<string> => {
-	//Cantidad del codigo
-	const length = 6;
-	//Valores generados
-	const characters : string = await generateRandomString(30);
-	const numbers : number = await generateRandomNumber(1, 99999999999);
-	//Sumamos las respuestas generadas
-	const value : string = characters + numbers;
-	console.log('Values: ',value);
-	const nanoid = customAlphabet(value, 10);
-	return nanoid(length);
-};
-//TODO->Separar los generadores a un servicio independiente
-//GENERADOR DE CARACTERES
-const generateRandomString = async (num : number) : Promise<string> => {
-	//Cantidad de caracteres
-	const characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-	//Bandera
-	let result1 = '';
-	const charactersLength : number = characters.length;
-	//Generamos
-	for ( let i = 0; i < num; i++ ) {
-		result1 += characters.charAt(Math.floor(Math.random() * charactersLength));
-		// result1 += characters.charAt(Math.random() * charactersLength);
-	}
-	return result1;
-};
-//GENERADOR DE NUMEROS
-const generateRandomNumber = async (min : number, max : number) : Promise<number> => {
-	const number : number = Math.floor(Math.random() * (max * min)) + min;
-	return number;
 };

@@ -15,19 +15,17 @@ import { CompleteDataSql } from '../../../../interface/Guide/guideInfo';
 import { getGuideDoc } from './find.g-c';
 
 // ?CREATE -> Registrar nuevo Guia 
-export const createGuide = async (values: GuideSignup, password:string) : Promise<Guide | undefined> => {
-	
+export const createGuide = async (values: GuideSignup, publicId:string,password:string) : Promise<Guide | undefined> => {
 	// Obtenemos el usuario a buscar
 	const userFound : boolean | undefined = await getGuideDoc(values.NoDocument);
 	console.log('Status User/Guide validado', userFound);
-	
 	// Validamos si el guia existe
-	console.log('DESPUES DEL VALIDAOR En transaction');
 	if(userFound) return undefined;
-
 	// Obtengo los datos del cliente por parametro
 	// Creamos objeto con datos
+	console.error('Valores a guardar: ',values);
 	const guide: GuideSignup = {
+		publicId: publicId,
 		NoDocument : values.NoDocument,
 		firstName : values.firstName,
 		lastName : values.lastName,
