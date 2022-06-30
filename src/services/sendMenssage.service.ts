@@ -3,7 +3,7 @@ import nodemailer from 'nodemailer';
 //////////////////////////////////////////
 
 //RUTA DE NUEVA CONTRASEÑA
-const ruta = 'http://localhost:3000/reset-pass';
+const ruta = process.env.URL_RECOVER_PASS;
 
 
 export const sendEmailRecoveyPass = async ( code : string, email : string) => {
