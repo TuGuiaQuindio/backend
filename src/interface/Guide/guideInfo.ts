@@ -55,6 +55,7 @@ export interface CompleteDataNoSql{
 
 export interface GuideProfileData{
     id :number;
+    publicId:string;
     document:string;
     firstName:string;
     lastName:string;

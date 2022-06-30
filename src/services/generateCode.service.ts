@@ -22,7 +22,7 @@ export const generatePublicId = async (firstName:string, lastName:string):Promis
 	//obtenemos primer nombre y primer apellido
 	const name = `${firstName.split(' ')[0]}.${lastName.split(' ')[0]}.`;
 	//gneramos numero de id publico
-	const numbers:number = await generateRandomNumber(10,999);
+	const numbers:number = await generateRandomNumber(99,1000);
 	//Creamos el id publico
 	const publicId:string = name+numbers.toString();
 	console.log('publicId:: ',publicId);
