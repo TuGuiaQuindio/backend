@@ -6,7 +6,6 @@ import CompanyInfoModel from '../Company/CompanyInfo';
 import { DataNoSql } from '../../../../interface/Company/data';
 ////////////////////////////////////////////////////////
 
-
 export const createCompanyInfo = async (id :number, values : DataNoSql, completeData ?: boolean ) : Promise<boolean> => {
 	console.log('CREANDO INFO COMPANY...');
 	try {
@@ -88,4 +87,15 @@ export const updateVacancies = async (id:number,vacancies:object[]) => {
 		return false;
 	}
 	return true;
+};
+
+//Obtenemos toda la informacion
+export const allInfo = async () => {
+	try {		
+		const result = await CompanyInfoModel.find();
+		return result;
+	} catch (error) {
+		console.error('ERROR: al obtener la info: ',error);
+		return false;
+	}
 };
