@@ -1,4 +1,3 @@
-
 const guide = '/guide';
 const company = '/company';
 const signup = '/signup';
@@ -12,6 +11,7 @@ const completeData = '/completeData';
 const verifyToken = '/verifyToken';
 const vacancyObjectIdOptional = /^\/company\/vacancy\/([a-fA-F0-9]{24})?$/;
 const showVacancies = '/vacancies';
+const showVacancy = '/vacancy';
 const visibility = '/visibility';
 const applyVacancy = '/applyVacancy';
 
@@ -43,6 +43,8 @@ export default {
 	vacancy : vacancyObjectIdOptional,
 	//Mostrar las vacantes
 	showVacancies: guide + showVacancies,
+	//Solo una vacante
+	showVacancy: showVacancy,
 	//Show profile guides
 	showProfileGuides: company + profiles,
 	//Visibility
