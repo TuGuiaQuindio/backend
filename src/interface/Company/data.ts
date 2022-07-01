@@ -60,3 +60,14 @@ export interface DataApplicantVacancy {
     idGuide:number;
     email:string;
 }
+
+export interface DataCompany {
+    id:number;
+    mainActiviti:string;
+    vacancies:[];
+    nameCompany:string;
+    email:string;
+    nit:string;
+    addres:string;
+    phoneNumber:string;
+}
