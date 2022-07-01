@@ -60,9 +60,12 @@ export const responses: ResponseMessage[] = [
 	{ code: 'V003', msg: 'NO tiene permisos para crear mas vacantes' },
 	{ code: 'V004', msg: 'INFORMACION de empresa no encontrada' },
 	{ code: 'V005', msg: 'No hay suficientes datos' },
-	//Show vacancies
+	//Show vacancies - vacancie
 	{ code: 'SV01', msg: 'No hay vacantes' },
 	{ code: 'SV02', msg: 'Error al obtener las vacantes' },
+	{ code: 'SV11', msg: 'Vacante encontrada con exito' },
+	{ code: 'SV22', msg: 'Vacante no encontrada' },
+	{ code: '', msg: '' },
 	//Update vacancy
 	{ code: 'UV01', msg: 'Vacante no encontrada' },
 	{ code: 'UV02', msg: 'Error al actualizar la vacante' },

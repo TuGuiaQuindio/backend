@@ -73,7 +73,7 @@ export const getVacancyObjectId = async (objectId:string) => {
 export const getVacancyId = async (idVacancy:string) => {
 	try {
 		const vacancy = await VacancyModel.findOne({id:idVacancy}); 
-		console.log(vacancy);
+		console.log('Transaction: ',vacancy);
 		return vacancy;
 	} catch (error) {
 		console.error('ERROR actualizamdo vacante',error);

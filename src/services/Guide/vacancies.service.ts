@@ -13,6 +13,18 @@ export const showVacanciesService = async () => {
 	return vacancies;
 };
 
+//Obtener solo una vacante
+export const getVacancie = async (idVacancy:string) => {
+	//MOSTRAMOS OLO LA INDO DE LA VACANTE
+	//Obtenemos la vacante
+	const foundVacancie = await getVacancyId(idVacancy);
+	console.table(foundVacancie);
+	//Validamos
+	if(!foundVacancie)return null;//NO SE ENCONTRO
+	//EXISTE
+	return foundVacancie;
+};
+
 //Guardamos datos aplicante de la vacante
 export const saveDataApplicant = async (idVacancy:string, values:DataApplicantVacancy):Promise<boolean|null> => {
 	//validamos si la vacante existe

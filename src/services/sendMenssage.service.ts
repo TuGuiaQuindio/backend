@@ -7,7 +7,6 @@ const ruta = process.env.URL_RECOVER_PASS;
 
 
 export const sendEmailRecoveyPass = async ( code : string, email : string) => {
-	
 	//Se crea el objeto de transporte
 	const transporter = nodemailer.createTransport({
 		// host: 'smtp.ethereal.email',
