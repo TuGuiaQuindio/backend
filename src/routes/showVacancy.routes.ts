@@ -4,7 +4,7 @@ import express, { Router }  from 'express';
 import path from './paths/index';
 //////////////////////////////////////////////////////////
 //IMPORTAMOS CONTROLADOR
-import { vacancie } from '../controllers/vacancy.controller';
+import { vacancy } from '../controllers/vacancy.controller';
 //////////////////////////////////////////////////////////
 //IMPORTAMOS AUTENTIFICADOR 
 import { isAuth } from '../middleware/auth';
@@ -14,7 +14,7 @@ import { isAuth } from '../middleware/auth';
 const router : Router = express.Router();
 
 router.route(path.showVacancy)
-	.post(isAuth, vacancie);
+	.post(isAuth, vacancy);
 /////////////////////////////////////////////////////////
 //importamos
 export default router;

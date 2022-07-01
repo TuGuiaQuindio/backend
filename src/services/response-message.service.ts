@@ -29,7 +29,6 @@ export const responses: ResponseMessage[] = [
 	{ code: 'SP01', msg: 'perfiles cargados con exito!' },
 	{ code: 'SP02', msg: 'Error al obtener los datos' },
 	{ code: 'SP03', msg: 'No hay perfiles disponibles' },
-	{ code: '', msg: '' },
 	//Upload File
 	{ code: 'U001', msg: 'Archivo ya existe' },
 	{ code: 'U002', msg: 'Información no existe' },
@@ -65,6 +64,7 @@ export const responses: ResponseMessage[] = [
 	{ code: 'SV02', msg: 'Error al obtener las vacantes' },
 	{ code: 'SV11', msg: 'Vacante encontrada con exito' },
 	{ code: 'SV22', msg: 'Vacante no encontrada' },
+	{ code: 'SV44', msg: 'Error obteniendo los datos la infoacion de la empresa' },
 	{ code: '', msg: '' },
 	//Update vacancy
 	{ code: 'UV01', msg: 'Vacante no encontrada' },

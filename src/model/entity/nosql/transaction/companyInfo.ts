@@ -99,3 +99,13 @@ export const allInfo = async () => {
 		return false;
 	}
 };
+
+export const getInfoOne = async (id:number) => {
+	try {
+		const result = await CompanyInfoModel.findOne({idCompany:id});
+		return result;
+	} catch (error) {
+		console.error('ERROR: obtenido info comapny: ', error);
+		return false;
+	}
+};
